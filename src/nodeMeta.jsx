@@ -46,6 +46,8 @@ export function getDevelopmentStage(node) {
 }
 
 function classifyDevelopmentStage(node) {
+  const explicitStage = developmentStages.find((stage) => stage.id === node.developmentStage);
+  if (explicitStage) return explicitStage;
   const sourceNumber = node.stage.match(/^\d+/)?.[0] || "03";
   const sourceStage = stageBySourceNumber.get(sourceNumber) || stageBySourceNumber.get("03");
 
@@ -273,6 +275,7 @@ const modelSeriesRules = [
 ];
 
 export function getSeriesKey(node) {
+  if (node.series) return node.series;
   if (node.section === "tech") {
     if (/agent lightning/i.test(node.title)) return "Agent Lightning";
     return node.family;
@@ -283,6 +286,7 @@ export function getSeriesKey(node) {
 }
 
 export function getNodeSummary(node) {
+  if (node.summary) return node.summary;
   const source = sourceBriefs.get(node.id);
   if (source) return source;
   const rules = node.section === "models" ? modelRules : node.section === "tech" ? techRules : capabilityRules;
@@ -295,8 +299,11 @@ export function getNodeSummary(node) {
 
 export function getEvolutionTrail(node) {
   const series = getSeriesKey(node);
-  return nodes
-    .filter((candidate) => candidate.section === node.section && getSeriesKey(candidate) === series)
+  const members = nodes.filter((candidate) => candidate.section === node.section && getSeriesKey(candidate) === series);
+  // Explicit branch anchors give context without merging sibling product lines.
+  const anchorIds = new Set(members.map((candidate) => candidate.branchFrom).filter(Boolean));
+  const anchors = nodes.filter((candidate) => candidate.section === node.section && anchorIds.has(candidate.id));
+  return [...new Map([...anchors, ...members].map((candidate) => [candidate.id, candidate])).values()]
     .sort((a, b) => getPublishedDate(a).localeCompare(getPublishedDate(b)) || a.id.localeCompare(b.id));
 }
 
@@ -306,17 +313,18 @@ export function getLongSummary(node) {
   const previous = trail[index - 1];
   const next = trail[index + 1];
   const relation = previous && next
-    ? `它承接 ${getPublishedDate(previous)} 的「${previous.title}」，并继续演进到 ${getPublishedDate(next)} 的「${next.title}」。`
+    ? `这条发展线的较早记录是 ${getPublishedDate(previous)} 的「${previous.title}」，较晚记录是 ${getPublishedDate(next)} 的「${next.title}」。`
     : previous
-      ? `它承接 ${getPublishedDate(previous)} 的「${previous.title}」，是这条发展线当前更靠后的节点。`
+      ? `这条发展线的较早记录是 ${getPublishedDate(previous)} 的「${previous.title}」；当前记录到本节点。`
       : next
-        ? `它开启这条发展线，后续推进到 ${getPublishedDate(next)} 的「${next.title}」。`
-        : "它在原始 PDF 中作为独立方法节点出现。";
-  return `${getNodeSummary(node)} ${relation}`;
+        ? `这条发展线的下一条记录是 ${getPublishedDate(next)} 的「${next.title}」。`
+        : node.origin === "supplement" ? "这是根据发布来源补充收录的独立节点。" : "它在原始 PDF 中作为独立节点出现。";
+  return [getNodeSummary(node), node.detail, node.dateNote, relation].filter(Boolean).join(" ");
 }
 
 export function getNodeTags(node) {
   const tags = [getSeriesKey(node), getDevelopmentStage(node).label, node.section === "products" ? "开发工具" : node.section === "models" ? "代码模型" : "基础能力"];
+  if (node.status) tags.push(node.status);
   if (/Agent/i.test(`${node.title} ${node.family} ${node.stage}`)) tags.push("Agent");
   if (/CLI|终端|Shell/i.test(`${node.title} ${node.family}`)) tags.push("终端");
   return [...new Set(tags)].slice(0, 4);

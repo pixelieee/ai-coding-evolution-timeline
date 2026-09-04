@@ -1,4 +1,5 @@
 import OpenAIIcon from "@lobehub/icons/es/OpenAI/components/Mono.js";
+import { PlugsConnected } from "@phosphor-icons/react";
 import AnthropicIcon from "@lobehub/icons/es/Anthropic/components/Mono.js";
 import ClaudeIcon from "@lobehub/icons/es/Claude/components/Color.js";
 import ClaudeCodeIcon from "@lobehub/icons/es/ClaudeCode/components/Color.js";
@@ -84,6 +85,7 @@ const fileRules = [
 ];
 
 const technicalSourceMarks = new Map([
+  ["node-211", { name: "Agent Plugins · 开放插件标准", Icon: PlugsConnected }],
   ["node-164", { name: "Anthropic", Icon: AnthropicIcon }],
   ["node-166", { name: "OpenAI", Icon: OpenAIIcon }],
   ["node-168", { name: "Shopify", source: "/logos/vector/shopify.svg" }],

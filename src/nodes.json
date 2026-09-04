@@ -1513,7 +1513,8 @@
     "year": 2026,
     "title": "Claude Fable 5 / Mythos 5",
     "section": "models",
-    "family": "Anthropic · Opus / Fable",
+    "family": "Claude Fable / Mythos",
+    "series": "Claude Fable / Mythos",
     "stage": "04 Work Agent",
     "x": 0.860448,
     "y": 0.502093,
@@ -1733,6 +1734,7 @@
     "date": "2026-08",
     "year": 2026,
     "title": "Qwen3.8-Max",
+    "dateNote": "日期待核：暂保留原资料的 2026-08-28；服务更新记录在 8 月 3 日已出现该模型，尚需区分首发、预览与正式开放。",
     "section": "models",
     "family": "Qwen / Kimi",
     "stage": "04 Work Agent",
@@ -1981,7 +1983,8 @@
     "year": 2026,
     "title": "Gemini 3.5 Flash",
     "section": "models",
-    "family": "Google / 其他模型",
+    "family": "Google Gemini Flash",
+    "series": "Google Gemini Flash",
     "stage": "04 Work Agent",
     "x": 0.834146,
     "y": 0.655702,
@@ -2494,5 +2497,437 @@
     "y": 0.867107,
     "w": 0.02303,
     "h": 0.015648
+  },
+  {
+    "id": "node-193",
+    "date": "2026-08-17",
+    "year": 2026,
+    "title": "Cursor Origin",
+    "section": "products",
+    "family": "Cursor 代码托管",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "早期测试",
+    "summary": "把仓库托管、代码浏览、PR 与 Agent 工作整合到 Cursor；目前是早期测试版。",
+    "series": "Cursor 代码托管",
+    "branchFrom": "node-006",
+    "detail": "这是 Cursor 的代码托管分支，不代表云端执行环境被替换。",
+    "research": {
+      "label": "Cursor · Origin Code Hosting",
+      "url": "https://cursor.com/changelog/origin-code-hosting",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-194",
+    "date": "2026-08-19",
+    "year": 2026,
+    "title": "Cursor Cloud Agents：持续任务",
+    "section": "products",
+    "family": "Cursor Cloud Agents",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "功能发布",
+    "summary": "支持由 PR、Slack 和定时任务触发工作，并通过独立虚拟机中的子代理推进持续任务。",
+    "series": "Cursor Cloud Agents",
+    "branchFrom": "node-006",
+    "research": {
+      "label": "Cursor · Cloud Agents and Harness Improvements",
+      "url": "https://cursor.com/changelog/08-19-26",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-195",
+    "date": "2026-09-02",
+    "year": 2026,
+    "title": "Cursor 自托管执行环境",
+    "section": "products",
+    "family": "Cursor Cloud Agents",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "功能发布",
+    "summary": "让 Agent 在自己的电脑、虚拟机和团队机器池执行工具，支持 Linux 与 Mac 电脑操作。",
+    "series": "Cursor Cloud Agents",
+    "detail": "自托管的是工具执行环境，不表示模型推理完全离线。",
+    "research": {
+      "label": "Cursor · Self-hosted machines",
+      "url": "https://cursor.com/changelog/self-hosted-machines",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-196",
+    "date": "2026-09-01",
+    "year": 2026,
+    "title": "Kiro Web 正式开放",
+    "section": "products",
+    "family": "Kiro",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "正式开放",
+    "summary": "Kiro Web 正式开放，在浏览器中规划规格、委派开发任务，并查看和调整 Agent 的执行过程。",
+    "research": {
+      "label": "Kiro · Web general availability",
+      "url": "https://kiro.dev/changelog/web/kiro-web-is-now-generally-available/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-197",
+    "date": "2026-05-19",
+    "year": 2026,
+    "title": "Antigravity 2.0",
+    "section": "products",
+    "family": "Google Antigravity",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "产品发布",
+    "summary": "以独立桌面应用集中管理项目和 Agent 工作，将编辑、执行与任务协作组织到同一工作空间。",
+    "detail": "独立桌面应用与同日的 Antigravity CLI 是不同入口，分别保留发布节点。",
+    "research": {
+      "label": "Google · Introducing Antigravity 2.0",
+      "url": "https://antigravity.google/blog/introducing-google-antigravity-2?hl=en",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-198",
+    "date": "2026-08-20",
+    "year": 2026,
+    "title": "Antigravity Remote Control",
+    "section": "products",
+    "family": "Google Antigravity",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "功能发布",
+    "summary": "在浏览器中远程查看和控制本机 Agent 会话，并接收任务完成或需要输入的通知。",
+    "detail": "采用版本日志的 2026-08-20 发布日期；介绍文章发表于次日。",
+    "research": {
+      "label": "Google Antigravity · 2.9.1 changelog",
+      "url": "https://antigravity.google/changelog",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-199",
+    "date": "2026-08-26",
+    "year": 2026,
+    "title": "Replit 智能模型路由",
+    "section": "products",
+    "family": "Replit Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "功能发布",
+    "summary": "根据开发任务自动选择合适模型，在质量、速度与成本之间调整，不必为每一步手动切换。",
+    "detail": "这是 Replit Agent 的任务级模型调度更新，不是名为 Agent 5 的新产品。",
+    "research": {
+      "label": "Replit · Intelligent Model Routing",
+      "url": "https://replit.com/blog/intelligent-model-routing",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-200",
+    "date": "2026-09-01",
+    "year": 2026,
+    "title": "Copilot PR 审批",
+    "section": "products",
+    "family": "GitHub Copilot 代码审查",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "公开预览",
+    "summary": "代码审查可提交计入合并规则的批准意见。功能处于公开预览，默认关闭，需要管理员启用。",
+    "series": "GitHub Copilot 代码审查",
+    "detail": "批准不等于自动合并 PR；这是独立的代码审查分支。",
+    "research": {
+      "label": "GitHub · Copilot PR approvals",
+      "url": "https://github.blog/changelog/2026-09-01-copilot-code-review-can-now-approve-pull-requests/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-201",
+    "date": "2026-09-03",
+    "year": 2026,
+    "title": "GPT-6 Astra",
+    "section": "models",
+    "family": "OpenAI GPT",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "分阶段开放",
+    "summary": "结合推理、编程和电脑操作完成复杂任务；首批面向 Trusted Access Program 企业逐步开放。",
+    "detail": "API 更新日志记录于 9 月 3 日发布；截至 9 月 5 日，模型页仍说明其他 API 和订阅计划将在随后几天开放。",
+    "research": {
+      "label": "OpenAI · GPT-6 Astra",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "OpenAI · API changelog",
+          "url": "https://developers.openai.com/api/docs/changelog"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-202",
+    "date": "2026-09-01",
+    "year": 2026,
+    "title": "Claude Fable 5.1 / Mythos 5.1",
+    "section": "models",
+    "family": "Claude Fable / Mythos",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "分级开放",
+    "summary": "加强编程与持续任务处理。Fable 5.1 普遍开放，Mythos 5.1 仅通过可信访问计划提供。",
+    "series": "Claude Fable / Mythos",
+    "detail": "官方将二者描述为相同模型、不同安全限制；保留联合发布节点，明确区分开放范围。",
+    "research": {
+      "label": "Anthropic · Fable 5.1 and Mythos 5.1",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Anthropic · 发布日期",
+          "url": "https://www.anthropic.com/news"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-203",
+    "date": "2026-07-21",
+    "year": 2026,
+    "title": "Gemini 3.6 Flash",
+    "section": "models",
+    "family": "Google Gemini Flash",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "正式开放",
+    "summary": "改进代码与规划任务的处理效率，减少完成复杂工作所需的推理输出。",
+    "series": "Google Gemini Flash",
+    "research": {
+      "label": "Google · Gemini API release notes",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#july-21-2026",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-204",
+    "date": "2026-08-13",
+    "year": 2026,
+    "title": "Gemini 3.7 Flash",
+    "section": "models",
+    "family": "Google Gemini Flash",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "正式开放",
+    "summary": "强化软件工程、网页开发与 Agent 工作流，补齐 Flash 系列的持续任务能力。",
+    "series": "Google Gemini Flash",
+    "research": {
+      "label": "Google · Gemini API release notes",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#august-13-2026",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-205",
+    "date": "2026-09-02",
+    "year": 2026,
+    "title": "Gemini 3.8 Flash",
+    "section": "models",
+    "family": "Google Gemini Flash",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "正式开放",
+    "summary": "面向持续软件工程、自主 Agent 与复杂企业流程发布的新一代 Flash 模型。",
+    "series": "Google Gemini Flash",
+    "research": {
+      "label": "Google · Gemini API release notes",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#september-2-2026",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-206",
+    "date": "2026-08-21",
+    "year": 2026,
+    "title": "DeepSeek V4 Flash Vision Exp",
+    "section": "models",
+    "family": "DeepSeek V4 Flash",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "实验版本",
+    "summary": "为 V4 Flash 增加图像理解，将视觉输入接入编程与工具工作流；目前为实验版本。",
+    "series": "DeepSeek V4 Flash",
+    "branchFrom": "node-125",
+    "detail": "这是 V4 Flash 的视觉分支；以 V4 系列预览作为背景入口，不把 V4 Pro 正式版当作其前代。",
+    "research": {
+      "label": "DeepSeek · V4 Flash Vision Exp",
+      "url": "https://api-docs.deepseek.com/news/news260821/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-207",
+    "date": "2026-03-18",
+    "year": 2026,
+    "title": "MiniMax M2.7",
+    "section": "models",
+    "family": "MiniMax",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "模型发布",
+    "summary": "强化软件工程与多步工具任务，并探索让模型参与自身研发和改进流程。",
+    "research": {
+      "label": "MiniMax · Model release notes",
+      "url": "https://platform.minimax.io/docs/release-notes/models",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-208",
+    "date": "2026-06-01",
+    "year": 2026,
+    "title": "MiniMax M3",
+    "section": "models",
+    "family": "MiniMax",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "模型发布",
+    "summary": "加入原生图像与视频理解、百万上下文和电脑操作，扩展编程 Agent 的持续执行能力。",
+    "research": {
+      "label": "MiniMax · M3",
+      "url": "https://www.minimax.io/blog/minimax-m3",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-209",
+    "date": "2026-04-20",
+    "year": 2026,
+    "title": "Kimi K2.6",
+    "section": "models",
+    "family": "Kimi",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "模型发布",
+    "summary": "加强代码生成、前端实现和持续工具任务，为多步骤软件开发提供新的模型版本。",
+    "research": {
+      "label": "Kimi · K2.6 technical blog",
+      "url": "https://www.kimi.com/en/blog/kimi-k2-6",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Kimi · 发布日期",
+          "url": "https://www.kimi.com/en/blog/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-210",
+    "date": "2026-06-12",
+    "year": 2026,
+    "title": "Kimi K2.7 Code",
+    "section": "models",
+    "family": "Kimi 编程模型",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "模型发布",
+    "summary": "面向 Kimi Code 的编程分支，改进思考模式、长任务指令遵循与推理效率。",
+    "series": "Kimi 编程模型",
+    "branchFrom": "node-209",
+    "detail": "编程专项分支独立展示，不将它画成通用 Kimi K3 的必经前代。",
+    "research": {
+      "label": "Kimi Code · Release notes",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-211",
+    "date": "2026-08-06",
+    "year": 2026,
+    "title": "Agent Plugins 1.0",
+    "section": "tech",
+    "family": "Agent 插件标准",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "开放标准",
+    "summary": "用统一插件格式打包 Skills 与 MCP 服务配置，让同一扩展可在兼容的 Agent 客户端间复用。",
+    "detail": "这是跨工具的扩展打包标准，不是模型训练方法，也不替代 MCP 协议。8 月 12 日 GitHub 接入公告明确标准发布于 8 月 6 日。",
+    "research": {
+      "label": "Agent Plugins · 1.0 specification",
+      "url": "https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md",
+      "kind": "项目资料",
+      "references": [
+        {
+          "label": "GitHub · 标准发布日期与接入说明",
+          "url": "https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-212",
+    "date": "2026-07-31",
+    "year": 2026,
+    "title": "DeepSeek V4 Flash：公开测试",
+    "section": "models",
+    "family": "DeepSeek V4 Flash",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-09-05",
+    "status": "公开测试",
+    "summary": "V4 Flash 更新进入公开测试，强化编程与工具任务，并原生支持 Responses API。",
+    "series": "DeepSeek V4 Flash",
+    "branchFrom": "node-125",
+    "detail": "这是 V4 Flash 文本分支的更新，后续视觉实验版本在此基础上增加图像理解。",
+    "research": {
+      "label": "DeepSeek · 2026-07-31 update",
+      "url": "https://api-docs.deepseek.com/updates/#date-2026-07-31",
+      "kind": "官方发布"
+    }
   }
 ]

@@ -155,14 +155,15 @@ function buildEvolutionLayout(items, step, axisWidth, zoom) {
 
   const layouts = sections.map((item) => {
     const positioned = years.flatMap((year) => [...buckets[item.id].get(year)]
-      .sort((a, b) => getPublishedDate(a).localeCompare(getPublishedDate(b)) || a.y - b.y || a.title.localeCompare(b.title, "zh-CN"))
+      .sort((a, b) => getPublishedDate(a).localeCompare(getPublishedDate(b)) || (a.y ?? 0) - (b.y ?? 0) || a.title.localeCompare(b.title, "zh-CN"))
       .map((node, index) => {
         const series = getSeriesKey(node);
         const development = getDevelopmentStage(node);
         return { ...node, left: yearStarts.get(year) + index * step, lane: developmentStages.findIndex((stage) => stage.id === development.id), series, development };
       }));
+    const positionedById = new Map(positioned.map((node) => [node.id, node]));
     const chains = [...new Set(positioned.map((node) => node.series))]
-      .map((series) => ({ series, nodes: positioned.filter((node) => node.series === series).sort((a, b) => getPublishedDate(a).localeCompare(getPublishedDate(b))) }))
+      .map((series) => ({ series, nodes: getEvolutionTrail(positioned.find((node) => node.series === series)).map((node) => positionedById.get(node.id)).filter(Boolean) }))
       .filter((chain) => chain.nodes.length > 1);
     return { ...item, nodes: positioned, chains };
   });
@@ -469,7 +470,7 @@ export function App() {
     const viewport = viewportRef.current;
     if (!viewport) return;
     const positioned = positionedNodes.get(node.id);
-    const left = positioned?.left ?? node.x * stageWidth;
+    const left = positioned?.left ?? (node.x ?? 0) * stageWidth;
     viewport.scrollTo({ left: left - viewport.clientWidth / 2 + milestoneSize / 2, top: viewport.scrollTop, behavior: smooth ? "smooth" : "auto" });
   };
 
@@ -839,7 +840,7 @@ export function App() {
             </div>
             <RefinementMenu open={refinementsOpen} onToggle={() => setRefinementsOpen((value) => !value)} calendar={{ value: panoramaDate, onChange: selectPanoramaDate, dates: panoramaCalendarDates }} section={section} stage={developmentStage} onStage={setDevelopmentStage} onClear={clearRefinements} />
             <span className="sr-only" role="status">{isAtCalendar ? `已定位到 ${calendarJump.destination.date} 的 ${calendarJump.destination.node.title}` : ""}</span>
-            <span className="hotspot-count" aria-live="polite">{panoramaMatches.size} / {section === "all" ? nodes.length : sectionCounts[section]} 源节点 · {panoramaMatches.size ? "再次点击分类返回全部" : "当前条件下无匹配节点"}</span>
+            <span className="hotspot-count" aria-live="polite">{panoramaMatches.size} / {section === "all" ? nodes.length : sectionCounts[section]} 节点 · {panoramaMatches.size ? "再次点击分类返回全部" : "当前条件下无匹配节点"}</span>
           </div>
           <div className="panorama-workspace">
           <div ref={viewportRef} className={`panorama-viewport ${dragging ? "dragging" : ""}`} tabIndex={0} aria-label="时间线画布：点击泳道收起侧栏，拖拽平移，滚轮上下滚动，Shift 加滚轮横移，使用底部按钮缩放" onScroll={syncScrollPercent} onPointerDown={beginDrag} onPointerMove={dragCanvas} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={endDrag} onClickCapture={preventDragClick} onClick={handleCanvasClick} onDragStart={(event) => event.preventDefault()} onKeyDown={(event) => {
@@ -924,7 +925,7 @@ export function App() {
 
       {selected && (
         <aside ref={detailDrawerRef} className={`detail-drawer ${viewMode === "panorama" ? "over-panorama" : ""}`} aria-label="节点详情">
-          <div className="drawer-header"><div><span>{getPublishedDate(selected)}</span><small>{selected.id.replace("node-", "SOURCE #")}</small></div><button onClick={() => setSelected(null)} aria-label="关闭详情"><X size={19} /></button></div>
+          <div className="drawer-header"><div><span>{getPublishedDate(selected)}{selected.dateNote ? " · 待核" : ""}</span><small>{selected.id.replace("node-", selected.origin === "supplement" ? "补充 #" : "SOURCE #")}</small></div><button onClick={() => setSelected(null)} aria-label="关闭详情"><X size={19} /></button></div>
           <div className="drawer-body">
             <div className="drawer-identity">{hasBrandMark(selected) ? <BrandMark node={selected} /> : <ResearchMark node={selected} />}<div><span className={`track-badge ${selected.section}`}><i />{sectionMap[selected.section].label}</span><small>{selected.section === "tech" ? selected.family : getBrandName(selected)}</small></div></div>
             <h2>{selected.title}</h2>
@@ -933,6 +934,7 @@ export function App() {
             <a className="source-card" href={selectedResearch.url} target={selectedResearch.url.startsWith("/") ? undefined : "_blank"} rel={selectedResearch.url.startsWith("/") ? undefined : "noreferrer"}>
               <span><small>SOURCE · {selectedResearch.kind}</small><strong>{selectedResearch.label}</strong></span><ArrowSquareOut size={18} />
             </a>
+            {selectedResearch.references?.map((reference) => <a key={reference.url} className="source-card" href={reference.url} target="_blank" rel="noopener noreferrer"><span><small>补充来源</small><strong>{reference.label}</strong></span><ArrowSquareOut size={18} /></a>)}
             <section className="drawer-evolution">
               <div><h3>发展线</h3><small>{selectedSeries} · {selectedTrail.length} 个里程碑</small></div>
               <div className="evolution-rail">

@@ -103,11 +103,11 @@ const sourceById = new Map([
   ["node-122", project("DeepSeek · DeepSeek Coder", "https://github.com/deepseek-ai/DeepSeek-Coder")],
   ["node-123", project("DeepSeek · DeepSeek-Coder-V2", "https://github.com/deepseek-ai/DeepSeek-Coder-V2")],
   ["node-124", project("DeepSeek · DeepSeek-R1", "https://github.com/deepseek-ai/DeepSeek-R1")],
-  ["node-125", official("DeepSeek · V4 Preview", "https://deepseek.com/en/news/v4-preview/")],
+  ["node-125", official("DeepSeek · V4 Preview", "https://api-docs.deepseek.com/news/news260424/")],
   ["node-126", project("DeepSeek · DeepSeek-Coder-V2", "https://github.com/deepseek-ai/DeepSeek-Coder-V2")],
   ["node-127", project("DeepSeek · DeepSeek-V3", "https://github.com/deepseek-ai/DeepSeek-V3")],
   ["node-128", official("DeepSeek · V3.2 Release", "https://api-docs.deepseek.com/news/news251201/")],
-  ["node-129", official("DeepSeek · V4-Pro GA", "https://api-docs.deepseek.com/news/news251201/")],
+  ["node-129", official("DeepSeek · V4-Pro GA", "https://api-docs.deepseek.com/news/news260813/")],
   ["node-131", official("Kimi · Kimi K2", "https://www.kimi.ai/blog/kimi-k2")],
   ["node-133", official("Kimi · Kimi K2.5", "https://www.kimi.ai/blog/kimi-k2-5")],
   ["node-135", paper("Kimi K1.5 technical report", "https://arxiv.org/abs/2501.12599")],
@@ -197,7 +197,7 @@ const sourceRules = [
 ];
 
 export function getNodeResearch(node) {
-  const specific = sourceById.get(node.id);
+  const specific = node.research || sourceById.get(node.id);
   const fallback = sourceRules.find(([pattern]) => pattern.test(node.title))?.[1];
   const resolved = specific || fallback || (node.section === "tech"
     ? paper("arXiv 相关研究检索", `https://arxiv.org/search/?query=${encodeURIComponent(node.title)}&searchtype=all`)

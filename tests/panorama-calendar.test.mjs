@@ -60,5 +60,5 @@ test("empty dates provide no false navigation destinations and clearing restores
   assert.equal(getLatestTimelineNode(layouts, matches, getPublishedDate), null);
   assert.equal(buildLaneStops(layouts, matches, getPublishedDate).size, 0);
   assert.deepEqual(buildMonthStops(layouts, matches, getPublishedDate, 340, 30000), []);
-  assert.equal(nodes.filter((node) => matchesCalendarDate(getPublishedDate(node), "")).length, 192);
+  assert.equal(nodes.filter((node) => matchesCalendarDate(getPublishedDate(node), "")).length, nodes.length);
 });

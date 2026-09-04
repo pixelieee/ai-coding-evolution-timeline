@@ -53,18 +53,18 @@ test("calendar selection labels distinguish full years, months, and exact days",
   assert.equal(calendarSelectionLabel("2026-08-02"), "2026 年 8 月 2 日");
 });
 
-test("release dots and period counts match all 192 actual source dates", () => {
+test("release dots and period counts match all actual source dates", () => {
   const nodes = JSON.parse(readFileSync(new URL("../src/nodes.json", import.meta.url), "utf8"));
   const dates = nodes.map(getPublishedDate);
   const counts = calendarDateCounts(dates);
-  assert.equal(dates.length, 192);
+  assert.equal(dates.length, nodes.length);
   for (const [selection, count] of Object.entries(counts)) {
     assert.equal(dates.filter((date) => matchesCalendarDate(date, selection)).length, count);
   }
-  assert.equal(Object.entries(counts).filter(([key]) => key.length === 4).reduce((total, [, count]) => total + count, 0), 192);
+  assert.equal(Object.entries(counts).filter(([key]) => key.length === 4).reduce((total, [, count]) => total + count, 0), nodes.length);
   assert.deepEqual(calendarDateCounts([]), {});
   const subset = nodes.filter((node) => node.section === "tech").map(getPublishedDate);
-  assert.equal(Object.entries(calendarDateCounts(subset)).filter(([key]) => key.length === 4).reduce((total, [, count]) => total + count, 0), 37);
+  assert.equal(Object.entries(calendarDateCounts(subset)).filter(([key]) => key.length === 4).reduce((total, [, count]) => total + count, 0), subset.length);
 });
 
 test("keyboard day navigation crosses leap days, weeks, and year boundaries", () => {

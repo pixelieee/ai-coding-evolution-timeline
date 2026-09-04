@@ -19,12 +19,11 @@ const expected = new Map([
   ["OpenAI Codex", ["node-062", "node-064", "node-065", "node-066", "node-067", "node-068", "node-071", "node-073"]],
   ["Google Jules", ["node-063"]],
   ["Google Gemini CLI", ["node-069"]],
-  ["Google Antigravity", ["node-070", "node-072"]],
+  ["Google Antigravity", ["node-070", "node-072", "node-197", "node-198"]],
 ]);
 
 test("the former mixed categories split into four exact, disjoint product families", () => {
-  assert.equal(nodes.length, 192);
-  assert.equal(new Set(nodes.map((node) => node.id)).size, 192);
+  assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
   assert.ok(nodes.every((node) => !/Codex\s*\/\s*(Google|Jules)/i.test(node.family)));
   for (const [family, ids] of expected) {
     assert.deepEqual(nodes.filter((node) => node.family === family).map((node) => node.id).sort(), [...ids].sort());

@@ -41,9 +41,8 @@ test("the four disputed labels are replaced by concrete descriptions of their co
   assert.match(metadata.getDevelopmentStages("models")[3].description, /不是一种独立的模型架构/);
 });
 
-test("all 192 nodes and tags use their own section's stage vocabulary", () => {
-  assert.equal(nodes.length, 192);
-  assert.equal(new Set(nodes.map((node) => node.id)).size, 192);
+test("all nodes and tags use their own section's stage vocabulary", () => {
+  assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
   for (const node of nodes) {
     const stage = metadata.getDevelopmentStage(node);
     assert.ok(metadata.getDevelopmentStages(node.section).includes(stage), node.id);
