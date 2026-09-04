@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.codex/
+.agents/
+
+# Local research, QA, screenshots, and machine-specific instructions.
+/work/
+/qa/
+/*.png
+/design-qa.md
+/AGENTS.md
+/scripts/compare-calendar.ps1

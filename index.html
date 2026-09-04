@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="%BASE_URL%site-mark.svg" />
+    <meta name="theme-color" content="#f5f5f2" />
+    <script>
+      // Resolve before the first paint, including when local storage is unavailable.
+      (() => {
+        let preference;
+        try { preference = localStorage.getItem("ai-coding-theme"); } catch {}
+        const theme = preference === "light" || preference === "dark" ? preference :
+          (window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", theme === "dark" ? "#141516" : "#f5f5f2");
+      })();
+    </script>
+    <meta name="description" content="交互式探索 2021–2026 年 AI Coding 产品、模型、关键技术与能力阶段。" />
+    <meta property="og:title" content="AI Coding 发展 Timeline · 2021–2026" />
+    <meta property="og:description" content="可缩放、可搜索、可按年份与主题聚焦的 AI Coding 演进全景图。" />
+    <meta property="og:image" content="./ai-coding-timeline.png" />
+    <title>AI Coding 发展 Timeline · 2021–2026</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
