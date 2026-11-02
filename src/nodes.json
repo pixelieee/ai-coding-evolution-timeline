@@ -2929,5 +2929,635 @@
       "url": "https://api-docs.deepseek.com/updates/#date-2026-07-31",
       "kind": "官方发布"
     }
+  },
+  {
+    "id": "node-213",
+    "date": "2026-09-10",
+    "year": 2026,
+    "title": "OpenAI Agents API",
+    "section": "products",
+    "family": "OpenAI Agent 平台",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "公开测试",
+    "summary": "把 Codex Harness 作为托管 API 开放，统一处理会话、编排、上下文压缩与恢复，执行环境和工具仍由开发者选择。",
+    "series": "OpenAI Agent 平台",
+    "branchFrom": "node-073",
+    "detail": "这是公开测试版，不等同于 Codex 产品正式版；其关键变化是把长期运行所需的 Harness 能力从产品内部抽成平台服务。",
+    "research": {
+      "label": "OpenAI · Introducing the Agents API",
+      "url": "https://openai.com/index/introducing-the-agents-api/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-214",
+    "date": "2026-09-17",
+    "year": 2026,
+    "title": "Kimi Code Desktop",
+    "section": "products",
+    "family": "Kimi Code",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "正式发布",
+    "summary": "把 Kimi Code 的目标、计划、后台任务、权限审批和内置浏览器整合到桌面端，形成可观察、可暂停的长任务工作台。",
+    "series": "Kimi Code",
+    "branchFrom": "node-045",
+    "research": {
+      "label": "Kimi Code · Desktop launch",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-215",
+    "date": "2026-09-21",
+    "year": 2026,
+    "title": "Antigravity SDK：本地模型",
+    "section": "products",
+    "family": "Google Antigravity SDK",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "SDK 更新",
+    "summary": "Antigravity SDK 正式支持 LiteRT 与本地 OpenAI 兼容模型，并允许本地模型调用 MCP 和子代理。",
+    "series": "Google Antigravity SDK",
+    "branchFrom": "node-197",
+    "detail": "这是本地执行与混合编排能力，不表示 Gemini 规划模型或云端 Harness 被完全替代。",
+    "research": {
+      "label": "Google Antigravity · SDK changelog",
+      "url": "https://antigravity.google/docs/changelog",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-216",
+    "date": "2026-09-23",
+    "year": 2026,
+    "title": "Cursor Rollouts / Security Review",
+    "section": "products",
+    "family": "Cursor 验证与发布",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "功能发布",
+    "summary": "把 Agent 从写代码延伸到部署后验证：结合日志、指标和调用链判断回归，并把安全审查结果回写 PR。",
+    "series": "Cursor 验证与发布",
+    "detail": "Rollouts 目前只给出健康结论、通知或创建回滚 PR，不会自行合并或回滚。",
+    "research": {
+      "label": "Cursor · Rollouts and Security Review",
+      "url": "https://cursor.com/changelog/rollouts-and-security-reviewer",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-217",
+    "date": "2026-10-01",
+    "year": 2026,
+    "title": "Copilot Dynamic Workflows",
+    "section": "products",
+    "family": "GitHub Copilot 编排",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "公开预览",
+    "summary": "用代码定义可复用的串行、并行与人工检查点，让多 Agent 工作流获得稳定结构、可观察性和明确边界。",
+    "series": "GitHub Copilot 编排",
+    "branchFrom": "node-012",
+    "research": {
+      "label": "GitHub · Dynamic workflows",
+      "url": "https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-218",
+    "date": "2026-10-16",
+    "year": 2026,
+    "title": "DeepSeek Harness 0.2.1 RC",
+    "section": "products",
+    "family": "DeepSeek Harness",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "候选版本",
+    "summary": "围绕 V4.1 Flash 的长程编码、搜索与抓取工具优化官方 Harness，模型与执行框架开始作为一体化系统共同调优。",
+    "series": "DeepSeek Harness",
+    "branchFrom": "node-040",
+    "detail": "这是 0.2.1 的首个候选版本，不写成正式稳定版；后续 1017 模型公告明确建议升级到该版本或更新版本。",
+    "research": {
+      "label": "DeepSeek Harness · dsh-v0.2.1-rc.1",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/tree/dsh-v0.2.1-rc.1",
+      "kind": "官方仓库",
+      "references": [
+        {
+          "label": "DeepSeek · V4.1 Flash 1017",
+          "url": "https://api-docs.deepseek.com/news/news261017/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-219",
+    "date": "2026-10-20",
+    "year": 2026,
+    "title": "Cursor Agent SDK",
+    "section": "products",
+    "family": "Cursor Agent 平台",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "正式开放",
+    "summary": "把 Agent 定义为代码项目，原生组织工具、Skills、MCP 与渠道，并用评测和真实 PR 回放测试后部署到 Cursor 或自有基础设施。",
+    "series": "Cursor Agent 平台",
+    "branchFrom": "node-006",
+    "research": {
+      "label": "Cursor · Agent SDK",
+      "url": "https://cursor.com/changelog/agent-sdk",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-220",
+    "date": "2026-10-22",
+    "year": 2026,
+    "title": "MiniMax Code Mini App",
+    "section": "products",
+    "family": "MiniMax Code",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "功能发布",
+    "summary": "让 Agent 生成带前后端、持久数据和页面界面的长运行应用；应用与 Agent 可通过 Hosted MCP 和 Agent API 双向调用。",
+    "research": {
+      "label": "MiniMax · Code Mini App",
+      "url": "https://www.minimax.io/blog/minimax-code-mini-app-1792650729",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-221",
+    "date": "2026-10-28",
+    "year": 2026,
+    "title": "Copilot 统一云端会话",
+    "section": "products",
+    "family": "GitHub Copilot 云端 Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "正式开放",
+    "summary": "同一 Agent 会话可在网页、移动端、CLI、App、VS Code、Slack 和 Teams 间继续，并默认运行在可恢复的安全云沙盒。",
+    "series": "GitHub Copilot 云端 Agent",
+    "branchFrom": "node-011",
+    "research": {
+      "label": "GitHub · Connected Copilot cloud experience",
+      "url": "https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-222",
+    "date": "2026-10-28",
+    "year": 2026,
+    "title": "GitHub Agentic Workflows",
+    "section": "products",
+    "family": "GitHub Agentic Workflows",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "正式开放",
+    "summary": "把自然语言 Markdown 编译为标准 GitHub Actions，让 Issue 分流、CI 诊断、文档更新和测试生成在既有权限与 Runner 约束中执行。",
+    "research": {
+      "label": "GitHub · Agentic Workflows GA",
+      "url": "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-223",
+    "date": "2026-10-29",
+    "year": 2026,
+    "title": "OpenCode Goal Mode",
+    "section": "products",
+    "family": "OpenCode",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "开源发布",
+    "summary": "让会话围绕目标持续执行，直到独立 Reviewer 确认完成，并提供暂停、恢复和清除控制。",
+    "series": "OpenCode",
+    "branchFrom": "node-038",
+    "research": {
+      "label": "OpenCode · v2.2.1 changelog",
+      "url": "https://github.com/anomalyco/opencode/blob/dev/CHANGELOG.md#v221--2026-10-29",
+      "kind": "官方仓库"
+    }
+  },
+  {
+    "id": "node-224",
+    "date": "2026-09-10",
+    "year": 2026,
+    "title": "DeepSeek V4.1 Flash",
+    "section": "models",
+    "family": "DeepSeek V4 Flash",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "正式发布",
+    "summary": "以新架构、原生视觉和更高吞吐替代 V4 Flash 实验分支，同时提升代码、工具使用和自动化任务表现。",
+    "series": "DeepSeek V4 Flash",
+    "branchFrom": "node-212",
+    "detail": "官方将旧 V4 Flash 与视觉实验模型临时路由到 V4.1 Flash；该节点表示正式替代，不是并行小版本。",
+    "research": {
+      "label": "DeepSeek · V4.1 Flash release",
+      "url": "https://api-docs.deepseek.com/updates/#date-2026-09-10",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-225",
+    "date": "2026-09-22",
+    "year": 2026,
+    "title": "GPT-6 Sol / Luna",
+    "section": "models",
+    "family": "OpenAI GPT-6",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "把 GPT-6 能力从 Astra 扩展到不同成本与延迟档位，使高频编码和多 Agent 任务不必都使用旗舰模型。",
+    "series": "OpenAI GPT-6",
+    "branchFrom": "node-201",
+    "research": {
+      "label": "OpenAI · GPT-6 Sol and Luna",
+      "url": "https://openai.com/research/index/release/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-226",
+    "date": "2026-09-22",
+    "year": 2026,
+    "title": "Claude Opus 5.5",
+    "section": "models",
+    "family": "Claude Opus",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "提升 Agentic Coding 与知识工作上限，并把典型任务运行成本较 Opus 5 降低约 40%。",
+    "series": "Claude Opus",
+    "branchFrom": "node-121",
+    "research": {
+      "label": "Anthropic · Claude Opus 5.5",
+      "url": "https://www.anthropic.com/news/models",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-227",
+    "date": "2026-09-28",
+    "year": 2026,
+    "title": "Claude Sonnet 5.5",
+    "section": "models",
+    "family": "Claude Sonnet",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "在 Sonnet 5 基础上进一步提高主力 Agent 模型的速度与成本效率，官方称运行速度提升 30% 以上、多数任务成本最高降低 30%。",
+    "series": "Claude Sonnet",
+    "branchFrom": "node-108",
+    "research": {
+      "label": "Anthropic · Claude Sonnet 5.5",
+      "url": "https://www.anthropic.com/news/models",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-228",
+    "date": "2026-09-29",
+    "year": 2026,
+    "title": "GPT-6.1 Sol",
+    "section": "models",
+    "family": "OpenAI GPT-6",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "以约五分之一的 Astra 标准输入输出价格逼近其 Agentic Coding、电脑操作和专业任务能力，降低高强度 Agent 的单位成本。",
+    "series": "OpenAI GPT-6 Sol",
+    "branchFrom": "node-225",
+    "research": {
+      "label": "OpenAI · GPT-6.1 Sol",
+      "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-229",
+    "date": "2026-10-07",
+    "year": 2026,
+    "title": "Claude Haiku 5.5",
+    "section": "models",
+    "family": "Claude Haiku",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "将 Haiku 路线推进到高吞吐子代理和浏览器任务，使多 Agent 系统能用更低延迟的小模型承担大量并行工作。",
+    "series": "Claude Haiku",
+    "branchFrom": "node-107",
+    "research": {
+      "label": "Anthropic · Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/news/models",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-230",
+    "date": "2026-10-17",
+    "year": 2026,
+    "title": "DeepSeek V4.1 Flash 1017",
+    "section": "models",
+    "family": "DeepSeek V4 Flash",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型升级 / 开放权重",
+    "summary": "用自反馈强化学习提升端到端项目开发，并针对 DeepSeek Harness、CodeBuddy 与 WorkBuddy 联合优化性能和成本。",
+    "series": "DeepSeek V4 Flash",
+    "branchFrom": "node-224",
+    "research": {
+      "label": "DeepSeek · V4.1 Flash 1017",
+      "url": "https://api-docs.deepseek.com/news/news261017/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-231",
+    "date": "2026-10-19",
+    "year": 2026,
+    "title": "MiniMax M3.1 Flash",
+    "section": "models",
+    "family": "MiniMax",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "面向 Agent、编程、电脑操作与安全任务提高能力，同时将在线推理提速近 3 倍、使用成本降低 70%。",
+    "series": "MiniMax",
+    "branchFrom": "node-208",
+    "research": {
+      "label": "MiniMax · M3.1 Flash",
+      "url": "https://www.minimax.io/blog/minimax-m31f",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-232",
+    "date": "2026-10-23",
+    "year": 2026,
+    "title": "Kimi K3.1 Pro",
+    "section": "models",
+    "family": "Kimi",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布 / 开放权重计划",
+    "summary": "以更大规模后训练和跨领域强化学习提升编码、3D 创作、金融研究与长程 Agent，并把上下文扩展到 100 万 token。",
+    "series": "Kimi",
+    "branchFrom": "node-138",
+    "detail": "模型于 10 月 23 日上线产品和 API；官方宣布完整权重将在 11 月 4 日发布，因此当前不写成已完成开源。",
+    "research": {
+      "label": "Kimi · K3.1 Pro",
+      "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-233",
+    "date": "2026-10-26",
+    "year": 2026,
+    "title": "GPT-6.1 Terra",
+    "section": "models",
+    "family": "OpenAI GPT-6",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "模型发布",
+    "summary": "以更低价格提供视觉推理、精确电脑操作与自然写作，扩大高频 Work Agent 和 Codex 任务的可用规模。",
+    "series": "OpenAI GPT-6 Terra",
+    "branchFrom": "node-225",
+    "research": {
+      "label": "OpenAI · GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-234",
+    "date": "2026-06-11",
+    "year": 2026,
+    "title": "Recursive Agent Harnesses",
+    "section": "tech",
+    "family": "Harness 工程 / 自我改进",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 预印本",
+    "summary": "把递归单元从单次模型调用扩展为完整 Agent Harness，由父 Agent 生成可执行编排并并行调用带工具的子 Harness。",
+    "series": "Harness 自我改进",
+    "branchFrom": "node-188",
+    "research": {
+      "label": "Recursive Agent Harnesses",
+      "url": "https://arxiv.org/abs/2606.13643",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-235",
+    "date": "2026-09-17",
+    "year": 2026,
+    "title": "GLM Infra Agent",
+    "section": "tech",
+    "family": "工业自我改进",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "工业案例",
+    "summary": "GLM-5.3 驱动的 Infra Agent 在可归因实验反馈下优化自身推理基础设施，两周内把端到端吞吐提升到初始基线的 3 倍。",
+    "detail": "该案例仍由工程师定义目标、边界与风险，不等同于自主设计并训练后继模型的完整 RSI。",
+    "research": {
+      "label": "Z.ai · GLM built its own inference infrastructure",
+      "url": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+      "kind": "官方研究"
+    }
+  },
+  {
+    "id": "node-236",
+    "date": "2026-09-22",
+    "year": 2026,
+    "title": "AIDE²",
+    "section": "tech",
+    "family": "Agent 自我改进 / RSI",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 预印本",
+    "summary": "让研究 Agent 改写自己的代码，并用隐藏评测筛选后继版本；8 天自主运行中累计得到 7 次连续改进并迁移到未见任务。",
+    "research": {
+      "label": "Recursive self-improvement of AI research agents",
+      "url": "https://arxiv.org/abs/2609.26457",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-237",
+    "date": "2026-09-24",
+    "year": 2026,
+    "title": "Env-Rethink",
+    "section": "tech",
+    "family": "环境演化 / Env Scaling",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 预印本",
+    "summary": "不只扩充任务数量，而是主动整理、诊断并演化 Agent 环境；通过 Collection Maps、Event Logs 与虚拟事件历史构造更难的后续训练环境。",
+    "research": {
+      "label": "Breaking the Environment Wall",
+      "url": "https://arxiv.org/abs/2609.29773",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-238",
+    "date": "2026-10-07",
+    "year": 2026,
+    "title": "RSIGym",
+    "section": "tech",
+    "family": "RSI 研究基础设施",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 开源",
+    "summary": "把训练、推理、rollout、评测和沙盒做成可复用服务，让 Agent 在统一预算与权限下联合改进数据、Harness 与训练配置。",
+    "research": {
+      "label": "RSIGym",
+      "url": "https://arxiv.org/abs/2610.10310",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-239",
+    "date": "2026-10-09",
+    "year": 2026,
+    "title": "Work2Skill",
+    "section": "tech",
+    "family": "Skill 学习 / Computer Use",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 开源",
+    "summary": "从人类 GUI 录像、鼠标键盘事件和可访问性树中归纳可复用 Skill，把真实工作示范转化为 Agent 可执行的流程知识。",
+    "research": {
+      "label": "Work2Skill",
+      "url": "https://arxiv.org/abs/2610.12984",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "Work2Skill · 官方仓库",
+          "url": "https://github.com/china-qijizhifeng/Work2Skill"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-240",
+    "date": "2026-10-09",
+    "year": 2026,
+    "title": "Harness²",
+    "section": "tech",
+    "family": "Harness 工程 / 自我改进",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 预印本",
+    "summary": "用任务级递归在线改写当前 Harness，再把改写经验沉淀到持续改进 Harness，使无标准答案的开放任务也能积累可迁移的执行策略。",
+    "series": "Harness 自我改进",
+    "branchFrom": "node-234",
+    "research": {
+      "label": "Harness²: Recursive Agent Harnessing",
+      "url": "https://arxiv.org/abs/2610.14224",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-241",
+    "date": "2026-10-23",
+    "year": 2026,
+    "title": "RSI-Opt",
+    "section": "tech",
+    "family": "训练优化 / RSI",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 预印本",
+    "summary": "让元 Agent 跨训练运行改写优化策略、Playbook、可执行优化器代码和决策节奏，把自我改进从 Agent 执行层推进到模型训练过程。",
+    "research": {
+      "label": "RSI-Opt",
+      "url": "https://arxiv.org/abs/2610.32026",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-242",
+    "date": "2026-10-26",
+    "year": 2026,
+    "title": "Skill∞",
+    "section": "tech",
+    "family": "Skill 自我改进 / RSI",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-02",
+    "status": "论文 / 预印本",
+    "summary": "元 Agent 不只优化任务 Skill，也用同一流程改写“如何优化 Skill”的 Meta-Skill，使改进方法本身能够跨任务持续演化。",
+    "research": {
+      "label": "Skill∞",
+      "url": "https://arxiv.org/abs/2610.35434",
+      "kind": "论文 / 研究"
+    }
   }
 ]

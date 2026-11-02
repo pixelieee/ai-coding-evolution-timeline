@@ -24,12 +24,12 @@ const byId = (id) => nodes.find((node) => node.id === id);
 const ids = (list) => Array.from(list, (node) => node.id);
 const added = nodes.filter((node) => node.origin === "supplement");
 
-test("the September refresh retains every original ID and adds exactly 20 unique records", () => {
-  assert.equal(nodes.length, 212);
-  assert.equal(new Set(nodes.map((node) => node.id)).size, 212);
-  for (let id = 1; id <= 212; id++) assert.ok(byId(`node-${String(id).padStart(3, "0")}`));
-  assert.equal(added.length, 20);
-  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [91, 83, 38]);
+test("the refresh retains every original ID and keeps supplementary records sequential", () => {
+  assert.equal(nodes.length, 242);
+  assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
+  for (let id = 1; id <= nodes.length; id++) assert.ok(byId(`node-${String(id).padStart(3, "0")}`));
+  assert.equal(added.length, 50);
+  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [102, 93, 47]);
 });
 
 test("supplementary nodes carry exact dates, explicit capability summaries and traceable sources", () => {
@@ -38,7 +38,8 @@ test("supplementary nodes carry exact dates, explicit capability summaries and t
     assert.equal(new Date(`${node.date}T00:00:00Z`).toISOString().slice(0, 10), node.date);
     assert.equal(node.year, Number(node.date.slice(0, 4)));
     assert.equal(getPublishedDate(node), node.date);
-    assert.ok(node.date <= node.verifiedAt && node.verifiedAt === "2026-09-05");
+    assert.match(node.verifiedAt, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(node.date <= node.verifiedAt);
     assert.equal(getNodeResearch(node).url, node.research.url);
     assert.equal(new URL(node.research.url).protocol, "https:");
     assert.equal(metadata.getNodeSummary(node), node.summary);
@@ -50,10 +51,12 @@ test("supplementary nodes carry exact dates, explicit capability summaries and t
   }
 });
 
-test("Flash, MiniMax and Fable development lines include the missing intermediate versions", () => {
+test("model development lines include the missing intermediate versions", () => {
   assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-205"))), ["node-153", "node-203", "node-204", "node-205"]);
-  assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-208"))).slice(-3), ["node-146", "node-207", "node-208"]);
+  assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-231"))).slice(-4), ["node-146", "node-207", "node-208", "node-231"]);
   assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-202"))), ["node-117", "node-202"]);
+  assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-230"))).slice(-3), ["node-206", "node-224", "node-230"]);
+  assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-240"))).slice(-3), ["node-188", "node-234", "node-240"]);
 });
 
 test("explicit branch anchors do not create false successors or merge sibling branches", () => {
@@ -61,7 +64,7 @@ test("explicit branch anchors do not create false successors or merge sibling br
   assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-195"))), ["node-006", "node-194", "node-195"]);
   assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-210"))), ["node-209", "node-210"]);
   assert.ok(!ids(metadata.getEvolutionTrail(byId("node-138"))).includes("node-210"));
-  assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-206"))), ["node-125", "node-212", "node-206"]);
+  assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-206"))), ["node-125", "node-212", "node-206", "node-224", "node-230"]);
   assert.ok(!ids(metadata.getEvolutionTrail(byId("node-129"))).includes("node-206"));
   assert.deepEqual(ids(metadata.getEvolutionTrail(byId("node-200"))), ["node-200"]);
   for (const node of added.filter((item) => item.branchFrom)) {
@@ -97,8 +100,8 @@ test("new dates show calendar dots and locate the actual first matching node", (
     assert.ok(Number.isFinite(target.node.left));
   }
   const latest = getLatestTimelineNode(layouts, matches, getPublishedDate);
-  assert.equal(latest.node.id, "node-201");
-  assert.equal(latest.date, "2026-09-03");
+  assert.equal(latest.node.id, "node-223");
+  assert.equal(latest.date, "2026-10-29");
 });
 
 test("corrections preserve provenance, uncertainty and limited availability", () => {
@@ -110,6 +113,8 @@ test("corrections preserve provenance, uncertainty and limited availability", ()
   assert.match(metadata.getLongSummary(byId("node-202")), /相同模型、不同安全限制/);
   assert.match(metadata.getLongSummary(byId("node-200")), /默认关闭.*管理员/);
   assert.match(metadata.getLongSummary(byId("node-206")), /实验版本/);
+  assert.match(metadata.getLongSummary(byId("node-232")), /11 月 4 日|不写成已完成开源/);
+  assert.match(metadata.getLongSummary(byId("node-235")), /不等同于.*完整 RSI/);
   assert.match(app, /selectedResearch\.references\?\.map/);
   assert.match(app, /selected\.origin === "supplement" \? "补充 #"/);
 });

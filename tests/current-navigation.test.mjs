@@ -11,8 +11,8 @@ const layouts = sections.map((id) => ({ id, nodes: nodes.filter((node) => node.s
 test("current uses the latest publication date, not the rightmost layout slot", () => {
   const result = getLatestTimelineNode(layouts, new Set(nodes.map((node) => node.id)), getPublishedDate);
   assert.equal(result.date, nodes.map(getPublishedDate).sort().at(-1));
-  assert.equal(result.node.title, "GPT-6 Astra");
-  assert.equal(result.sectionIndex, 1);
+  assert.equal(result.node.title, "OpenCode Goal Mode");
+  assert.equal(result.sectionIndex, 0);
 });
 
 test("current respects selected categories and matching search/month/stage IDs", () => {

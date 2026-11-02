@@ -739,7 +739,7 @@ export function App() {
       <header className="site-header">
         <div className="header-brand">
           <span className="brand-icon" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}site-mark.svg`} width="38" height="38" alt="" /></span>
-          <div><strong>AI Coding Evolution</strong></div>
+          <div><strong>AI大事件图鉴</strong></div>
         </div>
         <nav className="view-tabs" aria-label="视图切换">
           <button className={viewMode === "index" ? "active" : ""} onClick={() => setViewMode("index")}><ListBullets size={17} /> 节点库</button>
@@ -760,7 +760,7 @@ export function App() {
       {viewMode === "index" ? (
         <main className="library-page">
           <section className="library-heading">
-            <div><span className="eyebrow">RESEARCH INDEX · 2021–2026</span><h1>AI 编程工具、模型与关键技术</h1></div>
+            <div><span className="eyebrow">AI MILESTONE ATLAS · 2021–2026</span><h1>AI大事件图鉴</h1></div>
             <button onClick={() => setViewMode("panorama")}><MapTrifold size={17} /> 打开全景时间线</button>
           </section>
 

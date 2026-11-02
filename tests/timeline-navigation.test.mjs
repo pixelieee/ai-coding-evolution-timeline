@@ -45,10 +45,9 @@ test("2026 is marked at its first node, not at the slider end", () => {
   const { yearMarkers, stageWidth } = layout();
   const stops = buildYearStops(yearMarkers, 276, stageWidth - 2561, 2300);
   const lastYear = stops.at(-1);
-  assert.ok(lastYear.percent > 65 && lastYear.percent < 80);
+  assert.ok(lastYear.percent > 0 && lastYear.percent < 100);
   assert.notEqual(lastYear.percent, 100);
-  const intervals = stops.slice(1).map((stop, index) => stop.percent - stops[index].percent);
-  assert.ok(intervals.at(-1) > intervals[0] * 5);
+  near(percentToScroll(lastYear.percent, stageWidth - 2561), getYearScrollLeft(yearMarkers.at(-1), 276, stageWidth - 2561));
 });
 
 test("resize updates year percentages even without a scroll event", () => {

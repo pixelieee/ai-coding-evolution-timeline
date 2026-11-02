@@ -92,6 +92,7 @@ const technicalSourceMarks = new Map([
   ["node-173", { name: "Factory", source: "/logos/vector/factory.svg" }],
   ["node-178", { name: "Microsoft", Icon: MicrosoftIcon }],
   ["node-183", { name: "Google DeepMind", Icon: GoogleIcon }],
+  ["node-235", { name: "Z.ai · GLM", source: "/logos/vector/z-ai-official.svg" }],
 ]);
 
 export function resolveBrand(node) {
@@ -112,7 +113,7 @@ export function resolveBrand(node) {
   const file = fileRules.find((rule) => rule.pattern.test(node.title));
   if (file) return file;
   const component = componentRules.find((rule) => rule.pattern.test(text));
-  return component || { name: "AI Coding" };
+  return component || { name: "AI" };
 }
 
 export function getBrandName(node) {
