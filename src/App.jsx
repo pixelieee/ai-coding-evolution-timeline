@@ -774,9 +774,9 @@ export function App() {
               {query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={15} /></button>}
             </div>
             <div className="category-tabs" aria-label="按方向筛选">
-              <button className={section === "all" ? "active" : ""} onClick={() => { setSection("all"); setFamily("all"); }}>全部 <span>{nodes.length}</span></button>
+              <button className={section === "all" ? "active" : ""} onClick={() => { setSection("all"); setFamily("all"); }}>全部</button>
               {sections.map((item) => (
-                <button key={item.id} className={section === item.id ? "active" : ""} onClick={() => toggleSection(item.id)}><i style={{ background: item.color }} />{item.label}<span>{sectionCounts[item.id]}</span></button>
+                <button key={item.id} className={section === item.id ? "active" : ""} onClick={() => toggleSection(item.id)}><i style={{ background: item.color }} />{item.label}</button>
               ))}
             </div>
             <label className="compact-select family-filter">
@@ -789,7 +789,6 @@ export function App() {
 
           <section className="library-results">
             <header className="library-results-head">
-              <div><span>ARCHIVE RESULTS</span><strong>{filteredNodes.length} 个节点</strong></div>
               <p>{calendarSelectionLabel(libraryDate)} · {section === "all" ? "全部方向" : sectionMap[section].label}{developmentStage === "all" ? "" : ` · ${getDevelopmentStages(section).find((item) => item.id === developmentStage)?.label}`}{family === "all" ? "" : ` · ${family}`}</p>
               <small>第 {libraryPage} / {libraryPageCount} 页</small>
             </header>

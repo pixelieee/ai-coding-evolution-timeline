@@ -160,11 +160,11 @@
 
 @media (max-width: 760px) {
   .header-actions { gap: 7px; }
-  .theme-toggle { width: 34px; height: 34px; flex-basis: 34px; }
+  .theme-toggle { width: 38px; height: 38px; flex-basis: 38px; }
   .site-header { column-gap: 10px; }
 }
 @media (max-width: 420px) {
   .header-brand { gap: 7px; }
-  .header-brand .brand-icon { width: 30px; height: 30px; flex: 0 0 30px; }
+  .header-brand .brand-icon { width: 34px; height: 34px; flex: 0 0 34px; }
   .header-actions,.pdf-actions { gap: 4px; }
 }

@@ -29,5 +29,5 @@ test("the mark carries its own contrasting colors and no embedded images or exte
 test("header keeps fixed logo space, centered artwork and existing small-screen sizing", () => {
   assert.match(css, /\.brand-icon \{[^}]*width: 38px;[^}]*height: 38px;[^}]*flex: 0 0 38px/);
   assert.match(css, /\.brand-icon img \{[^}]*width: 100%;[^}]*height: 100%;[^}]*object-fit: contain/);
-  assert.match(read("../src/theme.css"), /\.header-brand \.brand-icon \{ width: 30px; height: 30px; flex: 0 0 30px; \}/);
+  assert.match(read("../src/theme.css"), /\.header-brand \.brand-icon \{ width: 34px; height: 34px; flex: 0 0 34px; \}/);
 });

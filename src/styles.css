@@ -230,10 +230,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @keyframes calendar-reveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 .library-results { margin-top: 18px; scroll-margin-top: 16px; }
-.library-results-head { height: auto; display: grid; grid-template-columns: 220px 1fr auto; align-items: center; gap: 20px; padding: 14px 3px; border-top: 1px solid #bfc1bd; min-height: 76px; }
-.library-results-head > div { display: grid; gap: 4px; }
-.library-results-head span { color: #9a6c12; font-size: var(--text-micro); font-weight: 800; letter-spacing: .14em; }
-.library-results-head strong { color: #181818; font-size: 16px; letter-spacing: -.02em; }
+.library-results-head { height: auto; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 20px; padding: 14px 3px; border-top: 1px solid #bfc1bd; min-height: 58px; }
 .library-results-head p { margin: 0; color: #777b78; font-size: var(--text-ui); }
 .library-results-head > small { color: #858986; font: 650 var(--text-meta)/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 
@@ -610,26 +607,50 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .verdict-cards { grid-template-columns: 1fr; }
   .verdict-card { min-height: 0; }
   .verdict-card-main { gap: 9px; padding: 11px; }
-  .site-header { height: 58px; grid-template-columns: 1fr auto; padding: 0 10px; }
+  .site-header { height: 58px; grid-template-columns: minmax(0,1fr) auto; padding: 0 10px; }
+  .header-brand { gap: 8px; }
+  .header-brand strong { font-size: 15px; }
+  .brand-icon { width: 36px; height: 36px; flex-basis: 36px; }
+  .header-actions { gap: 6px; }
+  .theme-toggle,.download-link { width: 38px; height: 38px; min-width: 38px; padding: 0; display: inline-grid; place-items: center; border-radius: 8px; }
   .view-tabs { position: fixed; z-index: 90; right: 0; bottom: 0; left: 0; height: 54px; justify-content: center; gap: 12px; border-top: 1px solid var(--line); background: #fff; }
   .view-tabs button { padding-inline: 10px; }
   .view-tabs button.active::after { top: 0; bottom: auto; }
-  .download-link { padding: 8px; font-size: 0; }
+  .download-link { font-size: 0; }
   .pdf-actions > span { display: none; }
-  .pdf-actions .download-link { gap: 0; }
-  .library-page { width: calc(100% - 16px); padding: 20px 0 72px; }
-  .library-heading { display: block; padding: 0 2px 18px; }
-  .library-heading h1 { font-size: 30px; }
-  .library-heading > button { margin-top: 13px; font-size: var(--text-ui); }
-  .library-toolbar { flex-wrap: wrap; }
-  .library-search { width: 100%; height: 44px; flex-shrink: 0; }
-  .category-tabs { width: 100%; overflow-x: auto; }
-  .family-filter { width: calc(100% - 50px); flex: 1 1 auto; }
+  .pdf-actions,.pdf-actions .download-link { gap: 6px; }
+  .library-page { width: calc(100% - 24px); padding: 14px 0 72px; }
+  .library-heading { display: none; }
+  .library-toolbar { display: grid; grid-template-columns: minmax(0,1fr) 44px 44px; align-items: center; gap: 9px; padding: 0 0 14px; border-top: 0; }
+  .library-search { grid-column: 1 / -1; width: 100%; height: 44px; flex-shrink: 0; }
+  .category-tabs { grid-column: 1 / -1; width: 100%; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; overflow: visible; }
+  .category-tabs button { min-width: 0; justify-content: center; gap: 5px; padding: 0 6px; }
+  .category-tabs i { width: 6px; height: 6px; flex: 0 0 6px; }
+  .family-filter { grid-column: 1; width: 100%; min-width: 0; flex: none; }
   .family-filter select { width: 100%; }
-  .library-results-head { height: auto; grid-template-columns: 1fr auto; gap: 10px; min-height: 76px; padding: 14px 3px; }
-  .library-results-head p { display: none; }
-  .library-grid { grid-template-columns: repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap: 16px; }
-  .library-node-card { height: auto; padding: 18px; min-height: 280px; }
+  .refinement-menu { grid-column: 2; width: 44px; }
+  .refinement-trigger { width: 44px; height: 44px; }
+  .icon-button { grid-column: 3; width: 44px; height: 44px; }
+  .reset-button { grid-column: 1 / -1; width: 100%; height: 40px; }
+  .library-results { margin-top: 0; }
+  .library-results-head { grid-template-columns: minmax(0,1fr) auto; gap: 12px; min-height: 52px; padding: 10px 2px; }
+  .library-results-head p { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .library-results-head > small { white-space: nowrap; }
+  .library-grid { grid-template-columns: 1fr; gap: 10px; }
+  .library-node-card { height: auto; min-height: 0; padding: 14px; border-radius: 9px; }
+  .library-card-top { grid-template-columns: 44px minmax(0,1fr) 18px; gap: 10px; min-height: 44px; }
+  .library-card-top:has(.research-mark) { grid-template-columns: 44px minmax(0,1fr) 18px; }
+  .library-card-top > .brand-mark,.library-card-top > .research-mark { width: 44px; height: 44px; }
+  .library-card-top:has(.brand-mark.multiple) { grid-template-columns: 58px minmax(0,1fr) 18px; }
+  .library-card-top > .brand-mark.multiple { width: 58px; }
+  .library-card-top > svg { width: 18px; justify-self: end; }
+  .library-card-meta { gap: 2px; }
+  .library-card-meta > strong { font-size: 1rem; line-height: 1.3; }
+  .library-card-classification { margin-top: 12px; flex-wrap: nowrap; }
+  .library-card-body { padding-top: 10px; }
+  .library-card-body > small { display: -webkit-box; overflow: hidden; font-size: var(--text-body); line-height: 1.55; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+  .library-card-foot { margin-top: 12px; padding-top: 10px; flex-wrap: nowrap; }
+  .library-card-foot > span,.library-card-foot small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .library-pagination { padding-bottom: 56px; }
   .panorama-page { height: calc(100dvh - 58px - 54px); grid-template-rows: auto auto auto minmax(0,1fr); }
   .panorama-toolbar { padding: 8px 10px; min-height: 72px; }
@@ -670,9 +691,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .scale-label { display: none; }
   .scale-controls { width: 100%; gap: 2px; }
   .zoom-slider { flex: 1; min-width: 40px; width: 56px; }
-  .library-heading h1 { font-size: 34px; }
-  .library-grid { grid-template-columns: repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap: 16px; }
-  .library-node-card { height: auto; min-height: 280px; padding: 18px; }
+  .library-grid { grid-template-columns: 1fr; gap: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
