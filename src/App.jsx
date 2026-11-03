@@ -13,6 +13,7 @@ import {
   CodeBlock,
   DownloadSimple,
   Eye,
+  Fire,
   FlowArrow,
   GithubLogo,
   ListBullets,
@@ -41,6 +42,7 @@ import { MILESTONE_LABEL_WIDTH, MIN_LANE_HEIGHT, milestoneTextStyle } from "./ti
 import { buildMonthStops } from "./monthNavigation.js";
 import { TimelineScrubber } from "./TimelineScrubber.jsx";
 import { themeStore } from "./theme.js";
+import { VerdictBoard } from "./VerdictBoard.jsx";
 
 const DEFAULT_ZOOM = 1;
 const MILESTONE_SIZE = 38;
@@ -744,6 +746,7 @@ export function App() {
         <nav className="view-tabs" aria-label="视图切换">
           <button className={viewMode === "index" ? "active" : ""} onClick={() => setViewMode("index")}><ListBullets size={17} /> 节点库</button>
           <button className={viewMode === "panorama" ? "active" : ""} onClick={() => setViewMode("panorama")}><MapTrifold size={17} /> 全景图</button>
+          <button className={viewMode === "verdict" ? "active" : ""} onClick={() => setViewMode("verdict")}><Fire size={17} /> 从夯到拉</button>
         </nav>
         <div className="header-actions">
           <button type="button" className="theme-toggle" role="switch" aria-checked={theme === "dark"} aria-label="深色主题" title={theme === "dark" ? "切换为浅色主题" : "切换为深色主题"} onClick={themeStore.toggle}>
@@ -816,6 +819,8 @@ export function App() {
           </section>
           <footer className="library-footer"><AuthorCredit /></footer>
         </main>
+      ) : viewMode === "verdict" ? (
+        <VerdictBoard nodes={nodes} selected={selected} onSelect={setSelected} />
       ) : (
         <main className="panorama-page">
           <div className="panorama-toolbar">
