@@ -12,8 +12,8 @@ test("favicon and shared header reference the same local vector identity under t
   assert.match(html, /<link rel="icon" type="image\/svg\+xml" sizes="any" href="%BASE_URL%site-mark\.svg"/);
   assert.match(app, /<span className="brand-icon" aria-hidden="true"><img src=\{`\$\{import.meta.env.BASE_URL\}site-mark.svg`\} width="38" height="38" alt=""/);
   assert.doesNotMatch(app, /BookOpenText/);
-  assert.match(app, />AI大事件图鉴</);
-  assert.match(html, /<title>AI大事件图鉴 · 2021–2026<\/title>/);
+  assert.match(app, />锐评AI图鉴</);
+  assert.match(html, /<title>锐评AI图鉴 · 2021–2026<\/title>/);
   assert.doesNotMatch(app, /AI Coding Evolution|AI 编程工具、模型与关键技术/);
   assert.match(svg, /viewBox="0 0 256 256"/);
 });
