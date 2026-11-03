@@ -1386,7 +1386,7 @@
     "verifiedAt": "2026-11-03",
     "status": "正式发布 / Computer Use Beta",
     "summary": "显著加强 Coding 与工具调用，并首次让前沿模型通过截图、鼠标和键盘操作通用电脑界面，把工具使用扩展到现有 GUI 软件。",
-    "detail": "官方名称仍是新版 Claude 3.5 Sonnet，不是正式的“Claude 3.6”。Computer Use 当时是开发者 Beta，Anthropic 明确说明其缓慢、易错，不能按成熟桌面自动化理解。",
+    "detail": "官方名称为“新版 Claude 3.5 Sonnet”，“3.6”是社区称呼。Computer Use 当时处于开发者 Beta，速度和准确率不足以承担无人值守桌面任务。",
     "research": {
       "label": "Anthropic · new Claude 3.5 and computer use",
       "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
@@ -2406,7 +2406,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 开源",
     "summary": "让 Meta-Agent 直接搜索和改写 Agent 系统代码，自动发明提示词、工具调用、工作流与组合结构，而不只调单个 Prompt。",
-    "detail": "ADAS 证明 Agent 设计本身可以成为可搜索对象；论文结果仍依赖有限任务、固定评估器和强基础模型，不等同于开放环境中的持续自我进化。",
+    "detail": "ADAS 把 Agent 设计变成可搜索对象。实验覆盖有限任务和固定评估器，验证了自动发现 Agent 结构，尚未触及开放环境中的持续演化。",
     "research": {
       "label": "Automated Design of Agentic Systems",
       "url": "https://arxiv.org/abs/2408.08435",
@@ -2610,7 +2610,7 @@
     "status": "功能发布",
     "summary": "让 Agent 在自己的电脑、虚拟机和团队机器池执行工具，支持 Linux 与 Mac 电脑操作。",
     "series": "Cursor Cloud Agents",
-    "detail": "自托管的是工具执行环境，不表示模型推理完全离线。",
+    "detail": "本地机器负责工具执行，模型推理仍可运行在云端。",
     "research": {
       "label": "Cursor · Self-hosted machines",
       "url": "https://cursor.com/changelog/self-hosted-machines",
@@ -3000,7 +3000,7 @@
     "summary": "把 Codex Harness 作为托管 API 开放，统一处理会话、编排、上下文压缩与恢复，执行环境和工具仍由开发者选择。",
     "series": "OpenAI Agent 平台",
     "branchFrom": "node-073",
-    "detail": "这是公开测试版，不等同于 Codex 产品正式版；其关键变化是把长期运行所需的 Harness 能力从产品内部抽成平台服务。",
+    "detail": "公开测试把 Codex 内部的会话、编排、压缩与恢复抽成平台服务，开发者可在自己的产品中复用这套长期运行能力。",
     "research": {
       "label": "OpenAI · Introducing the Agents API",
       "url": "https://openai.com/index/introducing-the-agents-api/",
@@ -3043,7 +3043,7 @@
     "summary": "Antigravity SDK 正式支持 LiteRT 与本地 OpenAI 兼容模型，并允许本地模型调用 MCP 和子代理。",
     "series": "Google Antigravity SDK",
     "branchFrom": "node-197",
-    "detail": "这是本地执行与混合编排能力，不表示 Gemini 规划模型或云端 Harness 被完全替代。",
+    "detail": "本地模型可以参与工具调用和子代理编排；Gemini 规划与云端 Harness 继续承担上层能力。",
     "research": {
       "label": "Google Antigravity · SDK changelog",
       "url": "https://antigravity.google/docs/changelog",
@@ -3064,7 +3064,7 @@
     "status": "功能发布",
     "summary": "把 Agent 从写代码延伸到部署后验证：结合日志、指标和调用链判断回归，并把安全审查结果回写 PR。",
     "series": "Cursor 验证与发布",
-    "detail": "Rollouts 目前只给出健康结论、通知或创建回滚 PR，不会自行合并或回滚。",
+    "detail": "Rollouts 负责判断健康、发送通知和生成回滚 PR；合并与回滚交给人或现有发布流程。",
     "research": {
       "label": "Cursor · Rollouts and Security Review",
       "url": "https://cursor.com/changelog/rollouts-and-security-reviewer",
@@ -3107,7 +3107,7 @@
     "summary": "围绕 V4.1 Flash 的长程编码、搜索与抓取工具优化官方 Harness，模型与执行框架开始作为一体化系统共同调优。",
     "series": "DeepSeek Harness",
     "branchFrom": "node-040",
-    "detail": "这是 0.2.1 的首个候选版本，不写成正式稳定版；后续 1017 模型公告明确建议升级到该版本或更新版本。",
+    "detail": "0.2.1 首发为 RC。DeepSeek 在后续 1017 模型公告中建议搭配该版本或更新版本。",
     "research": {
       "label": "DeepSeek Harness · dsh-v0.2.1-rc.1",
       "url": "https://github.com/deepseek-ai/deepseek-harness/tree/dsh-v0.2.1-rc.1",
@@ -3405,7 +3405,7 @@
     "summary": "以更大规模后训练和跨领域强化学习提升编码、3D 创作、金融研究与长程 Agent，并把上下文扩展到 100 万 token。",
     "series": "Kimi",
     "branchFrom": "node-138",
-    "detail": "模型于 10 月 23 日上线产品和 API；官方宣布完整权重将在 11 月 4 日发布，因此当前不写成已完成开源。",
+    "detail": "模型于 10 月 23 日上线产品和 API；完整权重定于 11 月 4 日发布。",
     "research": {
       "label": "Kimi · K3.1 Pro",
       "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
@@ -3467,7 +3467,7 @@
     "verifiedAt": "2026-11-02",
     "status": "工业案例",
     "summary": "GLM-5.3 驱动的 Infra Agent 在可归因实验反馈下优化自身推理基础设施，两周内把端到端吞吐提升到初始基线的 3 倍。",
-    "detail": "该案例仍由工程师定义目标、边界与风险，不等同于自主设计并训练后继模型的完整 RSI。",
+    "detail": "工程师设定目标、边界和风险，Agent 优化已有推理基础设施。该案例展示了受约束的工业自我改进，尚未覆盖后继模型设计与训练。",
     "research": {
       "label": "Z.ai · GLM built its own inference infrastructure",
       "url": "https://z.ai/blog/glm-built-its-inference-infrastructure",
@@ -3628,7 +3628,7 @@
     "verifiedAt": "2026-11-03",
     "status": "早期访问",
     "summary": "放弃自由文本生成，直接把非结构化状态转成类型化选择、评分与概率，让软件用低延迟、可校准的决策信号驱动工作流。",
-    "detail": "TypeSafe 将这类接口称为 System One Model，并披露使用 RLCD 训练；底层架构与训练细节尚未公开，速度、成本和“不会幻觉”等结论主要来自厂商评测，不写成已被独立全面验证。",
+    "detail": "TypeSafe 将这类接口称为 System One Model，并披露使用 RLCD 训练。底层架构和训练细节未公开；速度、成本和低幻觉数据来自厂商评测，缺少独立复现。",
     "series": "TypeSafe Jev",
     "research": {
       "label": "TypeSafe · Introducing System One Models & Jev",
@@ -3667,7 +3667,7 @@
     "verifiedAt": "2026-11-03",
     "status": "研究原型 / 开源",
     "summary": "把单仓库 Coding Agent 接入 GitHub 与飞书：经授权后为请求分配独立会话和工作目录，持续推进任务并把 PR 或问题送回原对话。",
-    "detail": "官方把它定义为 DeepSeek Harness 扩展包和研究原型，不是正式 DeepSeek 产品。配套文章提出 Router/Worker、事件驱动、异步多任务、状态与执行环境解耦及 Watchdog；其中部分设计尚未进入公开原型。",
+    "detail": "DeepSeek 将其定位为 Harness 扩展包和研究原型。公开实现覆盖 GitHub、飞书与独立工作目录；文章中的 Router/Worker、事件驱动和 Watchdog 仍有部分未落到代码。",
     "series": "DeepSeek Harness",
     "branchFrom": "node-218",
     "research": {
@@ -4030,7 +4030,7 @@
     "verifiedAt": "2026-11-03",
     "status": "生产系统 / 论文",
     "summary": "把内核优化变成持续搜索：生成候选、编译运行、检查数值正确性和性能，再把诊断反馈给搜索器，跨 GPU、MTIA 与 CPU 自动迭代数百个实现。",
-    "detail": "关键不是一次生成代码，而是专用 Harness、树搜索、并行验证与历史经验沉淀组成闭环。节点按论文首次公开日定位；Meta 于 2026-04-02 进一步披露生产部署。其吞吐提升来自特定负载和硬件，不能直接外推。",
+    "detail": "专用 Harness、树搜索、并行验证和历史经验组成持续优化闭环。Meta 于 2026-04-02 披露生产部署；吞吐数据对应特定负载和硬件。",
     "series": "Meta REA",
     "research": {
       "label": "Meta Engineering · KernelEvolve",
@@ -4057,7 +4057,7 @@
     "verifiedAt": "2026-11-03",
     "status": "训练方法 / 产品验证",
     "summary": "冻结执行任务的子 Agent，只训练负责拆解、并行调度与汇总的主 Agent；奖励同时约束最终质量、有效并行和子任务完成率。",
-    "detail": "PARL 把强化学习的对象从单 Agent 工具轨迹扩展到多 Agent 组织方式，降低所有成员同时更新带来的信用分配混乱。公开结果主要来自 Kimi Agent Swarm，跨模型泛化仍需更多独立验证。",
+    "detail": "PARL 把强化学习对象从单 Agent 工具轨迹扩展到多 Agent 组织方式，降低所有成员同时更新带来的信用分配混乱。公开实验基于 Kimi Agent Swarm，跨模型效果尚无独立验证。",
     "research": {
       "label": "Kimi K2.5 · technical blog",
       "url": "https://www.kimi.com/en/blog/kimi-k2-5",
@@ -4136,7 +4136,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 开源",
     "summary": "持续从新 GitHub issue 构造仓库级任务，并由 RepoLaunch 自动搭建和验证 Docker 环境，降低静态题集被训练污染和快速过时的问题。",
-    "detail": "首发包含 1,319 个来自 2024 年后的任务、93 个仓库。它改善的是评测新鲜度和环境扩展能力，不意味着自动生成的每个任务都天然无歧义或无泄漏。",
+    "detail": "首发包含 1,319 个来自 2024 年后的任务、93 个仓库。持续构题提高了新鲜度和环境覆盖，任务歧义与数据泄漏仍要靠生成后的验证流程处理。",
     "research": {
       "label": "SWE-bench Goes Live!",
       "url": "https://arxiv.org/abs/2505.23419",
@@ -4188,7 +4188,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 评测",
     "summary": "把评测从短小补丁推进到跨多文件、长时间、企业级仓库任务，并用公开、隐藏和私有代码集降低记忆答案与针对榜单优化的空间。",
-    "detail": "论文首发 1,865 个任务、41 个仓库；公开榜单后来修订无效任务并收紧网络与复评协议。不同版本的分数不可直接横向拼接。",
+    "detail": "论文首发 1,865 个任务、41 个仓库；公开榜单后来删除无效任务并收紧网络与复评协议。各版任务和协议不同，分数应按版本比较。",
     "research": {
       "label": "SWE-Bench Pro",
       "url": "https://arxiv.org/abs/2509.16941",
@@ -4353,7 +4353,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 开源环境",
     "summary": "在真实操作系统和桌面应用中执行 369 个跨应用任务，用可复现初始状态和执行脚本检验 Agent 是否真正完成工作，而不只判断文字答案。",
-    "detail": "OSWorld 把 Computer Use 评测从网页或单应用扩展到 Ubuntu、Windows、macOS 与文件系统。首版也存在网络依赖和环境漂移，后续 Verified/2.0 的分数不能与旧版无条件混用。",
+    "detail": "OSWorld 把 Computer Use 评测扩展到 Ubuntu、Windows、macOS 和文件系统。Verified/2.0 修改了环境与协议，分数需按版本比较。",
     "research": {
       "label": "OSWorld",
       "url": "https://arxiv.org/abs/2404.07972",
@@ -4378,8 +4378,8 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
     "status": "开发者 Beta",
-    "summary": "把长任务上下文拆成两层：主动清除过期工具结果，另用客户端文件记忆跨会话保存项目状态和经验，避免把全部历史持续塞回模型。",
-    "detail": "Context Editing 在服务端裁剪上下文，Memory Tool 只发出文件操作请求，实际存储和权限由应用负责；它们改善长程连续性，但不会自动保证记忆正确、最新或安全。",
+    "summary": "把长任务上下文拆成两层：主动清除过期工具结果，再用客户端文件跨会话保存项目状态和经验。",
+    "detail": "Context Editing 在服务端裁剪上下文，Memory Tool 发出文件操作请求，实际存储和权限由应用负责。记忆的正确性、时效和安全取决于应用层校验。",
     "research": {
       "label": "Anthropic · Managing context",
       "url": "https://claude.com/blog/context-management",
@@ -4409,7 +4409,7 @@
     "verifiedAt": "2026-11-03",
     "status": "功能发布 / 后开放标准",
     "summary": "用带元数据的 SKILL.md、脚本和参考文件封装程序性知识；Agent 先读取简短描述，命中任务后再按需加载完整内容。",
-    "detail": "首发于 Claude，2025-12-18 发布为跨平台开放标准，2026-10 捐赠给 AAIF。Skills 提供可发现、渐进加载的做事方法，不等同于 MCP 工具接口，也不保证第三方 Skill 安全。",
+    "detail": "首发于 Claude，2025-12-18 发布为跨平台开放标准，2026-10 捐赠给 AAIF。Skills 封装做事方法，MCP 连接外部工具；第三方 Skill 的代码和内容需要独立审查。",
     "research": {
       "label": "Anthropic · Equipping agents with Agent Skills",
       "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
@@ -4439,7 +4439,7 @@
     "verifiedAt": "2026-11-03",
     "status": "官方工程方法",
     "summary": "把超出单个上下文窗口的软件任务拆成初始化与增量执行两种角色，并要求每轮留下代码、测试、进度文件和清晰交接状态。",
-    "detail": "Anthropic 的方法重点是跨会话可恢复，而不是让一个上下文无限增长。它依赖可执行测试、版本控制和结构化进度记录，仍需要 Harness 处理失败恢复与验收。",
+    "detail": "Anthropic 用可执行测试、版本控制和结构化进度记录实现跨会话恢复，Harness 负责失败恢复与验收。",
     "research": {
       "label": "Anthropic · Effective harnesses for long-running agents",
       "url": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
@@ -4525,7 +4525,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 预印本",
     "summary": "交替执行两步：当前模型分析失败并提出 Harness 改动，再在选中的 Harness 下做强化学习；训练中暴露的难题进入下一轮搜索。",
-    "detail": "Self-HPO 把外层 Harness 与模型策略放进相互影响的闭环，避免只改一边后迅速失配。当前结论来自有限模型和三类 Coding benchmark，距离开放式持续自我改进仍有明显距离。",
+    "detail": "Self-HPO 交替更新 Harness 与模型策略，减少两者单独优化造成的失配。证据来自有限模型和三类 Coding benchmark，开放环境中的长期效果尚未验证。",
     "research": {
       "label": "Self-Evolving Coding Agents via Harness-Policy Optimization",
       "url": "https://arxiv.org/abs/2610.22791",
@@ -4565,7 +4565,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 预印本",
     "summary": "从只会调用 Bash 的最小 Agent 出发，在解决真实软件任务的同时分析失败、修改自身 scaffold，并把有效改动带到后续任务。",
-    "detail": "它改进的是模型外的执行脚手架，属于在线 Self-Harness 路线；效果依赖任务顺序、评测反馈和允许修改的代码边界，不等同于模型权重层的递归自我改进。",
+    "detail": "它在线改写模型外的执行脚手架，模型权重保持不变。效果取决于任务顺序、评测反馈和允许修改的代码边界。",
     "research": {
       "label": "Live-SWE-agent",
       "url": "https://arxiv.org/abs/2511.13646",

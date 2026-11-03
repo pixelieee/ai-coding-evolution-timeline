@@ -104,7 +104,7 @@ test("new dates show calendar dots and locate the actual first matching node", (
   assert.equal(latest.date, "2026-10-31");
 });
 
-test("corrections preserve provenance, uncertainty and limited availability", () => {
+test("corrections preserve provenance and evidence limits", () => {
   assert.equal(getNodeResearch(byId("node-129")).url, "https://api-docs.deepseek.com/news/news260813/");
   assert.equal(getNodeResearch(byId("node-125")).url, "https://api-docs.deepseek.com/news/news260424/");
   assert.match(metadata.getLongSummary(byId("node-134")), /日期待核/);
@@ -114,15 +114,15 @@ test("corrections preserve provenance, uncertainty and limited availability", ()
   assert.match(metadata.getLongSummary(byId("node-200")), /默认关闭.*管理员/);
   assert.match(metadata.getLongSummary(byId("node-206")), /实验版本/);
   assert.match(metadata.getLongSummary(byId("node-232")), /11 月 4 日|不写成已完成开源/);
-  assert.match(metadata.getLongSummary(byId("node-235")), /不等同于.*完整 RSI/);
-  assert.match(metadata.getLongSummary(byId("node-243")), /早期访问|底层架构.*尚未公开/);
+  assert.match(metadata.getLongSummary(byId("node-235")), /工程师设定目标、边界和风险.*尚未覆盖后继模型设计与训练/);
+  assert.match(metadata.getLongSummary(byId("node-243")), /底层架构和训练细节未公开.*缺少独立复现/);
   assert.match(metadata.getLongSummary(byId("node-244")), /研究原型|不是正式 DeepSeek 产品/);
   assert.match(metadata.getLongSummary(byId("node-248")), /不会恢复原始源码|证据/);
   assert.match(metadata.getLongSummary(byId("node-251")), /模型外部 Harness|不是模型权重/);
   assert.match(metadata.getLongSummary(byId("node-257")), /内部系统|不适合普通仓库/);
   assert.match(metadata.getLongSummary(byId("node-258")), /内部部署|不应外推/);
-  assert.match(metadata.getLongSummary(byId("node-259")), /专用 Harness|不能直接/);
-  assert.match(metadata.getLongSummary(byId("node-260")), /子 Agent 保持冻结|泛化/);
+  assert.match(metadata.getLongSummary(byId("node-259")), /专用 Harness.*特定负载和硬件/);
+  assert.match(metadata.getLongSummary(byId("node-260")), /冻结执行任务的子 Agent|跨模型效果尚无独立验证/);
   assert.match(metadata.getLongSummary(byId("node-262")), /MCP.*不同/);
   assert.match(metadata.getLongSummary(byId("node-264")), /不是 A2A 的替代品/);
   assert.match(metadata.getLongSummary(byId("node-266")), /2\.1、3\.0、4\.0/);
@@ -130,15 +130,15 @@ test("corrections preserve provenance, uncertainty and limited availability", ()
   assert.match(metadata.getLongSummary(byId("node-268")), /机器、噪声|统计稳定性/);
   assert.match(metadata.getLongSummary(byId("node-269")), /不是新的上下文算法|Linux Foundation/);
   assert.match(metadata.getLongSummary(byId("node-270")), /OpenDevin|不是单一闭源模型/);
-  assert.match(metadata.getLongSummary(byId("node-271")), /环境漂移|不能与旧版/);
-  assert.match(metadata.getLongSummary(byId("node-272")), /不会自动保证记忆正确/);
-  assert.match(metadata.getLongSummary(byId("node-273")), /不等同于 MCP|第三方 Skill 安全/);
+  assert.match(metadata.getLongSummary(byId("node-271")), /Ubuntu.*Windows.*macOS|Verified\/2\.0.*按版本比较/);
+  assert.match(metadata.getLongSummary(byId("node-272")), /实际存储和权限由应用负责|取决于应用层校验/);
+  assert.match(metadata.getLongSummary(byId("node-273")), /Skills 封装做事方法.*MCP 连接外部工具|第三方 Skill.*独立审查/);
   assert.match(metadata.getLongSummary(byId("node-275")), /不是通用生产率结论/);
   assert.match(metadata.getLongSummary(byId("node-276")), /没有执行验证时.*不稳定/);
   assert.match(metadata.getLongSummary(byId("node-277")), /固定模型权重|错误验证器/);
-  assert.match(metadata.getLongSummary(byId("node-278")), /相互影响的闭环|仍有明显距离/);
+  assert.match(metadata.getLongSummary(byId("node-278")), /交替更新 Harness 与模型策略|长期效果尚未验证/);
   assert.match(metadata.getLongSummary(byId("node-279")), /不自动解决.*权限|生产可靠性/);
-  assert.match(metadata.getLongSummary(byId("node-280")), /模型外|不等同于模型权重/);
+  assert.match(metadata.getLongSummary(byId("node-280")), /模型外的执行脚手架|模型权重保持不变/);
   assert.match(metadata.getLongSummary(byId("node-281")), /不把 Symphony 当作.*独立产品|不作为通用收益/);
   assert.match(app, /selectedResearch\.references\?\.map/);
   assert.match(app, /selected\.origin === "supplement" \? "补充 #"/);
