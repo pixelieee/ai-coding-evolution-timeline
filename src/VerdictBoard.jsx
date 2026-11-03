@@ -29,14 +29,14 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
     <main className="verdict-page">
       <section className="verdict-hero">
         <div>
-          <span className="eyebrow">EDITORIAL VERDICT · MILESTONES ONLY</span>
+          <span className="eyebrow">EDITORIAL VERDICT · 31 MILESTONES</span>
           <h1>从夯到拉</h1>
-          <p>按范式增量、行业外溢和落地兑现度排。能力强不等于历史地位高，发布声量也不等于留下了遗产。</p>
+          <p>看它改变了什么、扩散到哪里、今天还剩下什么。</p>
         </div>
         <aside className="verdict-method" aria-label="锐评标准">
           <Scales size={25} weight="duotone" />
-          <div><strong>怎么排</strong><span>新增机制 × 生态扩散 × 真实采用 × 持续性</span></div>
-          <small>夯、顶级必须有跨生态采用或可复现实验；拉完了必须有明确退场记录。</small>
+          <div><strong>看三件事</strong><span>机制变化 · 真实采用 · 后续影响</span></div>
+          <small>每张卡片都附判定依据和原始来源。</small>
         </aside>
       </section>
 
@@ -78,7 +78,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
           );
         })}
       </div>
-      <footer className="verdict-note">评级依据核查于 2026-11-03。榜单只收代表节点，不等于对全部 {nodes.length} 个节点逐项打分；新增独立复现、真实采用或明确退场证据后会调整档位。</footer>
+      <footer className="verdict-note">核查时间：2026-11-03。新增独立复现、真实采用或退场记录后会直接改档。</footer>
     </main>
   );
 }

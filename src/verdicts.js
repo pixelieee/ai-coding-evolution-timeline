@@ -1,9 +1,9 @@
 export const verdictTiers = [
-  { id: "hammer", label: "夯", grade: "01", subtitle: "改了默认范式", description: "至少跨过三道门槛：形成新工作方式、跨生态扩散、经真实使用或独立研究验证。" },
-  { id: "top", label: "顶级", grade: "02", subtitle: "关键跃迁", description: "有明确技术或产品增量，并出现大规模采用、标准化或可复现实验中的至少两项。" },
-  { id: "solid", label: "人上人", grade: "03", subtitle: "硬价值成立", description: "解决了真问题，也有公开结果；行业外溢或长期影响还不够大。" },
-  { id: "watch", label: "NPC", grade: "04", subtitle: "证据还没追上", description: "近期发布、研究原型或主要只有厂商数据；方向可看，暂不提前封神。" },
-  { id: "drag", label: "拉完了", grade: "05", subtitle: "承诺没有留下来", description: "必须有明确退场、并入其他产品或被替代的公开记录；不靠个人好恶判低。" },
+  { id: "hammer", label: "夯", grade: "01", subtitle: "改了默认范式", description: "它让行业换了一种做事方式，并被多个生态沿用。" },
+  { id: "top", label: "顶级", grade: "02", subtitle: "关键跃迁", description: "技术或产品向前推了一大步，采用规模和后续影响都站得住。" },
+  { id: "solid", label: "人上人", grade: "03", subtitle: "硬价值成立", description: "解决了真问题，公开结果扎实，影响集中在特定领域。" },
+  { id: "watch", label: "NPC", grade: "04", subtitle: "还在观察", description: "想法值得看，证据还少：发布太新，或目前只有论文和厂商数据。" },
+  { id: "drag", label: "拉完了", grade: "05", subtitle: "没有留下来", description: "产品已经退场、并入其他产品，或被后来的路线替代。" },
 ];
 
 const source = (label, url) => ({ label, url });

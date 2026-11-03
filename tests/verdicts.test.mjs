@@ -31,7 +31,8 @@ test("the third view keeps ratings distinct from sourced node facts", () => {
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
   assert.match(app, /从夯到拉/);
   assert.match(app, /viewMode === "verdict"/);
-  assert.match(board, /夯、顶级必须有跨生态采用或可复现实验/);
+  assert.match(board, /机制变化 · 真实采用 · 后续影响/);
+  assert.match(board, /每张卡片都附判定依据和原始来源/);
   assert.match(board, /判定依据/);
   assert.match(board, /verdict-source/);
   assert.match(board, /onSelect\(node\)/);
