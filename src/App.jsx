@@ -214,7 +214,7 @@ export function App() {
   const [dragging, setDragging] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(720);
   const [viewportWidth, setViewportWidth] = useState(() => (typeof window === "undefined" ? 1280 : window.innerWidth));
-  const [axisCollapsed, setAxisCollapsed] = useState(false);
+  const [axisCollapsed, setAxisCollapsed] = useState(() => typeof window !== "undefined" && window.innerWidth <= 760);
   const [libraryPage, setLibraryPage] = useState(1);
 
   const hoverDismissal = useMemo(() => createHoverDismissal(() => setHoverCard(null), {
@@ -224,6 +224,9 @@ export function App() {
   useEffect(() => {
     hoverDismissal.dismiss();
   }, [viewMode, query, section, panoramaDate, developmentStage, hoverDismissal]);
+  useEffect(() => {
+    if (viewMode === "panorama" && viewportWidth <= 760) setAxisCollapsed(true);
+  }, [viewMode, viewportWidth]);
 
   const expandedAxisWidth = viewportWidth <= 760 ? 260 : BAND_LABEL_WIDTH + LANE_LABEL_WIDTH;
   const axisWidth = axisCollapsed ? COLLAPSED_AXIS_WIDTH : expandedAxisWidth;
@@ -833,12 +836,12 @@ export function App() {
             </div>
           </div>
           <div className="panorama-filterbar">
-            <div className="compact-search"><MagnifyingGlass size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={`搜索 ${nodes.length} 个节点`} aria-label="搜索全景图节点" />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}</div>
+            <div className="compact-search"><MagnifyingGlass size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索节点" aria-label="搜索全景图节点" />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}</div>
             <div className="track-chips" aria-label="全景图分类">
               <button className={section === "all" ? "active all" : ""} onClick={() => { setSection("all"); setFamily("all"); }}>全部方向</button>
               {sections.map((item) => (
                 <button key={item.id} className={section === item.id ? "active" : ""} onClick={() => toggleSection(item.id)} aria-pressed={section === item.id} style={section === item.id ? { "--chip-color": item.color, "--chip-tint": item.tint } : undefined}>
-                  <i style={{ background: item.color }} />{item.label}<span>{sectionCounts[item.id]}</span>{section === item.id && <CheckCircle size={14} weight="fill" />}
+                  <i style={{ background: item.color }} />{item.label}{section === item.id && <CheckCircle size={14} weight="fill" />}
                 </button>
               ))}
             </div>
@@ -861,7 +864,7 @@ export function App() {
                 {panoramaLayouts.map((layout) => (
                   <section key={layout.id} className={`timeline-band ${layout.id}`} style={{ height: bandHeight, "--section-color": layout.color, "--section-tint": layout.tint }}>
                     <div id={`panorama-${layout.id}-axis`} className="band-axis" style={{ width: axisWidth }}>
-                      <header className="band-label" aria-label={layout.label} title={layout.label}>{!axisCollapsed && <span className="track-index">0{sections.findIndex((item) => item.id === layout.id) + 1}</span>}<strong>{axisCollapsed ? layout.short : layout.label}</strong><small>{sectionCounts[layout.id]} / {sectionCounts[layout.id]} 节点</small><p>{layout.id === "products" ? "产品、IDE 与 Agent 平台" : layout.id === "models" ? "模型家族与能力跃迁" : "论文、协议与评测方法"}</p></header>
+                      <header className="band-label" aria-label={layout.label} title={layout.label}>{!axisCollapsed && <span className="track-index">0{sections.findIndex((item) => item.id === layout.id) + 1}</span>}<strong>{axisCollapsed ? layout.short : layout.label}</strong><p>{layout.id === "products" ? "产品、IDE 与 Agent 平台" : layout.id === "models" ? "模型家族与能力跃迁" : "论文、协议与评测方法"}</p></header>
                       <div className="stage-labels" role="group" aria-label={`${layout.label}泳道导航`}>{getDevelopmentStages(layout.id).map((stage, lane) => {
                         const stop = laneStops.get(`${layout.id}:${lane}`);
                         const label = stage.label;

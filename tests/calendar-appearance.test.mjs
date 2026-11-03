@@ -24,5 +24,6 @@ test("compact calendar keeps a complete six-week grid, readable labels and bound
   assert.match(calendarCss, /\.calendar-cell-face \{[^}]*align-items: center; justify-content: center/);
   assert.match(calendarCss, /\.calendar-cell:focus-visible \.calendar-cell-face/);
   assert.match(app, /Math\.min\(600, mobile \? window.innerHeight - 136/);
-  assert.match(css, /\.refinement-panel\.calendar-panel \{ left: auto; \}/);
+  assert.match(css, /\.refinement-panel \{ position: fixed; top: 68px; right: 10px; bottom: 62px; left: 10px;/);
+  assert.match(css, /\.refinement-panel\.calendar-panel \{ left: 10px; \}/);
 });
