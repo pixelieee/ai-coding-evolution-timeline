@@ -102,8 +102,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .verdict-tier.tier-watch { --tier-color: #69706b; }
 .verdict-tier.tier-drag { --tier-color: #242724; }
 .verdict-tier-label { position: sticky; top: 76px; align-self: start; min-height: 116px; display: grid; align-content: start; padding: 18px 16px 16px 4px; }
-.verdict-tier-label > span { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid color-mix(in srgb,var(--tier-color) 38%,#d6d8d3); border-radius: 50%; color: var(--tier-color); font-size: 12px; font-weight: 900; }
-.verdict-tier-label strong { margin-top: 10px; color: var(--tier-color); font-size: 28px; line-height: 1; letter-spacing: -.06em; }
+.verdict-tier-label > span { display: block; color: color-mix(in srgb,var(--tier-color) 72%,#777c78); font-size: 11px; font-weight: 900; line-height: 1; letter-spacing: .12em; }
+.verdict-tier-label strong { margin-top: 12px; color: var(--tier-color); font-size: 28px; line-height: 1; letter-spacing: -.06em; }
 .verdict-tier-label small { margin-top: 7px; color: #777c78; font-size: var(--text-micro); }
 .verdict-tier-content { min-width: 0; padding: 17px 0 20px 18px; border-left: 1px solid #d6d8d3; }
 .verdict-tier-content > p { margin: 0 0 12px; color: #717672; font-size: var(--text-ui); }
