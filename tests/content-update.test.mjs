@@ -25,11 +25,11 @@ const ids = (list) => Array.from(list, (node) => node.id);
 const added = nodes.filter((node) => node.origin === "supplement");
 
 test("the refresh retains every original ID and keeps supplementary records sequential", () => {
-  assert.equal(nodes.length, 242);
+  assert.equal(nodes.length, 281);
   assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
   for (let id = 1; id <= nodes.length; id++) assert.ok(byId(`node-${String(id).padStart(3, "0")}`));
-  assert.equal(added.length, 50);
-  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [102, 93, 47]);
+  assert.equal(added.length, 89);
+  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [113, 97, 71]);
 });
 
 test("supplementary nodes carry exact dates, explicit capability summaries and traceable sources", () => {
@@ -100,8 +100,8 @@ test("new dates show calendar dots and locate the actual first matching node", (
     assert.ok(Number.isFinite(target.node.left));
   }
   const latest = getLatestTimelineNode(layouts, matches, getPublishedDate);
-  assert.equal(latest.node.id, "node-223");
-  assert.equal(latest.date, "2026-10-29");
+  assert.equal(latest.node.id, "node-244");
+  assert.equal(latest.date, "2026-10-31");
 });
 
 test("corrections preserve provenance, uncertainty and limited availability", () => {
@@ -115,6 +115,31 @@ test("corrections preserve provenance, uncertainty and limited availability", ()
   assert.match(metadata.getLongSummary(byId("node-206")), /实验版本/);
   assert.match(metadata.getLongSummary(byId("node-232")), /11 月 4 日|不写成已完成开源/);
   assert.match(metadata.getLongSummary(byId("node-235")), /不等同于.*完整 RSI/);
+  assert.match(metadata.getLongSummary(byId("node-243")), /早期访问|底层架构.*尚未公开/);
+  assert.match(metadata.getLongSummary(byId("node-244")), /研究原型|不是正式 DeepSeek 产品/);
+  assert.match(metadata.getLongSummary(byId("node-248")), /不会恢复原始源码|证据/);
+  assert.match(metadata.getLongSummary(byId("node-251")), /模型外部 Harness|不是模型权重/);
+  assert.match(metadata.getLongSummary(byId("node-257")), /内部系统|不适合普通仓库/);
+  assert.match(metadata.getLongSummary(byId("node-258")), /内部部署|不应外推/);
+  assert.match(metadata.getLongSummary(byId("node-259")), /专用 Harness|不能直接/);
+  assert.match(metadata.getLongSummary(byId("node-260")), /子 Agent 保持冻结|泛化/);
+  assert.match(metadata.getLongSummary(byId("node-262")), /MCP.*不同/);
+  assert.match(metadata.getLongSummary(byId("node-264")), /不是 A2A 的替代品/);
+  assert.match(metadata.getLongSummary(byId("node-266")), /2\.1、3\.0、4\.0/);
+  assert.match(metadata.getLongSummary(byId("node-267")), /停止报告|不再把高分/);
+  assert.match(metadata.getLongSummary(byId("node-268")), /机器、噪声|统计稳定性/);
+  assert.match(metadata.getLongSummary(byId("node-269")), /不是新的上下文算法|Linux Foundation/);
+  assert.match(metadata.getLongSummary(byId("node-270")), /OpenDevin|不是单一闭源模型/);
+  assert.match(metadata.getLongSummary(byId("node-271")), /环境漂移|不能与旧版/);
+  assert.match(metadata.getLongSummary(byId("node-272")), /不会自动保证记忆正确/);
+  assert.match(metadata.getLongSummary(byId("node-273")), /不等同于 MCP|第三方 Skill 安全/);
+  assert.match(metadata.getLongSummary(byId("node-275")), /不是通用生产率结论/);
+  assert.match(metadata.getLongSummary(byId("node-276")), /没有执行验证时.*不稳定/);
+  assert.match(metadata.getLongSummary(byId("node-277")), /固定模型权重|错误验证器/);
+  assert.match(metadata.getLongSummary(byId("node-278")), /相互影响的闭环|仍有明显距离/);
+  assert.match(metadata.getLongSummary(byId("node-279")), /不自动解决.*权限|生产可靠性/);
+  assert.match(metadata.getLongSummary(byId("node-280")), /模型外|不等同于模型权重/);
+  assert.match(metadata.getLongSummary(byId("node-281")), /不把 Symphony 当作.*独立产品|不作为通用收益/);
   assert.match(app, /selectedResearch\.references\?\.map/);
   assert.match(app, /selected\.origin === "supplement" \? "补充 #"/);
 });

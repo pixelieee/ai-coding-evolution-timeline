@@ -34,6 +34,9 @@ import QoderIcon from "@lobehub/icons/es/Qoder/components/Color.js";
 import OpenClawIcon from "@lobehub/icons/es/OpenClaw/components/Color.js";
 import HermesAgentIcon from "@lobehub/icons/es/HermesAgent/components/Mono.js";
 import CodexIcon from "@lobehub/icons/es/Codex/components/Color.js";
+import GrokIcon from "@lobehub/icons/es/Grok/components/Mono.js";
+import GooseIcon from "@lobehub/icons/es/Goose/components/Mono.js";
+import OpenHandsIcon from "@lobehub/icons/es/OpenHands/components/Color.js";
 import { getNodeResearch } from "./nodeSources.js";
 import { publicAssetUrl } from "./siteAssets.js";
 
@@ -59,7 +62,7 @@ const componentRules = [
   { pattern: /lovable/i, name: "Lovable", Icon: LovableIcon },
   { pattern: /opencode/i, name: "OpenCode", Icon: OpenCodeIcon },
   { pattern: /manus/i, name: "Manus", Icon: ManusIcon },
-  { pattern: /code llama/i, name: "Meta", Icon: MetaIcon },
+  { pattern: /meta ranking engineer|code llama/i, name: "Meta", Icon: MetaIcon },
   { pattern: /^pi coding/i, name: "Pi", Icon: PiIcon },
   { pattern: /^trae$/i, name: "TRAE", Icon: TraeIcon },
   { pattern: /codebuddy|workbuddy/i, name: "Tencent · CodeBuddy", Icon: CodeBuddyIcon },
@@ -69,11 +72,16 @@ const componentRules = [
   { pattern: /qoder/i, name: "Qoder", Icon: QoderIcon },
   { pattern: /openclaw/i, name: "OpenClaw", Icon: OpenClawIcon },
   { pattern: /hermes/i, name: "Nous Research · Hermes", Icon: HermesAgentIcon },
+  { pattern: /^grok/i, name: "SpaceXAI · Grok", Icon: GrokIcon },
+  { pattern: /^goose$/i, name: "AAIF · goose", Icon: GooseIcon },
+  { pattern: /^openhands$/i, name: "OpenHands", Icon: OpenHandsIcon },
   { pattern: /codex/i, name: "OpenAI · Codex", Icon: CodexIcon },
   { pattern: /openai|chatgpt|\bgpt|\bo\d|deep research|operator/i, name: "OpenAI", Icon: OpenAIIcon },
 ];
 
 const fileRules = [
+  { pattern: /^rea$/i, name: "REA · Reverse Engineer Anything", source: "/logos/vector/rea.svg" },
+  { pattern: /^jev$/i, name: "TypeSafe AI · Jev", source: "/logos/typesafe-jev.png" },
   { pattern: /kimi/i, name: "Moonshot AI · Kimi", source: "/logos/vector/kimi-official.svg" },
   { pattern: /\bglm|zcode/i, name: "Z.ai · GLM", source: "/logos/vector/z-ai-official.svg" },
   { pattern: /^aider$/i, name: "Aider", source: "/logos/vector/aider.svg" },
@@ -93,6 +101,20 @@ const technicalSourceMarks = new Map([
   ["node-178", { name: "Microsoft", Icon: MicrosoftIcon }],
   ["node-183", { name: "Google DeepMind", Icon: GoogleIcon }],
   ["node-235", { name: "Z.ai · GLM", source: "/logos/vector/z-ai-official.svg" }],
+  ["node-259", { name: "Meta", Icon: MetaIcon }],
+  ["node-260", { name: "Moonshot AI · Kimi", source: "/logos/vector/kimi-official.svg" }],
+  ["node-262", { name: "Google", Icon: GoogleIcon }],
+  ["node-263", { name: "Microsoft Research", Icon: MicrosoftIcon }],
+  ["node-264", { name: "Agent Client Protocol", Icon: PlugsConnected }],
+  ["node-266", { name: "Harbor", Icon: PlugsConnected }],
+  ["node-267", { name: "OpenAI", Icon: OpenAIIcon }],
+  ["node-269", { name: "Agentic AI Foundation", Icon: PlugsConnected }],
+  ["node-272", { name: "Anthropic", Icon: AnthropicIcon }],
+  ["node-273", { name: "Anthropic", Icon: AnthropicIcon }],
+  ["node-274", { name: "Anthropic", Icon: AnthropicIcon }],
+  ["node-275", { name: "OpenAI", Icon: OpenAIIcon }],
+  ["node-279", { name: "OpenAI", Icon: OpenAIIcon }],
+  ["node-281", { name: "OpenAI", Icon: OpenAIIcon }],
 ]);
 
 export function resolveBrand(node) {
@@ -131,7 +153,7 @@ export function BrandMark({ node, compact = false, orb = false }) {
   const className = `brand-mark ${compact ? "compact" : ""} ${orb ? "orb" : ""}`;
 
   return (
-    <span className={className} title={`${brand.name} · SVG vector`} role="img" aria-label={`${brand.name} 标识`}>
+    <span className={className} title={`${brand.name} · 品牌标识`} role="img" aria-label={`${brand.name} 标识`}>
       {brand.Icon ? <brand.Icon size="100%" aria-hidden="true" /> : <img src={publicAssetUrl(brand.source)} alt="" />}
     </span>
   );

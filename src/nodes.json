@@ -638,12 +638,28 @@
   },
   {
     "id": "node-050",
-    "date": "2026-01",
+    "date": "2026-01-27",
     "year": 2026,
     "title": "Kimi Agent Swarm",
     "section": "products",
     "family": "国内 Agent 工具",
     "stage": "04 Work Agent",
+    "developmentStage": "orchestrate",
+    "verifiedAt": "2026-11-03",
+    "status": "Beta",
+    "summary": "让主 Agent 根据任务动态创建、分工并汇总最多 100 个子 Agent，把并行规模从固定工作流推进到模型自主编排。",
+    "detail": "首发随 Kimi K2.5 提供；调度器通过 PARL 训练，子 Agent 保持冻结。2026-04 随 K2.6 扩展到最多 300 个子 Agent 与 4,000 余次工具调用；这些是产品上限，不代表所有任务都能线性加速。",
+    "research": {
+      "label": "Kimi · Agent Swarm",
+      "url": "https://www.kimi.com/en/help/agent/agent-swarm",
+      "kind": "官方文档",
+      "references": [
+        {
+          "label": "Kimi K2.5 · technical blog",
+          "url": "https://www.kimi.com/en/blog/kimi-k2-5"
+        }
+      ]
+    },
     "x": 0.711922,
     "y": 0.229972,
     "w": 0.033406,
@@ -1184,12 +1200,20 @@
   },
   {
     "id": "node-092",
-    "date": "2024-09/12",
+    "date": "2024-09-12",
     "year": 2024,
     "title": "o1-preview",
     "section": "models",
     "family": "OpenAI · GPT / o 系列",
     "stage": "02 推理与验证",
+    "verifiedAt": "2026-11-03",
+    "status": "预览发布",
+    "summary": "首次把增加测试时推理计算做成公开产品，让模型在回答前投入更多步骤处理数学、代码和复杂规划。",
+    "research": {
+      "label": "OpenAI · Introducing OpenAI o1-preview",
+      "url": "https://openai.com/index/introducing-openai-o1-preview/",
+      "kind": "官方发布"
+    },
     "x": 0.428201,
     "y": 0.409967,
     "w": 0.032024,
@@ -1353,12 +1377,27 @@
   },
   {
     "id": "node-105",
-    "date": "2024-10",
+    "date": "2024-10-22",
     "year": 2024,
-    "title": "Claude 3.5 Sonnet",
+    "title": "Claude 3.5 Sonnet（新版）",
     "section": "models",
     "family": "Anthropic · Sonnet / Haiku",
     "stage": "02 推理与验证",
+    "verifiedAt": "2026-11-03",
+    "status": "正式发布 / Computer Use Beta",
+    "summary": "显著加强 Coding 与工具调用，并首次让前沿模型通过截图、鼠标和键盘操作通用电脑界面，把工具使用扩展到现有 GUI 软件。",
+    "detail": "官方名称仍是新版 Claude 3.5 Sonnet，不是正式的“Claude 3.6”。Computer Use 当时是开发者 Beta，Anthropic 明确说明其缓慢、易错，不能按成熟桌面自动化理解。",
+    "research": {
+      "label": "Anthropic · new Claude 3.5 and computer use",
+      "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Anthropic · Developing a computer use model",
+          "url": "https://www.anthropic.com/research/developing-computer-use"
+        }
+      ]
+    },
     "x": 0.440888,
     "y": 0.463706,
     "w": 0.036522,
@@ -2357,12 +2396,28 @@
   },
   {
     "id": "node-182",
-    "date": "2024-08/10",
+    "date": "2024-08-15",
     "year": 2024,
     "title": "ADAS",
     "section": "tech",
     "family": "系统级优化 / RSI 前沿",
     "stage": "02 推理与验证",
+    "developmentStage": "orchestrate",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 开源",
+    "summary": "让 Meta-Agent 直接搜索和改写 Agent 系统代码，自动发明提示词、工具调用、工作流与组合结构，而不只调单个 Prompt。",
+    "detail": "ADAS 证明 Agent 设计本身可以成为可搜索对象；论文结果仍依赖有限任务、固定评估器和强基础模型，不等同于开放环境中的持续自我进化。",
+    "research": {
+      "label": "Automated Design of Agentic Systems",
+      "url": "https://arxiv.org/abs/2408.08435",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "ADAS · official repository",
+          "url": "https://github.com/ShengranHu/ADAS"
+        }
+      ]
+    },
     "x": 0.408693,
     "y": 0.843635,
     "w": 0.03139,
@@ -3558,6 +3613,983 @@
       "label": "Skill∞",
       "url": "https://arxiv.org/abs/2610.35434",
       "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-243",
+    "date": "2026-09-15",
+    "year": 2026,
+    "title": "Jev",
+    "section": "models",
+    "family": "TypeSafe · 决策模型",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "早期访问",
+    "summary": "放弃自由文本生成，直接把非结构化状态转成类型化选择、评分与概率，让软件用低延迟、可校准的决策信号驱动工作流。",
+    "detail": "TypeSafe 将这类接口称为 System One Model，并披露使用 RLCD 训练；底层架构与训练细节尚未公开，速度、成本和“不会幻觉”等结论主要来自厂商评测，不写成已被独立全面验证。",
+    "series": "TypeSafe Jev",
+    "research": {
+      "label": "TypeSafe · Introducing System One Models & Jev",
+      "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "TypeSafe · Jev 1.14",
+          "url": "https://typesafe.ai/blog/jev-1-14"
+        },
+        {
+          "label": "机器之心 · Jev 与 ConfTuner",
+          "url": "https://www.jiqizhixin.com/articles/2026-10-04"
+        },
+        {
+          "label": "量子位 · Jev 与 Decitron",
+          "url": "https://www.qbitai.com/2026/09/496352.html"
+        },
+        {
+          "label": "独立评测 · Evaluating and Benchmarking Jev",
+          "url": "https://arxiv.org/abs/2609.37647"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-244",
+    "date": "2026-10-31",
+    "year": 2026,
+    "title": "DeepSeek dsh-superagent",
+    "section": "products",
+    "family": "DeepSeek Harness",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "研究原型 / 开源",
+    "summary": "把单仓库 Coding Agent 接入 GitHub 与飞书：经授权后为请求分配独立会话和工作目录，持续推进任务并把 PR 或问题送回原对话。",
+    "detail": "官方把它定义为 DeepSeek Harness 扩展包和研究原型，不是正式 DeepSeek 产品。配套文章提出 Router/Worker、事件驱动、异步多任务、状态与执行环境解耦及 Watchdog；其中部分设计尚未进入公开原型。",
+    "series": "DeepSeek Harness",
+    "branchFrom": "node-218",
+    "research": {
+      "label": "DeepSeek · dsh-superagent prototype",
+      "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+      "kind": "官方仓库",
+      "references": [
+        {
+          "label": "DeepSeek Harness · Super-agent 架构文章",
+          "url": "https://x.com/DeepSeekHarness/article/2116857257245987236"
+        },
+        {
+          "label": "机器之心 · 下一代 Agent Harness 理念",
+          "url": "https://www.jiqizhixin.com/articles/2026-10-31-10"
+        },
+        {
+          "label": "量子位 · DeepSeek Super-agent",
+          "url": "https://www.qbitai.com/2026/10/506904.html"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-245",
+    "date": "2026-05-25",
+    "year": 2026,
+    "title": "Grok Build",
+    "section": "products",
+    "family": "Grok Build",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "早期测试",
+    "summary": "xAI 将仓库理解、文件编辑、终端执行、计划审阅和 Diff 验收整合进终端 Coding Agent，形成 Grok 的工程执行入口。",
+    "series": "Grok Build",
+    "research": {
+      "label": "SpaceXAI · Introducing Grok Build",
+      "url": "https://x.ai/news/grok-build-cli",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-246",
+    "date": "2026-05-27",
+    "year": 2026,
+    "title": "T2J-Bench",
+    "section": "tech",
+    "family": "代码迁移评测 / 执行验证",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 开源",
+    "summary": "用独立、离线验证器检查 PyTorch 到 JAX 的整仓迁移，不只看接口和测试通过，还比较数值、梯度、优化轨迹与端到端行为是否等价。",
+    "research": {
+      "label": "T2J-Bench",
+      "url": "https://arxiv.org/abs/2605.29054",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "Google Research · 官方仓库",
+          "url": "https://github.com/google-research/t2j-bench"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-247",
+    "date": "2026-06-22",
+    "year": 2026,
+    "title": "Grok Build /goal",
+    "section": "products",
+    "family": "Grok Build",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "功能发布",
+    "summary": "把一次对话扩展为可暂停、恢复和检查进度的长任务循环，Agent 持续执行并验证结果，直到目标完成或需要用户介入。",
+    "series": "Grok Build",
+    "branchFrom": "node-245",
+    "research": {
+      "label": "SpaceXAI · Introducing /goal",
+      "url": "https://x.ai/news/introducing-goal",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-248",
+    "date": "2026-07-12",
+    "year": 2026,
+    "title": "REA",
+    "section": "products",
+    "family": "逆向工程 / Agent 工具",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开源",
+    "summary": "用一个本地 MCP Server 与 CLI 把 Ghidra、Hopper、IDA 等逆向工具接入 Coding Agent，使二进制、Electron、.NET、APK 和网站分析带着证据链进入同一会话。",
+    "detail": "REA 负责提供检查工具和证据，不会恢复原始源码，也不保证模型解释正确；深度原生分析仍依赖合法安装的第三方逆向工具。项目仓库创建更早，时间线按首个 npm 公共版本定位。",
+    "series": "REA",
+    "research": {
+      "label": "REA · 官方仓库",
+      "url": "https://github.com/morluto/rea",
+      "kind": "官方仓库",
+      "references": [
+        {
+          "label": "REA · 官方网站",
+          "url": "https://rea.tools/"
+        },
+        {
+          "label": "rea-agents · npm",
+          "url": "https://www.npmjs.com/package/rea-agents"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-249",
+    "date": "2026-07-15",
+    "year": 2026,
+    "title": "Grok Build 开源",
+    "section": "products",
+    "family": "Grok Build",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开源",
+    "summary": "公开 Rust 编写的 Agent Loop、工具、终端 UI 与 Skills、Plugins、Hooks、MCP、Subagents 扩展系统，使完整 Coding Harness 可审计并可接本地模型。",
+    "series": "Grok Build",
+    "branchFrom": "node-247",
+    "research": {
+      "label": "SpaceXAI · Grok Build is Now Open Source",
+      "url": "https://x.ai/news/grok-build-open-source",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "xai-org/grok-build",
+          "url": "https://github.com/xai-org/grok-build"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-250",
+    "date": "2026-07-16",
+    "year": 2026,
+    "title": "Grok 4.5",
+    "section": "models",
+    "family": "SpaceXAI · Grok",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "正式发布",
+    "summary": "面向 Coding、Agentic Tasks 与知识工作联合训练，并把异步多小时 Agent rollout、大规模自动评分和模型评分纳入强化学习。",
+    "series": "Grok",
+    "research": {
+      "label": "SpaceXAI · Introducing Grok 4.5",
+      "url": "https://x.ai/news/grok-4-5",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-251",
+    "date": "2026-07-17",
+    "year": 2026,
+    "title": "PenguinHarness",
+    "section": "products",
+    "family": "Self-Harness / RSI 工具",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开源",
+    "summary": "把 Prompt、Skills、Tools 与 Hooks 的自动评测、版本快照和迭代优化做成统一开源 Harness，让固定模型上的 Agent 改进可以重复运行和比较。",
+    "detail": "它改进的是模型外部 Harness，不是模型权重；官方成本与准确率数据来自自有套件，暂不当作跨系统通用结论。",
+    "series": "PenguinHarness",
+    "research": {
+      "label": "PenguinHarness · Introducing PenguinHarness",
+      "url": "https://penguin.ooo/blog/introducing-penguinharness/",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Prism-Shadow/penguin-harness",
+          "url": "https://github.com/Prism-Shadow/penguin-harness"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-252",
+    "date": "2026-07-23",
+    "year": 2026,
+    "title": "Grok Build Workflows",
+    "section": "products",
+    "family": "Grok Build",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "功能发布",
+    "summary": "把大型任务编译为可复用编排脚本，在后台并行分发给最多数百个隔离 Agent，再通过独立验证汇总为一个结果。",
+    "detail": "官方文档给出的常规预算为 128 个 Agent，大任务上限 1,024；这是产品配置上限，不代表所有任务都能有效并行扩展。",
+    "series": "Grok Build",
+    "branchFrom": "node-249",
+    "research": {
+      "label": "SpaceXAI · Workflows in Grok Build",
+      "url": "https://x.ai/news/workflows",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-253",
+    "date": "2026-08-11",
+    "year": 2026,
+    "title": "Grok Bot",
+    "section": "products",
+    "family": "持久化 Work Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "Beta",
+    "summary": "为每个 Bot 提供持久云电脑、浏览器、文件系统和终端，使多个有名字、有记忆的 Agent 能跨应用持续工作，只在需要审批时回来找人。",
+    "series": "Grok Bot",
+    "research": {
+      "label": "SpaceXAI · Introducing Grok Bot",
+      "url": "https://x.ai/news/introducing-grok-bot",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Grok Bot · 官方文档",
+          "url": "https://docs.x.ai/grok-bot/overview"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-254",
+    "date": "2026-08-12",
+    "year": 2026,
+    "title": "Grok 4.6",
+    "section": "models",
+    "family": "SpaceXAI · Grok",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "正式发布",
+    "summary": "用更长的补充训练、重生成 SFT 轨迹和跨 Coding、Computer Use、CAD 等环境的 Agentic RL，强化多步骤长任务与自测。",
+    "series": "Grok",
+    "branchFrom": "node-250",
+    "research": {
+      "label": "SpaceXAI · Introducing Grok 4.6",
+      "url": "https://x.ai/news/grok-4-6",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-255",
+    "date": "2026-09-21",
+    "year": 2026,
+    "title": "Grok 4.7",
+    "section": "models",
+    "family": "SpaceXAI · Grok",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "正式发布",
+    "summary": "换用更大的基础模型，并把更长强化学习集中到多小时任务、自验证和长上下文管理；同时原生训练其理解 Grok Bot Harness。",
+    "series": "Grok",
+    "branchFrom": "node-254",
+    "research": {
+      "label": "SpaceXAI · Introducing Grok 4.7",
+      "url": "https://x.ai/news/grok-4-7",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-256",
+    "date": "2026-10-13",
+    "year": 2026,
+    "title": "CLASHarness",
+    "section": "tech",
+    "family": "多 Agent 冲突评测",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 开源",
+    "summary": "构造 600 个可验证的多 Agent 冲突任务，测试 Agent 面对过期消息、矛盾指令、共享权限和视觉证据时，能否核验真实状态并完成协调收尾。",
+    "research": {
+      "label": "CLASHarness",
+      "url": "https://arxiv.org/abs/2610.19128",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "Google Research · 官方仓库",
+          "url": "https://github.com/google-research/CLASHarness"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-257",
+    "date": "2026-10-13",
+    "year": 2026,
+    "title": "Anthropic Scion",
+    "section": "tech",
+    "family": "Agent-scale 软件工程基础设施",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "工程公开",
+    "summary": "Anthropic 为高并发 Agent 重新设计集中式版本控制：服务端完成提交、合并和历史查询，稀疏按需取文件，支撑每天数万次代码合入与数千万次 CI checkout。",
+    "detail": "Scion 是 Anthropic 内部系统，不是公开产品，也不适合普通仓库直接替代 Git；里程碑在于 Agent 规模开始反向改写版本控制、代码审查和 CI 基础设施。",
+    "research": {
+      "label": "Anthropic · Redesigning source control",
+      "url": "https://www.anthropic.com/research/redesigning-source-control",
+      "kind": "官方工程文章"
+    }
+  },
+  {
+    "id": "node-258",
+    "date": "2026-03-17",
+    "year": 2026,
+    "title": "Meta Ranking Engineer Agent",
+    "section": "products",
+    "family": "长程 ML 工程 Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "内部生产系统",
+    "summary": "把排序模型实验串成数天到数周的闭环：提出假设、申请预算、启动训练、诊断失败、分析结果并继续下一轮，只在关键决策点交还给工程师。",
+    "detail": "REA 通过休眠与唤醒保存长任务状态，并在算力预算和访问权限内自主调整计划。Meta 公布的 2 倍模型准确率和 5 倍工程产出来自首轮内部部署，不应外推为通用 Agent 效果。",
+    "series": "Meta REA",
+    "research": {
+      "label": "Meta Engineering · Ranking Engineer Agent",
+      "url": "https://engineering.fb.com/2026/03/17/ml-applications/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
+      "kind": "官方工程文章"
+    }
+  },
+  {
+    "id": "node-259",
+    "date": "2025-12-29",
+    "year": 2025,
+    "title": "KernelEvolve",
+    "section": "tech",
+    "family": "闭环搜索 / 可验证优化",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "生产系统 / 论文",
+    "summary": "把内核优化变成持续搜索：生成候选、编译运行、检查数值正确性和性能，再把诊断反馈给搜索器，跨 GPU、MTIA 与 CPU 自动迭代数百个实现。",
+    "detail": "关键不是一次生成代码，而是专用 Harness、树搜索、并行验证与历史经验沉淀组成闭环。节点按论文首次公开日定位；Meta 于 2026-04-02 进一步披露生产部署。其吞吐提升来自特定负载和硬件，不能直接外推。",
+    "series": "Meta REA",
+    "research": {
+      "label": "Meta Engineering · KernelEvolve",
+      "url": "https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/",
+      "kind": "官方工程文章",
+      "references": [
+        {
+          "label": "KernelEvolve · paper",
+          "url": "https://arxiv.org/abs/2512.23236"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-260",
+    "date": "2026-01-27",
+    "year": 2026,
+    "title": "PARL",
+    "section": "tech",
+    "family": "多 Agent 强化学习",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "训练方法 / 产品验证",
+    "summary": "冻结执行任务的子 Agent，只训练负责拆解、并行调度与汇总的主 Agent；奖励同时约束最终质量、有效并行和子任务完成率。",
+    "detail": "PARL 把强化学习的对象从单 Agent 工具轨迹扩展到多 Agent 组织方式，降低所有成员同时更新带来的信用分配混乱。公开结果主要来自 Kimi Agent Swarm，跨模型泛化仍需更多独立验证。",
+    "research": {
+      "label": "Kimi K2.5 · technical blog",
+      "url": "https://www.kimi.com/en/blog/kimi-k2-5",
+      "kind": "官方技术报告",
+      "references": [
+        {
+          "label": "Kimi · Agent Swarm technical breakdown",
+          "url": "https://www.kimi.com/en/help/agent/agent-swarm"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-261",
+    "date": "2025-01-28",
+    "year": 2025,
+    "title": "goose",
+    "section": "products",
+    "family": "开源本地 Agent",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开源发布",
+    "summary": "把可替换模型、本地 CLI/桌面端与 MCP 扩展组合成开源 Agent，在本机执行命令、修改代码、测试并连接外部系统。",
+    "detail": "goose 是 MCP 最早的一批完整客户端之一，证明工具协议可以承载模型无关的本地执行层；项目后来进入 Linux Foundation 的 Agentic AI Foundation。",
+    "series": "goose",
+    "research": {
+      "label": "goose · Introducing codename goose",
+      "url": "https://goose-docs.ai/blog/2025/01/28/introducing-codename-goose/",
+      "kind": "官方项目文章",
+      "references": [
+        {
+          "label": "goose · 官方仓库",
+          "url": "https://github.com/aaif-goose/goose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-262",
+    "date": "2025-04-09",
+    "year": 2025,
+    "title": "A2A",
+    "section": "tech",
+    "family": "Agent 协议 / 互操作",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开放协议",
+    "summary": "为不同厂商和框架的远程 Agent 规定能力发现、消息、任务状态与产物交换，让跨系统协作不再依赖逐一编写私有适配器。",
+    "detail": "A2A 连接 Agent 与 Agent，MCP 连接 Agent 与工具或数据，两者解决的问题不同。首发是草案，随后捐赠给 Linux Foundation；节点按 Google 首次公开日定位。",
+    "research": {
+      "label": "Google · Announcing Agent2Agent Protocol",
+      "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Google Cloud · A2A donated to Linux Foundation",
+          "url": "https://developers.googleblog.com/google-cloud-donates-a2a-to-linux-foundation/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-263",
+    "date": "2025-05-29",
+    "year": 2025,
+    "title": "SWE-bench Live",
+    "section": "tech",
+    "family": "动态代码评测 / 环境生成",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 开源",
+    "summary": "持续从新 GitHub issue 构造仓库级任务，并由 RepoLaunch 自动搭建和验证 Docker 环境，降低静态题集被训练污染和快速过时的问题。",
+    "detail": "首发包含 1,319 个来自 2024 年后的任务、93 个仓库。它改善的是评测新鲜度和环境扩展能力，不意味着自动生成的每个任务都天然无歧义或无泄漏。",
+    "research": {
+      "label": "SWE-bench Goes Live!",
+      "url": "https://arxiv.org/abs/2505.23419",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "Microsoft · SWE-bench-Live repository",
+          "url": "https://github.com/microsoft/SWE-bench-Live"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-264",
+    "date": "2025-08-27",
+    "year": 2025,
+    "title": "Agent Client Protocol",
+    "section": "tech",
+    "family": "Agent 协议 / 互操作",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开放协议",
+    "summary": "把 Coding Agent 与编辑器界面解耦：同一 Agent 可接入不同 IDE，并复用实时 diff、多文件审阅、终端输出、权限控制和 MCP 工具界面。",
+    "detail": "ACP 使用精简 JSON-RPC 接口连接客户端与本地 Agent。它不是 A2A 的替代品：ACP 解决编辑器/客户端如何呈现并控制 Agent，A2A 解决远程 Agent 之间如何协作。",
+    "research": {
+      "label": "Zed · Bring Your Own Agent",
+      "url": "https://zed.dev/blog/bring-your-own-agent-to-zed",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Agent Client Protocol · official site",
+          "url": "https://agentclientprotocol.com/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-265",
+    "date": "2025-09-21",
+    "year": 2025,
+    "title": "SWE-Bench Pro",
+    "section": "tech",
+    "family": "长程软件工程评测",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 评测",
+    "summary": "把评测从短小补丁推进到跨多文件、长时间、企业级仓库任务，并用公开、隐藏和私有代码集降低记忆答案与针对榜单优化的空间。",
+    "detail": "论文首发 1,865 个任务、41 个仓库；公开榜单后来修订无效任务并收紧网络与复评协议。不同版本的分数不可直接横向拼接。",
+    "research": {
+      "label": "SWE-Bench Pro",
+      "url": "https://arxiv.org/abs/2509.16941",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "Scale AI · SWE-Bench Pro V2 methodology",
+          "url": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-266",
+    "date": "2025-11-07",
+    "year": 2025,
+    "title": "Terminal-Bench 2.0 + Harbor",
+    "section": "tech",
+    "family": "可验证环境 / Env Scaling",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "评测 / 开源框架",
+    "summary": "把终端任务、容器验证、云端并发运行和训练 rollout 统一到同一套 Harness，使评测环境既能复现，也能扩展到 SFT、RL 和大规模实验。",
+    "detail": "Terminal-Bench 2.0 重新人工与模型辅助核验任务；Harbor 把任意可装入容器的 Agent 接到统一运行接口。后续 2.1、3.0、4.0 属于持续维护，不再拆成多个里程碑。",
+    "research": {
+      "label": "Terminal-Bench · 2.0 and Harbor",
+      "url": "https://www.tbench.ai/news/announcement-2-0",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Harbor · official repository",
+          "url": "https://github.com/harbor-framework/harbor"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-267",
+    "date": "2024-08-13",
+    "year": 2024,
+    "title": "SWE-bench Verified",
+    "section": "tech",
+    "family": "代码评测 / 人工验证",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "评测集 / 已不再推荐",
+    "summary": "由专业开发者复核问题描述和测试，筛出 500 个可解、范围清楚的仓库任务，并用 Docker Harness 提高结果的可复现性。",
+    "detail": "它一度成为前沿 Coding Agent 的默认指标；OpenAI 后来发现题目和答案已广泛进入训练数据，于 2026 年停止报告该分数并转向 SWE-Bench Pro。这里保留其历史作用，不再把高分等同于真实工程能力。",
+    "research": {
+      "label": "OpenAI · Introducing SWE-bench Verified",
+      "url": "https://openai.com/index/introducing-swe-bench-verified/",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "OpenAI · Why we no longer evaluate SWE-bench Verified",
+          "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-268",
+    "date": "2025-07-16",
+    "year": 2025,
+    "title": "SWE-Perf",
+    "section": "tech",
+    "family": "性能优化评测",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 开源",
+    "summary": "用真实仓库中的性能优化 PR 测试 Agent：补丁不仅要保持功能正确，还要在可执行基准中稳定降低运行时间。",
+    "detail": "首发包含 140 个任务，并提供完整仓库、目标函数、性能测试和专家补丁。性能测量会受机器、噪声和测试设计影响，因此分数必须结合复现实验与统计稳定性阅读。",
+    "research": {
+      "label": "SWE-Perf",
+      "url": "https://arxiv.org/abs/2507.12415",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "SWE-Perf · official repository",
+          "url": "https://github.com/SWE-Perf/SWE-Perf"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-269",
+    "date": "2025-08-19",
+    "year": 2025,
+    "title": "AGENTS.md",
+    "section": "tech",
+    "family": "仓库上下文 / 开放约定",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开放格式",
+    "summary": "给 Coding Agent 一个可预测、可分目录继承的仓库说明入口，用来声明构建、测试、代码规范和业务约束，减少每个工具各自维护私有指令文件。",
+    "detail": "它不是新的上下文算法，而是轻量互操作约定。首个提交为 2025-08-19；同年 12 月捐赠给 Linux Foundation 的 Agentic AI Foundation，并被多家 Coding Agent 采用。",
+    "research": {
+      "label": "AGENTS.md · official site",
+      "url": "https://agents.md/",
+      "kind": "开放标准",
+      "references": [
+        {
+          "label": "OpenAI · AGENTS.md donated to AAIF",
+          "url": "https://openai.com/index/agentic-ai-foundation/"
+        },
+        {
+          "label": "AAIF · project record",
+          "url": "https://aaif.io/projects/agents-md"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-270",
+    "date": "2024-03-12",
+    "year": 2024,
+    "title": "OpenHands",
+    "section": "products",
+    "family": "开源软件工程 Agent",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开源项目启动",
+    "summary": "把写代码、终端执行、网页浏览、沙盒隔离、多 Agent 协作和评测接入同一开放平台，成为软件工程 Agent 研究与复现的重要公共底座。",
+    "detail": "项目最初名为 OpenDevin，2024-03-12 创建；节点按项目起点定位。正式论文在 2024-07 公开，描述的是可扩展 Agent 平台，不是单一闭源模型能力。",
+    "series": "OpenHands",
+    "research": {
+      "label": "OpenHands · one-year history",
+      "url": "https://www.openhands.dev/blog/one-year-of-openhands-a-journey-of-open-source-ai-development",
+      "kind": "官方项目文章",
+      "references": [
+        {
+          "label": "OpenHands · platform paper",
+          "url": "https://arxiv.org/abs/2407.16741"
+        },
+        {
+          "label": "OpenHands · official repository",
+          "url": "https://github.com/OpenHands/OpenHands"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-271",
+    "date": "2024-04-11",
+    "year": 2024,
+    "title": "OSWorld",
+    "section": "tech",
+    "family": "Computer Use / 执行环境评测",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 开源环境",
+    "summary": "在真实操作系统和桌面应用中执行 369 个跨应用任务，用可复现初始状态和执行脚本检验 Agent 是否真正完成工作，而不只判断文字答案。",
+    "detail": "OSWorld 把 Computer Use 评测从网页或单应用扩展到 Ubuntu、Windows、macOS 与文件系统。首版也存在网络依赖和环境漂移，后续 Verified/2.0 的分数不能与旧版无条件混用。",
+    "research": {
+      "label": "OSWorld",
+      "url": "https://arxiv.org/abs/2404.07972",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "OSWorld · official repository",
+          "url": "https://github.com/xlang-ai/OSWorld"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-272",
+    "date": "2025-09-29",
+    "year": 2025,
+    "title": "Context Editing + Memory",
+    "section": "tech",
+    "family": "上下文管理 / 持久记忆",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开发者 Beta",
+    "summary": "把长任务上下文拆成两层：主动清除过期工具结果，另用客户端文件记忆跨会话保存项目状态和经验，避免把全部历史持续塞回模型。",
+    "detail": "Context Editing 在服务端裁剪上下文，Memory Tool 只发出文件操作请求，实际存储和权限由应用负责；它们改善长程连续性，但不会自动保证记忆正确、最新或安全。",
+    "research": {
+      "label": "Anthropic · Managing context",
+      "url": "https://claude.com/blog/context-management",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Claude Platform · context editing",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-editing"
+        },
+        {
+          "label": "Claude Platform · memory tool",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-273",
+    "date": "2025-10-16",
+    "year": 2025,
+    "title": "Agent Skills",
+    "section": "tech",
+    "family": "可组合程序性知识",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "功能发布 / 后开放标准",
+    "summary": "用带元数据的 SKILL.md、脚本和参考文件封装程序性知识；Agent 先读取简短描述，命中任务后再按需加载完整内容。",
+    "detail": "首发于 Claude，2025-12-18 发布为跨平台开放标准，2026-10 捐赠给 AAIF。Skills 提供可发现、渐进加载的做事方法，不等同于 MCP 工具接口，也不保证第三方 Skill 安全。",
+    "research": {
+      "label": "Anthropic · Equipping agents with Agent Skills",
+      "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+      "kind": "官方工程文章",
+      "references": [
+        {
+          "label": "Anthropic · Skills donated to AAIF",
+          "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+        },
+        {
+          "label": "Agent Skills · open standard",
+          "url": "https://agentskills.io/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-274",
+    "date": "2025-11-26",
+    "year": 2025,
+    "title": "Long-running Agent Harness",
+    "section": "tech",
+    "family": "长程 Harness / 跨上下文交接",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "官方工程方法",
+    "summary": "把超出单个上下文窗口的软件任务拆成初始化与增量执行两种角色，并要求每轮留下代码、测试、进度文件和清晰交接状态。",
+    "detail": "Anthropic 的方法重点是跨会话可恢复，而不是让一个上下文无限增长。它依赖可执行测试、版本控制和结构化进度记录，仍需要 Harness 处理失败恢复与验收。",
+    "research": {
+      "label": "Anthropic · Effective harnesses for long-running agents",
+      "url": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
+      "kind": "官方工程文章"
+    }
+  },
+  {
+    "id": "node-275",
+    "date": "2026-02-11",
+    "year": 2026,
+    "title": "Harness Engineering",
+    "section": "tech",
+    "family": "Agent-first 软件工程",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "官方生产实践",
+    "summary": "把工程重点从亲手写代码转向让仓库对 Agent 可读、可运行、可验证：短 AGENTS.md 作索引，文档作事实源，worktree 隔离，日志指标和测试直接暴露给 Agent。",
+    "detail": "OpenAI 的百万行、1,500 个 PR 和约十倍速度来自单个内部项目实验，不是通用生产率结论。真正可迁移的是环境、反馈环、自动审查、CI 和可观察性共同构成 Harness。",
+    "research": {
+      "label": "OpenAI · Harness engineering",
+      "url": "https://openai.com/index/harness-engineering/",
+      "kind": "官方工程文章"
+    }
+  },
+  {
+    "id": "node-276",
+    "date": "2026-10-02",
+    "year": 2026,
+    "title": "VERSE",
+    "section": "tech",
+    "family": "Optimizer 自我改进 / 验证",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 预印本",
+    "summary": "让负责改进 Agent 的 Optimizer 同时改写自己的诊断、编辑和验证工具，并用可执行测试筛掉看似合理但实际退化的改动。",
+    "detail": "实验显示没有执行验证时，Optimizer 自我改写并不稳定。VERSE 的贡献是把 Optimizer 代码也纳入搜索对象，同时明确验证是防止递归退化的必要条件。",
+    "research": {
+      "label": "VERSE: Verified Self-Evolving Optimizer",
+      "url": "https://arxiv.org/abs/2610.02616",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-277",
+    "date": "2026-10-13",
+    "year": 2026,
+    "title": "UCoE",
+    "section": "tech",
+    "family": "Verifier–Harness 协同演化",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 预印本",
+    "summary": "在没有标准答案的开放任务中，同时演化可执行 Verifier 与 Harness 状态；新验证器必须在已知偏好的对比样本上击败旧版本才能接管。",
+    "detail": "UCoE 固定模型权重，改进发生在验证程序和外层状态。它解决“错误验证器会把坏经验写回 Harness”的问题，但偏好对比本身仍决定了系统能识别哪些改进。",
+    "research": {
+      "label": "Verifier-Harness Co-Evolution",
+      "url": "https://arxiv.org/abs/2610.17609",
+      "kind": "论文 / 研究",
+      "references": [
+        {
+          "label": "Unified Co-Evolution · repository",
+          "url": "https://github.com/tianyi0216/Unified-Co-Evolution"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-278",
+    "date": "2026-10-16",
+    "year": 2026,
+    "title": "Self-HPO",
+    "section": "tech",
+    "family": "Harness–Policy 联合优化",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 预印本",
+    "summary": "交替执行两步：当前模型分析失败并提出 Harness 改动，再在选中的 Harness 下做强化学习；训练中暴露的难题进入下一轮搜索。",
+    "detail": "Self-HPO 把外层 Harness 与模型策略放进相互影响的闭环，避免只改一边后迅速失配。当前结论来自有限模型和三类 Coding benchmark，距离开放式持续自我改进仍有明显距离。",
+    "research": {
+      "label": "Self-Evolving Coding Agents via Harness-Policy Optimization",
+      "url": "https://arxiv.org/abs/2610.22791",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-279",
+    "date": "2025-03-11",
+    "year": 2025,
+    "title": "Responses API + Agents SDK",
+    "section": "tech",
+    "family": "Agent Runtime / 可观察性",
+    "stage": "03 工具调用与任务训练",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "正式发布 / 开源 SDK",
+    "summary": "把模型调用、Web/File Search、Computer Use、Agent handoff、guardrail 和执行 trace 组合为统一开发栈，减少每个团队重复编写 Agent Loop 与观测层。",
+    "detail": "Responses API 是托管接口，Agents SDK 是开源编排库；它们提供运行时积木，不自动解决任务拆解、工具权限、评测或生产可靠性。",
+    "research": {
+      "label": "OpenAI · New tools for building agents",
+      "url": "https://openai.com/index/new-tools-for-building-agents/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-280",
+    "date": "2025-11-17",
+    "year": 2025,
+    "title": "Live-SWE-agent",
+    "section": "tech",
+    "family": "在线 Scaffold 自我演化",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "论文 / 预印本",
+    "summary": "从只会调用 Bash 的最小 Agent 出发，在解决真实软件任务的同时分析失败、修改自身 scaffold，并把有效改动带到后续任务。",
+    "detail": "它改进的是模型外的执行脚手架，属于在线 Self-Harness 路线；效果依赖任务顺序、评测反馈和允许修改的代码边界，不等同于模型权重层的递归自我改进。",
+    "research": {
+      "label": "Live-SWE-agent",
+      "url": "https://arxiv.org/abs/2511.13646",
+      "kind": "论文 / 研究"
+    }
+  },
+  {
+    "id": "node-281",
+    "date": "2026-04-27",
+    "year": 2026,
+    "title": "Symphony",
+    "section": "tech",
+    "family": "持续 Coding Agent 编排",
+    "stage": "04 自动改进",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-03",
+    "status": "开源规范 / 参考实现",
+    "summary": "把项目管理看板变成 Agent 控制面：每个开放任务都有独立工作区和持续运行的 Coding Agent，并按 WORKFLOW.md 推进到 PR、证据和人工审查。",
+    "detail": "OpenAI 明确不把 Symphony 当作长期维护的独立产品，而是 Codex App Server 的最小编排参考。官方“部分团队 PR 增长 500%”来自内部使用，不作为通用收益。",
+    "research": {
+      "label": "OpenAI · Symphony",
+      "url": "https://openai.com/index/open-source-codex-orchestration-symphony/",
+      "kind": "官方工程文章"
     }
   }
 ]
