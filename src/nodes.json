@@ -647,8 +647,8 @@
     "developmentStage": "orchestrate",
     "verifiedAt": "2026-11-03",
     "status": "Beta",
-    "summary": "让主 Agent 根据任务动态创建、分工并汇总最多 100 个子 Agent，把并行规模从固定工作流推进到模型自主编排。",
-    "detail": "首发随 Kimi K2.5 提供；调度器通过 PARL 训练，子 Agent 保持冻结。2026-04 随 K2.6 扩展到最多 300 个子 Agent 与 4,000 余次工具调用；这些是产品上限，不代表所有任务都能线性加速。",
+    "summary": "让主 Agent 根据任务动态创建、分工并汇总最多 100 个子 Agent，由模型决定并行方案。",
+    "detail": "首发随 Kimi K2.5 提供；调度器通过 PARL 训练，子 Agent 保持冻结。2026-04 随 K2.6 扩展到最多 300 个子 Agent 与 4,000 余次工具调用。",
     "research": {
       "label": "Kimi · Agent Swarm",
       "url": "https://www.kimi.com/en/help/agent/agent-swarm",
@@ -2405,8 +2405,8 @@
     "developmentStage": "orchestrate",
     "verifiedAt": "2026-11-03",
     "status": "论文 / 开源",
-    "summary": "让 Meta-Agent 直接搜索和改写 Agent 系统代码，自动发明提示词、工具调用、工作流与组合结构，而不只调单个 Prompt。",
-    "detail": "ADAS 把 Agent 设计变成可搜索对象。实验覆盖有限任务和固定评估器，验证了自动发现 Agent 结构，尚未触及开放环境中的持续演化。",
+    "summary": "让 Meta-Agent 搜索和改写完整 Agent 系统代码，自动设计提示词、工具调用、工作流与组合结构。",
+    "detail": "ADAS 把 Agent 设计变成可搜索对象。实验验证了自动发现 Agent 结构，范围限于固定任务和评估器。",
     "research": {
       "label": "Automated Design of Agentic Systems",
       "url": "https://arxiv.org/abs/2408.08435",
@@ -2565,10 +2565,10 @@
     "origin": "supplement",
     "verifiedAt": "2026-09-05",
     "status": "早期测试",
-    "summary": "把仓库托管、代码浏览、PR 与 Agent 工作整合到 Cursor；目前是早期测试版。",
+    "summary": "把仓库托管、代码浏览、PR 与 Agent 工作整合到 Cursor，处于早期测试。",
     "series": "Cursor 代码托管",
     "branchFrom": "node-006",
-    "detail": "这是 Cursor 的代码托管分支，不代表云端执行环境被替换。",
+    "detail": "Origin 是 Cursor 的代码托管分支，与云端执行环境并行。",
     "research": {
       "label": "Cursor · Origin Code Hosting",
       "url": "https://cursor.com/changelog/origin-code-hosting",
@@ -2689,7 +2689,7 @@
     "verifiedAt": "2026-09-05",
     "status": "功能发布",
     "summary": "根据开发任务自动选择合适模型，在质量、速度与成本之间调整，不必为每一步手动切换。",
-    "detail": "这是 Replit Agent 的任务级模型调度更新，不是名为 Agent 5 的新产品。",
+    "detail": "这是 Replit Agent 的任务级模型调度更新，产品名称保持不变。",
     "research": {
       "label": "Replit · Intelligent Model Routing",
       "url": "https://replit.com/blog/intelligent-model-routing",
@@ -2710,7 +2710,7 @@
     "status": "公开预览",
     "summary": "代码审查可提交计入合并规则的批准意见。功能处于公开预览，默认关闭，需要管理员启用。",
     "series": "GitHub Copilot 代码审查",
-    "detail": "批准不等于自动合并 PR；这是独立的代码审查分支。",
+    "detail": "批准意见可计入合并规则；合并仍由仓库规则或维护者执行。",
     "research": {
       "label": "GitHub · Copilot PR approvals",
       "url": "https://github.blog/changelog/2026-09-01-copilot-code-review-can-now-approve-pull-requests/",
@@ -2842,10 +2842,10 @@
     "origin": "supplement",
     "verifiedAt": "2026-09-05",
     "status": "实验版本",
-    "summary": "为 V4 Flash 增加图像理解，将视觉输入接入编程与工具工作流；目前为实验版本。",
+    "summary": "为 V4 Flash 增加图像理解，将视觉输入接入编程与工具工作流，以实验版本发布。",
     "series": "DeepSeek V4 Flash",
     "branchFrom": "node-125",
-    "detail": "这是 V4 Flash 的视觉分支；以 V4 系列预览作为背景入口，不把 V4 Pro 正式版当作其前代。",
+    "detail": "它是 V4 Flash 的视觉分支，沿用 V4 系列预览路线，与 V4 Pro 正式版并行。",
     "research": {
       "label": "DeepSeek · V4 Flash Vision Exp",
       "url": "https://api-docs.deepseek.com/news/news260821/",
@@ -2950,7 +2950,7 @@
     "verifiedAt": "2026-09-05",
     "status": "开放标准",
     "summary": "用统一插件格式打包 Skills 与 MCP 服务配置，让同一扩展可在兼容的 Agent 客户端间复用。",
-    "detail": "这是跨工具的扩展打包标准，不是模型训练方法，也不替代 MCP 协议。8 月 12 日 GitHub 接入公告明确标准发布于 8 月 6 日。",
+    "detail": "该标准负责跨工具打包 Skills 与 MCP 配置；模型训练和 MCP 协议保持独立。GitHub 接入公告确认标准发布于 8 月 6 日。",
     "research": {
       "label": "Agent Plugins · 1.0 specification",
       "url": "https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md",
@@ -3236,7 +3236,7 @@
     "summary": "以新架构、原生视觉和更高吞吐替代 V4 Flash 实验分支，同时提升代码、工具使用和自动化任务表现。",
     "series": "DeepSeek V4 Flash",
     "branchFrom": "node-212",
-    "detail": "官方将旧 V4 Flash 与视觉实验模型临时路由到 V4.1 Flash；该节点表示正式替代，不是并行小版本。",
+    "detail": "官方将旧 V4 Flash 与视觉实验模型临时路由到 V4.1 Flash，完成正式替代。",
     "research": {
       "label": "DeepSeek · V4.1 Flash release",
       "url": "https://api-docs.deepseek.com/updates/#date-2026-09-10",
@@ -3339,7 +3339,7 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-02",
     "status": "模型发布",
-    "summary": "将 Haiku 路线推进到高吞吐子代理和浏览器任务，使多 Agent 系统能用更低延迟的小模型承担大量并行工作。",
+    "summary": "面向高吞吐子代理和浏览器任务，让低延迟小模型承担大量并行工作。",
     "series": "Claude Haiku",
     "branchFrom": "node-107",
     "research": {
@@ -3467,7 +3467,7 @@
     "verifiedAt": "2026-11-02",
     "status": "工业案例",
     "summary": "GLM-5.3 驱动的 Infra Agent 在可归因实验反馈下优化自身推理基础设施，两周内把端到端吞吐提升到初始基线的 3 倍。",
-    "detail": "工程师设定目标、边界和风险，Agent 优化已有推理基础设施。该案例展示了受约束的工业自我改进，尚未覆盖后继模型设计与训练。",
+    "detail": "工程师设定目标、边界和风险，Agent 优化已有推理基础设施；模型设计与训练仍由人负责。",
     "research": {
       "label": "Z.ai · GLM built its own inference infrastructure",
       "url": "https://z.ai/blog/glm-built-its-inference-infrastructure",
@@ -3505,7 +3505,7 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-02",
     "status": "论文 / 预印本",
-    "summary": "不只扩充任务数量，而是主动整理、诊断并演化 Agent 环境；通过 Collection Maps、Event Logs 与虚拟事件历史构造更难的后续训练环境。",
+    "summary": "主动整理、诊断并演化 Agent 环境，通过 Collection Maps、Event Logs 与虚拟事件历史构造更难的后续训练环境。",
     "research": {
       "label": "Breaking the Environment Wall",
       "url": "https://arxiv.org/abs/2609.29773",
@@ -3589,7 +3589,7 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-02",
     "status": "论文 / 预印本",
-    "summary": "让元 Agent 跨训练运行改写优化策略、Playbook、可执行优化器代码和决策节奏，把自我改进从 Agent 执行层推进到模型训练过程。",
+    "summary": "让元 Agent 跨训练运行改写优化策略、Playbook、可执行优化器代码和决策节奏，将自我改进带入模型训练过程。",
     "research": {
       "label": "RSI-Opt",
       "url": "https://arxiv.org/abs/2610.32026",
@@ -3628,7 +3628,7 @@
     "verifiedAt": "2026-11-03",
     "status": "早期访问",
     "summary": "放弃自由文本生成，直接把非结构化状态转成类型化选择、评分与概率，让软件用低延迟、可校准的决策信号驱动工作流。",
-    "detail": "TypeSafe 将这类接口称为 System One Model，并披露使用 RLCD 训练。底层架构和训练细节未公开；速度、成本和低幻觉数据来自厂商评测，缺少独立复现。",
+    "detail": "TypeSafe 将这类接口称为 System One Model，并披露使用 RLCD 训练。架构和训练细节未公开，性能数据来自厂商评测。",
     "series": "TypeSafe Jev",
     "research": {
       "label": "TypeSafe · Introducing System One Models & Jev",
@@ -3667,7 +3667,7 @@
     "verifiedAt": "2026-11-03",
     "status": "研究原型 / 开源",
     "summary": "把单仓库 Coding Agent 接入 GitHub 与飞书：经授权后为请求分配独立会话和工作目录，持续推进任务并把 PR 或问题送回原对话。",
-    "detail": "DeepSeek 将其定位为 Harness 扩展包和研究原型。公开实现覆盖 GitHub、飞书与独立工作目录；文章中的 Router/Worker、事件驱动和 Watchdog 仍有部分未落到代码。",
+    "detail": "DeepSeek 将其定位为 Harness 扩展包和研究原型。公开代码覆盖 GitHub、飞书与独立工作目录；Router/Worker、事件驱动和 Watchdog 只实现了部分设计。",
     "series": "DeepSeek Harness",
     "branchFrom": "node-218",
     "research": {
@@ -3769,7 +3769,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开源",
     "summary": "用一个本地 MCP Server 与 CLI 把 Ghidra、Hopper、IDA 等逆向工具接入 Coding Agent，使二进制、Electron、.NET、APK 和网站分析带着证据链进入同一会话。",
-    "detail": "REA 负责提供检查工具和证据，不会恢复原始源码，也不保证模型解释正确；深度原生分析仍依赖合法安装的第三方逆向工具。项目仓库创建更早，时间线按首个 npm 公共版本定位。",
+    "detail": "REA 提供检查工具和证据；源码恢复与解释正确性由底层逆向工具和人工判断负责。深度原生分析需要合法安装 Ghidra、Hopper 或 IDA。时间线按首个 npm 公共版本定位。",
     "series": "REA",
     "research": {
       "label": "REA · 官方仓库",
@@ -3847,7 +3847,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开源",
     "summary": "把 Prompt、Skills、Tools 与 Hooks 的自动评测、版本快照和迭代优化做成统一开源 Harness，让固定模型上的 Agent 改进可以重复运行和比较。",
-    "detail": "它改进的是模型外部 Harness，不是模型权重；官方成本与准确率数据来自自有套件，暂不当作跨系统通用结论。",
+    "detail": "它改进模型外部 Harness，模型权重保持不变。成本与准确率数据来自官方自有套件。",
     "series": "PenguinHarness",
     "research": {
       "label": "PenguinHarness · Introducing PenguinHarness",
@@ -3989,7 +3989,7 @@
     "verifiedAt": "2026-11-03",
     "status": "工程公开",
     "summary": "Anthropic 为高并发 Agent 重新设计集中式版本控制：服务端完成提交、合并和历史查询，稀疏按需取文件，支撑每天数万次代码合入与数千万次 CI checkout。",
-    "detail": "Scion 是 Anthropic 内部系统，不是公开产品，也不适合普通仓库直接替代 Git；里程碑在于 Agent 规模开始反向改写版本控制、代码审查和 CI 基础设施。",
+    "detail": "Scion 服务 Anthropic 内部的大规模 Agent 工作负载。它展示了 Agent 规模如何改写版本控制、代码审查和 CI 基础设施。",
     "research": {
       "label": "Anthropic · Redesigning source control",
       "url": "https://www.anthropic.com/research/redesigning-source-control",
@@ -4008,8 +4008,8 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
     "status": "内部生产系统",
-    "summary": "把排序模型实验串成数天到数周的闭环：提出假设、申请预算、启动训练、诊断失败、分析结果并继续下一轮，只在关键决策点交还给工程师。",
-    "detail": "REA 通过休眠与唤醒保存长任务状态，并在算力预算和访问权限内自主调整计划。Meta 公布的 2 倍模型准确率和 5 倍工程产出来自首轮内部部署，不应外推为通用 Agent 效果。",
+    "summary": "把排序模型实验串成数天到数周的流程：提出假设、申请预算、启动训练、诊断失败、分析结果并继续下一轮，只在关键决策点交还给工程师。",
+    "detail": "REA 通过休眠与唤醒保存长任务状态，并在算力预算和访问权限内调整计划。Meta 报告的 2 倍模型准确率和 5 倍工程产出来自首轮内部部署。",
     "series": "Meta REA",
     "research": {
       "label": "Meta Engineering · Ranking Engineer Agent",
@@ -4030,7 +4030,7 @@
     "verifiedAt": "2026-11-03",
     "status": "生产系统 / 论文",
     "summary": "把内核优化变成持续搜索：生成候选、编译运行、检查数值正确性和性能，再把诊断反馈给搜索器，跨 GPU、MTIA 与 CPU 自动迭代数百个实现。",
-    "detail": "专用 Harness、树搜索、并行验证和历史经验组成持续优化闭环。Meta 于 2026-04-02 披露生产部署；吞吐数据对应特定负载和硬件。",
+    "detail": "专用 Harness、树搜索、并行验证和历史经验组成持续搜索流程。Meta 于 2026-04-02 披露生产部署；吞吐数据对应特定负载和硬件。",
     "series": "Meta REA",
     "research": {
       "label": "Meta Engineering · KernelEvolve",
@@ -4057,7 +4057,7 @@
     "verifiedAt": "2026-11-03",
     "status": "训练方法 / 产品验证",
     "summary": "冻结执行任务的子 Agent，只训练负责拆解、并行调度与汇总的主 Agent；奖励同时约束最终质量、有效并行和子任务完成率。",
-    "detail": "PARL 把强化学习对象从单 Agent 工具轨迹扩展到多 Agent 组织方式，降低所有成员同时更新带来的信用分配混乱。公开实验基于 Kimi Agent Swarm，跨模型效果尚无独立验证。",
+    "detail": "PARL 把强化学习对象从单 Agent 工具轨迹扩展到多 Agent 组织方式，降低所有成员同时更新带来的信用分配混乱。公开实验基于 Kimi Agent Swarm。",
     "research": {
       "label": "Kimi K2.5 · technical blog",
       "url": "https://www.kimi.com/en/blog/kimi-k2-5",
@@ -4110,7 +4110,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开放协议",
     "summary": "为不同厂商和框架的远程 Agent 规定能力发现、消息、任务状态与产物交换，让跨系统协作不再依赖逐一编写私有适配器。",
-    "detail": "A2A 连接 Agent 与 Agent，MCP 连接 Agent 与工具或数据，两者解决的问题不同。首发是草案，随后捐赠给 Linux Foundation；节点按 Google 首次公开日定位。",
+    "detail": "A2A 负责 Agent 间协作，MCP 负责连接工具和数据。首发是草案，随后捐赠给 Linux Foundation；节点按 Google 首次公开日定位。",
     "research": {
       "label": "Google · Announcing Agent2Agent Protocol",
       "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
@@ -4162,7 +4162,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开放协议",
     "summary": "把 Coding Agent 与编辑器界面解耦：同一 Agent 可接入不同 IDE，并复用实时 diff、多文件审阅、终端输出、权限控制和 MCP 工具界面。",
-    "detail": "ACP 使用精简 JSON-RPC 接口连接客户端与本地 Agent。它不是 A2A 的替代品：ACP 解决编辑器/客户端如何呈现并控制 Agent，A2A 解决远程 Agent 之间如何协作。",
+    "detail": "ACP 用精简 JSON-RPC 连接客户端与本地 Agent，负责界面呈现和控制；A2A 负责远程 Agent 间协作。",
     "research": {
       "label": "Zed · Bring Your Own Agent",
       "url": "https://zed.dev/blog/bring-your-own-agent-to-zed",
@@ -4187,7 +4187,7 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
     "status": "论文 / 评测",
-    "summary": "把评测从短小补丁推进到跨多文件、长时间、企业级仓库任务，并用公开、隐藏和私有代码集降低记忆答案与针对榜单优化的空间。",
+    "summary": "用跨多文件、长时间的企业级仓库任务替代短小补丁，并以公开、隐藏和私有代码集减少训练污染。",
     "detail": "论文首发 1,865 个任务、41 个仓库；公开榜单后来删除无效任务并收紧网络与复评协议。各版任务和协议不同，分数应按版本比较。",
     "research": {
       "label": "SWE-Bench Pro",
@@ -4214,7 +4214,7 @@
     "verifiedAt": "2026-11-03",
     "status": "评测 / 开源框架",
     "summary": "把终端任务、容器验证、云端并发运行和训练 rollout 统一到同一套 Harness，使评测环境既能复现，也能扩展到 SFT、RL 和大规模实验。",
-    "detail": "Terminal-Bench 2.0 重新人工与模型辅助核验任务；Harbor 把任意可装入容器的 Agent 接到统一运行接口。后续 2.1、3.0、4.0 属于持续维护，不再拆成多个里程碑。",
+    "detail": "Terminal-Bench 2.0 重新核验任务；Harbor 把可装入容器的 Agent 接到统一运行接口。后续 2.1、3.0、4.0 作为同一评测体系持续维护。",
     "research": {
       "label": "Terminal-Bench · 2.0 and Harbor",
       "url": "https://www.tbench.ai/news/announcement-2-0",
@@ -4240,7 +4240,7 @@
     "verifiedAt": "2026-11-03",
     "status": "评测集 / 已不再推荐",
     "summary": "由专业开发者复核问题描述和测试，筛出 500 个可解、范围清楚的仓库任务，并用 Docker Harness 提高结果的可复现性。",
-    "detail": "它一度成为前沿 Coding Agent 的默认指标；OpenAI 后来发现题目和答案已广泛进入训练数据，于 2026 年停止报告该分数并转向 SWE-Bench Pro。这里保留其历史作用，不再把高分等同于真实工程能力。",
+    "detail": "它一度是前沿 Coding Agent 的默认指标。OpenAI 发现题目和答案已广泛进入训练数据，于 2026 年停止报告该分数并转向 SWE-Bench Pro。",
     "research": {
       "label": "OpenAI · Introducing SWE-bench Verified",
       "url": "https://openai.com/index/introducing-swe-bench-verified/",
@@ -4266,7 +4266,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 开源",
     "summary": "用真实仓库中的性能优化 PR 测试 Agent：补丁不仅要保持功能正确，还要在可执行基准中稳定降低运行时间。",
-    "detail": "首发包含 140 个任务，并提供完整仓库、目标函数、性能测试和专家补丁。性能测量会受机器、噪声和测试设计影响，因此分数必须结合复现实验与统计稳定性阅读。",
+    "detail": "首发包含 140 个任务，提供完整仓库、目标函数、性能测试和专家补丁。复现实验需同时报告机器配置、方差和统计稳定性。",
     "research": {
       "label": "SWE-Perf",
       "url": "https://arxiv.org/abs/2507.12415",
@@ -4292,7 +4292,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开放格式",
     "summary": "给 Coding Agent 一个可预测、可分目录继承的仓库说明入口，用来声明构建、测试、代码规范和业务约束，减少每个工具各自维护私有指令文件。",
-    "detail": "它不是新的上下文算法，而是轻量互操作约定。首个提交为 2025-08-19；同年 12 月捐赠给 Linux Foundation 的 Agentic AI Foundation，并被多家 Coding Agent 采用。",
+    "detail": "AGENTS.md 是轻量互操作约定，用可继承文件向 Agent 提供仓库说明。首个提交为 2025-08-19，同年 12 月捐赠给 Linux Foundation 的 AAIF。",
     "research": {
       "label": "AGENTS.md · official site",
       "url": "https://agents.md/",
@@ -4322,7 +4322,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开源项目启动",
     "summary": "把写代码、终端执行、网页浏览、沙盒隔离、多 Agent 协作和评测接入同一开放平台，成为软件工程 Agent 研究与复现的重要公共底座。",
-    "detail": "项目最初名为 OpenDevin，2024-03-12 创建；节点按项目起点定位。正式论文在 2024-07 公开，描述的是可扩展 Agent 平台，不是单一闭源模型能力。",
+    "detail": "项目最初名为 OpenDevin，2024-03-12 创建；正式论文在 2024-07 公开，定义了可扩展的软件 Agent 平台。",
     "series": "OpenHands",
     "research": {
       "label": "OpenHands · one-year history",
@@ -4352,8 +4352,8 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
     "status": "论文 / 开源环境",
-    "summary": "在真实操作系统和桌面应用中执行 369 个跨应用任务，用可复现初始状态和执行脚本检验 Agent 是否真正完成工作，而不只判断文字答案。",
-    "detail": "OSWorld 把 Computer Use 评测扩展到 Ubuntu、Windows、macOS 和文件系统。Verified/2.0 修改了环境与协议，分数需按版本比较。",
+    "summary": "在真实操作系统和桌面应用中执行 369 个跨应用任务，用可复现初始状态和执行脚本检查最终状态。",
+    "detail": "OSWorld 覆盖 Ubuntu、Windows、macOS 和文件系统。Verified/2.0 修改了环境与协议，分数需按版本比较。",
     "research": {
       "label": "OSWorld",
       "url": "https://arxiv.org/abs/2404.07972",
@@ -4379,7 +4379,7 @@
     "verifiedAt": "2026-11-03",
     "status": "开发者 Beta",
     "summary": "把长任务上下文拆成两层：主动清除过期工具结果，再用客户端文件跨会话保存项目状态和经验。",
-    "detail": "Context Editing 在服务端裁剪上下文，Memory Tool 发出文件操作请求，实际存储和权限由应用负责。记忆的正确性、时效和安全取决于应用层校验。",
+    "detail": "Context Editing 在服务端裁剪上下文；Memory Tool 发出文件操作请求，应用负责存储、权限和内容校验。",
     "research": {
       "label": "Anthropic · Managing context",
       "url": "https://claude.com/blog/context-management",
@@ -4409,7 +4409,7 @@
     "verifiedAt": "2026-11-03",
     "status": "功能发布 / 后开放标准",
     "summary": "用带元数据的 SKILL.md、脚本和参考文件封装程序性知识；Agent 先读取简短描述，命中任务后再按需加载完整内容。",
-    "detail": "首发于 Claude，2025-12-18 发布为跨平台开放标准，2026-10 捐赠给 AAIF。Skills 封装做事方法，MCP 连接外部工具；第三方 Skill 的代码和内容需要独立审查。",
+    "detail": "首发于 Claude，2025-12-18 发布为跨平台开放标准，2026-10 捐赠给 AAIF。Skills 封装做事方法，MCP 连接外部工具；第三方 Skill 需单独审查。",
     "research": {
       "label": "Anthropic · Equipping agents with Agent Skills",
       "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
@@ -4459,7 +4459,7 @@
     "verifiedAt": "2026-11-03",
     "status": "官方生产实践",
     "summary": "把工程重点从亲手写代码转向让仓库对 Agent 可读、可运行、可验证：短 AGENTS.md 作索引，文档作事实源，worktree 隔离，日志指标和测试直接暴露给 Agent。",
-    "detail": "OpenAI 的百万行、1,500 个 PR 和约十倍速度来自单个内部项目实验，不是通用生产率结论。真正可迁移的是环境、反馈环、自动审查、CI 和可观察性共同构成 Harness。",
+    "detail": "百万行代码、1,500 个 PR 和约十倍速度来自 OpenAI 的单个内部项目。可复用部分是环境、反馈、自动审查、CI 和可观察性组成的 Harness。",
     "research": {
       "label": "OpenAI · Harness engineering",
       "url": "https://openai.com/index/harness-engineering/",
@@ -4479,7 +4479,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 预印本",
     "summary": "让负责改进 Agent 的 Optimizer 同时改写自己的诊断、编辑和验证工具，并用可执行测试筛掉看似合理但实际退化的改动。",
-    "detail": "实验显示没有执行验证时，Optimizer 自我改写并不稳定。VERSE 的贡献是把 Optimizer 代码也纳入搜索对象，同时明确验证是防止递归退化的必要条件。",
+    "detail": "执行测试负责拦截 Optimizer 自我改写中的退化；VERSE 把 Optimizer 代码也放进搜索空间。",
     "research": {
       "label": "VERSE: Verified Self-Evolving Optimizer",
       "url": "https://arxiv.org/abs/2610.02616",
@@ -4498,8 +4498,8 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
     "status": "论文 / 预印本",
-    "summary": "在没有标准答案的开放任务中，同时演化可执行 Verifier 与 Harness 状态；新验证器必须在已知偏好的对比样本上击败旧版本才能接管。",
-    "detail": "UCoE 固定模型权重，改进发生在验证程序和外层状态。它解决“错误验证器会把坏经验写回 Harness”的问题，但偏好对比本身仍决定了系统能识别哪些改进。",
+    "summary": "针对无标准答案的开放任务，同时演化可执行 Verifier 与 Harness；新验证器在已知偏好对比集上胜过旧版本后接管。",
+    "detail": "UCoE 固定模型权重，改进验证程序和外层状态。偏好对比集决定系统能识别哪些改进。",
     "research": {
       "label": "Verifier-Harness Co-Evolution",
       "url": "https://arxiv.org/abs/2610.17609",
@@ -4525,7 +4525,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 预印本",
     "summary": "交替执行两步：当前模型分析失败并提出 Harness 改动，再在选中的 Harness 下做强化学习；训练中暴露的难题进入下一轮搜索。",
-    "detail": "Self-HPO 交替更新 Harness 与模型策略，减少两者单独优化造成的失配。证据来自有限模型和三类 Coding benchmark，开放环境中的长期效果尚未验证。",
+    "detail": "Self-HPO 交替更新 Harness 与模型策略。实验覆盖有限模型和三类 Coding benchmark，尚无开放环境的长期运行数据。",
     "research": {
       "label": "Self-Evolving Coding Agents via Harness-Policy Optimization",
       "url": "https://arxiv.org/abs/2610.22791",
@@ -4545,7 +4545,7 @@
     "verifiedAt": "2026-11-03",
     "status": "正式发布 / 开源 SDK",
     "summary": "把模型调用、Web/File Search、Computer Use、Agent handoff、guardrail 和执行 trace 组合为统一开发栈，减少每个团队重复编写 Agent Loop 与观测层。",
-    "detail": "Responses API 是托管接口，Agents SDK 是开源编排库；它们提供运行时积木，不自动解决任务拆解、工具权限、评测或生产可靠性。",
+    "detail": "Responses API 提供托管接口，Agents SDK 提供开源编排库；任务拆解、工具权限、评测和生产可靠性仍由应用实现。",
     "research": {
       "label": "OpenAI · New tools for building agents",
       "url": "https://openai.com/index/new-tools-for-building-agents/",
@@ -4565,7 +4565,7 @@
     "verifiedAt": "2026-11-03",
     "status": "论文 / 预印本",
     "summary": "从只会调用 Bash 的最小 Agent 出发，在解决真实软件任务的同时分析失败、修改自身 scaffold，并把有效改动带到后续任务。",
-    "detail": "它在线改写模型外的执行脚手架，模型权重保持不变。效果取决于任务顺序、评测反馈和允许修改的代码边界。",
+    "detail": "它在线改写模型外的执行脚手架，模型权重保持不变。任务顺序、评测反馈和可修改代码范围会影响结果。",
     "research": {
       "label": "Live-SWE-agent",
       "url": "https://arxiv.org/abs/2511.13646",
@@ -4584,8 +4584,8 @@
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
     "status": "开源规范 / 参考实现",
-    "summary": "把项目管理看板变成 Agent 控制面：每个开放任务都有独立工作区和持续运行的 Coding Agent，并按 WORKFLOW.md 推进到 PR、证据和人工审查。",
-    "detail": "OpenAI 明确不把 Symphony 当作长期维护的独立产品，而是 Codex App Server 的最小编排参考。官方“部分团队 PR 增长 500%”来自内部使用，不作为通用收益。",
+    "summary": "把项目管理看板变成 Agent 控制面：每个开放任务都有独立工作区和持续运行的 Coding Agent，并按 WORKFLOW.md 交付 PR、证据和人工审查。",
+    "detail": "Symphony 是 Codex App Server 的最小编排参考。OpenAI 报告的“部分团队 PR 增长 500%”来自内部使用。",
     "research": {
       "label": "OpenAI · Symphony",
       "url": "https://openai.com/index/open-source-codex-orchestration-symphony/",

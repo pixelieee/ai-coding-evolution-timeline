@@ -29,7 +29,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
     <main className="verdict-page">
       <section className="verdict-hero">
         <div>
-          <span className="eyebrow">EDITORIAL VERDICT · 31 MILESTONES</span>
+          <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} MILESTONES</span>
           <h1>从夯到拉</h1>
           <p>看它改变了什么、扩散到哪里、今天还剩下什么。</p>
         </div>
@@ -46,7 +46,9 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
 
       <div className="verdict-board">
         {verdictTiers.map((tier) => {
-          const tierEntries = entries.filter((entry) => entry.tier === tier.id);
+          const tierEntries = entries
+            .filter((entry) => entry.tier === tier.id)
+            .sort((a, b) => getPublishedDate(b.node).localeCompare(getPublishedDate(a.node)));
           if (!tierEntries.length) return null;
           return (
             <section key={tier.id} className={`verdict-tier tier-${tier.id}`}>

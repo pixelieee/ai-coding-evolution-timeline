@@ -37,8 +37,9 @@ test("the four disputed labels are replaced by concrete descriptions of their co
     assert.equal(metadata.getDevelopmentStage(node).label, label);
   }
   assert.doesNotMatch(metadataSource + app, /上下文式开发|长程 Agent 模型|推理与行动机制|可验证训练/);
-  assert.match(metadata.getDevelopmentStages("tech")[2].description, /工具协议本身不是训练方法/);
-  assert.match(metadata.getDevelopmentStages("models")[3].description, /不是一种独立的模型架构/);
+  assert.match(metadata.getDevelopmentStages("tech")[2].description, /工具协议.*任务环境.*训练框架/);
+  assert.match(metadata.getDevelopmentStages("models")[3].description, /多轮规划.*工具操作.*结果检查/);
+  assert.doesNotMatch(metadata.getDevelopmentStages("tech")[2].description + metadata.getDevelopmentStages("models")[3].description, /不是|本身/);
 });
 
 test("all nodes and tags use their own section's stage vocabulary", () => {

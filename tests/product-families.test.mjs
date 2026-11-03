@@ -46,17 +46,16 @@ test("each product's development line matches its family, including OpenAI-prefi
   }
 });
 
-test("Google summaries no longer claim a Codex predecessor, and Antigravity stays separate from Gemini CLI", () => {
-  for (const id of ["node-063", "node-069", "node-070", "node-072"]) {
-    const summary = metadata.getLongSummary(nodes.find((node) => node.id === id));
-    assert.doesNotMatch(summary, /Codex/);
-  }
-  const antigravity = metadata.getLongSummary(nodes.find((node) => node.id === "node-070"));
+test("Antigravity stays separate from Gemini CLI and OpenAI Codex", () => {
+  const antigravity = metadata.getEvolutionTrail(nodes.find((node) => node.id === "node-070")).map((node) => node.title).join(" · ");
   assert.match(antigravity, /Antigravity CLI/);
-  assert.doesNotMatch(antigravity, /Gemini CLI/);
-  const cli = metadata.getLongSummary(nodes.find((node) => node.id === "node-062"));
-  assert.match(cli, /Codex Cloud/);
-  assert.doesNotMatch(cli, /Jules|Google/);
+  assert.doesNotMatch(antigravity, /Gemini CLI|Codex/);
+  const cli = metadata.getEvolutionTrail(nodes.find((node) => node.id === "node-069")).map((node) => node.title).join(" · ");
+  assert.match(cli, /Gemini CLI/);
+  assert.doesNotMatch(cli, /Antigravity|Codex/);
+  const codex = metadata.getEvolutionTrail(nodes.find((node) => node.id === "node-062")).map((node) => node.title).join(" · ");
+  assert.match(codex, /Codex Cloud/);
+  assert.doesNotMatch(codex, /Jules|Google/);
 });
 
 test("Codex model and research categories remain distinct from the Codex product family", () => {

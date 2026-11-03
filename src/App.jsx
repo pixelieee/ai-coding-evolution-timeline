@@ -801,7 +801,7 @@ export function App() {
                     const research = getNodeResearch(node);
                     return (
                       <button key={node.id} className={`library-node-card ${selected?.id === node.id ? "selected" : ""}`} onClick={() => setSelected(node)} aria-pressed={selected?.id === node.id} aria-label={`${publishedDate} ${node.title}，点击查看详情与来源`}>
-                        <span className="library-card-top">{hasBrandMark(node) ? <BrandMark node={node} /> : <ResearchMark node={node} />}<span className="library-card-meta"><strong>{node.title}</strong><small>{node.section === "tech" ? "Research milestone" : getBrandName(node)}</small></span><ArrowRight size={18} aria-hidden="true" /></span>
+                        <span className="library-card-top">{hasBrandMark(node) ? <BrandMark node={node} /> : <ResearchMark node={node} />}<span className="library-card-meta"><strong>{node.title}</strong><small>{node.section === "tech" ? "技术节点" : getBrandName(node)}</small></span><ArrowRight size={18} aria-hidden="true" /></span>
                         <span className="library-card-classification"><span className={`track-badge ${node.section}`}><i />{sectionMap[node.section].label}</span><time dateTime={publishedDate}>{publishedDate}</time></span>
                         <span className="library-card-body"><small>{getNodeSummary(node)}</small></span>
                         <span className="library-card-foot"><span>{node.family}</span><small>{research.kind} · {getDevelopmentStage(node).short}</small></span>
@@ -930,16 +930,16 @@ export function App() {
 
       {selected && (
         <aside ref={detailDrawerRef} className={`detail-drawer ${viewMode === "panorama" ? "over-panorama" : ""}`} aria-label="节点详情">
-          <div className="drawer-header"><div><span>{getPublishedDate(selected)}{selected.dateNote ? " · 待核" : ""}</span><small>{selected.id.replace("node-", selected.origin === "supplement" ? "补充 #" : "SOURCE #")}</small></div><button onClick={() => setSelected(null)} aria-label="关闭详情"><X size={19} /></button></div>
+          <div className="drawer-header"><div><span>{getPublishedDate(selected)}{selected.dateNote ? " · 日期待核" : ""}</span><small>{sectionMap[selected.section].label}</small></div><button onClick={() => setSelected(null)} aria-label="关闭详情"><X size={19} /></button></div>
           <div className="drawer-body">
             <div className="drawer-identity">{hasBrandMark(selected) ? <BrandMark node={selected} /> : <ResearchMark node={selected} />}<div><span className={`track-badge ${selected.section}`}><i />{sectionMap[selected.section].label}</span><small>{selected.section === "tech" ? selected.family : getBrandName(selected)}</small></div></div>
             <h2>{selected.title}</h2>
             <p className="drawer-lede">{getNodeSummary(selected)}</p>
-            <section className="drawer-summary"><h3>摘要</h3><p>{getLongSummary(selected)}</p></section>
+            {getLongSummary(selected) ? <section className="drawer-summary"><h3>说明</h3><p>{getLongSummary(selected)}</p></section> : null}
             <a className="source-card" href={selectedResearch.url} target={selectedResearch.url.startsWith("/") ? undefined : "_blank"} rel={selectedResearch.url.startsWith("/") ? undefined : "noreferrer"}>
-              <span><small>SOURCE · {selectedResearch.kind}</small><strong>{selectedResearch.label}</strong></span><ArrowSquareOut size={18} />
+              <span><small>来源 · {selectedResearch.kind}</small><strong>{selectedResearch.label}</strong></span><ArrowSquareOut size={18} />
             </a>
-            {selectedResearch.references?.map((reference) => <a key={reference.url} className="source-card" href={reference.url} target="_blank" rel="noopener noreferrer"><span><small>补充来源</small><strong>{reference.label}</strong></span><ArrowSquareOut size={18} /></a>)}
+            {selectedResearch.references?.map((reference) => <a key={reference.url} className="source-card" href={reference.url} target="_blank" rel="noopener noreferrer"><span><small>相关资料</small><strong>{reference.label}</strong></span><ArrowSquareOut size={18} /></a>)}
             <section className="drawer-evolution">
               <div><h3>发展线</h3><small>{selectedSeries} · {selectedTrail.length} 个里程碑</small></div>
               <div className="evolution-rail">

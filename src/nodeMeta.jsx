@@ -22,12 +22,12 @@ const sectionStageCopy = {
     ["代码生成与对话", "生成", "根据输入生成代码、解释内容或回答问题。"],
     ["推理与长上下文", "推理", "处理多步骤问题，并理解较长的代码或文档。"],
     ["编程与工具调用", "工具", "强化编程能力，并通过工具接口执行操作。"],
-    ["复杂任务与持续执行", "复杂任务", "支持需要多轮规划、工具操作和检查的复杂任务；不是一种独立的模型架构。"],
+    ["复杂任务与持续执行", "复杂任务", "处理需要多轮规划、工具操作和结果检查的复杂任务。"],
   ],
   tech: [
     ["代码生成与评测", "生成与评测", "代码生成、仓库检索，以及检验代码是否正确的测试与评测。"],
     ["推理与纠错", "推理与纠错", "通过推理步骤、反馈或奖励，提高解题与纠错能力。"],
-    ["工具调用与任务训练", "工具与训练", "包括 MCP 等工具协议，以及软件任务环境和 Agent 训练框架；工具协议本身不是训练方法。"],
+    ["工具调用与任务训练", "工具与训练", "连接 MCP 等工具协议、软件任务环境与 Agent 训练框架。"],
     ["自动改进", "自动改进", "根据执行结果自动调整提示词、技能、上下文或程序。"],
   ],
 };
@@ -75,12 +75,12 @@ const sourceBriefs = new Map([
   ["node-002", "将 Copilot 从补全扩展到 Chat、Pull Request 与文档协作，开始覆盖完整开发流程。"],
   ["node-003", "以 GPT-4 驱动对话式编程，把解释、生成和修改代码直接带入 IDE。"],
   ["node-004", "引入多文件生成式编辑，让 Cursor 从局部补全升级为跨文件任务执行。"],
-  ["node-005", "把补全、终端调用与自动修复串成 Agent Mode，开始闭环完成工程任务。"],
+  ["node-005", "把补全、终端调用与自动修复串成 Agent Mode，可连续完成修改、运行和修复。"],
   ["node-006", "以 Multi-Agent、worktree 与远程隔离并行处理任务，扩大编辑器代理的执行半径。"],
   ["node-007", "对话式编程窗口让自然语言成为代码解释、生成与调试的统一入口。"],
   ["node-008", "AI 原生编辑器把仓库上下文、生成与修改整合在同一个编码界面。"],
   ["node-009", "从 Issue 自动形成计划并提交代码修改，验证仓库级异步工程代理。"],
-  ["node-010", "将自动执行推进到终端层，使编辑器能够运行命令、观察结果并继续修改。"],
+  ["node-010", "让编辑器直接运行终端命令、读取结果并继续修改代码。"],
   ["node-011", "公开预览 coding agent，把 GitHub 中的任务交给可持续执行的软件代理。"],
   ["node-012", "把 GitHub Copilot 的代理能力带入 CLI，使仓库操作和审阅进入终端工作流。"],
   ["node-013", "以声明式 UI 和 prompt-to-app 交互，把文字需求直接转化为可编辑界面。"],
@@ -91,7 +91,12 @@ const sourceBriefs = new Map([
   ["node-018", "以 Specs 与 Hooks 固化意图和约束，把一次性生成变成可控的软件开发流程。"],
   ["node-019", "Linux Desktop 与自测能力让 Devin 在独立环境中完成更长链路的工程工作。"],
   ["node-020", "将 Kiro 的规范驱动体验扩展到异步云端任务，支持持续执行与回看。"],
-  ["node-052", "初始公开预览聚焦读、改、测、提交，让终端代理形成最小可用闭环。"],
+  ["node-021", "在独立开发环境里规划、写码、运行和修复，把端到端软件任务交给一个 Agent。"],
+  ["node-025", "用对话生成并修改全栈应用，内置预览、部署和后端服务。"],
+  ["node-026", "把 Specs、Hooks 与 Agent 执行带进持续开发流程，减少一次性生成后的返工。"],
+  ["node-028", "把 Devin 的任务、会话和监督入口放进桌面客户端，便于并行跟进长任务。"],
+  ["node-040", "提供面向 DeepSeek 模型的开源执行框架，负责上下文、工具、沙盒与长任务调度。"],
+  ["node-052", "初始公开预览覆盖读代码、改文件、跑测试和提交变更。"],
   ["node-053", "Desktop 与本地、远程会话打通，使 Claude Code 从终端工具进入持续工作空间。"],
   ["node-054", "Auto Mode 与 Computer Use 扩大执行权限，让代理能够跨工具完成任务。"],
   ["node-055", "Ultrareview 让多个 Agent 并行审查复杂变更，强化高风险代码的验证层。"],
@@ -117,7 +122,7 @@ const sourceBriefs = new Map([
 
 const capabilityRules = [
   [/replit agent 4/i, "把任务拆分、后台并行与合并集成到托管开发环境，支持更长链路的构建。"],
-  [/replit agent/i, "在托管开发环境中规划、生成、运行并迭代应用，覆盖从需求到部署的闭环。"],
+  [/replit agent/i, "在托管开发环境中规划、生成、运行并迭代应用，覆盖需求、开发、预览和部署。"],
   [/windsurf cascade/i, "在 IDE 内执行多步 Agent 任务，并以代码库上下文维持连续推理。"],
   [/jetbrains junie/i, "在 JetBrains IDE 中执行多步软件工程任务，连接编辑、运行与验证。"],
   [/factory droids/i, "以软件工厂式 Agent loop 承担仓库任务，强调可重复执行与工程流程集成。"],
@@ -147,9 +152,9 @@ const capabilityRules = [
 ];
 
 const modelRules = [
-  [/gpt-3\.5|chatgpt/i, "以对话式代码生成建立低门槛入口，奠定自然语言编程的交互范式。"],
+  [/gpt-3\.5|chatgpt/i, "把代码生成、解释和调试放进对话界面，让自然语言成为大众编程入口。"],
   [/gpt-4o/i, "在多模态、低延迟与成本之间取得平衡，扩大实时编程协作场景。"],
-  [/o3-mini/i, "以更低成本提供强化推理与数学能力，使可验证推理进入日常调用。"],
+  [/o3-mini/i, "以更低成本提供代码、数学和科学推理，适合高频调用。"],
   [/gpt-4\.1/i, "强化长上下文、代码能力与指令遵循，面向真实仓库和工具调用。"],
   [/gpt-5\.6/i, "通过 Sol、Terra、Luna 分层覆盖高强度推理、均衡执行与低延迟任务。"],
   [/gpt-5\.5/i, "聚焦工程编程、计算机使用与专业任务，把模型能力压向真实工作负载。"],
@@ -157,7 +162,7 @@ const modelRules = [
   [/gpt-5\.3-codex-spark/i, "以实时编码和超过千 token 每秒的吞吐优化交互式软件工程。"],
   [/gpt-5\.3-codex/i, "面向真实电脑环境的专业软件工程任务，强化连续执行稳定性。"],
   [/gpt-5\.2-codex/i, "聚焦大型重构、迁移与安全任务，在长程执行中维持计划一致性。"],
-  [/gpt-5\.1-codex/i, "加入低延迟、上下文压缩与 Windows 支持，扩大工程可用范围。"],
+  [/gpt-5\.1-codex/i, "加入低延迟、上下文压缩与 Windows 支持，覆盖更多工程环境。"],
   [/gpt-5-codex/i, "从通用模型分化出的软件工程专项模型，优化仓库任务与工具调用。"],
   [/^codex$/i, "以代码生成与 HumanEval 建立专用代码模型路线，并通过 API 进入开发工具。"],
   [/o1-preview|\bo1\b/i, "把测试时计算和链式推理产品化，为复杂代码问题引入更深的推理预算。"],
@@ -165,7 +170,7 @@ const modelRules = [
   [/^gpt-5$/i, "统一 coding、reasoning 与 agent 能力，减少模型切换带来的工作流割裂。"],
   [/^gpt-5\.2$/i, "强化专业知识、代码生成与长上下文稳定性，服务更完整的软件项目。"],
   [/^gpt-5\.1$/i, "提升自适应推理与工具可靠性，使代理在多步任务中更稳健。"],
-  [/^gpt-4$/i, "显著提升复杂代码理解与生成能力，跨过真实工程应用的早期门槛。"],
+  [/^gpt-4$/i, "提升复杂代码理解、生成和调试能力，开始承担真实工程任务。"],
   [/claude 2\.1/i, "把上下文扩展到 200K，并引入更成熟的 tool use 试验。"],
   [/^claude 2$/i, "以 100K 长上下文提升大型代码库阅读、总结与修改能力。"],
   [/^claude 3$/i, "通过 Haiku、Sonnet 与 Opus 分层，覆盖速度、能力和成本的不同需求。"],
@@ -178,8 +183,8 @@ const modelRules = [
   [/claude sonnet 5/i, "面向 agentic coding、长程执行与成本效率继续推进主力模型。"],
   [/claude opus 4\.8/i, "强化 agentic judgment、computer use 与长会话一致性。"],
   [/claude opus 4\.7/i, "聚焦复杂工程、自验证与更可靠的长程任务执行。"],
-  [/claude opus 4\.6/i, "把超长上下文与更复杂的 Agent 任务结合，提升持续执行能力。"],
-  [/claude opus 4\.5/i, "推动长期软件工程表现跃迁，增强规划、编码与复核闭环。"],
+  [/claude opus 4\.6/i, "把超长上下文用于复杂 Agent 任务，减少长任务中的上下文断裂。"],
+  [/claude opus 4\.5/i, "提升长期软件工程表现，强化规划、编码和复核。"],
   [/claude opus 4\.1/i, "以真实代码质量和精度改进 Opus 路线的工程可靠性。"],
   [/claude opus 4/i, "面向复杂编码与长周期 Agent，提供更高推理和执行上限。"],
   [/claude opus 5|fable 5|mythos 5/i, "以多日 Agent 与长程软件工程为目标，探索更高自治上限。"],
@@ -201,7 +206,7 @@ const modelRules = [
   [/kimi k2/i, "以 MoE 与 Agent tool use 为重点，增强开放模型的工具执行。"],
   [/kimi k3/i, "继续扩展长程推理和工具协作，面向下一代通用 Agent。"],
   [/glm-4\.5/i, "以推理、coding 与 Agent 一体化建立国产开源模型基线。"],
-  [/glm-4\.6/i, "围绕 Claude Code 与 Harness 生态优化真实编码任务。"],
+  [/glm-4\.6/i, "针对 Claude Code 等 Harness 优化真实编码任务。"],
   [/glm-4\.7/i, "强化长程 Agent 与工具稳定性，提升持续执行表现。"],
   [/glm-5\.3-flash/i, "以低延迟和高吞吐服务实时编码与交互式 Agent。"],
   [/glm-5\.3/i, "面向编程与复杂任务推进国产旗舰基础模型。"],
@@ -209,13 +214,13 @@ const modelRules = [
   [/glm-5\.1/i, "强化真实工具调用与长任务可靠性。"],
   [/glm-5/i, "整合复杂工程与 Agentic Coding 能力，推进统一基础模型。"],
   [/minimax m2\.1/i, "以多语言 coding、scaffold 与高吞吐为核心优化工程任务。"],
-  [/minimax m2\.5/i, "进一步统一 coding、search 与 tool use，增强代理闭环。"],
+  [/minimax m2\.5/i, "统一 coding、search 与 tool use，支持连续检索、修改和验证。"],
   [/gemini 1\.5 pro/i, "以超长上下文和多模态能力支持大型代码库与复杂资料处理。"],
   [/gemini 2\.0/i, "把多模态理解与 Agent 能力结合，推进实时工具使用。"],
   [/gemini 2\.5 pro/i, "强化推理与 1M+ 上下文，面向复杂代码和长文档任务。"],
   [/gemini 3\.5 flash/i, "以低延迟、高性价比支持长程 Agent 和交互式编码。"],
   [/gemini 3/i, "在推理、工具调用和 Agentic Coding 之间形成统一能力。"],
-  [/code llama/i, "把开放代码模型带入 Meta 生态，推动可本地部署的代码生成。"],
+  [/code llama/i, "提供可本地部署的开放代码模型，覆盖生成、补全和指令任务。"],
   [/alphacode/i, "以竞赛编程验证大模型的程序合成与搜索能力。"],
 ];
 
@@ -224,10 +229,10 @@ const techRules = [
   [/alphacode/i, "通过海量候选采样、聚类与测试筛选攻克竞赛编程题，验证“生成 + 搜索 + 验证”的程序合成路线。"],
   [/incoder|fim/i, "把 Fill-in-the-Middle 训练引入代码模型，使编辑和补全能够利用双向上下文。"],
   [/repocoder/i, "通过检索仓库级上下文提升跨文件生成，是代码 RAG 的早期代表。"],
-  [/swe-bench/i, "以真实 GitHub Issue 和测试验证 Agent 是否真正完成软件工程任务。"],
-  [/react/i, "把推理与行动交替组织为 Agent loop，成为工具调用系统的基础范式。"],
+  [/swe-bench/i, "以真实 GitHub Issue 和测试检查 Agent 是否完成软件工程任务。"],
+  [/react/i, "让模型交替思考、调用工具和读取结果，奠定工具型 Agent 的基本循环。"],
   [/voyager/i, "用自动课程、技能库和环境反馈展示持续学习型 Agent。"],
-  [/codeact/i, "让模型用可执行代码表达行动，提升复杂工具编排的组合能力。"],
+  [/codeact/i, "让模型用可执行代码表达行动，便于组合多个工具和中间结果。"],
   [/^mcp$/i, "以开放协议统一模型、工具与数据连接，降低 Agent 集成成本。"],
   [/reflexion/i, "通过语言化反馈和记忆进行自我修正，提升多轮任务成功率。"],
   [/function calling/i, "将结构化工具调用纳入模型接口，使外部系统成为可控能力。"],
@@ -251,7 +256,7 @@ const techRules = [
   [/^dgm$/i, "在固定评测框架中开放式地产生、验证并保留 Harness 变体，让软件代理沿性能档案持续演化。"],
   [/^ace$/i, "把上下文从一次性提示变成可持续更新的 Playbook，通过执行反馈积累可复用策略。"],
   [/^mce$/i, "让上下文内容与管理机制共同演化，寻找更适合长周期 Agent 的记忆与调度结构。"],
-  [/meta-harness/i, "自动生成并评判 Harness 代码候选，把执行框架本身纳入搜索和优化闭环。"],
+  [/meta-harness/i, "自动生成、运行并筛选 Harness 代码候选，把执行框架本身纳入搜索。"],
   [/continual harness/i, "在长期运行中持续更新工具、记忆与 Skills，让 Harness 能随任务分布一起成长。"],
   [/self-harness/i, "让 Harness 通过自举生成、评测与改写自身组件，探索不依赖固定人工脚手架的改进循环。"],
   [/^ahe$/i, "把 Harness 拆成可观察、可归因的组件，在局部验证后逐步演化整体执行系统。"],
@@ -292,9 +297,9 @@ export function getNodeSummary(node) {
   const rules = node.section === "models" ? modelRules : node.section === "tech" ? techRules : capabilityRules;
   const match = rules.find(([pattern]) => pattern.test(node.title));
   if (match) return match[1];
-  if (node.section === "products") return `${node.title} 将“${node.family}”能力推进到 ${getDevelopmentStage(node).label}，扩大 Agent 在真实开发流程中的执行范围。`;
-  if (node.section === "models") return `${node.title} 面向代码理解、复杂推理与工具调用继续优化，提升长任务中的稳定性。`;
-  return `${node.title} 是“${node.family}”轨道的重要方法节点，为可训练、可验证的软件 Agent 提供基础能力。`;
+  if (node.section === "products") return `${node.title} 把 ${node.family} 带入${getDevelopmentStage(node).label}阶段，覆盖更多真实开发任务。`;
+  if (node.section === "models") return `${node.title} 加强代码理解、复杂推理和工具调用，面向更长的软件任务。`;
+  return `${node.title} 为 ${node.family} 提供可训练、可执行或可验证的方法。`;
 }
 
 export function getEvolutionTrail(node) {
@@ -308,18 +313,7 @@ export function getEvolutionTrail(node) {
 }
 
 export function getLongSummary(node) {
-  const trail = getEvolutionTrail(node);
-  const index = trail.findIndex((candidate) => candidate.id === node.id);
-  const previous = trail[index - 1];
-  const next = trail[index + 1];
-  const relation = previous && next
-    ? `这条发展线的较早记录是 ${getPublishedDate(previous)} 的「${previous.title}」，较晚记录是 ${getPublishedDate(next)} 的「${next.title}」。`
-    : previous
-      ? `这条发展线的较早记录是 ${getPublishedDate(previous)} 的「${previous.title}」；当前记录到本节点。`
-      : next
-        ? `这条发展线的下一条记录是 ${getPublishedDate(next)} 的「${next.title}」。`
-        : node.origin === "supplement" ? "这是根据发布来源补充收录的独立节点。" : "它在原始 PDF 中作为独立节点出现。";
-  return [getNodeSummary(node), node.detail, node.dateNote, relation].filter(Boolean).join(" ");
+  return [node.detail, node.dateNote].filter(Boolean).join(" ");
 }
 
 export function getNodeTags(node) {
