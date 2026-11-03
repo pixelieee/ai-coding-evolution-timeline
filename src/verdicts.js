@@ -1,15 +1,16 @@
 export const verdictTiers = [
-  { id: "hammer", label: "夯", grade: "01", subtitle: "改了默认范式", description: "它让行业换了一种做事方式，并被多个生态沿用。" },
-  { id: "top", label: "顶级", grade: "02", subtitle: "关键跃迁", description: "技术或产品向前推了一大步，采用规模和后续影响都站得住。" },
-  { id: "solid", label: "人上人", grade: "03", subtitle: "硬价值成立", description: "解决了真问题，公开结果扎实，影响集中在特定领域。" },
-  { id: "watch", label: "NPC", grade: "04", subtitle: "还在观察", description: "想法值得看，证据还少：发布太新，或目前只有论文和厂商数据。" },
-  { id: "drag", label: "拉完了", grade: "05", subtitle: "没有留下来", description: "产品已经退场、并入其他产品，或被后来的路线替代。" },
+  { id: "hammer", label: "夯", grade: "01", subtitle: "挑刺都得先服", description: "真的改了行业默认动作。想黑它，先解释为什么全行业都在抄。" },
+  { id: "top", label: "顶级", grade: "02", subtitle: "强，但没到封神", description: "硬价值、真实采用、后续影响都够。缺点也够具体，不靠情怀洗。" },
+  { id: "solid", label: "人上人", grade: "03", subtitle: "能打，也有短板", description: "解决了真问题，但适用面、成本或证据还撑不起更高一档。" },
+  { id: "watch", label: "NPC", grade: "04", subtitle: "发布会先赢了", description: "想法有戏，现实欠账。论文分、官方 Demo 和社区热搜都不算毕业证。" },
+  { id: "drag", label: "拉完了", grade: "05", subtitle: "点子留下，产品没了", description: "当年画得很大，活得很短；好点子被后来者捡走，名字留在考古区。" },
 ];
 
 const source = (label, url) => ({ label, url });
 
-// 评级依据核查于 2026-11-03。节点本身的发布日期与首发来源仍以详情抽屉为准。
-export const verdicts = [
+// 硬事实核查于 2026-11-03；社区风向取自 HN、Reddit、X、知乎与可检索的小红书公开讨论。
+// 社区样本用于判断体验与争议，不替代技术事实，也不把单条热帖当成总体民意。
+const editorialVerdicts = [
   {
     nodeId: "node-001", tier: "hammer",
     review: "把 AI 补全变成开发者日常入口，后续 Agent 产品都建立在这次习惯迁移上。",
@@ -285,6 +286,162 @@ export const verdicts = [
     source: source("OpenAI · Operator", "https://openai.com/index/introducing-operator/"),
   },
 ];
+
+const roastReviews = {
+  "node-001": "把补全做成习惯，后来却被 Agent 抢了主角；祖师爷还在，C 位没了。",
+  "node-007": "把写代码入口从 IDE 拽进聊天框；人人都能开工，也人人都能复制一段幻觉。",
+  "node-052": "终端外壳看着寒酸，干活却把一票 AI IDE 打成花架子；真正的敌人是额度。",
+  "node-124": "R1 最狠的不是分数，是把“推理模型必须闭源又昂贵”这层窗户纸捅破。",
+  "node-159": "把评测从玩具函数搬进真实仓库，也顺手教会全行业围着同一套题刷榜。",
+  "node-161": "论文名字快被忘了，循环结构还在给今天的 Agent 当骨架。",
+  "node-164": "协议本身没多神，厉害的是大家终于懒得各造一遍插头；上下文和攻击面也一起胖了。",
+  "node-174": "省下 critic 不是魔法，R1 才是它出圈的扩音器；别把训练组件供成宗教。",
+  "node-008": "把最好用的 AI IDE 做成最贵的 VS Code 皮肤之一；贵归贵，交互确实是行业作业答案。",
+  "node-062": "干后端像施工队，做界面像批发卡片；活能干完，审美和上下文都要人盯。",
+  "node-092": "第一次让模型肯花时间想，代价是你也得花时间等；很快又被后继者写进历史。",
+  "node-110": "模型换代很多，真正让仓库级编码从能演示变成能上班的，3.5 算一次。",
+  "node-270": "研究圈的万能试验台，工程圈的安装说明书；价值大，离开箱即用还远。",
+  "node-271": "让 Computer Use 有了考场，没让它立刻毕业；榜单会涨，鼠标还是会点歪。",
+  "node-273": "把 Prompt 文件夹做成可移植资产是对的；现在的技能商店比 npm 更缺质量门槛。",
+  "node-038": "自由到模型、界面、Harness 都能换；也自由到 bug 和配置都得自己扛。",
+  "node-262": "大厂终于统一了 Agent 怎么打招呼；多数单 Agent 项目暂时只需要闭嘴干活。",
+  "node-201": "旗舰价、旗舰能力、旗舰争议：有人一眼抓出硬 bug，也有人用完继续抱紧旧 Sol。",
+  "node-226": "终于把 Opus 的智商和账单拉回同一张桌；长任务放飞自我时，事故也更贵。",
+  "node-130": "本地补全的老黄牛，便宜、能跑、尺寸齐；拿它硬碰最新 Agent 模型有点欺负老人。",
+  "node-139": "榜单宣传很满，社区真正买账的是工具调用稳、价格低；偶尔过度设计也是真的。",
+  "node-155": "一百万上下文像大仓库，找到货不等于会装车；读得多，改得好是两回事。",
+  "node-269": "一个 Markdown 文件干掉半个“上下文平台”的 PPT；朴素到没法营销，实用到谁都得支持。",
+  "node-279": "OpenAI 把自建 Agent 的胶水收回云端；省代码是真的，锁生态也是真的。",
+  "node-216": "从写 PR 伸手到盯上线，产品闭环补齐了；真实回滚事故率没公开，先别吹自动运维。",
+  "node-222": "把 YAML 地狱换成自然语言，不代表权限地狱消失；好用与否全看默认护栏。",
+  "node-224": "便宜又全能的参数表很好看；真实项目里能否少返工，社区还没形成共识。",
+  "node-235": "让模型优化自己的推理栈很硬；目前成绩单仍是自家老师批的。",
+  "node-258": "三个人带 Agent 跑八个模型提案很猛；离开 Meta 的算力、数据和内网，复制难度同样很猛。",
+  "node-188": "会改自己工具链，听着像 RSI；实验场里能涨分，生产里先别让它碰 main。",
+  "node-190": "会自改代码的研究系统有了，能否连续进化还没有；达尔文还在试管里。",
+  "node-278": "Harness 和 Policy 终于不再各练各的；目前更像漂亮的双人舞录像，没证明能巡演。",
+  "node-243": "把“生成文本”换成“直接做选择”很聪明；架构不公开、用户不够多，先别急着封神。",
+  "node-248": "逆向工程终于有了 Agent 外挂；仓库能跑，生态还没跑起来。",
+  "node-253": "持久云电脑加审批很像 Work Agent 正解；Beta 的最大功能仍是让用户替它测稳定性。",
+  "node-194": "后台常驻很香，账单和误操作也会常驻；持续运行从来不等于持续正确。",
+  "node-213": "把 Codex Harness 装进 API 很顺手；公开测试阶段，最稳定的功能是以后会变。",
+  "node-218": "模型和 Harness 联调比换皮 CLI 有诚意；RC 就是官方提前告诉你：别拿生产当小白鼠。",
+  "node-236": "连续改自己七次很抓眼球；单一系统、隐藏评测，离递归进化还隔着一整个复现圈。",
+  "node-237": "让环境自己出更难的题是正路；现在题目会长大，能力是否真长大还没证实。",
+  "node-238": "RSI 终于有健身房了；有没有练出肌肉，等更多队伍进场再说。",
+  "node-240": "一次性改 Harness 终于能沉淀；论文里叫长期记忆，生产里还得叫变更管理。",
+  "node-244": "架构图已经像大系统，实现还写着 prototype；目前最完整的是野心。",
+  "node-009": "Issue 到 PR 的愿景没死，产品先死了；后来者把尸体上的好点子全捡走。",
+  "node-074": "演示像未来，寿命像内测；最后证明浏览器 Agent 可以活，但没必要叫 Operator。",
+};
+
+const communitySignals = {
+  "node-001": "老用户仍爱补全和 IDE diff；重度 Agent 用户则大量转向 Claude Code、Codex。",
+  "node-007": "入口无敌，工程闭环弱；社区更多把它当万能问答，而非主力 Coding Agent。",
+  "node-052": "长任务和工具使用口碑极强；额度、grep 循环、终端门槛和版本波动同样高频。",
+  "node-124": "便宜、开放获赞；真实编码泛化、循环输出、托管审查与过度炒作长期被质疑。",
+  "node-159": "真实仓库方向获认可，但污染、坏题和 Harness 差异已经让榜单严重失真。",
+  "node-161": "社区几乎不再争论 ReAct 本身，反而说明它已经被吸收成 Agent 的默认结构。",
+  "node-164": "共识接口得到认可；token 膨胀、工具过载、认证与远程服务器安全是最高频槽点。",
+  "node-174": "研究圈认可资源简化；社媒常把 R1 的成功全部归功于 GRPO，属于明显过度归因。",
+  "node-008": "最顺手的 IDE 和最难算清的账单同时成立；Auto 路由不透明也经常挨骂。",
+  "node-062": "后端、调试和执行获赞；UI 审美、擅自补需求、频繁压缩和额度争议集中。",
+  "node-092": "深题更强得到认可；慢、贵、偶尔超时，让 o1-mini 在日常编码里反而更常用。",
+  "node-110": "2024 年社区普遍认为净生产力转正；冷门技术栈和长上下文下仍明显掉速。",
+  "node-270": "研究者爱它可改、可测；普通用户嫌部署和环境复杂，热度明显高于日常使用率。",
+  "node-271": "研究界认可统一考场；使用者反复提醒，榜单成绩不能等同真实电脑可靠性。",
+  "node-273": "可复用、按需加载很受欢迎；质量、权限和供应链安全仍没有成熟答案。",
+  "node-038": "轻量、模型可换、无厂商锁定获赞；patch 展示、升级兼容和配置折腾是常见抱怨。",
+  "node-262": "企业平台看好互操作；独立开发者普遍觉得过早、过重，当前多数项目用不上。",
+  "node-201": "反馈明显撕裂：代码审查能抓硬 bug，也有人认为比 Sol 贵很多却没明显更强。",
+  "node-226": "长任务、编排和效率获大量好评；过度设计、耗尽额度与危险命令也有真实案例。",
+  "node-130": "本地补全口碑稳定；Agent 工具调用评价分化，更多被当作低成本执行模型。",
+  "node-139": "Reddit 与知乎普遍夸工具调用和速度；复杂任务错误、过度设计仍被反复提到。",
+  "node-155": "长上下文和前端任务获赞；复杂业务逻辑、指令遵循和读完却没改对仍常见。",
+  "node-269": "社区几乎一致认可它简单、可移植；争议集中在不同工具的读取层级不一致。",
+  "node-279": "开发者欢迎统一工具与状态；也担心抽象变化太快、迁移成本与平台锁定。",
+  "node-216": "讨论多集中在发布功能，独立生产复盘很少；真实价值仍取决于告警和回滚质量。",
+  "node-222": "开发者喜欢复用 Actions 基础设施；对自然语言权限边界和误触发保持警惕。",
+  "node-224": "价格和开放路线吸睛；长任务返工率、工具稳定性与真实项目数据仍缺统一结论。",
+  "node-235": "技术圈兴趣很高，外部复现很少；目前主要证据仍来自 Z.ai 自己的生产案例。",
+  "node-258": "业界认可这是生产级 ML Agent 案例；同时普遍认为 Meta 内部条件难以复制。",
+  "node-188": "研究圈关注度高于工程采用；大家最担心改崩、回滚和跨任务负迁移。",
+  "node-190": "自我改进方向受关注；讨论焦点始终是固定评测会不会把系统带向刷分。",
+  "node-278": "概念获得认可，复现讨论尚少；长期训练稳定性和跨模型收益仍是空白。",
+  "node-243": "低延迟决策接口有新鲜感；社区样本太少，讨论仍围着厂商 Demo 打转。",
+  "node-248": "逆向工程用户认可切口够硬；公开用户量和跨工具稳定性还不足以形成口碑。",
+  "node-253": "持久云电脑和审批回路获关注；稳定性、价格和失控后的责任边界仍被追问。",
+  "node-194": "后台 Agent 很诱人；开发者更担心长期账单、误操作和任务悄悄跑偏。",
+  "node-213": "嵌入 Codex 能力很方便；公开测试的新鲜感大于成熟口碑，接口稳定性待观察。",
+  "node-218": "DeepSeek 用户期待官方 Harness；RC 的安装、升级与长任务可靠性仍在快速修补。",
+  "node-236": "论文话题性很强，独立复现尚未跟上；隐藏评测让社区难判断增益是否可迁移。",
+  "node-237": "环境自动进化被认为方向正确；社区仍缺大规模训练和跨团队复现数据。",
+  "node-238": "统一 RSI 实验底座得到研究者认可；真实长期运行案例尚未出现。",
+  "node-240": "双层 Harness 记忆设计受关注；工程师最关心的版本、回滚和审计仍需补齐。",
+  "node-244": "架构设想获得关注，官方自己也标为 prototype；社区共识是先等代码补完。",
+  "node-009": "理念被后来的 coding agent 继承；用户对独立预览退场几乎没有留恋。",
+  "node-074": "演示阶段热度高，真实使用抱怨慢、受限和脆；并入 ChatGPT agent 后讨论迅速退潮。",
+};
+
+const communitySources = {
+  "node-001": [{ label: "HN", url: "https://news.ycombinator.com/item?id=42736737" }],
+  "node-052": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=44596472" },
+    { label: "X", url: "https://x.com/i/trending/2037714899749736516" },
+  ],
+  "node-124": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=42823568" },
+    { label: "Reddit", url: "https://www.reddit.com/r/DeepSeek/comments/1it9p9v/" },
+  ],
+  "node-159": [{ label: "公开审计", url: "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/" }],
+  "node-164": [{ label: "HN", url: "https://news.ycombinator.com/item?id=49779329" }],
+  "node-174": [{ label: "HN", url: "https://news.ycombinator.com/item?id=42823568" }],
+  "node-008": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=48554513" },
+    { label: "中文社区", url: "https://post.smzdm.com/p/aeowz26m/" },
+  ],
+  "node-062": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=49805972" },
+    { label: "知乎", url: "https://www.zhihu.com/question/2043976840717632219/answer/2059460801459662929" },
+  ],
+  "node-092": [{ label: "HN", url: "https://news.ycombinator.com/item?id=42010441" }],
+  "node-110": [{ label: "HN", url: "https://news.ycombinator.com/item?id=41337542" }],
+  "node-038": [
+    { label: "Reddit", url: "https://www.reddit.com/r/opencodeCLI/comments/1t5apre/im_loving_opencode/" },
+    { label: "X", url: "https://x.com/i/trending/2009717178501661120" },
+  ],
+  "node-201": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=49682013" },
+    { label: "Reddit", url: "https://www.reddit.com/r/OpenAI/comments/1wc4kug/any_experience_with_gpt_6_astra_on_agentic_coding/" },
+  ],
+  "node-226": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=49946567" },
+    { label: "Reddit", url: "https://www.reddit.com/r/ClaudeCode/comments/1wurd3e/mmmkay_i_didnt_believe_others_at_first_but/" },
+  ],
+  "node-130": [{ label: "Reddit", url: "https://www.reddit.com/r/LocalLLaMA/comments/1mf8la7/qwen3coder_is_bad_at_tool_call_while_glm45_is/" }],
+  "node-139": [
+    { label: "Reddit", url: "https://www.reddit.com/r/LocalLLaMA/comments/1mfa9tj/anyone_tried_glm45_with_claude_code_or_other/" },
+    { label: "知乎", url: "https://www.zhihu.com/question/1933282570436589214/answer/1933533271528039859" },
+  ],
+  "node-194": [{ label: "HN", url: "https://news.ycombinator.com/item?id=48554513" }],
+};
+
+const tierOverrides = {
+  "node-201": "solid",
+  "node-216": "watch",
+  "node-222": "watch",
+  "node-224": "watch",
+  "node-235": "watch",
+  "node-258": "watch",
+};
+
+export const verdicts = editorialVerdicts.map((entry) => ({
+  ...entry,
+  tier: tierOverrides[entry.nodeId] || entry.tier,
+  review: roastReviews[entry.nodeId] || entry.review,
+  community: communitySignals[entry.nodeId] || "社区讨论样本不足，暂不把发布热度当成真实采用。",
+  communitySources: communitySources[entry.nodeId] || [],
+}));
 
 export function getVerdictTier(id) {
   return verdictTiers.find((tier) => tier.id === id);

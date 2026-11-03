@@ -87,8 +87,12 @@
 :root[data-theme="dark"] .verdict-research-mark { color: var(--tech-color); background: var(--theme-strip); border-color: var(--theme-border); }
 :root[data-theme="dark"] .verdict-evidence { border-color: var(--line); }
 :root[data-theme="dark"] .verdict-evidence strong { color: var(--amber); }
-:root[data-theme="dark"] .verdict-source { color: var(--theme-secondary); background: var(--theme-strip); border-color: var(--line); }
+:root[data-theme="dark"] .verdict-links { background: var(--theme-strip); border-color: var(--line); }
+:root[data-theme="dark"] .verdict-source { color: var(--theme-secondary); background: transparent; }
 :root[data-theme="dark"] .verdict-source:hover { color: var(--amber); background: var(--amber-soft); }
+:root[data-theme="dark"] .verdict-community-links { border-color: var(--line); }
+:root[data-theme="dark"] .verdict-community-links a { color: var(--theme-muted); background: var(--theme-card); border-color: var(--theme-border); }
+:root[data-theme="dark"] .verdict-community-links a:hover { color: var(--amber); background: var(--amber-soft); border-color: #87734e; }
 :root[data-theme="dark"] :is(.category-tabs button:hover,.track-chips button:hover,.year-jumps button:hover,.axis-collapse-toggle:hover,.drawer-header button:hover,.refinement-panel header button:hover) { color: var(--ink); background: var(--theme-hover); }
 :root[data-theme="dark"] :is(.category-tabs button.active,.track-chips button.active.all,.stage-grid button.active,.refinement-trigger > span,.evolution-rail button.active,.drawer-actions .primary-action,.tooltip-actions button) { color: #fff; background: #111; border-color: #87734e; }
 :root[data-theme="dark"] :is(.drawer-actions .primary-action:hover,.tooltip-actions button:hover) { background: #30291d; border-color: var(--amber); }

@@ -35,8 +35,8 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
         </div>
         <aside className="verdict-method" aria-label="锐评标准">
           <Scales size={25} weight="duotone" />
-          <div><strong>看三件事</strong><span>机制变化 · 真实采用 · 后续影响</span></div>
-          <small>每张卡片都附判定依据和原始来源。</small>
+          <div><strong>官方负责举证，社区负责拆台</strong><span>硬数据 · 真实口碑 · 后续影响</span></div>
+          <small>综合 HN、Reddit、X、知乎与可检索的小红书公开讨论；热帖不等于民调。</small>
         </aside>
       </section>
 
@@ -60,7 +60,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
               <div className="verdict-tier-content">
                 <p>{tier.description}</p>
                 <div className="verdict-cards">
-                  {tierEntries.map(({ node, review, evidence, source }) => (
+                  {tierEntries.map(({ node, review, evidence, community, communitySources, source }) => (
                     <article key={node.id} className={`verdict-card ${selected?.id === node.id ? "selected" : ""}`}>
                       <button className="verdict-card-main" onClick={() => onSelect(node)} aria-pressed={selected?.id === node.id} aria-label={`${tier.label}：${node.title}。${review} 点击查看节点详情`}>
                         <span className="verdict-card-head">
@@ -69,9 +69,14 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
                           {selected?.id === node.id ? <CheckCircle size={18} weight="fill" /> : <ArrowRight size={18} />}
                         </span>
                         <span className="verdict-copy">{review}</span>
-                        <span className="verdict-evidence"><strong>判定依据</strong>{evidence}</span>
+                        <span className="verdict-evidence"><strong>社区风向</strong>{community}</span>
                       </button>
-                      <a className="verdict-source" href={source.url} target="_blank" rel="noopener noreferrer"><span>{source.label}</span><ArrowSquareOut size={15} /></a>
+                      <div className="verdict-links">
+                        <a className="verdict-source" href={source.url} target="_blank" rel="noopener noreferrer" title={`硬证据：${evidence}`}><span>{source.label}</span><ArrowSquareOut size={15} /></a>
+                        {communitySources.length > 0 && <span className="verdict-community-links" aria-label="社区样本">
+                          {communitySources.map((item) => <a key={`${node.id}-${item.label}`} href={item.url} target="_blank" rel="noopener noreferrer" title={`社区样本：${item.label}`}>{item.label}</a>)}
+                        </span>}
+                      </div>
                     </article>
                   ))}
                 </div>
@@ -80,7 +85,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
           );
         })}
       </div>
-      <footer className="verdict-note">核查时间：2026-11-03。新增独立复现、真实采用或退场记录后会直接改档。</footer>
+      <footer className="verdict-note">核查时间：2026-11-03。社区反馈是定性样本，不是投票；出现独立复现、规模采用或明确退场后会直接改档。</footer>
     </main>
   );
 }
