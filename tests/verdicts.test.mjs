@@ -48,3 +48,12 @@ test("the third view keeps ratings distinct from sourced node facts", () => {
   assert.match(board, /verdict-source/);
   assert.match(board, /onSelect\(node\)/);
 });
+
+test("tier numbers are plain text and cannot inherit the retired circle style", () => {
+  const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
+  const css = readFileSync(new URL("../src/styles.css", import.meta.url), "utf8");
+  assert.match(board, /<em className="verdict-grade">\{tier\.grade\}<\/em>/);
+  assert.doesNotMatch(board, /<span>\{tier\.grade\}<\/span>/);
+  assert.doesNotMatch(css, /\.verdict-grade\s*\{[^}]*border[^}]*\}/);
+  assert.doesNotMatch(css, /\.verdict-tier-label\s*>\s*span/);
+});

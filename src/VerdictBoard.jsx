@@ -53,7 +53,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
           return (
             <section key={tier.id} className={`verdict-tier tier-${tier.id}`}>
               <header className="verdict-tier-label">
-                <span>{tier.grade}</span>
+                <em className="verdict-grade">{tier.grade}</em>
                 <strong>{tier.label}</strong>
                 <small>{tier.subtitle}</small>
               </header>
