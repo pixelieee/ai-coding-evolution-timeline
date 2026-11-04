@@ -1,3 +1,6 @@
+import nodes from "./nodes.json" with { type: "json" };
+import { getNodeResearch, getPublishedDate } from "./nodeSources.js";
+
 export const verdictTiers = [
   { id: "hammer", label: "夯", grade: "01", subtitle: "挑刺都得先服", description: "真的改了行业默认动作。想黑它，先解释为什么全行业都在抄。" },
   { id: "top", label: "顶级", grade: "02", subtitle: "强，但没到封神", description: "硬价值、真实采用、后续影响都够。缺点也够具体，不靠情怀洗。" },
@@ -516,13 +519,83 @@ const tierOverrides = {
   "node-258": "watch",
 };
 
-export const verdicts = editorialVerdicts.map((entry) => ({
+const curatedVerdicts = editorialVerdicts.map((entry) => ({
   ...entry,
   tier: tierOverrides[entry.nodeId] || entry.tier,
   review: roastReviews[entry.nodeId] || entry.review,
   community: communitySignals[entry.nodeId] || "社区讨论样本不足，暂不把发布热度当成真实采用。",
   communitySources: communitySources[entry.nodeId] || [],
 }));
+
+const landmarkPatterns = [
+  /^GPT-4$/, /^GPT-5-Codex$/, /^DeepSeek V3$/, /^Claude 3\.7 Sonnet$/,
+  /^AlphaCode$/, /^InCoder \/ FIM$/, /^RepoCoder$/, /^CodeAct$/,
+  /^Reflexion$/, /^Function Calling$/, /^SWE-agent \/ ACI$/, /^PRM$/,
+  /^STaR$/, /^AlphaEvolve$/, /^Aider$/, /^Devin$/,
+];
+
+const earlyStagePattern = /预览|preview|beta|候选|实验|早期|prototype|research|内测|邀请|预印本/i;
+const retiredPattern = /终止|停止服务|关闭|退场|不再推荐/i;
+const matureStagePattern = /正式|GA|公开发布|正式开放|开源发布|开放协议|开放标准|工业案例|生产系统|内部生产|功能发布|模型发布/i;
+
+function getCompleteTier(node) {
+  const status = node.status || "";
+  if (retiredPattern.test(status)) return "drag";
+  if (landmarkPatterns.some((pattern) => pattern.test(node.title))) return "top";
+  if (earlyStagePattern.test(`${status} ${node.title}`)) return "watch";
+  if (node.section === "tech") return "watch";
+  if (matureStagePattern.test(status)) return "solid";
+  if (Number(getPublishedDate(node).slice(0, 4)) <= 2024) return "solid";
+  return "watch";
+}
+
+function getCompleteReview(node) {
+  const summary = (node.summary || (node.section === "products"
+    ? `${node.title} 将 ${node.family} 推进到更完整的真实任务`
+    : node.section === "models"
+      ? `${node.title} 提升代码、推理或工具调用能力`
+      : `${node.title} 为 ${node.family} 提供新的训练、执行或验证方法`)).replace(/[。；]+$/, "");
+  const status = node.status || "";
+  let judgement;
+  if (retiredPattern.test(status)) judgement = "点子可能留下了，独立产品或评测已经退场";
+  else if (earlyStagePattern.test(`${status} ${node.title}`)) judgement = "方向有戏，预览版和预印本都不算毕业证";
+  else if (node.section === "models") judgement = "能力提升成立，版本号本身不等于路线突破";
+  else if (node.section === "tech") judgement = "方法值得记，没跨过复现与生产采用之前先别封神";
+  else judgement = "功能已经落地，历史地位还要看它是否改变同类产品的默认做法";
+  return `${summary}；${judgement}。`;
+}
+
+function getCompleteEvidence(node) {
+  const research = getNodeResearch(node);
+  const status = node.status || (node.section === "tech" ? "研究节点" : "公开节点");
+  return `${research.kind || "公开资料"}记录 ${node.title} 于 ${getPublishedDate(node)} 进入“${status}”阶段；评级同时考虑发布成熟度与后续影响。`;
+}
+
+function getCompleteCommunity(node) {
+  const status = node.status || "";
+  if (earlyStagePattern.test(`${status} ${node.title}`)) return "独立使用样本仍少，现有讨论以首发体验和厂商材料为主；先观察稳定性、成本与持续使用。";
+  if (node.section === "models") return "公开讨论主要围绕能力、价格和工具稳定性；缺少同条件长期对比时，不把单次榜单或体感当定论。";
+  if (node.section === "tech") return "研究价值可以确认，真实外溢仍要看复现、开放实现和生产采用；论文热度不能直接折算成行业地位。";
+  return "功能已经公开，真实口碑仍取决于任务成功率、成本和长期留存；发布声量不等于持续采用。";
+}
+
+function makeCompleteVerdict(node) {
+  const research = getNodeResearch(node);
+  const sourceLabel = research.label.length >= 5 ? research.label : `${research.label} · 来源`;
+  return {
+    nodeId: node.id,
+    tier: getCompleteTier(node),
+    review: getCompleteReview(node),
+    evidence: getCompleteEvidence(node),
+    community: getCompleteCommunity(node),
+    source: source(sourceLabel, research.url),
+    communitySources: [],
+  };
+}
+
+const curatedById = new Map(curatedVerdicts.map((entry) => [entry.nodeId, entry]));
+
+export const verdicts = nodes.map((node) => curatedById.get(node.id) || makeCompleteVerdict(node));
 
 export function getVerdictTier(id) {
   return verdictTiers.find((tier) => tier.id === id);

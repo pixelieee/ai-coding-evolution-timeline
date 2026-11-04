@@ -8,7 +8,8 @@ test("editorial verdicts reference unique existing timeline nodes", () => {
   const nodeIds = new Set(nodes.map((node) => node.id));
   const ratedIds = verdicts.map((entry) => entry.nodeId);
   assert.equal(new Set(ratedIds).size, ratedIds.length);
-  assert.ok(verdicts.length >= 30);
+  assert.equal(verdicts.length, nodes.length);
+  assert.deepEqual(new Set(ratedIds), new Set(nodes.map((node) => node.id)));
   for (const entry of verdicts) {
     assert.ok(nodeIds.has(entry.nodeId), entry.nodeId);
     assert.ok(entry.review.length >= 24, `${entry.nodeId} needs a substantive review`);
@@ -43,6 +44,13 @@ test("personal agent milestones are all rated", () => {
   }
 });
 
+test("verdict board supports full-catalog search and collapsible tiers", () => {
+  const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
+  assert.match(board, /搜索全部锐评/);
+  assert.match(board, /collapsedTiers/);
+  assert.match(board, /tierEntries\.length/);
+});
+
 test("the third view keeps ratings distinct from sourced node facts", () => {
   const app = readFileSync(new URL("../src/App.jsx", import.meta.url), "utf8");
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
@@ -51,7 +59,7 @@ test("the third view keeps ratings distinct from sourced node facts", () => {
   assert.doesNotMatch(board, /官方负责举证，社区负责拆台/);
   assert.doesNotMatch(board, /硬数据 · 真实口碑 · 后续影响/);
   assert.match(board, /社区风向/);
-  assert.match(board, /社区反馈是定性样本，不是投票/);
+  assert.match(board, /全部时间线节点均已入榜/);
   assert.match(board, /verdict-source/);
   assert.match(board, /onSelect\(node\)/);
 });
