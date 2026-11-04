@@ -6,22 +6,24 @@ const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
 const app = read("../src/App.jsx");
 const css = read("../src/styles.css");
 
-test("mobile panorama opens with the wide desktop rail collapsed", () => {
-  assert.match(app, /useState\(\(\) => typeof window !== "undefined" && window\.innerWidth <= 760\)/);
-  assert.match(app, /viewMode === "panorama" && viewportWidth <= 760\) setAxisCollapsed\(true\)/);
+test("phones render a separate vertical timeline instead of the wide desktop canvas", () => {
+  assert.match(app, /const isMobileTimeline = viewportWidth <= 760/);
+  assert.match(app, /isMobileTimeline \? \(\s*<div className="mobile-timeline"/);
+  assert.match(app, /mobileTimelineGroups\.map/);
+  assert.match(app, /mobile-timeline-entry/);
   assert.doesNotMatch(app, /placeholder=\{`搜索 \$\{nodes\.length\} 个节点`\}/);
 });
 
-test("mobile panorama uses compact year chips and a two-row filter grid", () => {
+test("mobile timeline keeps search, category and date controls in a compact filter grid", () => {
   assert.match(css, /\.panorama-toolbar \{ display: none; \}/);
-  assert.match(css, /\.year-jumps \{ height: 30px !important; display: grid; grid-template-columns: repeat\(6,minmax\(0,1fr\)\)/);
   assert.match(css, /\.panorama-filterbar \{ display: grid; grid-template-columns: minmax\(0,1fr\) 44px;/);
   assert.match(css, /\.track-chips \{ grid-column: 1 \/ -1; grid-row: 2;[^}]*grid-template-columns: repeat\(4,minmax\(0,1fr\)\)/);
 });
 
-test("mobile panorama gives the canvas the remaining height and floats compact zoom controls", () => {
-  assert.match(css, /\.panorama-workspace \{ position: relative; grid-template-rows: minmax\(0,1fr\); \}/);
-  assert.match(css, /\.canvas-tools \{ position: absolute;[^}]*right: 10px; bottom: 10px;/);
-  assert.match(css, /\.canvas-footer-meta,\.canvas-gesture-hint,\.scale-label,\.zoom-slider \{ display: none; \}/);
+test("mobile year navigation stays visible while a compact chronological list scrolls", () => {
+  assert.match(css, /\.panorama-page\.mobile-timeline-page \{ grid-template-rows: auto minmax\(0,1fr\); \}/);
+  assert.match(css, /\.mobile-year-nav \{ position: sticky;[^}]*grid-auto-flow: column/);
+  assert.match(css, /\.mobile-year-group > header \{ position: sticky;/);
+  assert.match(css, /\.mobile-timeline-card \{[^}]*grid-template-columns: 34px minmax\(0,1fr\) 17px/);
   assert.match(css, /\.detail-drawer\.over-panorama \{ bottom: 61px; \}/);
 });

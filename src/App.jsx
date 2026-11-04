@@ -242,6 +242,7 @@ export function App() {
   const yearLabelRows = Math.max(1, ...yearStops.map((stop) => stop.row + 1));
   const currentPanoramaYear = yearStops.reduce((current, stop) => stop.scrollLeft <= percentToScroll(scrollPercent, maxScroll) + 1 ? stop.year : current, years[0]);
   const sectionCounts = useMemo(() => countBy(nodes, "section"), []);
+  const isMobileTimeline = viewportWidth <= 760;
 
   const availableFamilies = useMemo(() => {
     const source = section === "all" ? nodes : nodes.filter((node) => node.section === section);
@@ -313,6 +314,18 @@ export function App() {
     () => new Set(panoramaCandidates.filter((node) => matchesCalendarDate(getPublishedDate(node), panoramaDate)).map((node) => node.id)),
     [panoramaCandidates, panoramaDate],
   );
+  const mobileTimelineGroups = useMemo(() => {
+    const grouped = new Map();
+    panoramaCandidates
+      .filter((node) => matchesCalendarDate(getPublishedDate(node), panoramaDate))
+      .sort((a, b) => getPublishedDate(b).localeCompare(getPublishedDate(a)) || a.title.localeCompare(b.title, "zh-CN"))
+      .forEach((node) => {
+        const year = getPublishedDate(node).slice(0, 4);
+        if (!grouped.has(year)) grouped.set(year, []);
+        grouped.get(year).push(node);
+      });
+    return [...grouped].map(([year, entries]) => ({ year, entries }));
+  }, [panoramaCandidates, panoramaDate]);
 
   const latestPanoramaNode = useMemo(
     () => getLatestTimelineNode(panoramaLayouts, panoramaMatches, getPublishedDate),
@@ -441,11 +454,14 @@ export function App() {
       }
     };
     window.addEventListener("keydown", closeOnEscape);
-    const dismissHover = () => hoverDismissal.dismiss();
-    window.addEventListener("resize", dismissHover);
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+      hoverDismissal.dismiss();
+    };
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("keydown", closeOnEscape);
-      window.removeEventListener("resize", dismissHover);
+      window.removeEventListener("resize", handleResize);
     };
   }, [hoverDismissal]);
 
@@ -635,6 +651,7 @@ export function App() {
     setPanoramaDate(value);
     setCalendarJump(null);
     const viewport = viewportRef.current;
+    if (!viewport) setRefinementsOpen(false);
     // Use the same pre-date scope as the dots, not the previous date's matches.
     const stop = getCalendarTimelineNode(panoramaLayouts, new Set(panoramaCandidates.map((node) => node.id)), value, getPublishedDate);
     if (!viewport || !stop) return;
@@ -821,17 +838,17 @@ export function App() {
       ) : viewMode === "verdict" ? (
         <VerdictBoard nodes={nodes} selected={selected} onSelect={setSelected} />
       ) : (
-        <main className="panorama-page">
+        <main className={`panorama-page ${isMobileTimeline ? "mobile-timeline-page" : ""}`}>
           <div className="panorama-toolbar">
             <div><span className="eyebrow">INTERACTIVE TIMELINE</span><h1>全景时间线</h1></div>
           </div>
-          <div className="timeline-navigator" style={{ "--scrubber-thumb-size": `${SCRUBBER_THUMB_SIZE}px`, "--year-label-width": `${YEAR_LABEL_WIDTH}px` }}>
+          {!isMobileTimeline && <div className="timeline-navigator" style={{ "--scrubber-thumb-size": `${SCRUBBER_THUMB_SIZE}px`, "--year-label-width": `${YEAR_LABEL_WIDTH}px` }}>
             <div className="scrubber-row">
               <span>起点</span>
               <TimelineScrubber scrubberRef={scrubberRef} yearStops={yearStops} yearLabelRows={yearLabelRows} currentYear={currentPanoramaYear} scrollPercent={scrollPercent} onScrub={scrub} onYear={jumpToYear} monthStops={monthStops} onMonth={jumpToMonth} />
               <button type="button" className={`current-jump ${isAtCurrent ? "active" : ""}`} onClick={jumpToCurrent} aria-pressed={isAtCurrent} disabled={!latestPanoramaNode} title={latestPanoramaNode ? `定位到当前筛选下的最新节点：${latestPanoramaNode.date} ${latestPanoramaNode.node.title}` : "当前筛选没有匹配节点"} aria-label={latestPanoramaNode ? `当前，定位至 ${latestPanoramaNode.date} 的 ${latestPanoramaNode.node.title}` : "当前，没有匹配节点"}>当前</button>
             </div>
-          </div>
+          </div>}
           <div className="panorama-filterbar">
             <div className="compact-search"><MagnifyingGlass size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索节点" aria-label="搜索全景图节点" />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}</div>
             <div className="track-chips" aria-label="全景图分类">
@@ -846,7 +863,40 @@ export function App() {
             <span className="sr-only" role="status">{isAtCalendar ? `已定位到 ${calendarJump.destination.date} 的 ${calendarJump.destination.node.title}` : ""}</span>
             <span className="hotspot-count" aria-live="polite">{panoramaMatches.size} / {section === "all" ? nodes.length : sectionCounts[section]} 节点 · {panoramaMatches.size ? "再次点击分类返回全部" : "当前条件下无匹配节点"}</span>
           </div>
-          <div className="panorama-workspace">
+          {isMobileTimeline ? (
+            <div className="mobile-timeline" aria-label="移动端纵向时间线">
+              {mobileTimelineGroups.length > 0 ? (
+                <>
+                  <nav className="mobile-year-nav" aria-label="按年份跳转">
+                    {mobileTimelineGroups.map((group) => <button key={group.year} onClick={() => document.getElementById(`mobile-year-${group.year}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })}>{group.year}</button>)}
+                  </nav>
+                  <div className="mobile-timeline-groups">
+                    {mobileTimelineGroups.map((group) => (
+                      <section key={group.year} id={`mobile-year-${group.year}`} className="mobile-year-group">
+                        <header><strong>{group.year}</strong><span>{group.entries.length} 个节点</span></header>
+                        <div className="mobile-year-entries">
+                          {group.entries.map((node) => {
+                            const publishedDate = getPublishedDate(node);
+                            const itemSection = sectionMap[node.section];
+                            return (
+                              <div key={node.id} className="mobile-timeline-entry" style={{ "--entry-color": itemSection.color }}>
+                                <time dateTime={publishedDate}>{publishedDate.slice(5)}</time>
+                                <button className="mobile-timeline-card" onClick={() => setSelected(node)} aria-label={`${publishedDate} ${node.title}，点击查看详情`}>
+                                  <span className="mobile-timeline-mark">{hasBrandMark(node) ? <BrandMark node={node} compact /> : <ResearchMark node={node} />}</span>
+                                  <span className="mobile-timeline-copy"><strong>{node.title}</strong><small>{itemSection.label} · {getDevelopmentStage(node).label}</small></span>
+                                  <ArrowRight size={17} aria-hidden="true" />
+                                </button>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
+                </>
+              ) : <div className="mobile-timeline-empty"><MagnifyingGlass size={24} /><strong>没有匹配节点</strong><button onClick={resetFilters}>清除筛选</button></div>}
+            </div>
+          ) : <div className="panorama-workspace">
           <div ref={viewportRef} className={`panorama-viewport ${dragging ? "dragging" : ""}`} tabIndex={0} aria-label="时间线画布：点击泳道收起侧栏，拖拽平移，滚轮上下滚动，Shift 加滚轮横移，使用底部按钮缩放" onScroll={syncScrollPercent} onPointerDown={beginDrag} onPointerMove={dragCanvas} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={endDrag} onClickCapture={preventDragClick} onClick={handleCanvasClick} onDragStart={(event) => event.preventDefault()} onKeyDown={(event) => {
             if (event.target.closest("button, input, a, select")) return;
             if (["+", "=", "-", "0"].includes(event.key)) {
@@ -923,7 +973,7 @@ export function App() {
               <button className="reset-scale" onClick={resetPanorama} title="重置缩放、筛选和画布位置"><ArrowsCounterClockwise size={16} /><span>重置视图</span></button>
             </div>
           </div>
-          </div>
+          </div>}
         </main>
       )}
 
