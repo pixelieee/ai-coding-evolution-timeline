@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, ArrowSquareOut, Brain, CheckCircle, Scales } from "@phosphor-icons/react";
+import { ArrowRight, ArrowSquareOut, Brain, CaretDown, CaretUp, CheckCircle, Scales } from "@phosphor-icons/react";
 import { hasBrandMark } from "./brandAssets.jsx";
 import { BrandMark, getDevelopmentStage } from "./nodeMeta.jsx";
 import { getPublishedDate } from "./nodeSources.js";
@@ -20,6 +20,7 @@ function VerdictMark({ node }) {
 
 export function VerdictBoard({ nodes, selected, onSelect }) {
   const [section, setSection] = useState("all");
+  const [mobileHeaderCollapsed, setMobileHeaderCollapsed] = useState(false);
   const nodeById = useMemo(() => new Map(nodes.map((node) => [node.id, node])), [nodes]);
   const entries = useMemo(() => verdicts
     .map((entry) => ({ ...entry, node: nodeById.get(entry.nodeId) }))
@@ -27,21 +28,26 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
 
   return (
     <main className="verdict-page">
-      <section className="verdict-hero">
-        <div>
-          <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} MILESTONES</span>
-          <h1>从夯到拉</h1>
-        </div>
-        <aside className="verdict-method" aria-label="锐评标准">
-          <Scales size={25} weight="duotone" />
-          <div><strong>官方负责举证，社区负责拆台</strong><span>硬数据 · 真实口碑 · 后续影响</span></div>
-          <small>综合 HN、Reddit、X、知乎与可检索的小红书公开讨论；热帖不等于民调。</small>
-        </aside>
-      </section>
+      <section className={`verdict-top-panel ${mobileHeaderCollapsed ? "collapsed" : ""}`} aria-label="锐评介绍与分类">
+        <section className="verdict-hero">
+          <div>
+            <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} MILESTONES</span>
+            <h1>从夯到拉</h1>
+          </div>
+          <aside className="verdict-method" aria-label="锐评标准">
+            <Scales size={25} weight="duotone" />
+            <div><strong>官方负责举证，社区负责拆台</strong><span>硬数据 · 真实口碑 · 后续影响</span></div>
+            <small>综合 HN、Reddit、X、知乎与可检索的小红书公开讨论；热帖不等于民调。</small>
+          </aside>
+        </section>
 
-      <nav className="verdict-filters" aria-label="锐评分组">
-        {filters.map((filter) => <button key={filter.id} className={section === filter.id ? "active" : ""} onClick={() => setSection(filter.id)} aria-pressed={section === filter.id}>{filter.label}<span>{filter.id === "all" ? verdicts.length : verdicts.filter((entry) => nodeById.get(entry.nodeId)?.section === filter.id).length}</span></button>)}
-      </nav>
+        <nav className="verdict-filters" aria-label="锐评分组">
+          {filters.map((filter) => <button key={filter.id} className={section === filter.id ? "active" : ""} onClick={() => setSection(filter.id)} aria-pressed={section === filter.id}>{filter.label}<span>{filter.id === "all" ? verdicts.length : verdicts.filter((entry) => nodeById.get(entry.nodeId)?.section === filter.id).length}</span></button>)}
+        </nav>
+        <button type="button" className="mobile-top-panel-toggle" onClick={() => setMobileHeaderCollapsed((value) => !value)} aria-expanded={!mobileHeaderCollapsed} aria-label={mobileHeaderCollapsed ? "展开介绍与分类" : "收起介绍与分类"}>
+          {mobileHeaderCollapsed ? <><span>展开介绍与分类</span><CaretDown size={15} /></> : <><span>收起</span><CaretUp size={15} /></>}
+        </button>
+      </section>
 
       <div className="verdict-board">
         {verdictTiers.map((tier) => {

@@ -9,6 +9,7 @@ import {
   CaretDown,
   CaretLeft,
   CaretRight,
+  CaretUp,
   CheckCircle,
   CodeBlock,
   DownloadSimple,
@@ -215,6 +216,7 @@ export function App() {
   const [viewportHeight, setViewportHeight] = useState(720);
   const [viewportWidth, setViewportWidth] = useState(() => (typeof window === "undefined" ? 1280 : window.innerWidth));
   const [axisCollapsed, setAxisCollapsed] = useState(() => typeof window !== "undefined" && window.innerWidth <= 760);
+  const [mobilePanoramaControlsCollapsed, setMobilePanoramaControlsCollapsed] = useState(false);
   const [libraryPage, setLibraryPage] = useState(1);
 
   const hoverDismissal = useMemo(() => createHoverDismissal(() => setHoverCard(null), {
@@ -754,6 +756,23 @@ export function App() {
     requestAnimationFrame(() => document.querySelector(".library-results")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
 
+  const panoramaFilters = (
+    <div className="panorama-filterbar">
+      <div className="compact-search"><MagnifyingGlass size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索节点" aria-label="搜索全景图节点" />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}</div>
+      <div className="track-chips" aria-label="全景图分类">
+        <button className={section === "all" ? "active all" : ""} onClick={() => { setSection("all"); setFamily("all"); }}>全部方向</button>
+        {sections.map((item) => (
+          <button key={item.id} className={section === item.id ? "active" : ""} onClick={() => toggleSection(item.id)} aria-pressed={section === item.id} style={section === item.id ? { "--chip-color": item.color, "--chip-tint": item.tint } : undefined}>
+            <i style={{ background: item.color }} />{item.label}{section === item.id && <CheckCircle size={14} weight="fill" />}
+          </button>
+        ))}
+      </div>
+      <RefinementMenu open={refinementsOpen} onToggle={() => setRefinementsOpen((value) => !value)} calendar={{ value: panoramaDate, onChange: selectPanoramaDate, dates: panoramaCalendarDates }} section={section} stage={developmentStage} onStage={setDevelopmentStage} onClear={clearRefinements} />
+      <span className="sr-only" role="status">{isAtCalendar ? `已定位到 ${calendarJump.destination.date} 的 ${calendarJump.destination.node.title}` : ""}</span>
+      <span className="hotspot-count" aria-live="polite">{panoramaMatches.size} / {section === "all" ? nodes.length : sectionCounts[section]} 节点 · {panoramaMatches.size ? "再次点击分类返回全部" : "当前条件下无匹配节点"}</span>
+    </div>
+  );
+
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -849,27 +868,23 @@ export function App() {
               <button type="button" className={`current-jump ${isAtCurrent ? "active" : ""}`} onClick={jumpToCurrent} aria-pressed={isAtCurrent} disabled={!latestPanoramaNode} title={latestPanoramaNode ? `定位到当前筛选下的最新节点：${latestPanoramaNode.date} ${latestPanoramaNode.node.title}` : "当前筛选没有匹配节点"} aria-label={latestPanoramaNode ? `当前，定位至 ${latestPanoramaNode.date} 的 ${latestPanoramaNode.node.title}` : "当前，没有匹配节点"}>当前</button>
             </div>
           </div>}
-          <div className="panorama-filterbar">
-            <div className="compact-search"><MagnifyingGlass size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索节点" aria-label="搜索全景图节点" />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}</div>
-            <div className="track-chips" aria-label="全景图分类">
-              <button className={section === "all" ? "active all" : ""} onClick={() => { setSection("all"); setFamily("all"); }}>全部方向</button>
-              {sections.map((item) => (
-                <button key={item.id} className={section === item.id ? "active" : ""} onClick={() => toggleSection(item.id)} aria-pressed={section === item.id} style={section === item.id ? { "--chip-color": item.color, "--chip-tint": item.tint } : undefined}>
-                  <i style={{ background: item.color }} />{item.label}{section === item.id && <CheckCircle size={14} weight="fill" />}
-                </button>
-              ))}
-            </div>
-            <RefinementMenu open={refinementsOpen} onToggle={() => setRefinementsOpen((value) => !value)} calendar={{ value: panoramaDate, onChange: selectPanoramaDate, dates: panoramaCalendarDates }} section={section} stage={developmentStage} onStage={setDevelopmentStage} onClear={clearRefinements} />
-            <span className="sr-only" role="status">{isAtCalendar ? `已定位到 ${calendarJump.destination.date} 的 ${calendarJump.destination.node.title}` : ""}</span>
-            <span className="hotspot-count" aria-live="polite">{panoramaMatches.size} / {section === "all" ? nodes.length : sectionCounts[section]} 节点 · {panoramaMatches.size ? "再次点击分类返回全部" : "当前条件下无匹配节点"}</span>
-          </div>
+          {isMobileTimeline ? (
+            <section className={`mobile-top-panel ${mobilePanoramaControlsCollapsed ? "collapsed" : ""}`} aria-label="时间线筛选与年份导航">
+              {!mobilePanoramaControlsCollapsed && panoramaFilters}
+              {!mobilePanoramaControlsCollapsed && mobileTimelineGroups.length > 0 && (
+                <nav className="mobile-year-nav" aria-label="按年份跳转">
+                  {mobileTimelineGroups.map((group) => <button key={group.year} onClick={() => document.getElementById(`mobile-year-${group.year}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })}>{group.year}</button>)}
+                </nav>
+              )}
+              <button type="button" className="mobile-top-panel-toggle" onClick={() => { setRefinementsOpen(false); setMobilePanoramaControlsCollapsed((value) => !value); }} aria-expanded={!mobilePanoramaControlsCollapsed} aria-label={mobilePanoramaControlsCollapsed ? "展开筛选与年份" : "收起筛选与年份"}>
+                {mobilePanoramaControlsCollapsed ? <><span>展开筛选与年份</span><CaretDown size={15} /></> : <><span>收起</span><CaretUp size={15} /></>}
+              </button>
+            </section>
+          ) : panoramaFilters}
           {isMobileTimeline ? (
             <div className="mobile-timeline" aria-label="移动端纵向时间线">
               {mobileTimelineGroups.length > 0 ? (
                 <>
-                  <nav className="mobile-year-nav" aria-label="按年份跳转">
-                    {mobileTimelineGroups.map((group) => <button key={group.year} onClick={() => document.getElementById(`mobile-year-${group.year}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })}>{group.year}</button>)}
-                  </nav>
                   <div className="mobile-timeline-groups">
                     {mobileTimelineGroups.map((group) => (
                       <section key={group.year} id={`mobile-year-${group.year}`} className="mobile-year-group">

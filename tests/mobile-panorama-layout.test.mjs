@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
 const app = read("../src/App.jsx");
 const css = read("../src/styles.css");
+const verdict = read("../src/VerdictBoard.jsx");
 
 test("phones render a separate vertical timeline instead of the wide desktop canvas", () => {
   assert.match(app, /const isMobileTimeline = viewportWidth <= 760/);
@@ -26,4 +27,19 @@ test("mobile year navigation stays visible while a compact chronological list sc
   assert.match(css, /\.mobile-year-group > header \{ position: sticky;/);
   assert.match(css, /\.mobile-timeline-card \{[^}]*grid-template-columns: 34px minmax\(0,1fr\) 17px/);
   assert.match(css, /\.detail-drawer\.over-panorama \{ bottom: 61px; \}/);
+});
+
+test("mobile timeline controls collapse into a single explicit restore bar", () => {
+  assert.match(app, /mobilePanoramaControlsCollapsed/);
+  assert.match(app, /className=\{`mobile-top-panel \$\{mobilePanoramaControlsCollapsed \? "collapsed" : ""\}`\}/);
+  assert.match(app, /展开筛选与年份/);
+  assert.match(css, /\.mobile-top-panel\.collapsed,\s*\.verdict-top-panel\.collapsed \{ min-height: 36px;/);
+  assert.match(css, /\.mobile-top-panel\.collapsed > \.mobile-top-panel-toggle,\s*\.verdict-top-panel\.collapsed > \.mobile-top-panel-toggle/);
+});
+
+test("mobile verdict header collapses and its evidence box is compact", () => {
+  assert.match(verdict, /mobileHeaderCollapsed/);
+  assert.match(verdict, /展开介绍与分类/);
+  assert.match(css, /\.verdict-method \{ min-width: 0; min-height: 0; grid-template-columns: 20px minmax\(0,1fr\);[^}]*padding: 12px;/);
+  assert.match(css, /\.verdict-top-panel\.collapsed/);
 });

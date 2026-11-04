@@ -17,8 +17,8 @@ test("both views use the same calendar panel with no legacy month-button fallbac
   const menus = app.match(/<RefinementMenu\b[^\n]+/g);
   assert.equal(menus.length, 2);
   assert.ok(menus.every((menu) => menu.includes("calendar={{ value:")));
-  assert.match(menus[0], /value: libraryDate, onChange: setLibraryDate, dates: calendarDates/);
-  assert.match(menus[1], /value: panoramaDate, onChange: selectPanoramaDate, dates: panoramaCalendarDates/);
+  assert.ok(menus.some((menu) => /value: libraryDate, onChange: setLibraryDate, dates: calendarDates/.test(menu)));
+  assert.ok(menus.some((menu) => /value: panoramaDate, onChange: selectPanoramaDate, dates: panoramaCalendarDates/.test(menu)));
   assert.match(app, /refinement-panel calendar-panel/);
   assert.match(app, /<ArchiveCalendar \{\.\.\.calendar\} \/>/);
   assert.doesNotMatch(app, /精细筛选|月份与发展阶段|month-grid|getNodeMonths|setMonth\(/);
