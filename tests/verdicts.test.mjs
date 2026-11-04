@@ -36,6 +36,13 @@ test("every tier and every timeline section is represented", () => {
   assert.deepEqual([...sections].sort(), ["models", "products", "tech"]);
 });
 
+test("personal agent milestones are all rated", () => {
+  const ratedIds = new Set(verdicts.map((entry) => entry.nodeId));
+  for (const nodeId of ["node-282", "node-283", "node-284", "node-285", "node-286", "node-287", "node-288"]) {
+    assert.ok(ratedIds.has(nodeId), `${nodeId} is missing from the verdict board`);
+  }
+});
+
 test("the third view keeps ratings distinct from sourced node facts", () => {
   const app = readFileSync(new URL("../src/App.jsx", import.meta.url), "utf8");
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");

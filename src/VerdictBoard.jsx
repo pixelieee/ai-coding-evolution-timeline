@@ -84,7 +84,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
           );
         })}
       </div>
-      <footer className="verdict-note">核查时间：2026-11-03。社区反馈是定性样本，不是投票；出现独立复现、规模采用或明确退场后会直接改档。</footer>
+      <footer className="verdict-note">核查时间：2026-11-04。社区反馈是定性样本，不是投票；出现独立复现、规模采用或明确退场后会直接改档。</footer>
     </main>
   );
 }

@@ -8,7 +8,7 @@ export const verdictTiers = [
 
 const source = (label, url) => ({ label, url });
 
-// 硬事实核查于 2026-11-03；社区风向取自 HN、Reddit、X、知乎与可检索的小红书公开讨论。
+// 硬事实核查于 2026-11-04；社区风向取自 HN、Reddit、X、知乎与可检索的小红书公开讨论。
 // 社区样本用于判断体验与争议，不替代技术事实，也不把单条热帖当成总体民意。
 const editorialVerdicts = [
   {
@@ -187,6 +187,24 @@ const editorialVerdicts = [
     evidence: "Meta 报告首轮内部部署由 3 名工程师推进 8 个模型提案，工程产出约为既往流程的 5 倍。",
     source: source("Meta Engineering · Ranking Engineer Agent", "https://engineering.fb.com/2026/03/17/ml-applications/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/"),
   },
+  {
+    nodeId: "node-282", tier: "solid",
+    review: "把研究、网站和办公文档放进同一执行环境，通用 Agent 的产品闭环已经成立。",
+    evidence: "Kimi 官方文档列出网页、文档、表格、幻灯片和深度研究等完整交付能力，同时明确上下文与用量限制。",
+    source: source("Kimi · Agent overview", "https://www.kimi.com/en/help/agent/agent-overview"),
+  },
+  {
+    nodeId: "node-284", tier: "solid",
+    review: "短信和电话成为 Agent 入口，现实世界任务第一次做到了足够低的交互门槛。",
+    evidence: "公开测试者认为任务完成度超出预期；产品仍为邀请制，代操作账户与支付也引发集中隐私争议。",
+    source: source("TechCrunch · Instinct early testing", "https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/"),
+  },
+  {
+    nodeId: "node-285", tier: "solid",
+    review: "Personal Agent 首次获得大众级分发，安全隔离、审批和撤销权限也被做成完整产品。",
+    evidence: "Reuters 援引 Sensor Tower 称 Muse 上线两周下载超过 250 万；实际电话任务仍曾由人类外包协助完成。",
+    source: source("Reuters · Muse adoption and concierge", "https://www.reuters.com/business/meta-testing-human-concierge-its-new-personal-ai-agent-muse-2026-09-22/"),
+  },
 
   {
     nodeId: "node-188", tier: "watch",
@@ -272,6 +290,30 @@ const editorialVerdicts = [
     evidence: "官方仓库标为 prototype；Router/Worker、事件驱动和 Watchdog 只完成了部分公开实现。",
     source: source("DeepSeek · dsh-superagent", "https://github.com/deepseek-ai/dsh-superagent-prototype"),
   },
+  {
+    nodeId: "node-283", tier: "watch",
+    review: "Workspace 原生接入让它很适合个人事务，但高权限、Beta 稳定性和订阅门槛还没过关。",
+    evidence: "Google 将 Spark 标为 Beta；官方安全说明要求监督任务并警告网页提示注入可能暴露连接应用中的信息。",
+    source: source("Google · Gemini Spark", "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/"),
+  },
+  {
+    nodeId: "node-286", tier: "watch",
+    review: "Agent 有了邮箱、电话、钱包和电脑，数字身份设计完整；公开可靠性证据仍很薄。",
+    evidence: "Cue 仍处 Early Access 和邀请制，公开样本主要来自首批体验者，尚无规模使用或长期任务数据。",
+    source: source("Manus · Cue", "https://www.manus.im/uk/blog/introducing-manus-2-0"),
+  },
+  {
+    nodeId: "node-287", tier: "watch",
+    review: "常驻云电脑、插件和审批系统都齐了，但一个月的体验还证明不了它能长期当同事。",
+    evidence: "OpenAI 已公开 Dots 的云电脑、4,000+ 插件与 Auto-review；独立实测仍出现确认循环、站点阻断和任务未完成。",
+    source: source("OpenAI · Introducing dots", "https://openai.com/index/introducing-dots/"),
+  },
+  {
+    nodeId: "node-288", tier: "watch",
+    review: "共享线程抓住了家庭和朋友协作的真问题，主动性与临时应用的完成度还需要打磨。",
+    evidence: "Wabi 2.0 于 2026-10-19 公开发布；现有独立反馈认可多人线程，同时指出过度主动和应用粗糙。",
+    source: source("Wabi · official site", "https://wabi.ai/"),
+  },
 
   {
     nodeId: "node-009", tier: "drag",
@@ -317,6 +359,9 @@ const roastReviews = {
   "node-224": "便宜又全能的参数表很好看；真实项目里能否少返工，社区还没形成共识。",
   "node-235": "让模型优化自己的推理栈很硬；目前成绩单仍是自家老师批的。",
   "node-258": "三个人带 Agent 跑八个模型提案很猛；离开 Meta 的算力、数据和内网，复制难度同样很猛。",
+  "node-282": "网页、PPT、研究一口气全接了，像个肯干的全能实习生；任务一长，重复、额度和售后也一起加班。",
+  "node-284": "发条短信真能把杂事办了，魔法感不靠界面；代价是把邮箱、账号和支付交给一家还在邀请测试的公司。",
+  "node-285": "上线两周冲到榜首很能打；安全 VM 做得再认真，也挡不住用户先问：我真要把邮箱和付款交给 Meta？",
   "node-188": "会改自己工具链，听着像 RSI；实验场里能涨分，生产里先别让它碰 main。",
   "node-190": "会自改代码的研究系统有了，能否连续进化还没有；达尔文还在试管里。",
   "node-278": "Harness 和 Policy 终于不再各练各的；目前更像漂亮的双人舞录像，没证明能巡演。",
@@ -331,6 +376,10 @@ const roastReviews = {
   "node-238": "RSI 终于有健身房了；有没有练出肌肉，等更多队伍进场再说。",
   "node-240": "一次性改 Harness 终于能沉淀；论文里叫长期记忆，生产里还得叫变更管理。",
   "node-244": "架构图已经像大系统，实现还写着 prototype；目前最完整的是野心。",
+  "node-283": "背靠 Gmail、Drive 和 Calendar，起步就住进用户生活；Beta 的日常仍是权限给得多、结果偶尔没看懂要求。",
+  "node-286": "邮箱、电话、钱包、电脑一套工牌发齐了；目前更像豪华入职仪式，稳定上班记录还没攒够。",
+  "node-287": "云电脑、四千插件、24/7 都配齐了；发布一个月先别叫同事，最多算还在试用期的实习生。",
+  "node-288": "别人做一人一个 Agent，Wabi 直接拉进家庭群；想法很聪明，太主动时也像那个没人问却一直安排日程的群友。",
   "node-009": "Issue 到 PR 的愿景没死，产品先死了；后来者把尸体上的好点子全捡走。",
   "node-074": "演示像未来，寿命像内测；最后证明浏览器 Agent 可以活，但没必要叫 Operator。",
 };
@@ -365,6 +414,9 @@ const communitySignals = {
   "node-224": "价格和开放路线吸睛；长任务返工率、工具稳定性与真实项目数据仍缺统一结论。",
   "node-235": "技术圈兴趣很高，外部复现很少；目前主要证据仍来自 Z.ai 自己的生产案例。",
   "node-258": "业界认可这是生产级 ML Agent 案例；同时普遍认为 Meta 内部条件难以复制。",
+  "node-282": "早期用户夸它全能、交付物完整；长任务重复、套餐消耗、服务拥堵和复杂工程要手工补配置被频繁吐槽。",
+  "node-284": "测试者普遍认可任务完成度超出预期；讨论迅速转向密码托管、数据用途和撤销权限，越好用越考验信任。",
+  "node-285": "下载和商店评分很强，省事感也真实；幻觉、主动消息、数据训练与人工代打电话让信任问题追着热度一起涨。",
   "node-188": "研究圈关注度高于工程采用；大家最担心改崩、回滚和跨任务负迁移。",
   "node-190": "自我改进方向受关注；讨论焦点始终是固定评测会不会把系统带向刷分。",
   "node-278": "概念获得认可，复现讨论尚少；长期训练稳定性和跨模型收益仍是空白。",
@@ -379,6 +431,10 @@ const communitySignals = {
   "node-238": "统一 RSI 实验底座得到研究者认可；真实长期运行案例尚未出现。",
   "node-240": "双层 Harness 记忆设计受关注；工程师最关心的版本、回滚和审计仍需补齐。",
   "node-244": "架构设想获得关注，官方自己也标为 prototype；社区共识是先等代码补完。",
+  "node-283": "重度 Workspace 用户认可表格和日程自动化；日常体验仍会卡在浏览器控制、权限过宽、价格和结果不稳定。",
+  "node-286": "首批用户认可多 Agent 分工的潜力；更多人还卡在邀请码、平台可用性和不知道它比 Manus 主站多做了什么。",
+  "node-287": "后台研究和文档迭代已有好评；搜索打转、重复确认、购物站点阻断和高价订阅让它离常驻同事还有距离。",
+  "node-288": "多人线程和临时界面获得好评；首批用户也直说它过度主动、应用粗糙，公开规模与长期留存尚未出现。",
   "node-009": "理念被后来的 coding agent 继承；用户对独立预览退场几乎没有留恋。",
   "node-074": "演示阶段热度高，真实使用抱怨慢、受限和脆；并入 ChatGPT agent 后讨论迅速退潮。",
 };
@@ -424,6 +480,31 @@ const communitySources = {
     { label: "知乎", url: "https://www.zhihu.com/question/1933282570436589214/answer/1933533271528039859" },
   ],
   "node-194": [{ label: "HN", url: "https://news.ycombinator.com/item?id=48554513" }],
+  "node-282": [
+    { label: "Reddit", url: "https://www.reddit.com/r/kimi/comments/1vqno3r/kimi_ai_from_amazing_to_below_average/" },
+    { label: "Reddit", url: "https://www.reddit.com/r/kimi/comments/1tqvqik/buyer_beware_kimis_annual_membership_may_be_a_bad/" },
+  ],
+  "node-283": [
+    { label: "Reddit", url: "https://www.reddit.com/r/GeminiAI/comments/1w316mw/my_initial_thoughts_on_gemini_spark_beta_after_a/" },
+    { label: "WIRED", url: "https://www.wired.com/story/google-gemini-spark-ai-agent-hands-on/" },
+  ],
+  "node-284": [{ label: "TechCrunch", url: "https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/" }],
+  "node-285": [
+    { label: "WIRED", url: "https://www.wired.com/story/metas-muse-is-better-at-surveilling-than-helping-me/" },
+    { label: "App Store", url: "https://apps.apple.com/us/app/muse-from-meta/id6760173601" },
+  ],
+  "node-286": [
+    { label: "Reddit", url: "https://www.reddit.com/r/ManusOfficial/comments/1x2txme/cue_agents_by_manus_a_lot_of_potential/" },
+    { label: "Reddit", url: "https://www.reddit.com/r/ManusOfficial/comments/1wtf4v6/whats_the_point_of_cue/" },
+  ],
+  "node-287": [
+    { label: "The Verge", url: "https://www.theverge.com/ai-artificial-intelligence/1004096/openai-chatgpt-dots-hands-on-agent" },
+    { label: "Reddit", url: "https://www.reddit.com/r/OpenAI/comments/1wu77gv/thoughts_on_dots/" },
+  ],
+  "node-288": [
+    { label: "X", url: "https://x.com/nikunj/status/2112219327881761008" },
+    { label: "TechCrunch", url: "https://techcrunch.com/2026/09/29/ai-powered-app-maker-wabi-pivots-to-a-messaging-experience/" },
+  ],
 };
 
 const tierOverrides = {
