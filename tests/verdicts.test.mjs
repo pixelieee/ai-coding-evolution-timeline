@@ -57,3 +57,9 @@ test("tier numbers are plain text and cannot inherit the retired circle style", 
   assert.doesNotMatch(css, /\.verdict-grade\s*\{[^}]*border[^}]*\}/);
   assert.doesNotMatch(css, /\.verdict-tier-label\s*>\s*span/);
 });
+
+test("mobile verdict headings avoid unexplained taglines", () => {
+  const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
+  assert.doesNotMatch(board, /看它改变了什么、扩散到哪里、今天还剩下什么/);
+  assert.doesNotMatch(board, /\{tier\.subtitle\}/);
+});

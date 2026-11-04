@@ -737,8 +737,6 @@ export function App() {
     requestAnimationFrame(() => document.querySelector(".library-results")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
 
-  const hasFilters = query || section !== "all" || libraryDate || developmentStage !== "all" || family !== "all";
-
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -757,8 +755,8 @@ export function App() {
           </button>
           <div className="pdf-actions" role="group" aria-label="原始 PDF">
             <span>原始 PDF</span>
-            <a className="download-link" href="./AI-Coding-Evolution-Timeline.pdf" target="_blank" rel="noopener noreferrer" aria-label="查看原始 PDF（新标签页）" title="在新标签页查看原始 PDF"><Eye size={17} /> 查看</a>
-            <a className="download-link" href="./AI-Coding-Evolution-Timeline.pdf" download="AI-Coding-Evolution-Timeline.pdf" aria-label="下载原始 PDF" title="下载原始 PDF"><DownloadSimple size={17} /> 下载</a>
+            <a className="download-link" href="./AI-Coding-Evolution-Timeline.pdf" target="_blank" rel="noopener noreferrer" aria-label="查看原始 PDF（新标签页）" title="在新标签页查看原始 PDF"><Eye size={17} /><span>查看</span></a>
+            <a className="download-link" href="./AI-Coding-Evolution-Timeline.pdf" download="AI-Coding-Evolution-Timeline.pdf" aria-label="下载原始 PDF" title="下载原始 PDF"><DownloadSimple size={17} /><span>下载</span></a>
           </div>
         </div>
       </header>
@@ -787,7 +785,6 @@ export function App() {
             </label>
             <RefinementMenu open={refinementsOpen} onToggle={() => setRefinementsOpen((value) => !value)} calendar={{ value: libraryDate, onChange: setLibraryDate, dates: calendarDates }} section={section} stage={developmentStage} onStage={setDevelopmentStage} onClear={clearRefinements} />
             <button className="icon-button" onClick={() => setNewestFirst((value) => !value)} aria-label={newestFirst ? "切换为最早优先" : "切换为最新优先"}>{newestFirst ? <SortDescending size={17} /> : <SortAscending size={17} />}</button>
-            {hasFilters && <button className="reset-button" onClick={resetFilters}><ArrowsCounterClockwise size={15} /> 重置</button>}
           </section>
 
           <section className="library-results">

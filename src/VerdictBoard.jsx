@@ -31,7 +31,6 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
         <div>
           <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} MILESTONES</span>
           <h1>从夯到拉</h1>
-          <p>看它改变了什么、扩散到哪里、今天还剩下什么。</p>
         </div>
         <aside className="verdict-method" aria-label="锐评标准">
           <Scales size={25} weight="duotone" />
@@ -55,7 +54,6 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
               <header className="verdict-tier-label">
                 <em className="verdict-grade">{tier.grade}</em>
                 <strong>{tier.label}</strong>
-                <small>{tier.subtitle}</small>
               </header>
               <div className="verdict-tier-content">
                 <p>{tier.description}</p>
