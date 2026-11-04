@@ -94,7 +94,7 @@
 :root[data-theme="dark"] .verdict-community-links a { color: var(--theme-muted); background: var(--theme-card); border-color: var(--theme-border); }
 :root[data-theme="dark"] .verdict-community-links a:hover { color: var(--amber); background: var(--amber-soft); border-color: #87734e; }
 :root[data-theme="dark"] :is(.category-tabs button:hover,.track-chips button:hover,.year-jumps button:hover,.axis-collapse-toggle:hover,.drawer-header button:hover,.refinement-panel header button:hover) { color: var(--ink); background: var(--theme-hover); }
-:root[data-theme="dark"] :is(.category-tabs button.active,.track-chips button.active.all,.stage-grid button.active,.refinement-trigger > span,.evolution-rail button.active,.drawer-actions .primary-action,.tooltip-actions button) { color: #fff; background: #111; border-color: #87734e; }
+:root[data-theme="dark"] :is(.category-tabs button.active,.track-chips button.active.all,.stage-grid button.active,.refinement-count,.evolution-rail button.active,.drawer-actions .primary-action,.tooltip-actions button) { color: #fff; background: #111; border-color: #87734e; }
 :root[data-theme="dark"] :is(.drawer-actions .primary-action:hover,.tooltip-actions button:hover) { background: #30291d; border-color: var(--amber); }
 :root[data-theme="dark"] .track-chips button.active:not(.all) { color: var(--chip-color); background: color-mix(in srgb,var(--chip-color) 12%,var(--theme-strip)); border-color: color-mix(in srgb,var(--chip-color) 45%,var(--theme-strip)); }
 :root[data-theme="dark"] :is(.current-jump:hover:not(:disabled),.current-jump.active,.month-lens-ticks button.active) { color: var(--amber); background: var(--amber-soft); border-color: #87734e; }

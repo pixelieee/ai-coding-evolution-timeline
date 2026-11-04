@@ -121,7 +121,7 @@ function RefinementMenu({ open, onToggle, stage, onStage, onClear, calendar, sec
   return (
     <div ref={menuRef} className={`refinement-menu ${open ? "open" : ""}`}>
       <button ref={triggerRef} className="refinement-trigger" onClick={onToggle} aria-expanded={open} aria-haspopup="dialog" aria-label={`日期与阶段筛选，${calendarSelectionLabel(calendar.value)}`}>
-        <CalendarDots size={15} /> 日期与阶段{activeCount > 0 && <span>{activeCount}</span>}<CaretDown size={12} />
+        <CalendarDots size={15} /><span className="refinement-label">日期与阶段</span>{activeCount > 0 && <span className="refinement-count">{activeCount}</span>}<CaretDown size={12} />
       </button>
       {open && (
         <section className={`refinement-panel calendar-panel ${panelPlacement.above ? "opens-up" : ""}`} style={{ maxHeight: panelPlacement.maxHeight }} role="dialog" aria-label={`${panelTitle}筛选`}>

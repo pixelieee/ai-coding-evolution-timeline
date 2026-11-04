@@ -152,7 +152,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .refinement-menu { position: relative; z-index: 65; flex: 0 0 auto; }
 .refinement-trigger { height: 42px; display: inline-flex; align-items: center; gap: 7px; padding: 0 10px; border: 1px solid #cdcfca; border-radius: 7px; color: #565a57; background: #fff; font-size: var(--text-ui); font-weight: 720; cursor: pointer; }
 .refinement-trigger:hover,.refinement-menu.open .refinement-trigger { border-color: #8c8f8a; color: #111; }
-.refinement-trigger > span { min-width: 22px; height: 22px; display: grid; place-items: center; border-radius: 99px; color: #fff; background: #171717; font-size: var(--text-micro); }
+.refinement-label { white-space: nowrap; }
+.refinement-count { min-width: 22px; height: 22px; display: grid; place-items: center; border-radius: 99px; color: #fff; background: #171717; font-size: var(--text-micro); }
 .refinement-menu.open .refinement-trigger > svg:last-child { transform: rotate(180deg); }
 .refinement-panel { position: absolute; z-index: 160; top: calc(100% + 9px); right: 0; width: min(440px,calc(100vw - 20px)); overflow: hidden; border: 1px solid #c8cac5; border-radius: 10px; background: #fff; box-shadow: 0 24px 64px rgba(22,24,22,.18),0 2px 8px rgba(22,24,22,.08); overflow-y: auto; overscroll-behavior: contain; }
 .refinement-panel header { min-height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #e7e8e4; background: #f8f8f6; }
@@ -657,6 +658,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .family-filter select { width: 100%; }
   .refinement-menu { grid-column: 2; width: 44px; }
   .refinement-trigger { width: 44px; height: 44px; display: grid; place-items: center; gap: 0; padding: 0; }
+  .refinement-label { display: none; }
   .icon-button { grid-column: 3; width: 44px; height: 44px; }
   .library-results { margin-top: 0; }
   .library-results-head { grid-template-columns: minmax(0,1fr) auto; gap: 12px; min-height: 52px; padding: 10px 2px; }
@@ -700,7 +702,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .panorama-filterbar .refinement-menu { grid-column: 2; grid-row: 1; width: 44px; }
   .panorama-filterbar .refinement-trigger { width: 44px; justify-content: center; padding: 0; font-size: 0; height: 42px; }
   .refinement-trigger > svg:last-child { display: none; }
-  .refinement-trigger > span { position: absolute; top: -5px; right: -5px; font-size: var(--text-micro); min-width: 22px; height: 22px; }
+  .refinement-count { position: absolute; top: -5px; right: -5px; font-size: var(--text-micro); min-width: 22px; height: 22px; }
   .refinement-panel { position: fixed; top: 68px; right: 10px; bottom: 62px; left: 10px; width: auto; max-height: none !important; overflow-y: auto; overscroll-behavior: contain; }
   .refinement-panel.calendar-panel { left: 10px; }
   .panorama-workspace { position: relative; grid-template-rows: minmax(0,1fr); }
