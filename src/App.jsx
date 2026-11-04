@@ -184,6 +184,9 @@ function matchesSearch(node, query) {
 export function App() {
   const theme = useSyncExternalStore(themeStore.subscribe, themeStore.getSnapshot, () => "light");
   const viewportRef = useRef(null);
+  const mobileTimelineRef = useRef(null);
+  const mobileTimelineScrollRef = useRef(0);
+  const mobileControlsAutoCollapseAfterRef = useRef(24);
   const scrubberRef = useRef(null);
   const hoverTooltipRef = useRef(null);
   const hoverTriggerRef = useRef(null);
@@ -228,6 +231,12 @@ export function App() {
   }, [viewMode, query, section, panoramaDate, developmentStage, hoverDismissal]);
   useEffect(() => {
     if (viewMode === "panorama" && viewportWidth <= 760) setAxisCollapsed(true);
+  }, [viewMode, viewportWidth]);
+  useEffect(() => {
+    const lockMobilePanorama = viewMode === "panorama" && viewportWidth <= 760;
+    document.body.classList.toggle("mobile-panorama-lock", lockMobilePanorama);
+    if (lockMobilePanorama) window.scrollTo(0, 0);
+    return () => document.body.classList.remove("mobile-panorama-lock");
   }, [viewMode, viewportWidth]);
 
   const expandedAxisWidth = viewportWidth <= 760 ? 260 : BAND_LABEL_WIDTH + LANE_LABEL_WIDTH;
@@ -756,6 +765,36 @@ export function App() {
     requestAnimationFrame(() => document.querySelector(".library-results")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
 
+  const collapseMobilePanoramaControls = () => {
+    setRefinementsOpen(false);
+    setMobilePanoramaControlsCollapsed(true);
+  };
+
+  const expandMobilePanoramaControls = () => {
+    mobileControlsAutoCollapseAfterRef.current = (mobileTimelineRef.current?.scrollTop ?? 0) + 32;
+    setMobilePanoramaControlsCollapsed(false);
+  };
+
+  const handleMobileTimelineScroll = (event) => {
+    const nextScrollTop = event.currentTarget.scrollTop;
+    const previousScrollTop = mobileTimelineScrollRef.current;
+    mobileTimelineScrollRef.current = nextScrollTop;
+    if (!mobilePanoramaControlsCollapsed && nextScrollTop > mobileControlsAutoCollapseAfterRef.current && nextScrollTop > previousScrollTop) {
+      collapseMobilePanoramaControls();
+    }
+  };
+
+  const jumpToMobileYear = (year) => {
+    const timeline = mobileTimelineRef.current;
+    const target = document.getElementById(`mobile-year-${year}`);
+    if (!timeline || !target) return;
+    collapseMobilePanoramaControls();
+    timeline.scrollTo({
+      top: target.offsetTop,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
+
   const panoramaFilters = (
     <div className="panorama-filterbar">
       <div className="compact-search"><MagnifyingGlass size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索节点" aria-label="搜索全景图节点" />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}</div>
@@ -768,6 +807,7 @@ export function App() {
         ))}
       </div>
       <RefinementMenu open={refinementsOpen} onToggle={() => setRefinementsOpen((value) => !value)} calendar={{ value: panoramaDate, onChange: selectPanoramaDate, dates: panoramaCalendarDates }} section={section} stage={developmentStage} onStage={setDevelopmentStage} onClear={clearRefinements} />
+      {isMobileTimeline && <button type="button" className="mobile-controls-collapse" onClick={collapseMobilePanoramaControls} aria-label="收起筛选与年份"><CaretUp size={17} /></button>}
       <span className="sr-only" role="status">{isAtCalendar ? `已定位到 ${calendarJump.destination.date} 的 ${calendarJump.destination.node.title}` : ""}</span>
       <span className="hotspot-count" aria-live="polite">{panoramaMatches.size} / {section === "all" ? nodes.length : sectionCounts[section]} 节点 · {panoramaMatches.size ? "再次点击分类返回全部" : "当前条件下无匹配节点"}</span>
     </div>
@@ -870,19 +910,20 @@ export function App() {
           </div>}
           {isMobileTimeline ? (
             <section className={`mobile-top-panel ${mobilePanoramaControlsCollapsed ? "collapsed" : ""}`} aria-label="时间线筛选与年份导航">
-              {!mobilePanoramaControlsCollapsed && panoramaFilters}
-              {!mobilePanoramaControlsCollapsed && mobileTimelineGroups.length > 0 && (
+              {mobilePanoramaControlsCollapsed ? (
+                <button type="button" className="mobile-controls-expand" onClick={expandMobilePanoramaControls} aria-label="展开筛选与年份"><span>展开筛选与年份</span><CaretDown size={15} /></button>
+              ) : <>
+                {panoramaFilters}
+                {mobileTimelineGroups.length > 0 && (
                 <nav className="mobile-year-nav" aria-label="按年份跳转">
-                  {mobileTimelineGroups.map((group) => <button key={group.year} onClick={() => document.getElementById(`mobile-year-${group.year}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })}>{group.year}</button>)}
+                  {mobileTimelineGroups.map((group) => <button key={group.year} onClick={() => jumpToMobileYear(group.year)}>{group.year}</button>)}
                 </nav>
-              )}
-              <button type="button" className="mobile-top-panel-toggle" onClick={() => { setRefinementsOpen(false); setMobilePanoramaControlsCollapsed((value) => !value); }} aria-expanded={!mobilePanoramaControlsCollapsed} aria-label={mobilePanoramaControlsCollapsed ? "展开筛选与年份" : "收起筛选与年份"}>
-                {mobilePanoramaControlsCollapsed ? <><span>展开筛选与年份</span><CaretDown size={15} /></> : <><span>收起</span><CaretUp size={15} /></>}
-              </button>
+                )}
+              </>}
             </section>
           ) : panoramaFilters}
           {isMobileTimeline ? (
-            <div className="mobile-timeline" aria-label="移动端纵向时间线">
+            <div ref={mobileTimelineRef} className="mobile-timeline" aria-label="移动端纵向时间线" onScroll={handleMobileTimelineScroll}>
               {mobileTimelineGroups.length > 0 ? (
                 <>
                   <div className="mobile-timeline-groups">

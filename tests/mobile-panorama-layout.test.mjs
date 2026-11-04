@@ -9,7 +9,7 @@ const verdict = read("../src/VerdictBoard.jsx");
 
 test("phones render a separate vertical timeline instead of the wide desktop canvas", () => {
   assert.match(app, /const isMobileTimeline = viewportWidth <= 760/);
-  assert.match(app, /isMobileTimeline \? \(\s*<div className="mobile-timeline"/);
+  assert.match(app, /isMobileTimeline \? \(\s*<div ref=\{mobileTimelineRef\} className="mobile-timeline"/);
   assert.match(app, /mobileTimelineGroups\.map/);
   assert.match(app, /mobile-timeline-entry/);
   assert.doesNotMatch(app, /placeholder=\{`搜索 \$\{nodes\.length\} 个节点`\}/);
@@ -17,7 +17,7 @@ test("phones render a separate vertical timeline instead of the wide desktop can
 
 test("mobile timeline keeps search, category and date controls in a compact filter grid", () => {
   assert.match(css, /\.panorama-toolbar \{ display: none; \}/);
-  assert.match(css, /\.panorama-filterbar \{ display: grid; grid-template-columns: minmax\(0,1fr\) 44px;/);
+  assert.match(css, /\.panorama-filterbar \{ display: grid; grid-template-columns: minmax\(0,1fr\) 44px 44px;/);
   assert.match(css, /\.track-chips \{ grid-column: 1 \/ -1; grid-row: 2;[^}]*grid-template-columns: repeat\(4,minmax\(0,1fr\)\)/);
 });
 
@@ -33,8 +33,19 @@ test("mobile timeline controls collapse into a single explicit restore bar", () 
   assert.match(app, /mobilePanoramaControlsCollapsed/);
   assert.match(app, /className=\{`mobile-top-panel \$\{mobilePanoramaControlsCollapsed \? "collapsed" : ""\}`\}/);
   assert.match(app, /展开筛选与年份/);
-  assert.match(css, /\.mobile-top-panel\.collapsed,\s*\.verdict-top-panel\.collapsed \{ min-height: 36px;/);
-  assert.match(css, /\.mobile-top-panel\.collapsed > \.mobile-top-panel-toggle,\s*\.verdict-top-panel\.collapsed > \.mobile-top-panel-toggle/);
+  assert.match(app, /className="mobile-controls-collapse"/);
+  assert.match(css, /\.mobile-top-panel\.collapsed,\.verdict-top-panel\.collapsed \{ min-height: 36px;/);
+  assert.match(css, /\.mobile-controls-expand \{ width: 100%; height: 36px;/);
+  assert.doesNotMatch(css, /\.mobile-top-panel:not\(\.collapsed\) \+ \.mobile-timeline/);
+});
+
+test("mobile timeline scrolls internally, auto-collapses controls and cannot expose body whitespace", () => {
+  assert.match(app, /onScroll=\{handleMobileTimelineScroll\}/);
+  assert.match(app, /nextScrollTop > mobileControlsAutoCollapseAfterRef\.current/);
+  assert.match(app, /timeline\.scrollTo\(\{/);
+  assert.doesNotMatch(app, /scrollIntoView\(\{ behavior: window\.matchMedia/);
+  assert.match(app, /document\.body\.classList\.toggle\("mobile-panorama-lock", lockMobilePanorama\)/);
+  assert.match(css, /body\.mobile-panorama-lock \{ position: fixed; inset: 0;[^}]*overflow: hidden;/);
 });
 
 test("mobile verdict header collapses and its evidence box is compact", () => {
