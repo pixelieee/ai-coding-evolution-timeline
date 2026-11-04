@@ -41,8 +41,8 @@ test("the third view keeps ratings distinct from sourced node facts", () => {
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
   assert.match(app, /从夯到拉/);
   assert.match(app, /viewMode === "verdict"/);
-  assert.match(board, /官方负责举证，社区负责拆台/);
-  assert.match(board, /硬数据 · 真实口碑 · 后续影响/);
+  assert.doesNotMatch(board, /官方负责举证，社区负责拆台/);
+  assert.doesNotMatch(board, /硬数据 · 真实口碑 · 后续影响/);
   assert.match(board, /社区风向/);
   assert.match(board, /社区反馈是定性样本，不是投票/);
   assert.match(board, /verdict-source/);
@@ -62,4 +62,11 @@ test("mobile verdict headings avoid unexplained taglines", () => {
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
   assert.doesNotMatch(board, /看它改变了什么、扩散到哪里、今天还剩下什么/);
   assert.doesNotMatch(board, /\{tier\.subtitle\}/);
+});
+
+test("verdict hero does not render a methodology card", () => {
+  const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
+  const css = readFileSync(new URL("../src/styles.css", import.meta.url), "utf8");
+  assert.doesNotMatch(board, /verdict-method/);
+  assert.doesNotMatch(css, /\.verdict-method/);
 });

@@ -48,9 +48,10 @@ test("mobile timeline scrolls internally, auto-collapses controls and cannot exp
   assert.match(css, /body\.mobile-panorama-lock \{ position: fixed; inset: 0;[^}]*overflow: hidden;/);
 });
 
-test("mobile verdict header collapses and its evidence box is compact", () => {
+test("mobile verdict header collapses without a methodology box", () => {
   assert.match(verdict, /mobileHeaderCollapsed/);
   assert.match(verdict, /展开介绍与分类/);
-  assert.match(css, /\.verdict-method \{ min-width: 0; min-height: 0; grid-template-columns: 20px minmax\(0,1fr\);[^}]*padding: 12px;/);
+  assert.doesNotMatch(verdict, /verdict-method/);
+  assert.doesNotMatch(css, /\.verdict-method/);
   assert.match(css, /\.verdict-top-panel\.collapsed/);
 });

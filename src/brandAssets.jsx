@@ -62,7 +62,7 @@ const componentRules = [
   { pattern: /lovable/i, name: "Lovable", Icon: LovableIcon },
   { pattern: /opencode/i, name: "OpenCode", Icon: OpenCodeIcon },
   { pattern: /manus/i, name: "Manus", Icon: ManusIcon },
-  { pattern: /meta ranking engineer|code llama/i, name: "Meta", Icon: MetaIcon },
+  { pattern: /meta muse|meta ranking engineer|code llama/i, name: "Meta", Icon: MetaIcon },
   { pattern: /^pi coding/i, name: "Pi", Icon: PiIcon },
   { pattern: /^trae$/i, name: "TRAE", Icon: TraeIcon },
   { pattern: /codebuddy|workbuddy/i, name: "Tencent · CodeBuddy", Icon: CodeBuddyIcon },
@@ -80,6 +80,8 @@ const componentRules = [
 ];
 
 const fileRules = [
+  { pattern: /^instinct$/i, name: "Instinct", source: "/logos/instinct.png" },
+  { pattern: /^wabi 2\.0$/i, name: "Wabi", source: "/logos/vector/wabi.svg" },
   { pattern: /^rea$/i, name: "REA · Reverse Engineer Anything", source: "/logos/vector/rea.svg" },
   { pattern: /^jev$/i, name: "TypeSafe AI · Jev", source: "/logos/typesafe-jev.png" },
   { pattern: /kimi/i, name: "Moonshot AI · Kimi", source: "/logos/vector/kimi-official.svg" },

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, ArrowSquareOut, Brain, CaretDown, CaretUp, CheckCircle, Scales } from "@phosphor-icons/react";
+import { ArrowRight, ArrowSquareOut, Brain, CaretDown, CaretUp, CheckCircle } from "@phosphor-icons/react";
 import { hasBrandMark } from "./brandAssets.jsx";
 import { BrandMark, getDevelopmentStage } from "./nodeMeta.jsx";
 import { getPublishedDate } from "./nodeSources.js";
@@ -34,11 +34,6 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
             <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} MILESTONES</span>
             <h1>从夯到拉</h1>
           </div>
-          <aside className="verdict-method" aria-label="锐评标准">
-            <Scales size={25} weight="duotone" />
-            <div><strong>官方负责举证，社区负责拆台</strong><span>硬数据 · 真实口碑 · 后续影响</span></div>
-            <small>综合 HN、Reddit、X、知乎与可检索的小红书公开讨论；热帖不等于民调。</small>
-          </aside>
         </section>
 
         <nav className="verdict-filters" aria-label="锐评分组">

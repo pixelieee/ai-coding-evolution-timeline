@@ -4591,5 +4591,170 @@
       "url": "https://openai.com/index/open-source-codex-orchestration-symphony/",
       "kind": "官方工程文章"
     }
+  },
+  {
+    "id": "node-282",
+    "date": "2025-09-26",
+    "year": 2025,
+    "title": "Kimi Agent",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "Agent 模式发布",
+    "summary": "把研究、网站、文档、表格和幻灯片交给同一 Agent 端到端完成，浏览器、终端和文件系统从单项工具变成通用执行环境。",
+    "detail": "首发名称为 OK Computer Agent mode。当前官方统一称 Kimi Agent；后续模型、Agent Swarm 与 Kimi Claw 扩展了它的长程执行和后台自动化能力。",
+    "series": "Kimi Agent",
+    "research": {
+      "label": "Kimi · Agent overview",
+      "url": "https://www.kimi.com/en/help/agent/agent-overview",
+      "kind": "官方文档"
+    }
+  },
+  {
+    "id": "node-283",
+    "date": "2026-05-19",
+    "year": 2026,
+    "title": "Gemini Spark",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "Beta",
+    "summary": "Google 把 Gemini 变成 24/7 云端 Personal Agent：接入 Gmail、Docs、Slides 等 Workspace，可按计划或触发器在用户离开后继续执行。",
+    "detail": "Spark 运行在 Gemini 3.5 与 Antigravity Harness 上。2026-06 扩展到 macOS，可整理本地文件并跨桌面与 Workspace 完成复杂流程。",
+    "series": "Gemini Spark",
+    "research": {
+      "label": "Google · Gemini Spark",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "Gemini Apps · release updates",
+          "url": "https://gemini.google.com/updates"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-284",
+    "date": "2026-08-26",
+    "year": 2026,
+    "title": "Instinct",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "邀请制 Beta",
+    "summary": "不另造工作台，用户通过短信或电话交代任务；Agent 使用自己的手机和电脑完成预订、购物、取消订阅与现实世界协调。",
+    "detail": "Instinct 的入口足够低摩擦，但代用户操作账户、通信和支付需要极高权限。首轮公开测试同时引发隐私条款和安全模型争议。",
+    "series": "Instinct",
+    "research": {
+      "label": "Instinct · official site",
+      "url": "https://instinct.com/",
+      "kind": "官方产品页",
+      "references": [
+        {
+          "label": "TechCrunch · invite-only launch and privacy concerns",
+          "url": "https://techcrunch.com/2026/08/26/viral-ai-startup-instinct-has-raised-350-million-at-a-2-5-billion-valuation/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-285",
+    "date": "2026-09-08",
+    "year": 2026,
+    "title": "Meta Muse",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "正式发布 / 分批上线",
+    "summary": "每位用户获得独立 Secure VM、浏览器和长期记忆；Muse 跨应用推进个人目标，敏感操作经过隔离的 Sentinel Agent 与用户审批。",
+    "detail": "Muse 可发邮件、填写表单、预订和购买，并在应用关闭后继续工作。权限、凭证隔离、审计轨迹和撤销访问被做成 Personal Agent 的产品底座。",
+    "series": "Meta Muse",
+    "research": {
+      "label": "Meta · Introducing Muse",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-286",
+    "date": "2026-09-28",
+    "year": 2026,
+    "title": "Manus Cue",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "Early Access",
+    "summary": "把 Personal Agent 做成可组队的数字身份：每个 Agent 拥有自己的邮箱、电话、钱包和云电脑，可在群聊中分工、交接并持续推进任务。",
+    "detail": "Cue 与 Manus 2.0 同日发布。用户设定预算、权限和最终决策，多名 Agent 分别研究、筛选、制作和联络，把单一助手扩展为个人 Agent 团队。",
+    "series": "Manus Cue",
+    "research": {
+      "label": "Manus · Introducing Manus 2.0 and Cue",
+      "url": "https://www.manus.im/uk/blog/introducing-manus-2-0",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-287",
+    "date": "2026-09-29",
+    "year": 2026,
+    "title": "OpenAI Dots",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "正式发布",
+    "summary": "常驻 Agent 获得自己的云电脑与浏览器，通过 4,000 多个插件连接应用，学习用户反馈，并从 ChatGPT、Slack 或 Teams 持续处理目标。",
+    "detail": "Dots 将后台 proactive research、Custom Rules、审批和 Activity View 组合成可治理的 Personal Agent；Specialist Dots 则把同一机制扩展到组织岗位。",
+    "series": "OpenAI Dots",
+    "research": {
+      "label": "OpenAI · Introducing dots",
+      "url": "https://openai.com/index/introducing-dots/",
+      "kind": "官方发布"
+    }
+  },
+  {
+    "id": "node-288",
+    "date": "2026-10-19",
+    "year": 2026,
+    "title": "Wabi 2.0",
+    "section": "products",
+    "family": "Personal Agent",
+    "stage": "04 协作型 Agent",
+    "developmentStage": "orchestrate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-04",
+    "status": "公开发布",
+    "summary": "把 Personal Agent 从单人私聊改成多人共享线程：Agent 主动协调家庭或朋友的计划，并按任务即时生成可点击的小应用和界面。",
+    "detail": "Wabi 2.0 于 2026-09-28 先以邀请制发布，10-19 面向 iOS、Android 与 Mac 公开开放。共享线程让参与者共同查看进度、补充信息和完成审批。",
+    "series": "Wabi 2.0",
+    "research": {
+      "label": "Wabi · official site",
+      "url": "https://wabi.ai/",
+      "kind": "官方产品页",
+      "references": [
+        {
+          "label": "Wabi 2.0 · official launch post",
+          "url": "https://x.com/ekuyda/status/2112212804979880239"
+        }
+      ]
+    }
   }
 ]

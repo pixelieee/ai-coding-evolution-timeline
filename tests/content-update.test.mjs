@@ -25,11 +25,22 @@ const ids = (list) => Array.from(list, (node) => node.id);
 const added = nodes.filter((node) => node.origin === "supplement");
 
 test("the refresh retains every original ID and keeps supplementary records sequential", () => {
-  assert.equal(nodes.length, 281);
+  assert.equal(nodes.length, 288);
   assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
   for (let id = 1; id <= nodes.length; id++) assert.ok(byId(`node-${String(id).padStart(3, "0")}`));
-  assert.equal(added.length, 89);
-  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [113, 97, 71]);
+  assert.equal(added.length, 96);
+  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [120, 97, 71]);
+});
+
+test("the personal-agent line covers the milestone products instead of only Grok Bot", () => {
+  const titles = new Set(nodes.filter((node) => node.family === "Personal Agent").map((node) => node.title));
+  for (const title of ["Kimi Agent", "Gemini Spark", "Instinct", "Meta Muse", "Manus Cue", "OpenAI Dots", "Wabi 2.0"]) {
+    assert.ok(titles.has(title), title);
+  }
+  for (const node of nodes.filter((item) => titles.has(item.title))) {
+    assert.equal(node.section, "products");
+    assert.match(node.date, /^\d{4}-\d{2}-\d{2}$/);
+  }
 });
 
 test("supplementary nodes carry exact dates, explicit capability summaries and traceable sources", () => {

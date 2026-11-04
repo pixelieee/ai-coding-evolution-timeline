@@ -81,14 +81,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 /* Editorial verdict */
 .verdict-page { width: min(1560px,calc(100% - 40px)); margin: 0 auto; padding: 32px 0 56px; }
-.verdict-hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,430px); align-items: end; gap: 48px; padding: 0 4px 30px; }
+.verdict-hero { display: grid; grid-template-columns: minmax(0,1fr); align-items: end; padding: 0 4px 30px; }
 .verdict-hero h1 { margin: 0; color: #111; font-size: clamp(44px,4.8vw,72px); line-height: .98; letter-spacing: -.075em; }
-.verdict-method { min-height: 112px; display: grid; grid-template-columns: auto 1fr; align-content: center; gap: 6px 13px; padding: 20px; border: 1px solid #cfd1cc; border-radius: 12px; color: #303330; background: #fff; }
-.verdict-method > svg { grid-row: 1 / 3; color: #9a6c12; }
-.verdict-method > div { display: grid; gap: 2px; }
-.verdict-method strong { font-size: 15px; }
-.verdict-method span { color: #555b56; font-size: var(--text-ui); }
-.verdict-method small { grid-column: 2; color: #858a85; font-size: var(--text-micro); }
 .verdict-filters { display: flex; align-items: center; gap: 5px; padding: 11px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow-x: auto; }
 .verdict-filters button { min-width: 82px; height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 0 13px; border: 1px solid transparent; border-radius: 7px; color: #656a66; background: transparent; font-size: var(--text-ui); font-weight: 720; white-space: nowrap; cursor: pointer; }
 .verdict-filters button:hover { color: #111; background: #eceeeb; }
@@ -630,11 +624,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .verdict-top-panel { position: relative; }
   .verdict-hero { grid-template-columns: 1fr; gap: 12px; padding: 0 2px 14px; }
   .verdict-hero h1 { font-size: 46px; }
-  .verdict-method { min-width: 0; min-height: 0; grid-template-columns: 20px minmax(0,1fr); gap: 4px 10px; padding: 12px; border-radius: 9px; }
-  .verdict-method > svg { width: 20px; height: 20px; }
-  .verdict-method strong { font-size: 13px; }
-  .verdict-method span { font-size: 12px; }
-  .verdict-method small { font-size: 11px; line-height: 1.4; }
   .verdict-top-panel.collapsed .verdict-hero,
   .verdict-top-panel.collapsed .verdict-filters { display: none; }
   .verdict-top-panel:not(.collapsed) + .verdict-board { margin-top: 31px; }

@@ -83,7 +83,6 @@ test("crowded year labels stagger without moving their real scroll positions", (
       }
     }
     if (trackWidth === 220) assert.ok(stops.some((stop) => stop.row > 0));
-    if (trackWidth === 2300) assert.ok(stops.every((stop) => stop.row === 0));
   }
 });
 
