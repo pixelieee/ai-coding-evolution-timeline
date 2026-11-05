@@ -1,4 +1,5 @@
 import nodes from "./nodes.json" with { type: "json" };
+import editorialFacts from "./nodeEditorialFacts.json" with { type: "json" };
 import { getNodeResearch, getPublishedDate } from "./nodeSources.js";
 
 export const verdictTiers = [
@@ -43,6 +44,12 @@ const editorialVerdicts = [
     review: "代码评测从生成小函数推进到修真实仓库，训练目标和产品宣传口径都被它改写。",
     evidence: "OpenAI 将其用于模型自主性评估，并与作者共建 500 题人工核验版 SWE-bench Verified。",
     source: source("OpenAI · SWE-bench Verified", "https://openai.com/index/introducing-swe-bench-verified/"),
+  },
+  {
+    nodeId: "node-267", tier: "top",
+    review: "它把 SWE-bench 修成行业通用尺子，但污染与坏测试最终让高分不再等于真实工程能力。",
+    evidence: "OpenAI 2026 年审计发现：常见失败题的抽查样本中至少 59.4% 存在错误测试，且受测前沿模型均能复现部分标准答案或题面细节，因此停止报告该分数。",
+    source: source("OpenAI · Why we no longer evaluate SWE-bench Verified", "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"),
   },
   {
     nodeId: "node-161", tier: "hammer",
@@ -338,6 +345,7 @@ const roastReviews = {
   "node-052": "终端外壳看着寒酸，干活却把一票 AI IDE 打成花架子；真正的敌人是额度。",
   "node-124": "R1 最狠的不是分数，是把“推理模型必须闭源又昂贵”这层窗户纸捅破。",
   "node-159": "把评测从玩具函数搬进真实仓库，也顺手教会全行业围着同一套题刷榜。",
+  "node-267": "它把脏题库修成行业通用尺子，最后却被训练数据和坏测试把尺子掰弯；历史地位顶级，今天的高分不再等于真会修仓库。",
   "node-161": "论文名字快被忘了，循环结构还在给今天的 Agent 当骨架。",
   "node-164": "协议本身没多神，厉害的是大家终于懒得各造一遍插头；上下文和攻击面也一起胖了。",
   "node-174": "省下 critic 不是魔法，R1 才是它出圈的扩音器；别把训练组件供成宗教。",
@@ -393,13 +401,22 @@ const communitySignals = {
   "node-052": "长任务和工具使用口碑极强；额度、grep 循环、终端门槛和版本波动同样高频。",
   "node-124": "便宜、开放获赞；真实编码泛化、循环输出、托管审查与过度炒作长期被质疑。",
   "node-159": "真实仓库方向获认可，但污染、坏题和 Harness 差异已经让榜单严重失真。",
+  "node-267": "它曾是前沿 Coding 模型的默认成绩单；OpenAI 停报后，争议已从谁分高转向题目污染、测试有效性和 Harness 可比性。",
   "node-161": "社区几乎不再争论 ReAct 本身，反而说明它已经被吸收成 Agent 的默认结构。",
   "node-164": "共识接口得到认可；token 膨胀、工具过载、认证与远程服务器安全是最高频槽点。",
   "node-174": "研究圈认可资源简化；社媒常把 R1 的成功全部归功于 GRPO，属于明显过度归因。",
+  "node-183": "可执行验证器驱动的算法搜索得到认可；它擅长目标可计算的问题，不等于通用研究 Agent。",
   "node-008": "最顺手的 IDE 和最难算清的账单同时成立；Auto 路由不透明也经常挨骂。",
+  "node-021": "首发演示把“AI 软件工程师”推成行业目标；真实用户更在意长任务成功率、可监督性和最后 10% 的返工成本。",
+  "node-029": "Git diff、自动提交和终端工作流口碑稳定；Python 安装、依赖隔离和模型费用是长期摩擦。",
   "node-062": "后端、调试和执行获赞；UI 审美、擅自补需求、频繁压缩和额度争议集中。",
   "node-092": "深题更强得到认可；慢、贵、偶尔超时，让 o1-mini 在日常编码里反而更常用。",
+  "node-091": "编码能力的跃迁得到广泛认可；速度、幻觉和版本回归让它始终更像强力搭档，而非可放手的软件工程师。",
+  "node-100": "长任务与代码审查能力获赞；等待时间、额度和偶发空转让生产力提升高度依赖任务类型。",
   "node-110": "2024 年社区普遍认为净生产力转正；冷门技术栈和长上下文下仍明显掉速。",
+  "node-111": "扩展思考适合复杂调试；社区同时反复报告偷懒、擅自简化约束和无监督编码不稳。",
+  "node-127": "训练效率和开放权重获得认可；社区对工具调用、量化部署与不同托管版本的实际差异更谨慎。",
+  "node-149": "竞赛水平令人震撼；大规模采样和筛选成本、任务分布狭窄，使它离真实软件工程仍很远。",
   "node-270": "研究者爱它可改、可测；普通用户嫌部署和环境复杂，热度明显高于日常使用率。",
   "node-271": "研究界认可统一考场；使用者反复提醒，榜单成绩不能等同真实电脑可靠性。",
   "node-273": "可复用、按需加载很受欢迎；质量、权限和供应链安全仍没有成熟答案。",
@@ -453,18 +470,44 @@ const communitySources = {
     { label: "Reddit", url: "https://www.reddit.com/r/DeepSeek/comments/1it9p9v/" },
   ],
   "node-159": [{ label: "公开审计", url: "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/" }],
+  "node-267": [
+    { label: "2024 首发", url: "https://openai.com/index/introducing-swe-bench-verified/" },
+    { label: "2026 后续审计", url: "https://openai.com/index/separating-signal-from-noise-coding-evaluations/" },
+  ],
   "node-164": [{ label: "HN", url: "https://news.ycombinator.com/item?id=49779329" }],
   "node-174": [{ label: "HN", url: "https://news.ycombinator.com/item?id=42823568" }],
   "node-008": [
     { label: "HN", url: "https://news.ycombinator.com/item?id=48554513" },
-    { label: "中文社区", url: "https://post.smzdm.com/p/aeowz26m/" },
   ],
+  "node-021": [
+    { label: "HN 首发讨论", url: "https://news.ycombinator.com/item?id=39679787" },
+    { label: "HN 后续讨论", url: "https://news.ycombinator.com/item?id=41607251" },
+  ],
+  "node-029": [{ label: "HN", url: "https://news.ycombinator.com/item?id=39995725" }],
   "node-062": [
     { label: "HN", url: "https://news.ycombinator.com/item?id=49805972" },
     { label: "知乎", url: "https://www.zhihu.com/question/2043976840717632219/answer/2059460801459662929" },
   ],
   "node-092": [{ label: "HN", url: "https://news.ycombinator.com/item?id=42010441" }],
+  "node-091": [
+    { label: "HN 能力讨论", url: "https://news.ycombinator.com/item?id=35160421" },
+    { label: "HN 使用反馈", url: "https://news.ycombinator.com/item?id=36037559" },
+  ],
+  "node-100": [{ label: "HN", url: "https://news.ycombinator.com/item?id=45252301" }],
   "node-110": [{ label: "HN", url: "https://news.ycombinator.com/item?id=41337542" }],
+  "node-111": [
+    { label: "HN 使用反馈", url: "https://news.ycombinator.com/item?id=44063703" },
+    { label: "HN 约束问题", url: "https://news.ycombinator.com/item?id=43888803" },
+  ],
+  "node-127": [{ label: "HN", url: "https://news.ycombinator.com/item?id=42517113" }],
+  "node-149": [
+    { label: "HN 首发讨论", url: "https://news.ycombinator.com/item?id=30179549" },
+    { label: "HN 代码质量", url: "https://news.ycombinator.com/item?id=34020025" },
+  ],
+  "node-183": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=43985489" },
+    { label: "HN 开源复现", url: "https://news.ycombinator.com/item?id=44043625" },
+  ],
   "node-038": [
     { label: "Reddit", url: "https://www.reddit.com/r/opencodeCLI/comments/1t5apre/im_loving_opencode/" },
     { label: "X", url: "https://x.com/i/trending/2009717178501661120" },
@@ -510,14 +553,40 @@ const communitySources = {
   ],
 };
 
-const tierOverrides = {
-  "node-201": "solid",
-  "node-216": "watch",
-  "node-222": "watch",
-  "node-224": "watch",
-  "node-235": "watch",
-  "node-258": "watch",
-};
+const tierOverrides = Object.fromEntries([
+  ...[
+    // 产品：已经公开落地，但尚不足以改变行业默认动作。
+    "node-005", "node-006", "node-011", "node-012", "node-017", "node-018", "node-019", "node-020",
+    "node-024", "node-025", "node-026", "node-027", "node-028", "node-032", "node-033", "node-034",
+    "node-039", "node-040", "node-042", "node-043", "node-044", "node-045", "node-046", "node-048",
+    "node-049", "node-051", "node-053", "node-054", "node-055", "node-056", "node-057", "node-058",
+    "node-059", "node-060", "node-061", "node-063", "node-064", "node-065", "node-066", "node-067",
+    "node-069", "node-070", "node-071", "node-072", "node-073", "node-077", "node-078", "node-080",
+    "node-081", "node-082", "node-194", "node-197", "node-215", "node-216", "node-222", "node-248",
+    "node-249", "node-251", "node-287", "node-288",
+    // 模型：正式能力升级，影响明确，但不是新的技术范式。
+    "node-086", "node-087", "node-088", "node-089", "node-090", "node-093", "node-095", "node-096",
+    "node-098", "node-099", "node-101", "node-102", "node-106", "node-107", "node-108", "node-113",
+    "node-114", "node-115", "node-116", "node-117", "node-118", "node-119", "node-120", "node-121",
+    "node-128", "node-129", "node-132", "node-133", "node-135", "node-138", "node-140", "node-141",
+    "node-142", "node-143", "node-144", "node-145", "node-146", "node-147", "node-148", "node-152",
+    "node-153", "node-202", "node-203", "node-204", "node-205", "node-207", "node-208", "node-209",
+    "node-210", "node-224", "node-225", "node-227", "node-228", "node-229", "node-230", "node-231",
+    "node-232", "node-233", "node-250", "node-254", "node-255",
+    // 技术：已有公开实现、复现或工程采用，但长期外溢仍需观察。
+    "node-162", "node-168", "node-170", "node-171", "node-172", "node-173", "node-176", "node-177",
+    "node-178", "node-180", "node-181", "node-182", "node-184", "node-185", "node-189", "node-191",
+    "node-211", "node-239", "node-246", "node-263", "node-264", "node-268", "node-272", "node-280",
+    "node-281",
+  ].map((id) => [id, "solid"]),
+  ...[
+    // 公开影响已经越过单次版本更新，形成新产品或技术路线。
+    "node-068", "node-075", "node-076", "node-079", "node-083", "node-094", "node-105", "node-112",
+    "node-131", "node-136", "node-137", "node-156", "node-169", "node-175", "node-188", "node-190",
+    "node-235", "node-257", "node-258", "node-259", "node-260", "node-266", "node-269", "node-274",
+    "node-275", "node-279",
+  ].map((id) => [id, "top"]),
+]);
 
 const curatedVerdicts = editorialVerdicts.map((entry) => ({
   ...entry,
@@ -550,33 +619,16 @@ function getCompleteTier(node) {
 }
 
 function getCompleteReview(node) {
-  const summary = (node.summary || (node.section === "products"
-    ? `${node.title} 将 ${node.family} 推进到更完整的真实任务`
-    : node.section === "models"
-      ? `${node.title} 提升代码、推理或工具调用能力`
-      : `${node.title} 为 ${node.family} 提供新的训练、执行或验证方法`)).replace(/[。；]+$/, "");
-  const status = node.status || "";
-  let judgement;
-  if (retiredPattern.test(status)) judgement = "点子可能留下了，独立产品或评测已经退场";
-  else if (earlyStagePattern.test(`${status} ${node.title}`)) judgement = "方向有戏，预览版和预印本都不算毕业证";
-  else if (node.section === "models") judgement = "能力提升成立，版本号本身不等于路线突破";
-  else if (node.section === "tech") judgement = "方法值得记，没跨过复现与生产采用之前先别封神";
-  else judgement = "功能已经落地，历史地位还要看它是否改变同类产品的默认做法";
-  return `${summary}；${judgement}。`;
+  return editorialFacts[node.id]?.summary || node.summary;
 }
 
 function getCompleteEvidence(node) {
-  const research = getNodeResearch(node);
-  const status = node.status || (node.section === "tech" ? "研究节点" : "公开节点");
-  return `${research.kind || "公开资料"}记录 ${node.title} 于 ${getPublishedDate(node)} 进入“${status}”阶段；评级同时考虑发布成熟度与后续影响。`;
+  const fact = editorialFacts[node.id];
+  return fact?.detail || fact?.summary || node.detail || node.summary;
 }
 
-function getCompleteCommunity(node) {
-  const status = node.status || "";
-  if (earlyStagePattern.test(`${status} ${node.title}`)) return "独立使用样本仍少，现有讨论以首发体验和厂商材料为主；先观察稳定性、成本与持续使用。";
-  if (node.section === "models") return "公开讨论主要围绕能力、价格和工具稳定性；缺少同条件长期对比时，不把单次榜单或体感当定论。";
-  if (node.section === "tech") return "研究价值可以确认，真实外溢仍要看复现、开放实现和生产采用；论文热度不能直接折算成行业地位。";
-  return "功能已经公开，真实口碑仍取决于任务成功率、成本和长期留存；发布声量不等于持续采用。";
+function getCompleteCommunity() {
+  return "尚未找到足够的 HN、Reddit、X、知乎或小红书公开样本，暂不判断社区口碑。";
 }
 
 function makeCompleteVerdict(node) {
@@ -584,12 +636,12 @@ function makeCompleteVerdict(node) {
   const sourceLabel = research.label.length >= 5 ? research.label : `${research.label} · 来源`;
   return {
     nodeId: node.id,
-    tier: getCompleteTier(node),
+    tier: tierOverrides[node.id] || getCompleteTier(node),
     review: getCompleteReview(node),
     evidence: getCompleteEvidence(node),
-    community: getCompleteCommunity(node),
+    community: communitySignals[node.id] || getCompleteCommunity(node),
     source: source(sourceLabel, research.url),
-    communitySources: [],
+    communitySources: communitySources[node.id] || [],
   };
 }
 

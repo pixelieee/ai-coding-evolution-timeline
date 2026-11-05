@@ -138,7 +138,7 @@ test("corrections preserve provenance and evidence limits", () => {
   assert.match(metadata.getLongSummary(byId("node-262")), /A2A.*Agent 间协作.*MCP.*工具和数据/);
   assert.match(metadata.getLongSummary(byId("node-264")), /ACP.*A2A/);
   assert.match(metadata.getLongSummary(byId("node-266")), /2\.1、3\.0、4\.0/);
-  assert.match(metadata.getLongSummary(byId("node-267")), /停止报告.*SWE-Bench Pro/);
+  assert.match(metadata.getLongSummary(byId("node-267")), /停止报告.*约 30%.*撤回推荐/);
   assert.match(metadata.getLongSummary(byId("node-268")), /机器配置.*统计稳定性/);
   assert.match(metadata.getLongSummary(byId("node-269")), /轻量互操作约定.*AAIF/);
   assert.match(metadata.getLongSummary(byId("node-270")), /OpenDevin.*软件 Agent 平台/);

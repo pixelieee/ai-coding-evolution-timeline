@@ -26,7 +26,20 @@ test("editorial verdicts reference unique existing timeline nodes", () => {
 
 test("community sampling covers global and Chinese developer networks", () => {
   const labels = new Set(verdicts.flatMap((entry) => entry.communitySources.map((source) => source.label)));
-  for (const label of ["HN", "Reddit", "X", "知乎", "中文社区"]) assert.ok(labels.has(label), label);
+  for (const label of ["HN", "Reddit", "X", "知乎"]) assert.ok(labels.has(label), label);
+});
+
+test("community links stay on auditable first-party or established public platforms", () => {
+  const allowed = new Set([
+    "news.ycombinator.com", "reddit.com", "x.com", "zhihu.com", "xiaohongshu.com",
+    "openai.com", "wired.com", "techcrunch.com", "theverge.com", "apps.apple.com",
+  ]);
+  for (const entry of verdicts) {
+    for (const source of entry.communitySources) {
+      const domain = new URL(source.url).hostname.replace(/^www\./, "");
+      assert.ok(allowed.has(domain), `${entry.nodeId} uses an unreviewed community domain: ${domain}`);
+    }
+  }
 });
 
 test("every tier and every timeline section is represented", () => {
@@ -35,6 +48,13 @@ test("every tier and every timeline section is represented", () => {
   const nodeById = new Map(nodes.map((node) => [node.id, node]));
   const sections = new Set(verdicts.map((entry) => nodeById.get(entry.nodeId).section));
   assert.deepEqual([...sections].sort(), ["models", "products", "tech"]);
+});
+
+test("a superseded benchmark keeps its historical rating when the evidence still matters", () => {
+  const verified = verdicts.find((entry) => entry.nodeId === "node-267");
+  assert.equal(verified?.tier, "top");
+  assert.match(verified?.review || "", /行业通用尺子.*高分不再等于/);
+  assert.match(verified?.evidence || "", /59\.4%.*停止报告/);
 });
 
 test("personal agent milestones are all rated", () => {

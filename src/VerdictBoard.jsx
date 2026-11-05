@@ -108,7 +108,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
         })}
         {!entries.length && <p className="verdict-empty">没有匹配的节点。</p>}
       </div>
-      <footer className="verdict-note">核查时间：2026-11-04。全部时间线节点均已入榜；出现独立复现、规模采用或明确退场后会直接改档。</footer>
+      <footer className="verdict-note">核查时间：2026-11-06。全部时间线节点均已入榜；出现独立复现、规模采用或明确退场后会直接改档。</footer>
     </main>
   );
 }

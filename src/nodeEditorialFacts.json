@@ -1,0 +1,1154 @@
+{
+  "node-001": {
+    "summary": "把代码补全作为编辑器中的实时协作层，让模型首次进入开发者的日常输入循环。",
+    "detail": ""
+  },
+  "node-002": {
+    "summary": "将 Copilot 从补全扩展到 Chat、Pull Request 与文档协作，开始覆盖完整开发流程。",
+    "detail": ""
+  },
+  "node-003": {
+    "summary": "以 GPT-4 驱动对话式编程，把解释、生成和修改代码直接带入 IDE。",
+    "detail": ""
+  },
+  "node-004": {
+    "summary": "引入多文件生成式编辑，让 Cursor 从局部补全升级为跨文件任务执行。",
+    "detail": ""
+  },
+  "node-005": {
+    "summary": "把补全、终端调用与自动修复串成 Agent Mode，可连续完成修改、运行和修复。",
+    "detail": ""
+  },
+  "node-006": {
+    "summary": "以 Multi-Agent、worktree 与远程隔离并行处理任务，扩大编辑器代理的执行半径。",
+    "detail": ""
+  },
+  "node-007": {
+    "summary": "对话式编程窗口让自然语言成为代码解释、生成与调试的统一入口。",
+    "detail": ""
+  },
+  "node-008": {
+    "summary": "AI 原生编辑器把仓库上下文、生成与修改整合在同一个编码界面。",
+    "detail": ""
+  },
+  "node-009": {
+    "summary": "从 Issue 自动形成计划并提交代码修改，验证仓库级异步工程代理。",
+    "detail": ""
+  },
+  "node-010": {
+    "summary": "让编辑器直接运行终端命令、读取结果并继续修改代码。",
+    "detail": ""
+  },
+  "node-011": {
+    "summary": "公开预览 coding agent，把 GitHub 中的任务交给可持续执行的软件代理。",
+    "detail": ""
+  },
+  "node-012": {
+    "summary": "把 GitHub Copilot 的代理能力带入 CLI，使仓库操作和审阅进入终端工作流。",
+    "detail": ""
+  },
+  "node-013": {
+    "summary": "以声明式 UI 和 prompt-to-app 交互，把文字需求直接转化为可编辑界面。",
+    "detail": ""
+  },
+  "node-014": {
+    "summary": "将构建器能力连接 IDE 与 AWS 迁移路径，使生成结果更接近真实云端工程。",
+    "detail": ""
+  },
+  "node-015": {
+    "summary": "借助 WebContainers 在浏览器中安装依赖、运行后端并即时预览全栈应用。",
+    "detail": ""
+  },
+  "node-016": {
+    "summary": "用自然语言完成应用构建、编辑与发布，降低从原型到可用产品的距离。",
+    "detail": ""
+  },
+  "node-017": {
+    "summary": "长构建能力与托管环境结合，让 Agent 可以持续完成更复杂的应用任务。",
+    "detail": ""
+  },
+  "node-018": {
+    "summary": "以 Specs 与 Hooks 固化意图和约束，把一次性生成变成可控的软件开发流程。",
+    "detail": ""
+  },
+  "node-019": {
+    "summary": "Linux Desktop 与自测能力让 Devin 在独立环境中完成更长链路的工程工作。",
+    "detail": ""
+  },
+  "node-020": {
+    "summary": "将 Kiro 的规范驱动体验扩展到异步云端任务，支持持续执行与回看。",
+    "detail": ""
+  },
+  "node-021": {
+    "summary": "在独立开发环境里规划、写码、运行和修复，把端到端软件任务交给一个 Agent。",
+    "detail": ""
+  },
+  "node-022": {
+    "summary": "在托管开发环境中规划、生成、运行并迭代应用，覆盖需求、开发、预览和部署。",
+    "detail": ""
+  },
+  "node-023": {
+    "summary": "在 IDE 内执行多步 Agent 任务，并以代码库上下文维持连续推理。",
+    "detail": ""
+  },
+  "node-024": {
+    "summary": "在 JetBrains IDE 中执行多步软件工程任务，连接编辑、运行与验证。",
+    "detail": ""
+  },
+  "node-025": {
+    "summary": "用对话生成并修改全栈应用，内置预览、部署和后端服务。",
+    "detail": ""
+  },
+  "node-026": {
+    "summary": "把 Specs、Hooks 与 Agent 执行带进持续开发流程，减少一次性生成后的返工。",
+    "detail": ""
+  },
+  "node-027": {
+    "summary": "把任务拆分、后台并行与合并集成到托管开发环境，支持更长链路的构建。",
+    "detail": ""
+  },
+  "node-028": {
+    "summary": "把 Devin 的任务、会话和监督入口放进桌面客户端，便于并行跟进长任务。",
+    "detail": ""
+  },
+  "node-029": {
+    "summary": "通过 repo map、Git diff 与 commit 形成透明的终端协作循环，适合可审阅的代码修改。",
+    "detail": ""
+  },
+  "node-030": {
+    "summary": "将模型选择、IDE 上下文和可配置规则组合为开放的编码助手框架。",
+    "detail": ""
+  },
+  "node-031": {
+    "summary": "以软件工厂式 Agent loop 承担仓库任务，强调可重复执行与工程流程集成。",
+    "detail": ""
+  },
+  "node-032": {
+    "summary": "围绕编辑、终端与 Agent runtime 构建多步工程执行环境，并逐步开放 SDK。",
+    "detail": ""
+  },
+  "node-033": {
+    "summary": "围绕编辑、终端与 Agent runtime 构建多步工程执行环境，并逐步开放 SDK。",
+    "detail": ""
+  },
+  "node-034": {
+    "summary": "在 VS Code 中逐步执行、请求授权并审阅变更，把自主性与人工控制并置。",
+    "detail": ""
+  },
+  "node-035": {
+    "summary": "依赖代码图与仓库检索理解大型代码库，把上下文检索作为生成前置层。",
+    "detail": ""
+  },
+  "node-036": {
+    "summary": "用 Agent-Computer Interface 重构终端接口，让模型更稳定地浏览、修改与验证仓库。",
+    "detail": ""
+  },
+  "node-037": {
+    "summary": "在 VS Code 中逐步执行、请求授权并审阅变更，把自主性与人工控制并置。",
+    "detail": ""
+  },
+  "node-038": {
+    "summary": "以多供应商 TUI 提供开放的终端编码代理，保留模型与运行时选择权。",
+    "detail": ""
+  },
+  "node-039": {
+    "summary": "以轻量终端 Harness 支持脚本化、工具调用与可组合的编码工作流。",
+    "detail": ""
+  },
+  "node-040": {
+    "summary": "提供面向 DeepSeek 模型的开源执行框架，负责上下文、工具、沙盒与长任务调度。",
+    "detail": ""
+  },
+  "node-041": {
+    "summary": "面向中文开发场景提供代码生成、问答、补全与仓库理解。",
+    "detail": ""
+  },
+  "node-042": {
+    "summary": "把 AI IDE 与 Builder 结合，覆盖从代码理解到应用构建的统一体验。",
+    "detail": ""
+  },
+  "node-043": {
+    "summary": "将 Qwen-Coder 能力带入 IDE 与终端 Agent，面向中文仓库和工程任务。",
+    "detail": ""
+  },
+  "node-044": {
+    "summary": "以长上下文和终端执行为核心，逐步扩展到完整的编码代理体验。",
+    "detail": ""
+  },
+  "node-045": {
+    "summary": "以长上下文和终端执行为核心，逐步扩展到完整的编码代理体验。",
+    "detail": ""
+  },
+  "node-046": {
+    "summary": "以 GLM 为基础构建官方 Harness，覆盖规划、编码、审查与部署流程。",
+    "detail": ""
+  },
+  "node-047": {
+    "summary": "将 Qwen-Coder 能力带入 IDE 与终端 Agent，面向中文仓库和工程任务。",
+    "detail": ""
+  },
+  "node-048": {
+    "summary": "把自然语言构建、仓库任务与团队协作整合到国产开发工作流。",
+    "detail": ""
+  },
+  "node-049": {
+    "summary": "通过 Quest Mode 与异步长任务处理复杂仓库工作，并形成国内统一产品线。",
+    "detail": ""
+  },
+  "node-050": {
+    "summary": "让主 Agent 根据任务动态创建、分工并汇总最多 100 个子 Agent，由模型决定并行方案。",
+    "detail": "首发随 Kimi K2.5 提供；调度器通过 PARL 训练，子 Agent 保持冻结。2026-04 随 K2.6 扩展到最多 300 个子 Agent 与 4,000 余次工具调用。"
+  },
+  "node-051": {
+    "summary": "通过 Quest Mode 与异步长任务处理复杂仓库工作，并形成国内统一产品线。",
+    "detail": ""
+  },
+  "node-052": {
+    "summary": "初始公开预览覆盖读代码、改文件、跑测试和提交变更。",
+    "detail": ""
+  },
+  "node-053": {
+    "summary": "Desktop 与本地、远程会话打通，使 Claude Code 从终端工具进入持续工作空间。",
+    "detail": ""
+  },
+  "node-054": {
+    "summary": "Auto Mode 与 Computer Use 扩大执行权限，让代理能够跨工具完成任务。",
+    "detail": ""
+  },
+  "node-055": {
+    "summary": "Ultrareview 让多个 Agent 并行审查复杂变更，强化高风险代码的验证层。",
+    "detail": ""
+  },
+  "node-056": {
+    "summary": "Dynamic Workflows 将编排能力交给 Agent，使流程能够随任务动态调整。",
+    "detail": ""
+  },
+  "node-057": {
+    "summary": "终端、IDE 与 SDK 正式统一，把 Claude Code 变成可嵌入的平台能力。",
+    "detail": ""
+  },
+  "node-058": {
+    "summary": "Agent Teams 让多个专职代理并行协作，处理跨模块和长周期任务。",
+    "detail": ""
+  },
+  "node-059": {
+    "summary": "Ultraplan 引入云端规划、审查与执行分离，提升复杂任务的可控性。",
+    "detail": ""
+  },
+  "node-060": {
+    "summary": "Agent View 提供可观察、可接管的多会话界面，增强人机协作。",
+    "detail": ""
+  },
+  "node-061": {
+    "summary": "跨会话通信与并行规划形成更完整的团队式软件工程运行层。",
+    "detail": ""
+  },
+  "node-062": {
+    "summary": "Shell、patch 与 approval 组成可审计的本地执行循环，是 Codex 终端形态的起点。",
+    "detail": ""
+  },
+  "node-063": {
+    "summary": "以 Cloud VM 异步处理仓库任务，让开发者把工程工作交给远程代理。",
+    "detail": ""
+  },
+  "node-064": {
+    "summary": "统一 IDE、CLI 与 Web 会话，使同一任务可以在多个入口间连续推进。",
+    "detail": ""
+  },
+  "node-065": {
+    "summary": "以 Skills、Automations 和 Agent 机制扩展桌面工作台，形成可组合的执行环境。",
+    "detail": ""
+  },
+  "node-066": {
+    "summary": "手机接管 Mac 与 Windows 会话，让远程监督进入真实开发流程。",
+    "detail": ""
+  },
+  "node-067": {
+    "summary": "把账户、聊天与项目状态连接起来，使 ChatGPT 成为 Codex 的协作入口。",
+    "detail": ""
+  },
+  "node-068": {
+    "summary": "沙盒并行任务与 PR 交付让 Codex 在云端完成多个隔离的仓库工作。",
+    "detail": ""
+  },
+  "node-069": {
+    "summary": "把 Gemini 的代理能力接入本地终端，覆盖解释、修改、运行和验证。",
+    "detail": ""
+  },
+  "node-070": {
+    "summary": "将编辑器、终端与浏览器统一为一个 Google Agent Harness。",
+    "detail": ""
+  },
+  "node-071": {
+    "summary": "Windows 原生体验与插件扩展补齐跨平台开发者工作流。",
+    "detail": ""
+  },
+  "node-072": {
+    "summary": "统一 Google Agent Harness 的命令行入口，便于自动化与远程调用。",
+    "detail": ""
+  },
+  "node-073": {
+    "summary": "以桌面 Agent Harness 与 App Server 形成可扩展的 Codex 平台层。",
+    "detail": ""
+  },
+  "node-074": {
+    "summary": "把浏览器与计算机操作纳入模型执行循环，是通用 Work Agent 的早期形态。",
+    "detail": ""
+  },
+  "node-075": {
+    "summary": "在云沙盒中持续运行通用多步任务，强调异步交付和结果产物。",
+    "detail": ""
+  },
+  "node-076": {
+    "summary": "以本地 Gateway、渠道连接与工具调用构建可自托管的个人代理。",
+    "detail": ""
+  },
+  "node-077": {
+    "summary": "强调多会话编排、工具使用与可改进 Skills，面向持续运行的工作代理。",
+    "detail": ""
+  },
+  "node-078": {
+    "summary": "把文件处理、浏览器执行与 Cron 任务带入长上下文工作代理。",
+    "detail": ""
+  },
+  "node-079": {
+    "summary": "将多步检索、综合与引用组织成可追踪的研究工作流。",
+    "detail": ""
+  },
+  "node-080": {
+    "summary": "把浏览、研究、连接器与文档产出整合为跨应用执行入口。",
+    "detail": ""
+  },
+  "node-081": {
+    "summary": "围绕文件和应用协作组织长周期工作，并保留人类接管点。",
+    "detail": ""
+  },
+  "node-082": {
+    "summary": "把自然语言构建、仓库任务与团队协作整合到国产开发工作流。",
+    "detail": ""
+  },
+  "node-083": {
+    "summary": "把浏览、研究、连接器与文档产出整合为跨应用执行入口。",
+    "detail": ""
+  },
+  "node-084": {
+    "summary": "把代码生成、解释和调试放进对话界面，让自然语言成为大众编程入口。",
+    "detail": ""
+  },
+  "node-085": {
+    "summary": "在多模态、低延迟与成本之间取得平衡，扩大实时编程协作场景。",
+    "detail": ""
+  },
+  "node-086": {
+    "summary": "以更低成本提供代码、数学和科学推理，适合高频调用。",
+    "detail": ""
+  },
+  "node-087": {
+    "summary": "强化长上下文、代码能力与指令遵循，面向真实仓库和工具调用。",
+    "detail": ""
+  },
+  "node-088": {
+    "summary": "提升自适应推理与工具可靠性，使代理在多步任务中更稳健。",
+    "detail": ""
+  },
+  "node-089": {
+    "summary": "结合超长上下文、computer use 与 compaction，支持更持久的代理会话。",
+    "detail": ""
+  },
+  "node-090": {
+    "summary": "通过 Sol、Terra、Luna 分层覆盖高强度推理、均衡执行与低延迟任务。",
+    "detail": ""
+  },
+  "node-091": {
+    "summary": "提升复杂代码理解、生成和调试能力，开始承担真实工程任务。",
+    "detail": ""
+  },
+  "node-092": {
+    "summary": "首次把增加测试时推理计算做成公开产品，让模型在回答前投入更多步骤处理数学、代码和复杂规划。",
+    "detail": ""
+  },
+  "node-093": {
+    "summary": "让推理、视觉理解与工具使用进一步融合，面向可执行的复杂任务。",
+    "detail": ""
+  },
+  "node-094": {
+    "summary": "统一 coding、reasoning 与 agent 能力，减少模型切换带来的工作流割裂。",
+    "detail": ""
+  },
+  "node-095": {
+    "summary": "强化专业知识、代码生成与长上下文稳定性，服务更完整的软件项目。",
+    "detail": ""
+  },
+  "node-096": {
+    "summary": "聚焦工程编程、计算机使用与专业任务，把模型能力压向真实工作负载。",
+    "detail": ""
+  },
+  "node-097": {
+    "summary": "以代码生成与 HumanEval 建立专用代码模型路线，并通过 API 进入开发工具。",
+    "detail": ""
+  },
+  "node-098": {
+    "summary": "加入低延迟、上下文压缩与 Windows 支持，覆盖更多工程环境。",
+    "detail": ""
+  },
+  "node-099": {
+    "summary": "面向真实电脑环境的专业软件工程任务，强化连续执行稳定性。",
+    "detail": ""
+  },
+  "node-100": {
+    "summary": "从通用模型分化出的软件工程专项模型，优化仓库任务与工具调用。",
+    "detail": ""
+  },
+  "node-101": {
+    "summary": "聚焦大型重构、迁移与安全任务，在长程执行中维持计划一致性。",
+    "detail": ""
+  },
+  "node-102": {
+    "summary": "以实时编码和超过千 token 每秒的吞吐优化交互式软件工程。",
+    "detail": ""
+  },
+  "node-103": {
+    "summary": "以 100K 长上下文提升大型代码库阅读、总结与修改能力。",
+    "detail": ""
+  },
+  "node-104": {
+    "summary": "通过 Haiku、Sonnet 与 Opus 分层，覆盖速度、能力和成本的不同需求。",
+    "detail": ""
+  },
+  "node-105": {
+    "summary": "显著加强 Coding 与工具调用，并首次让前沿模型通过截图、鼠标和键盘操作通用电脑界面，把工具使用扩展到现有 GUI 软件。",
+    "detail": "官方名称为“新版 Claude 3.5 Sonnet”，“3.6”是社区称呼。Computer Use 当时处于开发者 Beta，速度和准确率不足以承担无人值守桌面任务。"
+  },
+  "node-106": {
+    "summary": "加入扩展思考与工具调用优化，使中高强度代理任务更稳定。",
+    "detail": ""
+  },
+  "node-107": {
+    "summary": "优化 coding 的成本与延迟拐点，使轻量代理获得更高吞吐。",
+    "detail": ""
+  },
+  "node-108": {
+    "summary": "面向 agentic coding、长程执行与成本效率继续推进主力模型。",
+    "detail": ""
+  },
+  "node-109": {
+    "summary": "把上下文扩展到 200K，并引入更成熟的 tool use 试验。",
+    "detail": ""
+  },
+  "node-110": {
+    "summary": "显著强化 coding 与 tool use，并为 Computer Use 能力奠定基础。",
+    "detail": ""
+  },
+  "node-111": {
+    "summary": "把扩展思考与 action scaling 结合，提升长链路工具任务的可靠性。",
+    "detail": ""
+  },
+  "node-112": {
+    "summary": "强化 coding、computer use 与一致性，面向持续软件工程会话。",
+    "detail": ""
+  },
+  "node-113": {
+    "summary": "将长上下文、computer use 与 agent planning 结合到均衡模型。",
+    "detail": ""
+  },
+  "node-114": {
+    "summary": "面向复杂编码与长周期 Agent，提供更高推理和执行上限。",
+    "detail": ""
+  },
+  "node-115": {
+    "summary": "强化规划、编码与复核的一致性，让长周期软件工程任务更少在中途偏离目标。",
+    "detail": ""
+  },
+  "node-116": {
+    "summary": "把自验证和长程执行继续前推，面向复杂工程任务减少反复返工与中途失控。",
+    "detail": ""
+  },
+  "node-117": {
+    "summary": "以多日 Agent 与长程软件工程为目标，探索更高自治上限。",
+    "detail": ""
+  },
+  "node-118": {
+    "summary": "以真实代码质量和精度改进 Opus 路线的工程可靠性。",
+    "detail": ""
+  },
+  "node-119": {
+    "summary": "把超长上下文用于复杂 Agent 任务，减少长任务中的上下文断裂。",
+    "detail": ""
+  },
+  "node-120": {
+    "summary": "强化 agentic judgment、computer use 与长会话一致性。",
+    "detail": ""
+  },
+  "node-121": {
+    "summary": "以多日 Agent 与长程软件工程为目标，探索更高自治上限。",
+    "detail": ""
+  },
+  "node-122": {
+    "summary": "建立专用开源代码模型路线，为后续推理与 Agent 能力奠定基础。",
+    "detail": ""
+  },
+  "node-123": {
+    "summary": "在代码生成、补全与推理间取得平衡，提升开放模型的工程可用性。",
+    "detail": ""
+  },
+  "node-124": {
+    "summary": "以强化学习驱动可见推理能力，显著降低高水平推理的使用成本。",
+    "detail": ""
+  },
+  "node-125": {
+    "summary": "提前验证下一代推理与工具调用能力，为 V4 系列建立技术基线。",
+    "detail": ""
+  },
+  "node-126": {
+    "summary": "扩大模型规模与编程语言覆盖，让开源代码模型从生成片段走向更完整的工程任务。",
+    "detail": ""
+  },
+  "node-127": {
+    "summary": "以高效训练与 MoE 架构提高推理和代码能力的性价比。",
+    "detail": ""
+  },
+  "node-128": {
+    "summary": "强化 thinking-in-tools，让模型在调用工具时保持显式规划和反思。",
+    "detail": ""
+  },
+  "node-129": {
+    "summary": "面向更强推理、编程与工具调用，提升复杂工程任务的完成质量。",
+    "detail": ""
+  },
+  "node-130": {
+    "summary": "以大规模代码数据和长上下文优化开源代码生成与仓库理解。",
+    "detail": ""
+  },
+  "node-131": {
+    "summary": "以 MoE 与 Agent tool use 为重点，增强开放模型的工具执行。",
+    "detail": ""
+  },
+  "node-132": {
+    "summary": "以稀疏架构压低长上下文推理成本，探索更高吞吐的开放模型路线。",
+    "detail": ""
+  },
+  "node-133": {
+    "summary": "面向视觉、百级子 Agent 与 Swarm 工作流优化旗舰能力。",
+    "detail": ""
+  },
+  "node-134": {
+    "summary": "将长上下文与 Agent 场景能力推向旗舰模型上限。",
+    "detail": "日期待核：暂保留原资料的 2026-08-28；服务更新记录在 8 月 3 日已出现该模型，尚需区分首发、预览与正式开放。"
+  },
+  "node-135": {
+    "summary": "以多模态推理与长上下文建立 Kimi 的强化推理路线。",
+    "detail": ""
+  },
+  "node-136": {
+    "summary": "面向 Agentic Coding 强化工具调用、长任务与多语言代码能力。",
+    "detail": ""
+  },
+  "node-137": {
+    "summary": "加入边思考边调用工具的能力，强化复杂 Agent 任务。",
+    "detail": ""
+  },
+  "node-138": {
+    "summary": "继续扩展长程推理和工具协作，面向下一代通用 Agent。",
+    "detail": ""
+  },
+  "node-139": {
+    "summary": "以推理、coding 与 Agent 一体化建立国产开源模型基线。",
+    "detail": ""
+  },
+  "node-140": {
+    "summary": "强化长程 Agent 与工具稳定性，提升持续执行表现。",
+    "detail": ""
+  },
+  "node-141": {
+    "summary": "整合复杂工程与 Agentic Coding 能力，推进统一基础模型。",
+    "detail": ""
+  },
+  "node-142": {
+    "summary": "针对真实工具调用和长任务连续执行做专项强化，减少调用失败和计划漂移。",
+    "detail": ""
+  },
+  "node-143": {
+    "summary": "面向编程、推理与复杂任务继续提高国产旗舰基础模型的综合上限。",
+    "detail": ""
+  },
+  "node-144": {
+    "summary": "针对 Claude Code 等 Harness 优化真实编码任务。",
+    "detail": ""
+  },
+  "node-145": {
+    "summary": "以多语言 coding、scaffold 与高吞吐为核心优化工程任务。",
+    "detail": ""
+  },
+  "node-146": {
+    "summary": "统一 coding、search 与 tool use，支持连续检索、修改和验证。",
+    "detail": ""
+  },
+  "node-147": {
+    "summary": "加强多 Agent 协作和长程执行，拓展复杂工程上限。",
+    "detail": ""
+  },
+  "node-148": {
+    "summary": "以低延迟和高吞吐服务实时编码与交互式 Agent。",
+    "detail": ""
+  },
+  "node-149": {
+    "summary": "以竞赛编程验证大规模程序生成、筛选和搜索，证明模型可以覆盖人类参赛者水平。",
+    "detail": ""
+  },
+  "node-150": {
+    "summary": "以超长上下文和多模态能力支持大型代码库与复杂资料处理。",
+    "detail": ""
+  },
+  "node-151": {
+    "summary": "把多模态理解与 Agent 能力结合，推进实时工具使用。",
+    "detail": ""
+  },
+  "node-152": {
+    "summary": "在推理、工具调用和 Agentic Coding 之间形成统一能力。",
+    "detail": ""
+  },
+  "node-153": {
+    "summary": "以低延迟、高性价比支持长程 Agent 和交互式编码。",
+    "detail": ""
+  },
+  "node-154": {
+    "summary": "提供可本地部署的开放代码模型，覆盖生成、补全和指令任务。",
+    "detail": ""
+  },
+  "node-155": {
+    "summary": "强化推理与 1M+ 上下文，面向复杂代码和长文档任务。",
+    "detail": ""
+  },
+  "node-156": {
+    "summary": "以 HumanEval 建立可量化的代码生成评测，并把专用代码模型推向 API。",
+    "detail": ""
+  },
+  "node-157": {
+    "summary": "把 Fill-in-the-Middle 训练引入代码模型，使编辑和补全能够利用双向上下文。",
+    "detail": ""
+  },
+  "node-158": {
+    "summary": "通过检索仓库级上下文提升跨文件生成，是代码 RAG 的早期代表。",
+    "detail": ""
+  },
+  "node-159": {
+    "summary": "以真实 GitHub Issue 和测试检查 Agent 是否完成软件工程任务。",
+    "detail": ""
+  },
+  "node-160": {
+    "summary": "通过海量候选采样、聚类与测试筛选攻克竞赛编程题，验证“生成 + 搜索 + 验证”的程序合成路线。",
+    "detail": ""
+  },
+  "node-161": {
+    "summary": "让模型交替思考、调用工具和读取结果，奠定工具型 Agent 的基本循环。",
+    "detail": ""
+  },
+  "node-162": {
+    "summary": "用自动课程、技能库和环境反馈展示持续学习型 Agent。",
+    "detail": ""
+  },
+  "node-163": {
+    "summary": "让模型用可执行代码表达行动，便于组合多个工具和中间结果。",
+    "detail": ""
+  },
+  "node-164": {
+    "summary": "以开放协议统一模型、工具与数据连接，降低 Agent 集成成本。",
+    "detail": ""
+  },
+  "node-165": {
+    "summary": "通过语言化反馈和记忆进行自我修正，提升多轮任务成功率。",
+    "detail": ""
+  },
+  "node-166": {
+    "summary": "将结构化工具调用纳入模型接口，使外部系统成为可控能力。",
+    "detail": ""
+  },
+  "node-167": {
+    "summary": "以 Agent-Computer Interface 重构仓库浏览、编辑和终端反馈，降低语言模型与真实开发环境之间的交互摩擦。",
+    "detail": ""
+  },
+  "node-168": {
+    "summary": "从提示词扩展到上下文选择、压缩、记忆与检索的系统工程。",
+    "detail": ""
+  },
+  "node-169": {
+    "summary": "用过程奖励监督中间推理步骤，为可验证强化学习提供训练信号。",
+    "detail": ""
+  },
+  "node-170": {
+    "summary": "把真实软件仓库转化为可交互训练环境，让 Agent 在执行中学习。",
+    "detail": ""
+  },
+  "node-171": {
+    "summary": "自动构造软件工程任务与验证器，扩大可训练、可评测的数据规模。",
+    "detail": ""
+  },
+  "node-172": {
+    "summary": "把任意 Agent 运行轨迹转化为强化学习训练信号，解耦框架与优化器。",
+    "detail": ""
+  },
+  "node-173": {
+    "summary": "自动生成可验证环境与任务，为大规模 Agent 训练提供基础设施。",
+    "detail": ""
+  },
+  "node-174": {
+    "summary": "以组内相对优势估计降低强化学习成本，推动推理模型规模化训练。",
+    "detail": ""
+  },
+  "node-175": {
+    "summary": "展示纯强化学习与可验证奖励如何诱发长链推理能力。",
+    "detail": ""
+  },
+  "node-176": {
+    "summary": "把可验证奖励扩展到工具型 Agent，优化长链路执行结果。",
+    "detail": ""
+  },
+  "node-177": {
+    "summary": "构建更广覆盖的软件工程训练宇宙，连接任务生成、执行与验证。",
+    "detail": ""
+  },
+  "node-178": {
+    "summary": "把任意 Agent 运行轨迹转化为强化学习训练信号，解耦框架与优化器。",
+    "detail": ""
+  },
+  "node-179": {
+    "summary": "通过自生成推理链、答案筛选和反复微调，让模型用自己的正确推理继续训练自己。",
+    "detail": ""
+  },
+  "node-180": {
+    "summary": "利用进化搜索自动改进提示策略，探索自适应任务优化。",
+    "detail": ""
+  },
+  "node-181": {
+    "summary": "让模型同时生成答案和评判信号，探索自举式对齐与改进。",
+    "detail": ""
+  },
+  "node-182": {
+    "summary": "让 Meta-Agent 搜索和改写完整 Agent 系统代码，自动设计提示词、工具调用、工作流与组合结构。",
+    "detail": "ADAS 把 Agent 设计变成可搜索对象。实验验证了自动发现 Agent 结构，范围限于固定任务和评估器。"
+  },
+  "node-183": {
+    "summary": "把模型生成、自动评测与进化搜索结合，用于发现更优算法。",
+    "detail": ""
+  },
+  "node-184": {
+    "summary": "把上下文从一次性提示变成可持续更新的 Playbook，通过执行反馈积累可复用策略。",
+    "detail": ""
+  },
+  "node-185": {
+    "summary": "让上下文内容与管理机制共同演化，寻找更适合长周期 Agent 的记忆与调度结构。",
+    "detail": ""
+  },
+  "node-186": {
+    "summary": "自动生成、运行并筛选 Harness 代码候选，把执行框架本身纳入搜索。",
+    "detail": ""
+  },
+  "node-187": {
+    "summary": "在长期运行中持续更新工具、记忆与 Skills，让 Harness 能随任务分布一起成长。",
+    "detail": ""
+  },
+  "node-188": {
+    "summary": "让 Harness 通过自举生成、评测与改写自身组件，探索不依赖固定人工脚手架的改进循环。",
+    "detail": ""
+  },
+  "node-189": {
+    "summary": "让语言模型迭代改写自己的脚手架程序，以元优化方式探索可递归改进的 Agent 系统。",
+    "detail": ""
+  },
+  "node-190": {
+    "summary": "在固定评测框架中开放式地产生、验证并保留 Harness 变体，让软件代理沿性能档案持续演化。",
+    "detail": ""
+  },
+  "node-191": {
+    "summary": "把 Harness 拆成可观察、可归因的组件，在局部验证后逐步演化整体执行系统。",
+    "detail": ""
+  },
+  "node-192": {
+    "summary": "尝试联合更新 Harness 与模型权重，使执行策略和基础能力不再彼此割裂。",
+    "detail": ""
+  },
+  "node-193": {
+    "summary": "把仓库托管、代码浏览、PR 与 Agent 工作整合到 Cursor，处于早期测试。",
+    "detail": "Origin 是 Cursor 的代码托管分支，与云端执行环境并行。"
+  },
+  "node-194": {
+    "summary": "支持由 PR、Slack 和定时任务触发工作，并通过独立虚拟机中的子代理推进持续任务。",
+    "detail": ""
+  },
+  "node-195": {
+    "summary": "让 Agent 在自己的电脑、虚拟机和团队机器池执行工具，支持 Linux 与 Mac 电脑操作。",
+    "detail": "本地机器负责工具执行与环境访问，模型推理仍可运行在云端；数据边界取决于具体模型和团队配置。"
+  },
+  "node-196": {
+    "summary": "Kiro Web 正式开放，在浏览器中规划规格、委派开发任务，并查看和调整 Agent 的执行过程。",
+    "detail": ""
+  },
+  "node-197": {
+    "summary": "以独立桌面应用集中管理项目和 Agent 工作，将编辑、执行与任务协作组织到同一工作空间。",
+    "detail": "独立桌面应用与同日的 Antigravity CLI 是不同入口，分别保留发布节点。"
+  },
+  "node-198": {
+    "summary": "在浏览器中远程查看和控制本机 Agent 会话，并接收任务完成或需要输入的通知。",
+    "detail": "采用版本日志的 2026-08-20 发布日期；介绍文章发表于次日。"
+  },
+  "node-199": {
+    "summary": "根据开发任务自动选择合适模型，在质量、速度与成本之间调整，不必为每一步手动切换。",
+    "detail": "这是 Replit Agent 的任务级模型调度更新，产品名称保持不变。"
+  },
+  "node-200": {
+    "summary": "代码审查可提交计入合并规则的批准意见。功能处于公开预览，默认关闭，需要管理员启用。",
+    "detail": "批准意见可计入合并规则；合并仍由仓库规则或维护者执行。"
+  },
+  "node-201": {
+    "summary": "结合推理、编程和电脑操作完成复杂任务；首批面向 Trusted Access Program 企业逐步开放。",
+    "detail": "API 更新日志记录于 9 月 3 日发布；截至 9 月 5 日，模型页仍说明其他 API 和订阅计划将在随后几天开放。"
+  },
+  "node-202": {
+    "summary": "加强编程与持续任务处理。Fable 5.1 普遍开放，Mythos 5.1 仅通过可信访问计划提供。",
+    "detail": "官方将二者描述为相同模型、不同安全限制；保留联合发布节点，明确区分开放范围。"
+  },
+  "node-203": {
+    "summary": "改进代码与规划任务的处理效率，减少完成复杂工作所需的推理输出。",
+    "detail": ""
+  },
+  "node-204": {
+    "summary": "强化软件工程、网页开发与 Agent 工作流，补齐 Flash 系列的持续任务能力。",
+    "detail": ""
+  },
+  "node-205": {
+    "summary": "面向持续软件工程、自主 Agent 与复杂企业流程发布的新一代 Flash 模型。",
+    "detail": ""
+  },
+  "node-206": {
+    "summary": "为 V4 Flash 增加图像理解，将视觉输入接入编程与工具工作流，以实验版本发布。",
+    "detail": "它是 V4 Flash 的视觉分支，沿用 V4 系列预览路线，与 V4 Pro 正式版并行。"
+  },
+  "node-207": {
+    "summary": "强化软件工程与多步工具任务，并探索让模型参与自身研发和改进流程。",
+    "detail": ""
+  },
+  "node-208": {
+    "summary": "加入原生图像与视频理解、百万上下文和电脑操作，扩展编程 Agent 的持续执行能力。",
+    "detail": ""
+  },
+  "node-209": {
+    "summary": "加强代码生成、前端实现和持续工具任务，为多步骤软件开发提供新的模型版本。",
+    "detail": ""
+  },
+  "node-210": {
+    "summary": "面向 Kimi Code 的编程分支，改进思考模式、长任务指令遵循与推理效率。",
+    "detail": "编程专项分支独立展示，不将它画成通用 Kimi K3 的必经前代。"
+  },
+  "node-211": {
+    "summary": "用统一插件格式打包 Skills 与 MCP 服务配置，让同一扩展可在兼容的 Agent 客户端间复用。",
+    "detail": "该标准负责跨工具打包 Skills 与 MCP 配置；模型训练和 MCP 协议保持独立。GitHub 接入公告确认标准发布于 8 月 6 日。"
+  },
+  "node-212": {
+    "summary": "V4 Flash 更新进入公开测试，强化编程与工具任务，并原生支持 Responses API。",
+    "detail": "这是 V4 Flash 文本分支的更新，后续视觉实验版本在此基础上增加图像理解。"
+  },
+  "node-213": {
+    "summary": "把 Codex Harness 作为托管 API 开放，统一处理会话、编排、上下文压缩与恢复，执行环境和工具仍由开发者选择。",
+    "detail": "公开测试把 Codex 内部的会话、编排、压缩与恢复抽成平台服务，开发者可在自己的产品中复用这套长期运行能力。"
+  },
+  "node-214": {
+    "summary": "把 Kimi Code 的目标、计划、后台任务、权限审批和内置浏览器整合到桌面端，形成可观察、可暂停的长任务工作台。",
+    "detail": ""
+  },
+  "node-215": {
+    "summary": "Antigravity SDK 正式支持 LiteRT 与本地 OpenAI 兼容模型，并允许本地模型调用 MCP 和子代理。",
+    "detail": "本地模型可以参与工具调用和子代理编排；Gemini 规划与云端 Harness 继续承担上层能力。"
+  },
+  "node-216": {
+    "summary": "把 Agent 从写代码延伸到部署后验证：结合日志、指标和调用链判断回归，并把安全审查结果回写 PR。",
+    "detail": "Rollouts 负责判断健康、发送通知和生成回滚 PR；合并与回滚交给人或现有发布流程。"
+  },
+  "node-217": {
+    "summary": "用代码定义可复用的串行、并行与人工检查点，让多 Agent 工作流获得稳定结构、可观察性和明确边界。",
+    "detail": ""
+  },
+  "node-218": {
+    "summary": "围绕 V4.1 Flash 的长程编码、搜索与抓取工具优化官方 Harness，模型与执行框架开始作为一体化系统共同调优。",
+    "detail": "0.2.1 首发为 RC。DeepSeek 在后续 1017 模型公告中建议搭配该版本或更新版本。"
+  },
+  "node-219": {
+    "summary": "把 Agent 定义为代码项目，原生组织工具、Skills、MCP 与渠道，并用评测和真实 PR 回放测试后部署到 Cursor 或自有基础设施。",
+    "detail": ""
+  },
+  "node-220": {
+    "summary": "让 Agent 生成带前后端、持久数据和页面界面的长运行应用；应用与 Agent 可通过 Hosted MCP 和 Agent API 双向调用。",
+    "detail": ""
+  },
+  "node-221": {
+    "summary": "同一 Agent 会话可在网页、移动端、CLI、App、VS Code、Slack 和 Teams 间继续，并默认运行在可恢复的安全云沙盒。",
+    "detail": ""
+  },
+  "node-222": {
+    "summary": "把自然语言 Markdown 编译为标准 GitHub Actions，让 Issue 分流、CI 诊断、文档更新和测试生成在既有权限与 Runner 约束中执行。",
+    "detail": ""
+  },
+  "node-223": {
+    "summary": "让会话围绕目标持续执行，直到独立 Reviewer 确认完成，并提供暂停、恢复和清除控制。",
+    "detail": ""
+  },
+  "node-224": {
+    "summary": "以新架构、原生视觉和更高吞吐替代 V4 Flash 实验分支，同时提升代码、工具使用和自动化任务表现。",
+    "detail": "官方将旧 V4 Flash 与视觉实验模型临时路由到 V4.1 Flash，完成正式替代。"
+  },
+  "node-225": {
+    "summary": "把 GPT-6 能力从 Astra 扩展到不同成本与延迟档位，使高频编码和多 Agent 任务不必都使用旗舰模型。",
+    "detail": ""
+  },
+  "node-226": {
+    "summary": "提升 Agentic Coding 与知识工作上限，并把典型任务运行成本较 Opus 5 降低约 40%。",
+    "detail": ""
+  },
+  "node-227": {
+    "summary": "在 Sonnet 5 基础上进一步提高主力 Agent 模型的速度与成本效率，官方称运行速度提升 30% 以上、多数任务成本最高降低 30%。",
+    "detail": ""
+  },
+  "node-228": {
+    "summary": "以约五分之一的 Astra 标准输入输出价格逼近其 Agentic Coding、电脑操作和专业任务能力，降低高强度 Agent 的单位成本。",
+    "detail": ""
+  },
+  "node-229": {
+    "summary": "面向高吞吐子代理和浏览器任务，让低延迟小模型承担大量并行工作。",
+    "detail": ""
+  },
+  "node-230": {
+    "summary": "用自反馈强化学习提升端到端项目开发，并针对 DeepSeek Harness、CodeBuddy 与 WorkBuddy 联合优化性能和成本。",
+    "detail": ""
+  },
+  "node-231": {
+    "summary": "面向 Agent、编程、电脑操作与安全任务提高能力，同时将在线推理提速近 3 倍、使用成本降低 70%。",
+    "detail": ""
+  },
+  "node-232": {
+    "summary": "以更大规模后训练和跨领域强化学习提升编码、3D 创作、金融研究与长程 Agent，并把上下文扩展到 100 万 token。",
+    "detail": "模型于 10 月 23 日上线产品和 API；完整权重定于 11 月 4 日发布。"
+  },
+  "node-233": {
+    "summary": "以更低价格提供视觉推理、精确电脑操作与自然写作，扩大高频 Work Agent 和 Codex 任务的可用规模。",
+    "detail": ""
+  },
+  "node-234": {
+    "summary": "把递归单元从单次模型调用扩展为完整 Agent Harness，由父 Agent 生成可执行编排并并行调用带工具的子 Harness。",
+    "detail": ""
+  },
+  "node-235": {
+    "summary": "GLM-5.3 驱动的 Infra Agent 在可归因实验反馈下优化自身推理基础设施，两周内把端到端吞吐提升到初始基线的 3 倍。",
+    "detail": "工程师设定目标、边界和风险，Agent 优化已有推理基础设施；模型设计与训练仍由人负责。"
+  },
+  "node-236": {
+    "summary": "让研究 Agent 改写自己的代码，并用隐藏评测筛选后继版本；8 天自主运行中累计得到 7 次连续改进并迁移到未见任务。",
+    "detail": ""
+  },
+  "node-237": {
+    "summary": "主动整理、诊断并演化 Agent 环境，通过 Collection Maps、Event Logs 与虚拟事件历史构造更难的后续训练环境。",
+    "detail": ""
+  },
+  "node-238": {
+    "summary": "把训练、推理、rollout、评测和沙盒做成可复用服务，让 Agent 在统一预算与权限下联合改进数据、Harness 与训练配置。",
+    "detail": ""
+  },
+  "node-239": {
+    "summary": "从人类 GUI 录像、鼠标键盘事件和可访问性树中归纳可复用 Skill，把真实工作示范转化为 Agent 可执行的流程知识。",
+    "detail": ""
+  },
+  "node-240": {
+    "summary": "用任务级递归在线改写当前 Harness，再把改写经验沉淀到持续改进 Harness，使无标准答案的开放任务也能积累可迁移的执行策略。",
+    "detail": ""
+  },
+  "node-241": {
+    "summary": "让元 Agent 跨训练运行改写优化策略、Playbook、可执行优化器代码和决策节奏，将自我改进带入模型训练过程。",
+    "detail": ""
+  },
+  "node-242": {
+    "summary": "元 Agent 不只优化任务 Skill，也用同一流程改写“如何优化 Skill”的 Meta-Skill，使改进方法本身能够跨任务持续演化。",
+    "detail": ""
+  },
+  "node-243": {
+    "summary": "放弃自由文本生成，直接把非结构化状态转成类型化选择、评分与概率，让软件用低延迟、可校准的决策信号驱动工作流。",
+    "detail": "TypeSafe 将这类接口称为 System One Model，并披露使用 RLCD 训练。架构和训练细节未公开，性能数据来自厂商评测。"
+  },
+  "node-244": {
+    "summary": "把单仓库 Coding Agent 接入 GitHub 与飞书：经授权后为请求分配独立会话和工作目录，持续推进任务并把 PR 或问题送回原对话。",
+    "detail": "DeepSeek 将其定位为 Harness 扩展包和研究原型。公开代码覆盖 GitHub、飞书与独立工作目录；Router/Worker、事件驱动和 Watchdog 只实现了部分设计。"
+  },
+  "node-245": {
+    "summary": "xAI 将仓库理解、文件编辑、终端执行、计划审阅和 Diff 验收整合进终端 Coding Agent，形成 Grok 的工程执行入口。",
+    "detail": ""
+  },
+  "node-246": {
+    "summary": "用独立、离线验证器检查 PyTorch 到 JAX 的整仓迁移，不只看接口和测试通过，还比较数值、梯度、优化轨迹与端到端行为是否等价。",
+    "detail": ""
+  },
+  "node-247": {
+    "summary": "把一次对话扩展为可暂停、恢复和检查进度的长任务循环，Agent 持续执行并验证结果，直到目标完成或需要用户介入。",
+    "detail": ""
+  },
+  "node-248": {
+    "summary": "用一个本地 MCP Server 与 CLI 把 Ghidra、Hopper、IDA 等逆向工具接入 Coding Agent，使二进制、Electron、.NET、APK 和网站分析带着证据链进入同一会话。",
+    "detail": "REA 提供检查工具和证据；源码恢复与解释正确性由底层逆向工具和人工判断负责。深度原生分析需要合法安装 Ghidra、Hopper 或 IDA。时间线按首个 npm 公共版本定位。"
+  },
+  "node-249": {
+    "summary": "公开 Rust 编写的 Agent Loop、工具、终端 UI 与 Skills、Plugins、Hooks、MCP、Subagents 扩展系统，使完整 Coding Harness 可审计并可接本地模型。",
+    "detail": ""
+  },
+  "node-250": {
+    "summary": "面向 Coding、Agentic Tasks 与知识工作联合训练，并把异步多小时 Agent rollout、大规模自动评分和模型评分纳入强化学习。",
+    "detail": ""
+  },
+  "node-251": {
+    "summary": "把 Prompt、Skills、Tools 与 Hooks 的自动评测、版本快照和迭代优化做成统一开源 Harness，让固定模型上的 Agent 改进可以重复运行和比较。",
+    "detail": "它改进模型外部 Harness，模型权重保持不变。成本与准确率数据来自官方自有套件。"
+  },
+  "node-252": {
+    "summary": "把大型任务编译为可复用编排脚本，在后台并行分发给最多数百个隔离 Agent，再通过独立验证汇总为一个结果。",
+    "detail": "官方文档给出的常规预算为 128 个 Agent，大任务上限 1,024；这是产品配置上限，不代表所有任务都能有效并行扩展。"
+  },
+  "node-253": {
+    "summary": "为每个 Bot 提供持久云电脑、浏览器、文件系统和终端，使多个有名字、有记忆的 Agent 能跨应用持续工作，只在需要审批时回来找人。",
+    "detail": ""
+  },
+  "node-254": {
+    "summary": "用更长的补充训练、重生成 SFT 轨迹和跨 Coding、Computer Use、CAD 等环境的 Agentic RL，强化多步骤长任务与自测。",
+    "detail": ""
+  },
+  "node-255": {
+    "summary": "换用更大的基础模型，并把更长强化学习集中到多小时任务、自验证和长上下文管理；同时原生训练其理解 Grok Bot Harness。",
+    "detail": ""
+  },
+  "node-256": {
+    "summary": "构造 600 个可验证的多 Agent 冲突任务，测试 Agent 面对过期消息、矛盾指令、共享权限和视觉证据时，能否核验真实状态并完成协调收尾。",
+    "detail": ""
+  },
+  "node-257": {
+    "summary": "Anthropic 为高并发 Agent 重新设计集中式版本控制：服务端完成提交、合并和历史查询，稀疏按需取文件，支撑每天数万次代码合入与数千万次 CI checkout。",
+    "detail": "Scion 服务 Anthropic 内部的大规模 Agent 工作负载。它展示了 Agent 规模如何改写版本控制、代码审查和 CI 基础设施。"
+  },
+  "node-258": {
+    "summary": "把排序模型实验串成数天到数周的流程：提出假设、申请预算、启动训练、诊断失败、分析结果并继续下一轮，只在关键决策点交还给工程师。",
+    "detail": "REA 通过休眠与唤醒保存长任务状态，并在算力预算和访问权限内调整计划。Meta 报告的 2 倍模型准确率和 5 倍工程产出来自首轮内部部署。"
+  },
+  "node-259": {
+    "summary": "把内核优化变成持续搜索：生成候选、编译运行、检查数值正确性和性能，再把诊断反馈给搜索器，跨 GPU、MTIA 与 CPU 自动迭代数百个实现。",
+    "detail": "专用 Harness、树搜索、并行验证和历史经验组成持续搜索流程。Meta 于 2026-04-02 披露生产部署；吞吐数据对应特定负载和硬件。"
+  },
+  "node-260": {
+    "summary": "冻结执行任务的子 Agent，只训练负责拆解、并行调度与汇总的主 Agent；奖励同时约束最终质量、有效并行和子任务完成率。",
+    "detail": "PARL 把强化学习对象从单 Agent 工具轨迹扩展到多 Agent 组织方式，降低所有成员同时更新带来的信用分配混乱。公开实验基于 Kimi Agent Swarm。"
+  },
+  "node-261": {
+    "summary": "把可替换模型、本地 CLI/桌面端与 MCP 扩展组合成开源 Agent，在本机执行命令、修改代码、测试并连接外部系统。",
+    "detail": "goose 是 MCP 最早的一批完整客户端之一，证明工具协议可以承载模型无关的本地执行层；项目后来进入 Linux Foundation 的 Agentic AI Foundation。"
+  },
+  "node-262": {
+    "summary": "为不同厂商和框架的远程 Agent 规定能力发现、消息、任务状态与产物交换，让跨系统协作不再依赖逐一编写私有适配器。",
+    "detail": "A2A 负责 Agent 间协作，MCP 负责连接工具和数据。首发是草案，随后捐赠给 Linux Foundation；节点按 Google 首次公开日定位。"
+  },
+  "node-263": {
+    "summary": "持续从新 GitHub issue 构造仓库级任务，并由 RepoLaunch 自动搭建和验证 Docker 环境，降低静态题集被训练污染和快速过时的问题。",
+    "detail": "首发包含 1,319 个来自 2024 年后的任务、93 个仓库。持续构题提高了新鲜度和环境覆盖，任务歧义与数据泄漏仍要靠生成后的验证流程处理。"
+  },
+  "node-264": {
+    "summary": "把 Coding Agent 与编辑器界面解耦：同一 Agent 可接入不同 IDE，并复用实时 diff、多文件审阅、终端输出、权限控制和 MCP 工具界面。",
+    "detail": "ACP 用精简 JSON-RPC 连接客户端与本地 Agent，负责界面呈现和控制；A2A 负责远程 Agent 间协作。"
+  },
+  "node-265": {
+    "summary": "用跨多文件、长时间的企业级仓库任务替代短小补丁，并以公开、隐藏和私有代码集减少训练污染。",
+    "detail": "论文首发 1,865 个任务、41 个仓库；公开榜单后来删除无效任务并收紧网络与复评协议。各版任务和协议不同，分数应按版本比较。"
+  },
+  "node-266": {
+    "summary": "把终端任务、容器验证、云端并发运行和训练 rollout 统一到同一套 Harness，使评测环境既能复现，也能扩展到 SFT、RL 和大规模实验。",
+    "detail": "Terminal-Bench 2.0 重新核验任务；Harbor 把可装入容器的 Agent 接到统一运行接口。后续 2.1、3.0、4.0 作为同一评测体系持续维护。"
+  },
+  "node-267": {
+    "summary": "由专业开发者复核问题描述和测试，筛出 500 个可解、范围清楚的仓库任务，并用 Docker Harness 提高结果的可复现性。",
+    "detail": "它一度是前沿 Coding Agent 的默认指标。OpenAI 于 2026-02 因训练数据污染和错误测试停止报告该分数；2026-07 又发现 SWE-Bench Pro 约 30% 的题目存在问题并撤回推荐，说明静态真实仓库评测需要持续审计，不能只靠换榜。"
+  },
+  "node-268": {
+    "summary": "用真实仓库中的性能优化 PR 测试 Agent：补丁不仅要保持功能正确，还要在可执行基准中稳定降低运行时间。",
+    "detail": "首发包含 140 个任务，提供完整仓库、目标函数、性能测试和专家补丁。复现实验需同时报告机器配置、方差和统计稳定性。"
+  },
+  "node-269": {
+    "summary": "给 Coding Agent 一个可预测、可分目录继承的仓库说明入口，用来声明构建、测试、代码规范和业务约束，减少每个工具各自维护私有指令文件。",
+    "detail": "AGENTS.md 是轻量互操作约定，用可继承文件向 Agent 提供仓库说明。首个提交为 2025-08-19，同年 12 月捐赠给 Linux Foundation 的 AAIF。"
+  },
+  "node-270": {
+    "summary": "把写代码、终端执行、网页浏览、沙盒隔离、多 Agent 协作和评测接入同一开放平台，成为软件工程 Agent 研究与复现的重要公共底座。",
+    "detail": "项目最初名为 OpenDevin，2024-03-12 创建；正式论文在 2024-07 公开，定义了可扩展的软件 Agent 平台。"
+  },
+  "node-271": {
+    "summary": "在真实操作系统和桌面应用中执行 369 个跨应用任务，用可复现初始状态和执行脚本检查最终状态。",
+    "detail": "OSWorld 覆盖 Ubuntu、Windows、macOS 和文件系统。Verified/2.0 修改了环境与协议，分数需按版本比较。"
+  },
+  "node-272": {
+    "summary": "把长任务上下文拆成两层：主动清除过期工具结果，再用客户端文件跨会话保存项目状态和经验。",
+    "detail": "Context Editing 在服务端裁剪上下文；Memory Tool 发出文件操作请求，应用负责存储、权限和内容校验。"
+  },
+  "node-273": {
+    "summary": "用带元数据的 SKILL.md、脚本和参考文件封装程序性知识；Agent 先读取简短描述，命中任务后再按需加载完整内容。",
+    "detail": "首发于 Claude，2025-12-18 发布为跨平台开放标准，2026-10 捐赠给 AAIF。Skills 封装做事方法，MCP 连接外部工具；第三方 Skill 需单独审查。"
+  },
+  "node-274": {
+    "summary": "把超出单个上下文窗口的软件任务拆成初始化与增量执行两种角色，并要求每轮留下代码、测试、进度文件和清晰交接状态。",
+    "detail": "Anthropic 用可执行测试、版本控制和结构化进度记录实现跨会话恢复，Harness 负责失败恢复与验收。"
+  },
+  "node-275": {
+    "summary": "把工程重点从亲手写代码转向让仓库对 Agent 可读、可运行、可验证：短 AGENTS.md 作索引，文档作事实源，worktree 隔离，日志指标和测试直接暴露给 Agent。",
+    "detail": "百万行代码、1,500 个 PR 和约十倍速度来自 OpenAI 的单个内部项目。可复用部分是环境、反馈、自动审查、CI 和可观察性组成的 Harness。"
+  },
+  "node-276": {
+    "summary": "让负责改进 Agent 的 Optimizer 同时改写自己的诊断、编辑和验证工具，并用可执行测试筛掉看似合理但实际退化的改动。",
+    "detail": "执行测试负责拦截 Optimizer 自我改写中的退化；VERSE 把 Optimizer 代码也放进搜索空间。"
+  },
+  "node-277": {
+    "summary": "针对无标准答案的开放任务，同时演化可执行 Verifier 与 Harness；新验证器在已知偏好对比集上胜过旧版本后接管。",
+    "detail": "UCoE 固定模型权重，改进验证程序和外层状态。偏好对比集决定系统能识别哪些改进。"
+  },
+  "node-278": {
+    "summary": "交替执行两步：当前模型分析失败并提出 Harness 改动，再在选中的 Harness 下做强化学习；训练中暴露的难题进入下一轮搜索。",
+    "detail": "Self-HPO 交替更新 Harness 与模型策略。实验覆盖有限模型和三类 Coding benchmark，尚无开放环境的长期运行数据。"
+  },
+  "node-279": {
+    "summary": "把模型调用、Web/File Search、Computer Use、Agent handoff、guardrail 和执行 trace 组合为统一开发栈，减少每个团队重复编写 Agent Loop 与观测层。",
+    "detail": "Responses API 提供托管接口，Agents SDK 提供开源编排库；任务拆解、工具权限、评测和生产可靠性仍由应用实现。"
+  },
+  "node-280": {
+    "summary": "从只会调用 Bash 的最小 Agent 出发，在解决真实软件任务的同时分析失败、修改自身 scaffold，并把有效改动带到后续任务。",
+    "detail": "它在线改写模型外的执行脚手架，模型权重保持不变。任务顺序、评测反馈和可修改代码范围会影响结果。"
+  },
+  "node-281": {
+    "summary": "把项目管理看板变成 Agent 控制面：每个开放任务都有独立工作区和持续运行的 Coding Agent，并按 WORKFLOW.md 交付 PR、证据和人工审查。",
+    "detail": "Symphony 是 Codex App Server 的最小编排参考。OpenAI 报告的“部分团队 PR 增长 500%”来自内部使用。"
+  },
+  "node-282": {
+    "summary": "把研究、网站、文档、表格和幻灯片交给同一 Agent 端到端完成，浏览器、终端和文件系统从单项工具变成通用执行环境。",
+    "detail": "首发名称为 OK Computer Agent mode。当前官方统一称 Kimi Agent；后续模型、Agent Swarm 与 Kimi Claw 扩展了它的长程执行和后台自动化能力。"
+  },
+  "node-283": {
+    "summary": "Google 把 Gemini 变成 24/7 云端 Personal Agent：接入 Gmail、Docs、Slides 等 Workspace，可按计划或触发器在用户离开后继续执行。",
+    "detail": "Spark 运行在 Gemini 3.5 与 Antigravity Harness 上。2026-06 扩展到 macOS，可整理本地文件并跨桌面与 Workspace 完成复杂流程。"
+  },
+  "node-284": {
+    "summary": "不另造工作台，用户通过短信或电话交代任务；Agent 使用自己的手机和电脑完成预订、购物、取消订阅与现实世界协调。",
+    "detail": "Instinct 的入口足够低摩擦，但代用户操作账户、通信和支付需要极高权限。首轮公开测试同时引发隐私条款和安全模型争议。"
+  },
+  "node-285": {
+    "summary": "每位用户获得独立 Secure VM、浏览器和长期记忆；Muse 跨应用推进个人目标，敏感操作经过隔离的 Sentinel Agent 与用户审批。",
+    "detail": "Muse 可发邮件、填写表单、预订和购买，并在应用关闭后继续工作。权限、凭证隔离、审计轨迹和撤销访问被做成 Personal Agent 的产品底座。"
+  },
+  "node-286": {
+    "summary": "把 Personal Agent 做成可组队的数字身份：每个 Agent 拥有自己的邮箱、电话、钱包和云电脑，可在群聊中分工、交接并持续推进任务。",
+    "detail": "Cue 与 Manus 2.0 同日发布。用户设定预算、权限和最终决策，多名 Agent 分别研究、筛选、制作和联络，把单一助手扩展为个人 Agent 团队。"
+  },
+  "node-287": {
+    "summary": "常驻 Agent 获得自己的云电脑与浏览器，通过 4,000 多个插件连接应用，学习用户反馈，并从 ChatGPT、Slack 或 Teams 持续处理目标。",
+    "detail": "Dots 将后台 proactive research、Custom Rules、审批和 Activity View 组合成可治理的 Personal Agent；Specialist Dots 则把同一机制扩展到组织岗位。"
+  },
+  "node-288": {
+    "summary": "把 Personal Agent 从单人私聊改成多人共享线程：Agent 主动协调家庭或朋友的计划，并按任务即时生成可点击的小应用和界面。",
+    "detail": "Wabi 2.0 于 2026-09-28 先以邀请制发布，10-19 面向 iOS、Android 与 Mac 公开开放。共享线程让参与者共同查看进度、补充信息和完成审批。"
+  }
+}

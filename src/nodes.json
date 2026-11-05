@@ -4238,9 +4238,9 @@
     "developmentStage": "tool",
     "origin": "supplement",
     "verifiedAt": "2026-11-03",
-    "status": "评测集 / 已不再推荐",
+    "status": "评测集 / 前沿测量已失真",
     "summary": "由专业开发者复核问题描述和测试，筛出 500 个可解、范围清楚的仓库任务，并用 Docker Harness 提高结果的可复现性。",
-    "detail": "它一度是前沿 Coding Agent 的默认指标。OpenAI 发现题目和答案已广泛进入训练数据，于 2026 年停止报告该分数并转向 SWE-Bench Pro。",
+    "detail": "它一度是前沿 Coding Agent 的默认指标。OpenAI 于 2026-02 因训练数据污染和错误测试停止报告该分数；2026-07 又发现 SWE-Bench Pro 约 30% 的题目存在问题并撤回推荐，说明静态真实仓库评测需要持续审计，不能只靠换榜。",
     "research": {
       "label": "OpenAI · Introducing SWE-bench Verified",
       "url": "https://openai.com/index/introducing-swe-bench-verified/",
@@ -4249,6 +4249,10 @@
         {
           "label": "OpenAI · Why we no longer evaluate SWE-bench Verified",
           "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
+        },
+        {
+          "label": "OpenAI · Separating signal from noise in coding evaluations",
+          "url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations/"
         }
       ]
     }
