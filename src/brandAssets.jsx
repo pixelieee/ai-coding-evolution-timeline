@@ -80,6 +80,7 @@ const componentRules = [
 ];
 
 const fileRules = [
+  { pattern: /^auto-gpt classic$/i, name: "AutoGPT", source: "/logos/autogpt.png" },
   { pattern: /^instinct$/i, name: "Instinct", source: "/logos/instinct.png" },
   { pattern: /^wabi 2\.0$/i, name: "Wabi", source: "/logos/vector/wabi.svg" },
   { pattern: /^rea$/i, name: "REA · Reverse Engineer Anything", source: "/logos/vector/rea.svg" },

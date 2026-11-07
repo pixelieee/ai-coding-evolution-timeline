@@ -32,7 +32,7 @@ test("community sampling covers global and Chinese developer networks", () => {
 test("community links stay on auditable first-party or established public platforms", () => {
   const allowed = new Set([
     "news.ycombinator.com", "reddit.com", "x.com", "zhihu.com", "xiaohongshu.com",
-    "openai.com", "wired.com", "techcrunch.com", "theverge.com", "apps.apple.com",
+    "openai.com", "community.openai.com", "wired.com", "techcrunch.com", "theverge.com", "apps.apple.com",
   ]);
   for (const entry of verdicts) {
     for (const source of entry.communitySources) {
@@ -55,6 +55,14 @@ test("a superseded benchmark keeps its historical rating when the evidence still
   assert.equal(verified?.tier, "top");
   assert.match(verified?.review || "", /行业通用尺子.*高分不再等于/);
   assert.match(verified?.evidence || "", /59\.4%.*停止报告/);
+});
+
+test("the bottom tier includes recognizable, evidence-backed failures", () => {
+  const byId = new Map(verdicts.map((entry) => [entry.nodeId, entry]));
+  assert.equal(byId.get("node-289")?.tier, "drag");
+  assert.match(byId.get("node-289")?.review || "", /死循环.*API/);
+  assert.equal(byId.get("node-290")?.tier, "drag");
+  assert.match(byId.get("node-290")?.evidence || "", /75 美元.*150 美元.*2025-07-14/);
 });
 
 test("personal agent milestones are all rated", () => {

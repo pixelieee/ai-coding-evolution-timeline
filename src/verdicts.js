@@ -12,7 +12,7 @@ export const verdictTiers = [
 
 const source = (label, url) => ({ label, url });
 
-// 硬事实核查于 2026-11-04；社区风向取自 HN、Reddit、X、知乎与可检索的小红书公开讨论。
+// 硬事实核查于 2026-11-08；社区风向取自 HN、Reddit、X、知乎与可检索的小红书公开讨论。
 // 社区样本用于判断体验与争议，不替代技术事实，也不把单条热帖当成总体民意。
 const editorialVerdicts = [
   {
@@ -337,6 +337,18 @@ const editorialVerdicts = [
     evidence: "OpenAI 2025-07 明确把 Operator 并入 ChatGPT agent，并关闭独立站点。",
     source: source("OpenAI · Operator", "https://openai.com/index/introducing-operator/"),
   },
+  {
+    nodeId: "node-289", tier: "drag",
+    review: "Auto-GPT 把全自主 Agent 炒到全民围观，也把死循环、任务漂移和 API 烧钱完整演示了一遍。",
+    evidence: "官方仓库目前将 2023 年的原始产品单列为 AutoGPT Classic，主项目已经转向可控工作流与多专家平台。",
+    source: source("AutoGPT · official repository", "https://github.com/Significant-Gravitas/AutoGPT"),
+  },
+  {
+    nodeId: "node-290", tier: "drag",
+    review: "GPT-4.5 把预训练规模堆到极限，也把价格堆到没人敢常用；四个半月后 API 下线。",
+    evidence: "GPT-4.5 Preview 的 API 定价为每百万输入 75 美元、输出 150 美元；OpenAI 于 2025-07-14 关闭模型并推荐 GPT-4.1。",
+    source: source("OpenAI API · GPT-4.5 deprecation", "https://developers.openai.com/api/docs/deprecations"),
+  },
 ];
 
 const roastReviews = {
@@ -393,6 +405,8 @@ const roastReviews = {
   "node-288": "别人做一人一个 Agent，Wabi 直接拉进家庭群；想法很聪明，太主动时也像那个没人问却一直安排日程的群友。",
   "node-009": "Issue 到 PR 的愿景没死，产品先死了；后来者把尸体上的好点子全捡走。",
   "node-074": "演示像未来，寿命像内测；最后证明浏览器 Agent 可以活，但没必要叫 Operator。",
+  "node-289": "188k Star 证明声量，死循环和 API 账单证明它还不是产品；把 GPT-4 套进 while(true) 不叫自主。",
+  "node-290": "规模拉满、价格拉满、寿命四个半月；它更像纯预训练扩张路线的讣告，不像一代产品。",
 };
 
 const communitySignals = {
@@ -457,6 +471,8 @@ const communitySignals = {
   "node-288": "多人线程和临时界面获得好评；首批用户也直说它过度主动、应用粗糙，公开规模与长期留存尚未出现。",
   "node-009": "理念被后来的 coding agent 继承；用户对独立预览退场几乎没有留恋。",
   "node-074": "演示阶段热度高，真实使用抱怨慢、受限和脆；并入 ChatGPT agent 后讨论迅速退潮。",
+  "node-289": "HN 和 Reddit 的高频反馈高度一致：概念震撼，真实任务却经常循环、跑偏、崩溃并持续消耗 API 费用。",
+  "node-290": "HN 讨论几乎被定价淹没；细腻写作和对话有人认可，但开发者很难为微妙提升接受 30 倍级输入成本。",
 };
 
 const communitySources = {
@@ -551,9 +567,19 @@ const communitySources = {
     { label: "X", url: "https://x.com/nikunj/status/2112219327881761008" },
     { label: "TechCrunch", url: "https://techcrunch.com/2026/09/29/ai-powered-app-maker-wabi-pivots-to-a-messaging-experience/" },
   ],
+  "node-289": [
+    { label: "HN 首发讨论", url: "https://news.ycombinator.com/item?id=35413054" },
+    { label: "HN 生产问题", url: "https://news.ycombinator.com/item?id=35562821" },
+    { label: "Reddit", url: "https://www.reddit.com/r/OpenAI/comments/12jjjm3/has_anyone_used_autogpt_for_something_useful/" },
+  ],
+  "node-290": [
+    { label: "HN", url: "https://news.ycombinator.com/item?id=43197872" },
+    { label: "OpenAI 开发者社区", url: "https://community.openai.com/t/gpt-4-5-preview-model-will-be-removed-from-the-api-on-2025-07-14/1230050" },
+  ],
 };
 
 const tierOverrides = Object.fromEntries([
+  ...["node-289", "node-290"].map((id) => [id, "drag"]),
   ...[
     // 产品：已经公开落地，但尚不足以改变行业默认动作。
     "node-005", "node-006", "node-011", "node-012", "node-017", "node-018", "node-019", "node-020",

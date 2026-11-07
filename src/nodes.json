@@ -4760,5 +4760,59 @@
         }
       ]
     }
+  },
+  {
+    "id": "node-289",
+    "date": "2023-03-30",
+    "year": 2023,
+    "title": "Auto-GPT Classic",
+    "section": "products",
+    "family": "开源自主 Agent",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-08",
+    "status": "开源实验 / 原始路线退场",
+    "summary": "把 GPT-4、工具、记忆与循环执行拼成早期全自主 Agent，迅速引爆开源社区，也暴露死循环、任务漂移和失控成本。",
+    "detail": "Auto-GPT Classic 证明了自主 Agent 概念能形成巨大传播，但原始开放循环难以稳定完成真实任务。项目后来转向可控工作流和多专家平台，原始 Classic 形态留作历史版本。",
+    "series": "Auto-GPT",
+    "research": {
+      "label": "AutoGPT · official repository",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "kind": "官方仓库",
+      "references": [
+        {
+          "label": "Auto-GPT · launch discussion",
+          "url": "https://news.ycombinator.com/item?id=35413054"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-290",
+    "date": "2025-02-27",
+    "year": 2025,
+    "title": "GPT-4.5 Preview",
+    "section": "models",
+    "family": "OpenAI · GPT / o 系列",
+    "stage": "03 仓库级执行",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-08",
+    "status": "研究预览 / API 已关闭",
+    "summary": "用更大规模预训练换取更自然的对话、创作和规划能力，但价格与计算成本远高于 GPT-4o，未形成可持续的开发者产品。",
+    "detail": "GPT-4.5 Preview 的 API 价格为每百万输入 75 美元、输出 150 美元。OpenAI 于 2025-04 宣布弃用，并在 2025-07-14 关闭 API，推荐迁移到 GPT-4.1。",
+    "series": "OpenAI · GPT / o 系列",
+    "research": {
+      "label": "OpenAI · Introducing GPT-4.5",
+      "url": "https://openai.com/index/introducing-gpt-4-5/",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "OpenAI API · GPT-4.5 deprecation",
+          "url": "https://developers.openai.com/api/docs/deprecations"
+        }
+      ]
+    }
   }
 ]
