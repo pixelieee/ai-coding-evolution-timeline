@@ -66,7 +66,7 @@ const componentRules = [
   { pattern: /^pi coding/i, name: "Pi", Icon: PiIcon },
   { pattern: /^trae$/i, name: "TRAE", Icon: TraeIcon },
   { pattern: /codebuddy|workbuddy/i, name: "Tencent · CodeBuddy", Icon: CodeBuddyIcon },
-  { pattern: /amazon q/i, name: "AWS", Icon: AwsIcon },
+  { pattern: /amazon q|codewhisperer/i, name: "AWS", Icon: AwsIcon },
   { pattern: /junie/i, name: "JetBrains · Junie", Icon: JunieIcon },
   { pattern: /^v0$/i, name: "Vercel · v0", Icon: VercelIcon },
   { pattern: /qoder/i, name: "Qoder", Icon: QoderIcon },

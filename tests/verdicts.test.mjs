@@ -63,6 +63,12 @@ test("the bottom tier includes recognizable, evidence-backed failures", () => {
   assert.match(byId.get("node-289")?.review || "", /死循环.*API/);
   assert.equal(byId.get("node-290")?.tier, "drag");
   assert.match(byId.get("node-290")?.evidence || "", /75 美元.*150 美元.*2025-07-14/);
+  assert.equal(byId.get("node-291")?.tier, "drag");
+  assert.match(byId.get("node-291")?.review || "", /应用商店.*插件/);
+  assert.equal(byId.get("node-292")?.tier, "drag");
+  assert.match(byId.get("node-292")?.evidence || "", /2022-06-23.*2024-04-30.*Amazon Q/);
+  assert.equal(byId.get("node-009")?.tier, "solid");
+  assert.equal(byId.get("node-074")?.tier, "solid");
 });
 
 test("personal agent milestones are all rated", () => {

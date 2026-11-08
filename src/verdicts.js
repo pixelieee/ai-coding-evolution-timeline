@@ -349,6 +349,18 @@ const editorialVerdicts = [
     evidence: "GPT-4.5 Preview 的 API 定价为每百万输入 75 美元、输出 150 美元；OpenAI 于 2025-07-14 关闭模型并推荐 GPT-4.1。",
     source: source("OpenAI API · GPT-4.5 deprecation", "https://developers.openai.com/api/docs/deprecations"),
   },
+  {
+    nodeId: "node-291", tier: "drag",
+    review: "全行业围着“AI 应用商店”画生态，一年后插件商店关门；工具调用留下了，插件分发模式没留下。",
+    evidence: "OpenAI 于 2023-03-23 发布 ChatGPT Plugins；2024-03-19 停止新安装和新对话，2024-04-09 关闭既有插件对话。",
+    source: source("OpenAI · ChatGPT release notes", "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"),
+  },
+  {
+    nodeId: "node-292", tier: "drag",
+    review: "AWS 带着云厂商体量正面追 Copilot，独立品牌不到两年就被 Amazon Q 吞掉；功能活着，名字没了。",
+    evidence: "AWS 于 2022-06-23 发布 CodeWhisperer 预览；2024-04-30 官方确认其代码建议和安全扫描能力并入 Amazon Q Developer。",
+    source: source("AWS · Amazon Q Developer GA", "https://aws.amazon.com/about-aws/whats-new/2024/04/amazon-q-developer-generally-available/"),
+  },
 ];
 
 const roastReviews = {
@@ -407,6 +419,8 @@ const roastReviews = {
   "node-074": "演示像未来，寿命像内测；最后证明浏览器 Agent 可以活，但没必要叫 Operator。",
   "node-289": "188k Star 证明声量，死循环和 API 账单证明它还不是产品；把 GPT-4 套进 while(true) 不叫自主。",
   "node-290": "规模拉满、价格拉满、寿命四个半月；它更像纯预训练扩张路线的讣告，不像一代产品。",
+  "node-291": "发布时全网都在画“AI 应用商店”，一年后插件商店直接关门；生态没长出来，协议和工具调用被后来者继承。",
+  "node-292": "亚马逊亲自下场追 Copilot，最后连独立名字都没保住；功能并入 Amazon Q，CodeWhisperer 留在旧教程里。",
 };
 
 const communitySignals = {
@@ -473,6 +487,8 @@ const communitySignals = {
   "node-074": "演示阶段热度高，真实使用抱怨慢、受限和脆；并入 ChatGPT agent 后讨论迅速退潮。",
   "node-289": "HN 和 Reddit 的高频反馈高度一致：概念震撼，真实任务却经常循环、跑偏、崩溃并持续消耗 API 费用。",
   "node-290": "HN 讨论几乎被定价淹没；细腻写作和对话有人认可，但开发者很难为微妙提升接受 30 倍级输入成本。",
+  "node-291": "首发 HN 获得 1875 分和 1106 条评论，行业曾把它当成下一代应用入口；关闭时开发者只能迁移到 GPTs 与 Actions。",
+  "node-292": "发布时被视为 Copilot 的第一个云厂商级对手；HN 实测反馈长期集中在补全质量落后，讨论随后随品牌一起转向 Amazon Q。",
 };
 
 const communitySources = {
@@ -576,10 +592,18 @@ const communitySources = {
     { label: "HN", url: "https://news.ycombinator.com/item?id=43197872" },
     { label: "OpenAI 开发者社区", url: "https://community.openai.com/t/gpt-4-5-preview-model-will-be-removed-from-the-api-on-2025-07-14/1230050" },
   ],
+  "node-291": [
+    { label: "HN 首发讨论", url: "https://news.ycombinator.com/item?id=35277677" },
+    { label: "OpenAI 开发者社区", url: "https://community.openai.com/t/plugin-store-and-new-chats-with-plugins-closed-march-19-2024/689877" },
+  ],
+  "node-292": [
+    { label: "HN 首发讨论", url: "https://news.ycombinator.com/item?id=31851373" },
+    { label: "HN 正式版反馈", url: "https://news.ycombinator.com/item?id=35554460" },
+  ],
 };
 
 const tierOverrides = Object.fromEntries([
-  ...["node-289", "node-290"].map((id) => [id, "drag"]),
+  ...["node-291", "node-292", "node-289", "node-290"].map((id) => [id, "drag"]),
   ...[
     // 产品：已经公开落地，但尚不足以改变行业默认动作。
     "node-005", "node-006", "node-011", "node-012", "node-017", "node-018", "node-019", "node-020",
@@ -589,7 +613,7 @@ const tierOverrides = Object.fromEntries([
     "node-059", "node-060", "node-061", "node-063", "node-064", "node-065", "node-066", "node-067",
     "node-069", "node-070", "node-071", "node-072", "node-073", "node-077", "node-078", "node-080",
     "node-081", "node-082", "node-194", "node-197", "node-215", "node-216", "node-222", "node-248",
-    "node-249", "node-251", "node-287", "node-288",
+    "node-009", "node-074", "node-249", "node-251", "node-287", "node-288",
     // 模型：正式能力升级，影响明确，但不是新的技术范式。
     "node-086", "node-087", "node-088", "node-089", "node-090", "node-093", "node-095", "node-096",
     "node-098", "node-099", "node-101", "node-102", "node-106", "node-107", "node-108", "node-113",

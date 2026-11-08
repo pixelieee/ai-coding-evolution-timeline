@@ -25,11 +25,11 @@ const ids = (list) => Array.from(list, (node) => node.id);
 const added = nodes.filter((node) => node.origin === "supplement");
 
 test("the refresh retains every original ID and keeps supplementary records sequential", () => {
-  assert.equal(nodes.length, 290);
+  assert.equal(nodes.length, 292);
   assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
   for (let id = 1; id <= nodes.length; id++) assert.ok(byId(`node-${String(id).padStart(3, "0")}`));
-  assert.equal(added.length, 98);
-  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [121, 98, 71]);
+  assert.equal(added.length, 100);
+  assert.deepEqual(["products", "models", "tech"].map((section) => nodes.filter((node) => node.section === section).length), [123, 98, 71]);
 });
 
 test("the personal-agent line covers the milestone products instead of only Grok Bot", () => {

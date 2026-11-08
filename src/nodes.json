@@ -4814,5 +4814,59 @@
         }
       ]
     }
+  },
+  {
+    "id": "node-291",
+    "date": "2023-03-23",
+    "year": 2023,
+    "title": "ChatGPT Plugins",
+    "section": "products",
+    "family": "ChatGPT 工具生态",
+    "stage": "03 工具型 Agent",
+    "developmentStage": "tool",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-08",
+    "status": "Beta / 已关闭",
+    "summary": "把第三方服务接入 ChatGPT，一度被视为 AI 应用商店的起点；上线约一年后停止新安装，能力转入 GPTs 与 Actions。",
+    "detail": "OpenAI 于 2023-03-23 发布 ChatGPT Plugins。2024-03-19 起无法安装插件或新建插件对话，既有对话于 2024-04-09 停止；官方将迁移方向指向 GPTs 与 Actions。",
+    "series": "ChatGPT 工具生态",
+    "research": {
+      "label": "OpenAI · ChatGPT release notes",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "kind": "官方发布记录",
+      "references": [
+        {
+          "label": "OpenAI Developer Community · Plugins closed",
+          "url": "https://community.openai.com/t/plugin-store-and-new-chats-with-plugins-closed-march-19-2024/689877"
+        }
+      ]
+    }
+  },
+  {
+    "id": "node-292",
+    "date": "2022-06-23",
+    "year": 2022,
+    "title": "Amazon CodeWhisperer",
+    "section": "products",
+    "family": "AI 编程助手",
+    "stage": "01 补全与对话",
+    "developmentStage": "generate",
+    "origin": "supplement",
+    "verifiedAt": "2026-11-08",
+    "status": "预览发布 / 品牌已并入 Amazon Q",
+    "summary": "AWS 正面推出的 Copilot 对手，覆盖代码补全与安全扫描；独立品牌不到两年便并入 Amazon Q Developer。",
+    "detail": "Amazon CodeWhisperer 于 2022-06-23 公开预览、2023-04 正式发布。AWS 于 2024-04-30 将其代码建议与安全扫描能力并入 Amazon Q Developer，CodeWhisperer 不再作为独立产品延续。",
+    "series": "Amazon CodeWhisperer",
+    "research": {
+      "label": "AWS · CodeWhisperer preview",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2022/06/aws-announces-amazon-codewhisperer-preview/",
+      "kind": "官方发布",
+      "references": [
+        {
+          "label": "AWS · Amazon Q Developer GA",
+          "url": "https://aws.amazon.com/about-aws/whats-new/2024/04/amazon-q-developer-generally-available/"
+        }
+      ]
+    }
   }
 ]
