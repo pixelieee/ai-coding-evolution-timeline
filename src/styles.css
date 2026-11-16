@@ -138,6 +138,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .verdict-community-links a:hover { border-color: #b8872d; color: #7f570d; background: #fff8e7; }
 .verdict-note { padding: 18px 2px 0; color: #858a85; font-size: var(--text-meta); }
 .verdict-empty { margin: 0; padding: 34px 4px; color: #7b807b; font-size: var(--text-body); }
+.verdict-note-action { margin-left: 10px; padding: 0; border: 0; color: #7f570d; background: none; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.verdict-note-action:hover { color: #5f4008; }
 
 .library-toolbar { min-width: 0; min-height: 62px; display: flex; align-items: center; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
 .library-search { width: min(360px,27vw); height: 44px; display: flex; align-items: center; gap: 9px; padding: 0 12px; border: 1px solid #cdcfca; border-radius: 7px; color: #898d8a; background: #fff; flex-shrink: 0; }

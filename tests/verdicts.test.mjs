@@ -8,8 +8,9 @@ test("editorial verdicts reference unique existing timeline nodes", () => {
   const nodeIds = new Set(nodes.map((node) => node.id));
   const ratedIds = verdicts.map((entry) => entry.nodeId);
   assert.equal(new Set(ratedIds).size, ratedIds.length);
-  assert.equal(verdicts.length, nodes.length);
-  assert.deepEqual(new Set(ratedIds), new Set(nodes.map((node) => node.id)));
+  assert.ok(verdicts.length >= 50, "the board should keep a meaningful editorial sample");
+  assert.ok(verdicts.length < nodes.length, "unrated nodes belong in the library, not on the board");
+  assert.ok(ratedIds.every((id) => nodeIds.has(id)));
   for (const entry of verdicts) {
     assert.ok(nodeIds.has(entry.nodeId), entry.nodeId);
     assert.ok(entry.review.length >= 24, `${entry.nodeId} needs a substantive review`);
@@ -67,8 +68,10 @@ test("the bottom tier includes recognizable, evidence-backed failures", () => {
   assert.match(byId.get("node-291")?.review || "", /应用商店.*插件/);
   assert.equal(byId.get("node-292")?.tier, "drag");
   assert.match(byId.get("node-292")?.evidence || "", /2022-06-23.*2024-04-30.*Amazon Q/);
-  assert.equal(byId.get("node-009")?.tier, "solid");
-  assert.equal(byId.get("node-074")?.tier, "solid");
+  assert.equal(byId.get("node-009")?.tier, "drag");
+  assert.match(byId.get("node-009")?.review || "", /产品先死|产品死了/);
+  assert.equal(byId.get("node-074")?.tier, "drag");
+  assert.match(byId.get("node-074")?.review || "", /寿命像内测/);
 });
 
 test("personal agent milestones are all rated", () => {
@@ -85,6 +88,14 @@ test("verdict board supports full-catalog search and collapsible tiers", () => {
   assert.match(board, /tierEntries\.length/);
 });
 
+test("the board never fills unrated nodes with auto-generated verdicts", () => {
+  const defaultCommunity = "社区讨论样本不足，暂不把发布热度当成真实采用。";
+  for (const entry of verdicts) {
+    assert.notEqual(entry.community, defaultCommunity, entry.nodeId);
+    assert.notEqual(entry.review, entry.evidence, entry.nodeId);
+  }
+});
+
 test("the third view keeps ratings distinct from sourced node facts", () => {
   const app = readFileSync(new URL("../src/App.jsx", import.meta.url), "utf8");
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
@@ -93,7 +104,8 @@ test("the third view keeps ratings distinct from sourced node facts", () => {
   assert.doesNotMatch(board, /官方负责举证，社区负责拆台/);
   assert.doesNotMatch(board, /硬数据 · 真实口碑 · 后续影响/);
   assert.match(board, /社区风向/);
-  assert.match(board, /全部时间线节点均已入榜/);
+  assert.match(board, /本榜只收录完成编辑评级/);
+  assert.match(board, /查看未评级节点/);
   assert.match(board, /verdict-source/);
   assert.match(board, /onSelect\(node\)/);
 });

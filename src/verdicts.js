@@ -602,102 +602,18 @@ const communitySources = {
   ],
 };
 
-const tierOverrides = Object.fromEntries([
-  ...["node-291", "node-292", "node-289", "node-290"].map((id) => [id, "drag"]),
-  ...[
-    // 产品：已经公开落地，但尚不足以改变行业默认动作。
-    "node-005", "node-006", "node-011", "node-012", "node-017", "node-018", "node-019", "node-020",
-    "node-024", "node-025", "node-026", "node-027", "node-028", "node-032", "node-033", "node-034",
-    "node-039", "node-040", "node-042", "node-043", "node-044", "node-045", "node-046", "node-048",
-    "node-049", "node-051", "node-053", "node-054", "node-055", "node-056", "node-057", "node-058",
-    "node-059", "node-060", "node-061", "node-063", "node-064", "node-065", "node-066", "node-067",
-    "node-069", "node-070", "node-071", "node-072", "node-073", "node-077", "node-078", "node-080",
-    "node-081", "node-082", "node-194", "node-197", "node-215", "node-216", "node-222", "node-248",
-    "node-009", "node-074", "node-249", "node-251", "node-287", "node-288",
-    // 模型：正式能力升级，影响明确，但不是新的技术范式。
-    "node-086", "node-087", "node-088", "node-089", "node-090", "node-093", "node-095", "node-096",
-    "node-098", "node-099", "node-101", "node-102", "node-106", "node-107", "node-108", "node-113",
-    "node-114", "node-115", "node-116", "node-117", "node-118", "node-119", "node-120", "node-121",
-    "node-128", "node-129", "node-132", "node-133", "node-135", "node-138", "node-140", "node-141",
-    "node-142", "node-143", "node-144", "node-145", "node-146", "node-147", "node-148", "node-152",
-    "node-153", "node-202", "node-203", "node-204", "node-205", "node-207", "node-208", "node-209",
-    "node-210", "node-224", "node-225", "node-227", "node-228", "node-229", "node-230", "node-231",
-    "node-232", "node-233", "node-250", "node-254", "node-255",
-    // 技术：已有公开实现、复现或工程采用，但长期外溢仍需观察。
-    "node-162", "node-168", "node-170", "node-171", "node-172", "node-173", "node-176", "node-177",
-    "node-178", "node-180", "node-181", "node-182", "node-184", "node-185", "node-189", "node-191",
-    "node-211", "node-239", "node-246", "node-263", "node-264", "node-268", "node-272", "node-280",
-    "node-281",
-  ].map((id) => [id, "solid"]),
-  ...[
-    // 公开影响已经越过单次版本更新，形成新产品或技术路线。
-    "node-068", "node-075", "node-076", "node-079", "node-083", "node-094", "node-105", "node-112",
-    "node-131", "node-136", "node-137", "node-156", "node-169", "node-175", "node-188", "node-190",
-    "node-235", "node-257", "node-258", "node-259", "node-260", "node-266", "node-269", "node-274",
-    "node-275", "node-279",
-  ].map((id) => [id, "top"]),
-]);
+const DEFAULT_COMMUNITY = "社区讨论样本不足，暂不把发布热度当成真实采用。";
 
 const curatedVerdicts = editorialVerdicts.map((entry) => ({
   ...entry,
-  tier: tierOverrides[entry.nodeId] || entry.tier,
   review: roastReviews[entry.nodeId] || entry.review,
-  community: communitySignals[entry.nodeId] || "社区讨论样本不足，暂不把发布热度当成真实采用。",
+  community: communitySignals[entry.nodeId] || DEFAULT_COMMUNITY,
   communitySources: communitySources[entry.nodeId] || [],
 }));
 
-const landmarkPatterns = [
-  /^GPT-4$/, /^GPT-5-Codex$/, /^DeepSeek V3$/, /^Claude 3\.7 Sonnet$/,
-  /^AlphaCode$/, /^InCoder \/ FIM$/, /^RepoCoder$/, /^CodeAct$/,
-  /^Reflexion$/, /^Function Calling$/, /^SWE-agent \/ ACI$/, /^PRM$/,
-  /^STaR$/, /^AlphaEvolve$/, /^Aider$/, /^Devin$/,
-];
-
-const earlyStagePattern = /预览|preview|beta|候选|实验|早期|prototype|research|内测|邀请|预印本/i;
-const retiredPattern = /终止|停止服务|关闭|退场|不再推荐/i;
-const matureStagePattern = /正式|GA|公开发布|正式开放|开源发布|开放协议|开放标准|工业案例|生产系统|内部生产|功能发布|模型发布/i;
-
-function getCompleteTier(node) {
-  const status = node.status || "";
-  if (retiredPattern.test(status)) return "drag";
-  if (landmarkPatterns.some((pattern) => pattern.test(node.title))) return "top";
-  if (earlyStagePattern.test(`${status} ${node.title}`)) return "watch";
-  if (node.section === "tech") return "watch";
-  if (matureStagePattern.test(status)) return "solid";
-  if (Number(getPublishedDate(node).slice(0, 4)) <= 2024) return "solid";
-  return "watch";
-}
-
-function getCompleteReview(node) {
-  return editorialFacts[node.id]?.summary || node.summary;
-}
-
-function getCompleteEvidence(node) {
-  const fact = editorialFacts[node.id];
-  return fact?.detail || fact?.summary || node.detail || node.summary;
-}
-
-function getCompleteCommunity() {
-  return "尚未找到足够的 HN、Reddit、X、知乎或小红书公开样本，暂不判断社区口碑。";
-}
-
-function makeCompleteVerdict(node) {
-  const research = getNodeResearch(node);
-  const sourceLabel = research.label.length >= 5 ? research.label : `${research.label} · 来源`;
-  return {
-    nodeId: node.id,
-    tier: tierOverrides[node.id] || getCompleteTier(node),
-    review: getCompleteReview(node),
-    evidence: getCompleteEvidence(node),
-    community: communitySignals[node.id] || getCompleteCommunity(node),
-    source: source(sourceLabel, research.url),
-    communitySources: communitySources[node.id] || [],
-  };
-}
-
-const curatedById = new Map(curatedVerdicts.map((entry) => [entry.nodeId, entry]));
-
-export const verdicts = nodes.map((node) => curatedById.get(node.id) || makeCompleteVerdict(node));
+// 榜单只收录完成编辑评级的节点；未评级节点保留在节点库与全景图。
+// 不再用 status 关键词或发布年份自动贴档——那会让“评”退化成“算”。
+export const verdicts = curatedVerdicts;
 
 export function getVerdictTier(id) {
   return verdictTiers.find((tier) => tier.id === id);

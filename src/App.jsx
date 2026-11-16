@@ -895,7 +895,7 @@ export function App() {
           <footer className="library-footer"><AuthorCredit /></footer>
         </main>
       ) : viewMode === "verdict" ? (
-        <VerdictBoard nodes={nodes} selected={selected} onSelect={setSelected} />
+        <VerdictBoard nodes={nodes} selected={selected} onSelect={setSelected} onOpenLibrary={() => setViewMode("index")} />
       ) : (
         <main className={`panorama-page ${isMobileTimeline ? "mobile-timeline-page" : ""}`}>
           <div className="panorama-toolbar">
