@@ -138,6 +138,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .verdict-community-links a:hover { border-color: #b8872d; color: #7f570d; background: #fff8e7; }
 .verdict-note { padding: 18px 2px 0; color: #858a85; font-size: var(--text-meta); }
 .verdict-empty { margin: 0; padding: 34px 4px; color: #7b807b; font-size: var(--text-body); }
+.verdict-proof { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; padding-top: 9px; color: #6e736e; font-size: var(--text-meta); line-height: 1.45; }
+.verdict-proof strong { margin-right: 7px; color: #9a6c12; font-size: 11px; letter-spacing: .08em; }
+.library-lede { max-width: 760px; margin: 14px 0 0; color: #5f645f; font-size: 15px; line-height: 1.75; }
+.library-lede-action { margin-left: 10px; padding: 0; border: 0; color: #7f570d; background: none; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.library-lede-action:hover { color: #5f4008; }
 .verdict-note-action { margin-left: 10px; padding: 0; border: 0; color: #7f570d; background: none; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .verdict-note-action:hover { color: #5f4008; }
 

@@ -91,6 +91,7 @@ export function VerdictBoard({ nodes, selected, onSelect, onOpenLibrary }) {
                           {selected?.id === node.id ? <CheckCircle size={18} weight="fill" /> : <ArrowRight size={18} />}
                         </span>
                         <span className="verdict-copy">{review}</span>
+                        <span className="verdict-proof"><strong>硬证据</strong>{evidence}</span>
                         <span className="verdict-evidence"><strong>社区风向</strong>{community}</span>
                       </button>
                       <div className="verdict-links">

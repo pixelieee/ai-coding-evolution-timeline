@@ -89,6 +89,10 @@
 :root[data-theme="dark"] .verdict-evidence strong { color: var(--amber); }
 :root[data-theme="dark"] .verdict-links { background: var(--theme-strip); border-color: var(--line); }
 :root[data-theme="dark"] .verdict-source { color: var(--theme-secondary); background: transparent; }
+:root[data-theme="dark"] .verdict-proof { color: var(--theme-secondary); }
+:root[data-theme="dark"] .verdict-proof strong { color: var(--amber); }
+:root[data-theme="dark"] .library-lede { color: var(--theme-secondary); }
+:root[data-theme="dark"] .library-lede-action { color: var(--amber); }
 :root[data-theme="dark"] .verdict-source:hover { color: var(--amber); background: var(--amber-soft); }
 :root[data-theme="dark"] .verdict-community-links { border-color: var(--line); }
 :root[data-theme="dark"] .verdict-community-links a { color: var(--theme-muted); background: var(--theme-card); border-color: var(--theme-border); }

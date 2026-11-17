@@ -44,6 +44,17 @@ import { buildMonthStops } from "./monthNavigation.js";
 import { TimelineScrubber } from "./TimelineScrubber.jsx";
 import { themeStore } from "./theme.js";
 import { VerdictBoard } from "./VerdictBoard.jsx";
+import { verdicts } from "./verdicts.js";
+
+const VIEW_MODES = ["index", "panorama", "verdict"];
+const HAMMER_COUNT = verdicts.filter((entry) => entry.tier === "hammer").length;
+
+function readUrlState() {
+  if (typeof window === "undefined") return { view: "index", nodeId: null };
+  const params = new URLSearchParams(window.location.search);
+  const view = VIEW_MODES.includes(params.get("view")) ? params.get("view") : "index";
+  return { view, nodeId: params.get("node") };
+}
 
 const DEFAULT_ZOOM = 1;
 const MILESTONE_SIZE = 38;
@@ -196,7 +207,7 @@ export function App() {
   const pendingZoomRef = useRef(null);
   const zoomTargetRef = useRef(DEFAULT_ZOOM);
   const panoramaOpenedRef = useRef(false);
-  const [viewMode, setViewMode] = useState("index");
+  const [viewMode, setViewMode] = useState(() => readUrlState().view);
   const [query, setQuery] = useState("");
   const [section, setSection] = useState("all");
   const [libraryDate, setLibraryDate] = useState("");
@@ -205,7 +216,10 @@ export function App() {
   const [family, setFamily] = useState("all");
   const [refinementsOpen, setRefinementsOpen] = useState(false);
   const [newestFirst, setNewestFirst] = useState(true);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(() => {
+    const nodeId = readUrlState().nodeId;
+    return nodeId ? nodes.find((node) => node.id === nodeId) || null : null;
+  });
   const [hoverCard, setHoverCard] = useState(null);
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [scrollPercent, setScrollPercent] = useState(0);
@@ -221,6 +235,27 @@ export function App() {
   const [axisCollapsed, setAxisCollapsed] = useState(() => typeof window !== "undefined" && window.innerWidth <= 760);
   const [mobilePanoramaControlsCollapsed, setMobilePanoramaControlsCollapsed] = useState(false);
   const [libraryPage, setLibraryPage] = useState(1);
+
+  // 视图与选中节点写入 URL（?view=&node=），可分享、可收藏、可后退。
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    params.set("view", viewMode);
+    if (selected) params.set("node", selected.id);
+    else params.delete("node");
+    window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}`);
+  }, [viewMode, selected]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onPopState = () => {
+      const state = readUrlState();
+      setViewMode(state.view);
+      setSelected(state.nodeId ? nodes.find((node) => node.id === state.nodeId) || null : null);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   const hoverDismissal = useMemo(() => createHoverDismissal(() => setHoverCard(null), {
     shouldKeepOpen: () => Boolean(hoverTriggerRef.current?.contains(document.activeElement) || hoverTooltipRef.current?.contains(document.activeElement)),
@@ -840,7 +875,13 @@ export function App() {
       {viewMode === "index" ? (
         <main className="library-page">
           <section className="library-heading">
-            <div><span className="eyebrow">AI REVIEW ATLAS · 2021–2026</span><h1>锐评AI图鉴</h1></div>
+            <div>
+              <span className="eyebrow">AI REVIEW ATLAS · 2021–2026</span>
+              <h1>锐评AI图鉴</h1>
+              <p className="library-lede">{nodes.length} 个节点、{verdicts.length} 条锐评、{HAMMER_COUNT} 个“夯”——一份对 2021–2026 AI 编程的私人判决。先看谁改变了默认动作，再看谁只是发了个版。
+                <button type="button" className="library-lede-action" onClick={() => setViewMode("verdict")}>去看锐评</button>
+              </p>
+            </div>
             <button onClick={() => setViewMode("panorama")}><MapTrifold size={17} /> 打开全景时间线</button>
           </section>
 

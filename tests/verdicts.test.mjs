@@ -54,7 +54,7 @@ test("every tier and every timeline section is represented", () => {
 test("a superseded benchmark keeps its historical rating when the evidence still matters", () => {
   const verified = verdicts.find((entry) => entry.nodeId === "node-267");
   assert.equal(verified?.tier, "top");
-  assert.match(verified?.review || "", /行业通用尺子.*高分不再等于/);
+  assert.match(verified?.review || "", /修尺子.*静态榜单/);
   assert.match(verified?.evidence || "", /59\.4%.*停止报告/);
 });
 
@@ -72,6 +72,13 @@ test("the bottom tier includes recognizable, evidence-backed failures", () => {
   assert.match(byId.get("node-009")?.review || "", /产品先死|产品死了/);
   assert.equal(byId.get("node-074")?.tier, "drag");
   assert.match(byId.get("node-074")?.review || "", /寿命像内测/);
+});
+
+test("vendor-only claims stand in the NPC tier", () => {
+  const byId = new Map(verdicts.map((entry) => [entry.nodeId, entry]));
+  for (const nodeId of ["node-201", "node-226"]) {
+    assert.equal(byId.get(nodeId)?.tier, "watch", nodeId);
+  }
 });
 
 test("personal agent milestones are all rated", () => {
