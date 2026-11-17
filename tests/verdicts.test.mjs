@@ -8,14 +8,14 @@ test("editorial verdicts reference unique existing timeline nodes", () => {
   const nodeIds = new Set(nodes.map((node) => node.id));
   const ratedIds = verdicts.map((entry) => entry.nodeId);
   assert.equal(new Set(ratedIds).size, ratedIds.length);
-  assert.ok(verdicts.length >= 50, "the board should keep a meaningful editorial sample");
+  assert.ok(verdicts.length >= 80, "the board should keep a meaningful editorial sample");
   assert.ok(verdicts.length < nodes.length, "unrated nodes belong in the library, not on the board");
   assert.ok(ratedIds.every((id) => nodeIds.has(id)));
   for (const entry of verdicts) {
     assert.ok(nodeIds.has(entry.nodeId), entry.nodeId);
     assert.ok(entry.review.length >= 24, `${entry.nodeId} needs a substantive review`);
     assert.ok(entry.evidence.length >= 24, `${entry.nodeId} needs a public evidence statement`);
-    assert.ok(entry.community.length >= 24, `${entry.nodeId} needs a community signal`);
+    if (entry.community) assert.ok(entry.community.length >= 24, `${entry.nodeId} needs a community signal`);
     assert.match(entry.source.url, /^https:\/\//, `${entry.nodeId} needs a public source`);
     assert.ok(entry.source.label.length >= 5, `${entry.nodeId} needs a source label`);
     for (const source of entry.communitySources) {
@@ -96,9 +96,8 @@ test("verdict board supports full-catalog search and collapsible tiers", () => {
 });
 
 test("the board never fills unrated nodes with auto-generated verdicts", () => {
-  const defaultCommunity = "社区讨论样本不足，暂不把发布热度当成真实采用。";
   for (const entry of verdicts) {
-    assert.notEqual(entry.community, defaultCommunity, entry.nodeId);
+    assert.ok(entry.review.length > 60, `${entry.nodeId} should carry an editorial verdict, not a summary`);
     assert.notEqual(entry.review, entry.evidence, entry.nodeId);
   }
 });

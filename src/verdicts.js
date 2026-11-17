@@ -361,6 +361,150 @@ const editorialVerdicts = [
     evidence: "AWS 于 2022-06-23 发布 CodeWhisperer 预览；2024-04-30 官方确认其代码建议和安全扫描能力并入 Amazon Q Developer。",
     source: source("AWS · Amazon Q Developer GA", "https://aws.amazon.com/about-aws/whats-new/2024/04/amazon-q-developer-generally-available/"),
   },
+  {
+    nodeId: "node-097", tier: "hammer",
+    review: "2021 年 7 月，Codex 把 GitHub 上的公开代码和自然语言接在了一起，顺手发布了 HumanEval——此后五年，每一个代码模型的第一张成绩单都是它出的题。它自己不是产品，Copilot 才是；但没有它，补全不会在 2021 年就学会写整段函数。反方：它只会写短函数，离改仓库还差着两代 Harness。判决：它定义了这个赛道的起跑线。",
+    evidence: "论文基于 GPT 系列训练代码模型并提出 HumanEval 评测；GitHub Copilot 即基于 Codex 构建。",
+    source: source("OpenAI Codex paper", "https://arxiv.org/abs/2107.03374"),
+  },
+  {
+    nodeId: "node-157", tier: "solid",
+    review: "2022 年 4 月，InCoder 把补中间做成训练目标：不只续写，还能在光标处填空。听起来像小技巧，但今天所有代码补全模型的训练里都有 FIM 这三个字母——它决定了你敲 Tab 时模型看的是前文还是前后文。反方：它本身没有产品化，影响全在别人的模型里。判决：一个训练技巧，养活了整条补全产品线。",
+    evidence: "论文提出 fill-in-the-middle 训练目标，让模型在已知前后文时补全中间代码，后来成为代码补全模型的常见训练方式。",
+    source: source("InCoder", "https://arxiv.org/abs/2204.05999"),
+  },
+  {
+    nodeId: "node-091", tier: "top",
+    review: "2023 年 3 月，GPT-4 把会写代码从加分项变成入场券：考试成绩跃升、多模态输入、长上下文，所有厂商的路线图被迫重画。它没有发明 Agent，但它让下游敢把预算押在模型能写对代码这件事上。反方：它撒谎时更自信，第一批拿它写生产代码的人交了不少学费。判决：能力分水岭，不是方法论革命。",
+    evidence: "OpenAI 发布 GPT-4，编码与考试基准显著超过前代，并首次支持图像输入；此后成为大量编程产品的主力模型。",
+    source: source("OpenAI · GPT-4", "https://openai.com/research/gpt-4"),
+  },
+  {
+    nodeId: "node-166", tier: "hammer",
+    review: "2023 年 6 月，OpenAI 在 API 里加了一个字段：模型不再只回一段文本，而是告诉你我要调用哪个函数、参数是什么。此后所有 Agent 框架、MCP、工具调用，都是这条路的延长线。它没有发明工具使用，但它把工具使用变成了接口标准。反方：结构化输出让模型学会编参数，错误也从胡说八道变成了传错 key。判决：一行 API 改动，定义了 Agent 时代的接线方式。",
+    evidence: "OpenAI 在 Chat Completions API 中加入 function calling，模型可输出结构化函数名与参数，成为工具调用的事实接口。",
+    source: source("OpenAI · Function calling", "https://openai.com/index/function-calling-and-other-api-updates/"),
+  },
+  {
+    nodeId: "node-169", tier: "solid",
+    review: "2023 年 5 月，OpenAI 公开了 80 万条带步骤标注的数学推理数据：不只判最后答案，还标出每一步哪里错了。它把过程监督从论文概念变成了可训练的数据集，后来推理时的搜索、验证器、推理模型都在吃这口饭。反方：数学题的步骤能不能迁移到写代码，至今没有定论。判决：给想得对造了一把尺子，还没证明能量产。",
+    evidence: "PRM800K 为数学题提供 80 万条步骤级人工标注，用于训练过程奖励模型（PRM），验证过程监督优于只看结果。",
+    source: source("Let’s Verify Step by Step / PRM800K", "https://arxiv.org/abs/2305.20050"),
+  },
+  {
+    nodeId: "node-021", tier: "solid",
+    review: "2024 年 3 月，Devin 用一支演示视频定义了 AI 软件工程师这个品类：自己开终端、自己跑测试、自己提 PR，500 美元一个月。整个行业跟着它画了一年的饼。反方：真实交付远没有演示漂亮，榜单成绩和日常任务之间隔着一条鸿沟；后来它自己也开始卖可控而不是全自动。判决：它卖出了这个品类，没交出这个产品。",
+    evidence: "Cognition 发布 Devin，演示端到端自主完成软件任务，并公布无人工辅助的 SWE-bench 成绩；产品按月订阅收费。",
+    source: source("Cognition 官方博客", "https://cognition.ai/blog"),
+  },
+  {
+    nodeId: "node-163", tier: "top",
+    review: "2024 年 2 月，CodeAct 换掉了 Agent 的动作空间：不再让模型输出 JSON 或自然语言指令，而是直接写可执行的 Python。工具调用、数据处理、循环判断，全变成一段代码。这个改动看着小，却让 Agent 的成功率和可调试性一起抬了一档，后来多数框架都留了代码执行这个动作类型。反方：能执行代码，也意味着能删库——沙盒成了必需品。判决：动作空间的正确答案，代价是安全模型必须重写。",
+    evidence: "论文用可执行代码作为 LLM Agent 的统一动作空间，在多轮工具任务上优于文本或 JSON 动作，并支持组合与自我调试。",
+    source: source("CodeAct", "https://arxiv.org/abs/2402.01030"),
+  },
+  {
+    nodeId: "node-167", tier: "top",
+    review: "2024 年 4 月，SWE-agent 提出 ACI：不是让模型直接吐 shell 命令，而是给它一套为 Agent 设计的计算机接口——文件查看器、搜索、编辑命令，都有边界和反馈。发布时把开源 Agent 在 SWE-bench 上的成绩推到 12.5%。此后给 Agent 造接口成了独立工种。反方：ACI 越好用，越像在替模型写说明书；换个模型就得重调。判决：Harness 工程的开山案例。",
+    evidence: "论文提出 Agent-Computer Interface（ACI）并开源 SWE-agent；发布时在 SWE-bench 上取得 12.5% 的解决率。",
+    source: source("SWE-agent", "https://arxiv.org/abs/2405.15793"),
+  },
+  {
+    nodeId: "node-149", tier: "solid",
+    review: "2022 年 2 月，AlphaCode 在 Codeforces 的模拟比赛里打进前 54.3%——第一次有模型在竞技编程这种智力密集场景里站到中游。Science 论文一出，整个行业的想象力被打开。反方：比赛题和真实工程是两回事，它生成的代码大多过不了仓库级审查。判决：证明模型能竞赛，没证明能上班。",
+    evidence: "DeepMind 在 Science 发表 AlphaCode，模型在 Codeforces 模拟比赛中达到约 54.3 百分位，首次在竞技编程中超过中位人类选手。",
+    source: source("Google AI 官方博客", "https://blog.google/technology/ai/"),
+  },
+  {
+    nodeId: "node-127", tier: "top",
+    review: "2024 年 12 月，DeepSeek V3 用 671B 总参数、37B 激活的 MoE 把前沿能力的价格打了下来，还把训练成本公开写在论文里。此后所有开源模型都被问同一个问题：你为什么这么贵？反方：便宜不等于好用，长任务稳定性和工具调用仍要工程补课。判决：它没赢下能力榜，但赢下了成本表——而成本表决定了谁能参赛。",
+    evidence: "DeepSeek-V3 采用 671B 总参数、37B 激活的 MoE 架构，公开训练成本与评测结果，显著拉低前沿模型的使用价格。",
+    source: source("DeepSeek · DeepSeek-V3", "https://github.com/deepseek-ai/DeepSeek-V3"),
+  },
+  {
+    nodeId: "node-170", tier: "solid",
+    review: "2024 年 12 月，SWE-Gym 把真实仓库任务做成了可训练的 RL 环境：不是刷题，是在真代码库里修 bug、跑测试、拿反馈。它解决的是 Agent 训练最缺的东西——环境。反方：环境一多，评测就难统一；训练集和榜单之间始终有污染风险。判决：给 Agent 造了健身房，但器械还没标准化。",
+    evidence: "SWE-Gym 构建面向软件工程 Agent 的可执行训练环境，包含真实仓库任务与测试反馈，用于 RL 训练开源 Agent。",
+    source: source("SWE-Gym", "https://arxiv.org/abs/2412.21139"),
+  },
+  {
+    nodeId: "node-010", tier: "top",
+    review: "2024 年 11 月，Cursor 让编辑器第一次敢自己跑终端：改完代码、执行命令、读报错、再改，循环不再需要人复制粘贴。IDE 从给建议变成自己动手，这是产品形态的一步，不是一个功能。反方：权限一开，误删和跑偏就成了日常风险，审批弹窗成了新的肌肉记忆。判决：IDE 的 Agent 化，从这一步开始算。",
+    evidence: "Cursor 在编辑器内加入 Agent 模式，可执行终端命令、读取结果并继续修改代码，形成闭环。",
+    source: source("Cursor Changelog", "https://cursor.com/changelog"),
+  },
+  {
+    nodeId: "node-005", tier: "top",
+    review: "2025 年 2 月，GitHub 把补全、终端和自动修复串成 Agent Mode：模型自己改文件、跑命令、看报错、再改，直到任务完成。它让 AI 结对从一句话一句话地聊，变成你提需求、它跑流程。反方：它在长任务里仍会绕圈，权限边界和回滚全靠用户自己盯。判决：Copilot 从输入法升级成施工队，但工头还是人。",
+    evidence: "GitHub 发布 Copilot Agent Mode 预览，模型可自主编辑文件、执行终端命令并根据结果迭代，直至任务完成。",
+    source: source("GitHub · Agent mode preview", "https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"),
+  },
+  {
+    nodeId: "node-111", tier: "top",
+    review: "2025 年 2 月，Claude 3.7 Sonnet 成了第一个混合推理模型：同一个模型里，快答和深思可以切换，用户不必再在两个模型之间选。它和 Claude Code 同期上线，模型能力第一次和 Agent 产品绑在一起发布。反方：深思模式贵且慢，多数人日常还是用快答。判决：它把要不要想变成了产品开关，这个交互后来成了标配。",
+    evidence: "Anthropic 发布 Claude 3.7 Sonnet，首次提供可切换的扩展思考模式，并与 Claude Code 同期推出。",
+    source: source("Anthropic Newsroom", "https://www.anthropic.com/news"),
+  },
+  {
+    nodeId: "node-011", tier: "solid",
+    review: "2025 年 5 月，GitHub 把 Issue 直接派给 Copilot：它在云端自己开分支、改代码、跑测试、提 PR，人只在最后 review。异步 Agent 第一次有了官方工位。反方：它擅长小修小补，复杂重构仍要人接手；PR 质量参差，审查成本转移给了 reviewer。判决：把 Agent 塞进现有工作流，比造新工具更难，也更对。",
+    evidence: "GitHub 公开预览 Copilot coding agent，可被指派 Issue，在云端完成分支、修改、测试与 PR。",
+    source: source("GitHub · Copilot coding agent", "https://github.blog/changelog/2025-05-19-github-copilot-coding-agent-in-public-preview/"),
+  },
+  {
+    nodeId: "node-068", tier: "top",
+    review: "2025 年 5 月，OpenAI 把 Codex 搬到云端：一个任务一个沙盒，可以并行跑多个仓库工作，最后交 PR。它解决的是本地 Agent 最痛的地方——隔离和并发。反方：云端一开，等待时间、额度和看不见的过程成了新问题。判决：Agent 的交付形态从陪我写变成替我做完再给我看。",
+    evidence: "OpenAI 发布 Codex 云端版本，支持并行沙盒任务并以 PR 形式交付结果。",
+    source: source("OpenAI · Introducing Codex", "https://openai.com/index/introducing-codex/"),
+  },
+  {
+    nodeId: "node-069", tier: "top",
+    review: "2025 年 6 月，Google 把 Gemini 塞进终端，还开源、还给免费额度。它没有发明终端 Agent，但它把价格打到了零，直接逼着所有闭源 CLI 重新想定价。反方：免费额度和限流决定了它更像入口，不是主力；长任务稳定性仍被吐槽。判决：终端 Agent 的普及，靠的不是最强模型，是最低门槛。",
+    evidence: "Google 发布开源的 Gemini CLI，把 Gemini 的 Agent 能力接入本地终端，并提供免费使用额度。",
+    source: source("Google · Gemini CLI", "https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/"),
+  },
+  {
+    nodeId: "node-094", tier: "top",
+    review: "2025 年 8 月，GPT-5 不再让用户选模型：一个系统里自动路由，简单问题快答，复杂问题深思。它把模型选择这个负担从用户身上拿走，也顺手把哪个模型更强的讨论变成了路由准不准。反方：路由不透明，用户不知道自己付的钱花在哪一档；基准提升也没有代际跃迁那么大。判决：产品体验的一大步，能力叙事的一小步。",
+    evidence: "OpenAI 发布 GPT-5，采用统一系统与自动路由，在简单与复杂请求间分配不同推理深度。",
+    source: source("OpenAI · GPT-5", "https://openai.com/index/introducing-gpt-5/"),
+  },
+  {
+    nodeId: "node-131", tier: "top",
+    review: "2025 年 7 月，Kimi K2 用 1T 总参数、32B 激活的 MoE 交出开放权重，专攻 Agent 与工具调用。它证明了一件事：开源模型不必只在便宜这条线上竞争，也能在 Agent 能力上贴住闭源前沿。反方：万亿参数的部署门槛不低，开放对多数团队仍意味着租 API。判决：开源阵营第一次有资格谈前沿，而不只是性价比。",
+    evidence: "Moonshot 发布 Kimi K2，1T 总参数、32B 激活的 MoE 开放权重模型，主打 Agentic 与工具调用能力。",
+    source: source("Kimi · Kimi K2", "https://www.kimi.ai/blog/kimi-k2"),
+  },
+  {
+    nodeId: "node-183", tier: "top",
+    review: "2025 年 5 月，AlphaEvolve 让进化算法和 Gemini 一起改代码：不是写新程序，是搜索更好的算法。它在 4×4 复数矩阵乘法上把 49 次乘法压到 48 次，还优化了数据中心的调度。反方：能被搜索的问题必须有廉价验证器，多数工程问题不满足。判决：它证明了 AI 改 AI 的基础设施能落地，范围比宣传窄，但都是真的。",
+    evidence: "DeepMind 发布 AlphaEvolve，用 Gemini 与进化搜索改进算法；在 4×4 复数矩阵乘法上找到 48 次乘法的方案，并用于数据中心调度优化。",
+    source: source("Google DeepMind · AlphaEvolve", "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"),
+  },
+  {
+    nodeId: "node-172", tier: "solid",
+    review: "2025 年 8 月，Agent Lightning 想解决 RL 训练 Agent 最烦的工程问题：不用重写 Agent，就能把它的执行轨迹拿去训练。它把跑 Agent 和训模型解耦，理论上任何框架都能接。反方：解耦意味着信息损失，训练信号和真实执行之间总有偏差；社区复现还不多。判决：方向是 RL 基础设施的正解，成熟度是 pre-1.0。",
+    evidence: "Agent Lightning 提出将 Agent 执行与强化学习训练解耦的框架，可在少量改动下训练现有 Agent。",
+    source: source("Agent Lightning", "https://arxiv.org/abs/2508.03680"),
+  },
+  {
+    nodeId: "node-275", tier: "solid",
+    review: "2026 年 2 月，OpenAI 把内部做法写成方法论：百万行代码、1,500 个 PR、约十倍速度，靠的不是更强的模型，是把仓库改造成 Agent 能读、能跑、能验证的地方——短 AGENTS.md 当索引，文档当事实源，worktree 隔离，日志指标直接暴露。反方：这套东西高度依赖团队纪律，抄配置容易，抄习惯难。判决：Agent 时代真正的门槛，从模型转移到了仓库。",
+    evidence: "OpenAI 公开 Harness Engineering 实践：以 AGENTS.md 索引、文档事实源、worktree 隔离与可观察性支撑内部项目的百万行代码与约十倍交付速度。",
+    source: source("OpenAI · Harness engineering", "https://openai.com/index/harness-engineering/"),
+  },
+  {
+    nodeId: "node-040", tier: "watch",
+    review: "2026 年 8 月，DeepSeek 开源了自己的 Harness：上下文、工具、沙盒、长任务调度全包，专为自家模型调。模型厂商下场做执行框架，说明竞争已经从权重烧到了脚手架。反方：开源得早不等于生态起来，插件、文档、稳定性都还在补。判决：方向对，先看有多少人真的把它当日常工具。",
+    evidence: "DeepSeek 开源 deepseek-harness，提供面向自家模型的上下文、工具、沙盒与长任务调度框架。",
+    source: source("DeepSeek Harness", "https://github.com/deepseek-ai/deepseek-harness"),
+  },
+  {
+    nodeId: "node-073", tier: "watch",
+    review: "2026 年 8 月，Codex 从产品长出了平台：桌面 Harness 加 App Server，外部工具可以接进来，任务可以跑在自己的机器上。它在把 Codex 变成别人的基础设施。反方：平台化的最大风险是抽象过早，接口一变，接进来的都得重写。判决：野心清晰，生态还得用一年来证明。",
+    evidence: "OpenAI 推出 Codex Platform：以桌面 Agent Harness 与 App Server 构成可扩展的平台层。",
+    source: source("OpenAI 官方发布", "https://openai.com/news/product-releases/"),
+  },
 ];
 
 const roastReviews = {
@@ -602,12 +746,10 @@ const communitySources = {
   ],
 };
 
-const DEFAULT_COMMUNITY = "社区讨论样本不足，暂不把发布热度当成真实采用。";
-
 const curatedVerdicts = editorialVerdicts.map((entry) => ({
   ...entry,
   review: roastReviews[entry.nodeId] || entry.review,
-  community: communitySignals[entry.nodeId] || DEFAULT_COMMUNITY,
+  community: communitySignals[entry.nodeId] || "",
   communitySources: communitySources[entry.nodeId] || [],
 }));
 

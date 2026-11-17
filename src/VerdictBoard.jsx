@@ -92,7 +92,7 @@ export function VerdictBoard({ nodes, selected, onSelect, onOpenLibrary }) {
                         </span>
                         <span className="verdict-copy">{review}</span>
                         <span className="verdict-proof"><strong>硬证据</strong>{evidence}</span>
-                        <span className="verdict-evidence"><strong>社区风向</strong>{community}</span>
+                        {community ? <span className="verdict-evidence"><strong>社区风向</strong>{community}</span> : null}
                       </button>
                       <div className="verdict-links">
                         <a className="verdict-source" href={source.url} target="_blank" rel="noopener noreferrer" title={`硬证据：${evidence}`}><span>{source.label}</span><ArrowSquareOut size={15} /></a>
