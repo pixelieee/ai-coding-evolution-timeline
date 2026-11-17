@@ -18,7 +18,7 @@ function VerdictMark({ node }) {
     : <span className="verdict-research-mark" aria-hidden="true"><Brain size={23} weight="duotone" /></span>;
 }
 
-export function VerdictBoard({ nodes, selected, onSelect }) {
+export function VerdictBoard({ nodes, selected, onSelect, onOpenLibrary }) {
   const [section, setSection] = useState("all");
   const [query, setQuery] = useState("");
   const [collapsedTiers, setCollapsedTiers] = useState(() => new Set());
@@ -42,7 +42,7 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
       <section className={`verdict-top-panel ${mobileHeaderCollapsed ? "collapsed" : ""}`} aria-label="锐评介绍与分类">
         <section className="verdict-hero">
           <div>
-            <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} MILESTONES</span>
+            <span className="eyebrow">EDITORIAL VERDICT · {verdicts.length} RATED / {nodes.length} NODES</span>
             <h1>从夯到拉</h1>
           </div>
           <label className="verdict-search">
@@ -91,7 +91,8 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
                           {selected?.id === node.id ? <CheckCircle size={18} weight="fill" /> : <ArrowRight size={18} />}
                         </span>
                         <span className="verdict-copy">{review}</span>
-                        <span className="verdict-evidence"><strong>社区风向</strong>{community}</span>
+                        <span className="verdict-proof"><strong>硬证据</strong>{evidence}</span>
+                        {community ? <span className="verdict-evidence"><strong>社区风向</strong>{community}</span> : null}
                       </button>
                       <div className="verdict-links">
                         <a className="verdict-source" href={source.url} target="_blank" rel="noopener noreferrer" title={`硬证据：${evidence}`}><span>{source.label}</span><ArrowSquareOut size={15} /></a>
@@ -108,7 +109,10 @@ export function VerdictBoard({ nodes, selected, onSelect }) {
         })}
         {!entries.length && <p className="verdict-empty">没有匹配的节点。</p>}
       </div>
-      <footer className="verdict-note">核查时间：2026-11-08。全部时间线节点均已入榜；出现独立复现、规模采用或明确退场后会直接改档。</footer>
+      <footer className="verdict-note">
+        核查时间：2026-11-08。本榜只收录完成编辑评级的 {verdicts.length} 个节点；其余 {nodes.length - verdicts.length} 个未评级节点保留在节点库与全景图，不在榜上冒充判断。出现独立复现、规模采用或明确退场后会直接改档。
+        <button type="button" className="verdict-note-action" onClick={onOpenLibrary}>查看未评级节点</button>
+      </footer>
     </main>
   );
 }

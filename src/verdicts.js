@@ -125,13 +125,13 @@ const editorialVerdicts = [
     source: source("Linux Foundation · A2A 一周年", "https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year"),
   },
   {
-    nodeId: "node-201", tier: "top",
+    nodeId: "node-201", tier: "watch",
     review: "把复杂推理、软件工程和电脑操作收进同一旗舰模型，通用 Agent 不再依赖多模型接力。",
     evidence: "OpenAI 将 Astra 定位为最强模型，官方用途覆盖复杂推理、编码、computer use、研究和文档生成。",
     source: source("OpenAI · GPT-6 Astra", "https://developers.openai.com/api/docs/models/gpt-6-astra"),
   },
   {
-    nodeId: "node-226", tier: "top",
+    nodeId: "node-226", tier: "watch",
     review: "Agentic Coding 质量不降，运行步数、时间和 token 减半，旗舰模型的经济性出现实质跃迁。",
     evidence: "Anthropic 报告 Opus 5.5 在内部 Agentic Coding 任务上匹配 Opus 5，成本降低 40–50%。",
     source: source("Anthropic · Claude Opus 5.5", "https://www.anthropic.com/claude-opus-5-5"),
@@ -361,66 +361,210 @@ const editorialVerdicts = [
     evidence: "AWS 于 2022-06-23 发布 CodeWhisperer 预览；2024-04-30 官方确认其代码建议和安全扫描能力并入 Amazon Q Developer。",
     source: source("AWS · Amazon Q Developer GA", "https://aws.amazon.com/about-aws/whats-new/2024/04/amazon-q-developer-generally-available/"),
   },
+  {
+    nodeId: "node-097", tier: "hammer",
+    review: "2021 年 7 月，Codex 把 GitHub 上的公开代码和自然语言接在了一起，顺手发布了 HumanEval——此后五年，每一个代码模型的第一张成绩单都是它出的题。它自己不是产品，Copilot 才是；但没有它，补全不会在 2021 年就学会写整段函数。反方：它只会写短函数，离改仓库还差着两代 Harness。判决：它定义了这个赛道的起跑线。",
+    evidence: "论文基于 GPT 系列训练代码模型并提出 HumanEval 评测；GitHub Copilot 即基于 Codex 构建。",
+    source: source("OpenAI Codex paper", "https://arxiv.org/abs/2107.03374"),
+  },
+  {
+    nodeId: "node-157", tier: "solid",
+    review: "2022 年 4 月，InCoder 把补中间做成训练目标：不只续写，还能在光标处填空。听起来像小技巧，但今天所有代码补全模型的训练里都有 FIM 这三个字母——它决定了你敲 Tab 时模型看的是前文还是前后文。反方：它本身没有产品化，影响全在别人的模型里。判决：一个训练技巧，养活了整条补全产品线。",
+    evidence: "论文提出 fill-in-the-middle 训练目标，让模型在已知前后文时补全中间代码，后来成为代码补全模型的常见训练方式。",
+    source: source("InCoder", "https://arxiv.org/abs/2204.05999"),
+  },
+  {
+    nodeId: "node-091", tier: "top",
+    review: "2023 年 3 月，GPT-4 把会写代码从加分项变成入场券：考试成绩跃升、多模态输入、长上下文，所有厂商的路线图被迫重画。它没有发明 Agent，但它让下游敢把预算押在模型能写对代码这件事上。反方：它撒谎时更自信，第一批拿它写生产代码的人交了不少学费。判决：能力分水岭，不是方法论革命。",
+    evidence: "OpenAI 发布 GPT-4，编码与考试基准显著超过前代，并首次支持图像输入；此后成为大量编程产品的主力模型。",
+    source: source("OpenAI · GPT-4", "https://openai.com/research/gpt-4"),
+  },
+  {
+    nodeId: "node-166", tier: "hammer",
+    review: "2023 年 6 月，OpenAI 在 API 里加了一个字段：模型不再只回一段文本，而是告诉你我要调用哪个函数、参数是什么。此后所有 Agent 框架、MCP、工具调用，都是这条路的延长线。它没有发明工具使用，但它把工具使用变成了接口标准。反方：结构化输出让模型学会编参数，错误也从胡说八道变成了传错 key。判决：一行 API 改动，定义了 Agent 时代的接线方式。",
+    evidence: "OpenAI 在 Chat Completions API 中加入 function calling，模型可输出结构化函数名与参数，成为工具调用的事实接口。",
+    source: source("OpenAI · Function calling", "https://openai.com/index/function-calling-and-other-api-updates/"),
+  },
+  {
+    nodeId: "node-169", tier: "solid",
+    review: "2023 年 5 月，OpenAI 公开了 80 万条带步骤标注的数学推理数据：不只判最后答案，还标出每一步哪里错了。它把过程监督从论文概念变成了可训练的数据集，后来推理时的搜索、验证器、推理模型都在吃这口饭。反方：数学题的步骤能不能迁移到写代码，至今没有定论。判决：给想得对造了一把尺子，还没证明能量产。",
+    evidence: "PRM800K 为数学题提供 80 万条步骤级人工标注，用于训练过程奖励模型（PRM），验证过程监督优于只看结果。",
+    source: source("Let’s Verify Step by Step / PRM800K", "https://arxiv.org/abs/2305.20050"),
+  },
+  {
+    nodeId: "node-021", tier: "solid",
+    review: "2024 年 3 月，Devin 用一支演示视频定义了 AI 软件工程师这个品类：自己开终端、自己跑测试、自己提 PR，500 美元一个月。整个行业跟着它画了一年的饼。反方：真实交付远没有演示漂亮，榜单成绩和日常任务之间隔着一条鸿沟；后来它自己也开始卖可控而不是全自动。判决：它卖出了这个品类，没交出这个产品。",
+    evidence: "Cognition 发布 Devin，演示端到端自主完成软件任务，并公布无人工辅助的 SWE-bench 成绩；产品按月订阅收费。",
+    source: source("Cognition 官方博客", "https://cognition.ai/blog"),
+  },
+  {
+    nodeId: "node-163", tier: "top",
+    review: "2024 年 2 月，CodeAct 换掉了 Agent 的动作空间：不再让模型输出 JSON 或自然语言指令，而是直接写可执行的 Python。工具调用、数据处理、循环判断，全变成一段代码。这个改动看着小，却让 Agent 的成功率和可调试性一起抬了一档，后来多数框架都留了代码执行这个动作类型。反方：能执行代码，也意味着能删库——沙盒成了必需品。判决：动作空间的正确答案，代价是安全模型必须重写。",
+    evidence: "论文用可执行代码作为 LLM Agent 的统一动作空间，在多轮工具任务上优于文本或 JSON 动作，并支持组合与自我调试。",
+    source: source("CodeAct", "https://arxiv.org/abs/2402.01030"),
+  },
+  {
+    nodeId: "node-167", tier: "top",
+    review: "2024 年 4 月，SWE-agent 提出 ACI：不是让模型直接吐 shell 命令，而是给它一套为 Agent 设计的计算机接口——文件查看器、搜索、编辑命令，都有边界和反馈。发布时把开源 Agent 在 SWE-bench 上的成绩推到 12.5%。此后给 Agent 造接口成了独立工种。反方：ACI 越好用，越像在替模型写说明书；换个模型就得重调。判决：Harness 工程的开山案例。",
+    evidence: "论文提出 Agent-Computer Interface（ACI）并开源 SWE-agent；发布时在 SWE-bench 上取得 12.5% 的解决率。",
+    source: source("SWE-agent", "https://arxiv.org/abs/2405.15793"),
+  },
+  {
+    nodeId: "node-149", tier: "solid",
+    review: "2022 年 2 月，AlphaCode 在 Codeforces 的模拟比赛里打进前 54.3%——第一次有模型在竞技编程这种智力密集场景里站到中游。Science 论文一出，整个行业的想象力被打开。反方：比赛题和真实工程是两回事，它生成的代码大多过不了仓库级审查。判决：证明模型能竞赛，没证明能上班。",
+    evidence: "DeepMind 在 Science 发表 AlphaCode，模型在 Codeforces 模拟比赛中达到约 54.3 百分位，首次在竞技编程中超过中位人类选手。",
+    source: source("Google AI 官方博客", "https://blog.google/technology/ai/"),
+  },
+  {
+    nodeId: "node-127", tier: "top",
+    review: "2024 年 12 月，DeepSeek V3 用 671B 总参数、37B 激活的 MoE 把前沿能力的价格打了下来，还把训练成本公开写在论文里。此后所有开源模型都被问同一个问题：你为什么这么贵？反方：便宜不等于好用，长任务稳定性和工具调用仍要工程补课。判决：它没赢下能力榜，但赢下了成本表——而成本表决定了谁能参赛。",
+    evidence: "DeepSeek-V3 采用 671B 总参数、37B 激活的 MoE 架构，公开训练成本与评测结果，显著拉低前沿模型的使用价格。",
+    source: source("DeepSeek · DeepSeek-V3", "https://github.com/deepseek-ai/DeepSeek-V3"),
+  },
+  {
+    nodeId: "node-170", tier: "solid",
+    review: "2024 年 12 月，SWE-Gym 把真实仓库任务做成了可训练的 RL 环境：不是刷题，是在真代码库里修 bug、跑测试、拿反馈。它解决的是 Agent 训练最缺的东西——环境。反方：环境一多，评测就难统一；训练集和榜单之间始终有污染风险。判决：给 Agent 造了健身房，但器械还没标准化。",
+    evidence: "SWE-Gym 构建面向软件工程 Agent 的可执行训练环境，包含真实仓库任务与测试反馈，用于 RL 训练开源 Agent。",
+    source: source("SWE-Gym", "https://arxiv.org/abs/2412.21139"),
+  },
+  {
+    nodeId: "node-010", tier: "top",
+    review: "2024 年 11 月，Cursor 让编辑器第一次敢自己跑终端：改完代码、执行命令、读报错、再改，循环不再需要人复制粘贴。IDE 从给建议变成自己动手，这是产品形态的一步，不是一个功能。反方：权限一开，误删和跑偏就成了日常风险，审批弹窗成了新的肌肉记忆。判决：IDE 的 Agent 化，从这一步开始算。",
+    evidence: "Cursor 在编辑器内加入 Agent 模式，可执行终端命令、读取结果并继续修改代码，形成闭环。",
+    source: source("Cursor Changelog", "https://cursor.com/changelog"),
+  },
+  {
+    nodeId: "node-005", tier: "top",
+    review: "2025 年 2 月，GitHub 把补全、终端和自动修复串成 Agent Mode：模型自己改文件、跑命令、看报错、再改，直到任务完成。它让 AI 结对从一句话一句话地聊，变成你提需求、它跑流程。反方：它在长任务里仍会绕圈，权限边界和回滚全靠用户自己盯。判决：Copilot 从输入法升级成施工队，但工头还是人。",
+    evidence: "GitHub 发布 Copilot Agent Mode 预览，模型可自主编辑文件、执行终端命令并根据结果迭代，直至任务完成。",
+    source: source("GitHub · Agent mode preview", "https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"),
+  },
+  {
+    nodeId: "node-111", tier: "top",
+    review: "2025 年 2 月，Claude 3.7 Sonnet 成了第一个混合推理模型：同一个模型里，快答和深思可以切换，用户不必再在两个模型之间选。它和 Claude Code 同期上线，模型能力第一次和 Agent 产品绑在一起发布。反方：深思模式贵且慢，多数人日常还是用快答。判决：它把要不要想变成了产品开关，这个交互后来成了标配。",
+    evidence: "Anthropic 发布 Claude 3.7 Sonnet，首次提供可切换的扩展思考模式，并与 Claude Code 同期推出。",
+    source: source("Anthropic Newsroom", "https://www.anthropic.com/news"),
+  },
+  {
+    nodeId: "node-011", tier: "solid",
+    review: "2025 年 5 月，GitHub 把 Issue 直接派给 Copilot：它在云端自己开分支、改代码、跑测试、提 PR，人只在最后 review。异步 Agent 第一次有了官方工位。反方：它擅长小修小补，复杂重构仍要人接手；PR 质量参差，审查成本转移给了 reviewer。判决：把 Agent 塞进现有工作流，比造新工具更难，也更对。",
+    evidence: "GitHub 公开预览 Copilot coding agent，可被指派 Issue，在云端完成分支、修改、测试与 PR。",
+    source: source("GitHub · Copilot coding agent", "https://github.blog/changelog/2025-05-19-github-copilot-coding-agent-in-public-preview/"),
+  },
+  {
+    nodeId: "node-068", tier: "top",
+    review: "2025 年 5 月，OpenAI 把 Codex 搬到云端：一个任务一个沙盒，可以并行跑多个仓库工作，最后交 PR。它解决的是本地 Agent 最痛的地方——隔离和并发。反方：云端一开，等待时间、额度和看不见的过程成了新问题。判决：Agent 的交付形态从陪我写变成替我做完再给我看。",
+    evidence: "OpenAI 发布 Codex 云端版本，支持并行沙盒任务并以 PR 形式交付结果。",
+    source: source("OpenAI · Introducing Codex", "https://openai.com/index/introducing-codex/"),
+  },
+  {
+    nodeId: "node-069", tier: "top",
+    review: "2025 年 6 月，Google 把 Gemini 塞进终端，还开源、还给免费额度。它没有发明终端 Agent，但它把价格打到了零，直接逼着所有闭源 CLI 重新想定价。反方：免费额度和限流决定了它更像入口，不是主力；长任务稳定性仍被吐槽。判决：终端 Agent 的普及，靠的不是最强模型，是最低门槛。",
+    evidence: "Google 发布开源的 Gemini CLI，把 Gemini 的 Agent 能力接入本地终端，并提供免费使用额度。",
+    source: source("Google · Gemini CLI", "https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/"),
+  },
+  {
+    nodeId: "node-094", tier: "top",
+    review: "2025 年 8 月，GPT-5 不再让用户选模型：一个系统里自动路由，简单问题快答，复杂问题深思。它把模型选择这个负担从用户身上拿走，也顺手把哪个模型更强的讨论变成了路由准不准。反方：路由不透明，用户不知道自己付的钱花在哪一档；基准提升也没有代际跃迁那么大。判决：产品体验的一大步，能力叙事的一小步。",
+    evidence: "OpenAI 发布 GPT-5，采用统一系统与自动路由，在简单与复杂请求间分配不同推理深度。",
+    source: source("OpenAI · GPT-5", "https://openai.com/index/introducing-gpt-5/"),
+  },
+  {
+    nodeId: "node-131", tier: "top",
+    review: "2025 年 7 月，Kimi K2 用 1T 总参数、32B 激活的 MoE 交出开放权重，专攻 Agent 与工具调用。它证明了一件事：开源模型不必只在便宜这条线上竞争，也能在 Agent 能力上贴住闭源前沿。反方：万亿参数的部署门槛不低，开放对多数团队仍意味着租 API。判决：开源阵营第一次有资格谈前沿，而不只是性价比。",
+    evidence: "Moonshot 发布 Kimi K2，1T 总参数、32B 激活的 MoE 开放权重模型，主打 Agentic 与工具调用能力。",
+    source: source("Kimi · Kimi K2", "https://www.kimi.ai/blog/kimi-k2"),
+  },
+  {
+    nodeId: "node-183", tier: "top",
+    review: "2025 年 5 月，AlphaEvolve 让进化算法和 Gemini 一起改代码：不是写新程序，是搜索更好的算法。它在 4×4 复数矩阵乘法上把 49 次乘法压到 48 次，还优化了数据中心的调度。反方：能被搜索的问题必须有廉价验证器，多数工程问题不满足。判决：它证明了 AI 改 AI 的基础设施能落地，范围比宣传窄，但都是真的。",
+    evidence: "DeepMind 发布 AlphaEvolve，用 Gemini 与进化搜索改进算法；在 4×4 复数矩阵乘法上找到 48 次乘法的方案，并用于数据中心调度优化。",
+    source: source("Google DeepMind · AlphaEvolve", "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"),
+  },
+  {
+    nodeId: "node-172", tier: "solid",
+    review: "2025 年 8 月，Agent Lightning 想解决 RL 训练 Agent 最烦的工程问题：不用重写 Agent，就能把它的执行轨迹拿去训练。它把跑 Agent 和训模型解耦，理论上任何框架都能接。反方：解耦意味着信息损失，训练信号和真实执行之间总有偏差；社区复现还不多。判决：方向是 RL 基础设施的正解，成熟度是 pre-1.0。",
+    evidence: "Agent Lightning 提出将 Agent 执行与强化学习训练解耦的框架，可在少量改动下训练现有 Agent。",
+    source: source("Agent Lightning", "https://arxiv.org/abs/2508.03680"),
+  },
+  {
+    nodeId: "node-275", tier: "solid",
+    review: "2026 年 2 月，OpenAI 把内部做法写成方法论：百万行代码、1,500 个 PR、约十倍速度，靠的不是更强的模型，是把仓库改造成 Agent 能读、能跑、能验证的地方——短 AGENTS.md 当索引，文档当事实源，worktree 隔离，日志指标直接暴露。反方：这套东西高度依赖团队纪律，抄配置容易，抄习惯难。判决：Agent 时代真正的门槛，从模型转移到了仓库。",
+    evidence: "OpenAI 公开 Harness Engineering 实践：以 AGENTS.md 索引、文档事实源、worktree 隔离与可观察性支撑内部项目的百万行代码与约十倍交付速度。",
+    source: source("OpenAI · Harness engineering", "https://openai.com/index/harness-engineering/"),
+  },
+  {
+    nodeId: "node-040", tier: "watch",
+    review: "2026 年 8 月，DeepSeek 开源了自己的 Harness：上下文、工具、沙盒、长任务调度全包，专为自家模型调。模型厂商下场做执行框架，说明竞争已经从权重烧到了脚手架。反方：开源得早不等于生态起来，插件、文档、稳定性都还在补。判决：方向对，先看有多少人真的把它当日常工具。",
+    evidence: "DeepSeek 开源 deepseek-harness，提供面向自家模型的上下文、工具、沙盒与长任务调度框架。",
+    source: source("DeepSeek Harness", "https://github.com/deepseek-ai/deepseek-harness"),
+  },
+  {
+    nodeId: "node-073", tier: "watch",
+    review: "2026 年 8 月，Codex 从产品长出了平台：桌面 Harness 加 App Server，外部工具可以接进来，任务可以跑在自己的机器上。它在把 Codex 变成别人的基础设施。反方：平台化的最大风险是抽象过早，接口一变，接进来的都得重写。判决：野心清晰，生态还得用一年来证明。",
+    evidence: "OpenAI 推出 Codex Platform：以桌面 Agent Harness 与 App Server 构成可扩展的平台层。",
+    source: source("OpenAI 官方发布", "https://openai.com/news/product-releases/"),
+  },
 ];
 
 const roastReviews = {
-  "node-001": "把补全做成习惯，后来却被 Agent 抢了主角；祖师爷还在，C 位没了。",
-  "node-007": "把写代码入口从 IDE 拽进聊天框；人人都能开工，也人人都能复制一段幻觉。",
-  "node-052": "终端外壳看着寒酸，干活却把一票 AI IDE 打成花架子；真正的敌人是额度。",
-  "node-124": "R1 最狠的不是分数，是把“推理模型必须闭源又昂贵”这层窗户纸捅破。",
-  "node-159": "把评测从玩具函数搬进真实仓库，也顺手教会全行业围着同一套题刷榜。",
-  "node-267": "它把脏题库修成行业通用尺子，最后却被训练数据和坏测试把尺子掰弯；历史地位顶级，今天的高分不再等于真会修仓库。",
-  "node-161": "论文名字快被忘了，循环结构还在给今天的 Agent 当骨架。",
-  "node-164": "协议本身没多神，厉害的是大家终于懒得各造一遍插头；上下文和攻击面也一起胖了。",
-  "node-174": "省下 critic 不是魔法，R1 才是它出圈的扩音器；别把训练组件供成宗教。",
-  "node-008": "把最好用的 AI IDE 做成最贵的 VS Code 皮肤之一；贵归贵，交互确实是行业作业答案。",
-  "node-062": "干后端像施工队，做界面像批发卡片；活能干完，审美和上下文都要人盯。",
-  "node-092": "第一次让模型肯花时间想，代价是你也得花时间等；很快又被后继者写进历史。",
-  "node-110": "模型换代很多，真正让仓库级编码从能演示变成能上班的，3.5 算一次。",
-  "node-270": "研究圈的万能试验台，工程圈的安装说明书；价值大，离开箱即用还远。",
-  "node-271": "让 Computer Use 有了考场，没让它立刻毕业；榜单会涨，鼠标还是会点歪。",
-  "node-273": "把 Prompt 文件夹做成可移植资产是对的；现在的技能商店比 npm 更缺质量门槛。",
-  "node-038": "自由到模型、界面、Harness 都能换；也自由到 bug 和配置都得自己扛。",
-  "node-262": "大厂终于统一了 Agent 怎么打招呼；多数单 Agent 项目暂时只需要闭嘴干活。",
-  "node-201": "旗舰价、旗舰能力、旗舰争议：有人一眼抓出硬 bug，也有人用完继续抱紧旧 Sol。",
-  "node-226": "终于把 Opus 的智商和账单拉回同一张桌；长任务放飞自我时，事故也更贵。",
-  "node-130": "本地补全的老黄牛，便宜、能跑、尺寸齐；拿它硬碰最新 Agent 模型有点欺负老人。",
-  "node-139": "榜单宣传很满，社区真正买账的是工具调用稳、价格低；偶尔过度设计也是真的。",
-  "node-155": "一百万上下文像大仓库，找到货不等于会装车；读得多，改得好是两回事。",
-  "node-269": "一个 Markdown 文件干掉半个“上下文平台”的 PPT；朴素到没法营销，实用到谁都得支持。",
-  "node-279": "OpenAI 把自建 Agent 的胶水收回云端；省代码是真的，锁生态也是真的。",
-  "node-216": "从写 PR 伸手到盯上线，产品闭环补齐了；真实回滚事故率没公开，先别吹自动运维。",
-  "node-222": "把 YAML 地狱换成自然语言，不代表权限地狱消失；好用与否全看默认护栏。",
-  "node-224": "便宜又全能的参数表很好看；真实项目里能否少返工，社区还没形成共识。",
-  "node-235": "让模型优化自己的推理栈很硬；目前成绩单仍是自家老师批的。",
-  "node-258": "三个人带 Agent 跑八个模型提案很猛；离开 Meta 的算力、数据和内网，复制难度同样很猛。",
-  "node-282": "网页、PPT、研究一口气全接了，像个肯干的全能实习生；任务一长，重复、额度和售后也一起加班。",
-  "node-284": "发条短信真能把杂事办了，魔法感不靠界面；代价是把邮箱、账号和支付交给一家还在邀请测试的公司。",
-  "node-285": "上线两周冲到榜首很能打；安全 VM 做得再认真，也挡不住用户先问：我真要把邮箱和付款交给 Meta？",
-  "node-188": "会改自己工具链，听着像 RSI；实验场里能涨分，生产里先别让它碰 main。",
-  "node-190": "会自改代码的研究系统有了，能否连续进化还没有；达尔文还在试管里。",
-  "node-278": "Harness 和 Policy 终于不再各练各的；目前更像漂亮的双人舞录像，没证明能巡演。",
-  "node-243": "把“生成文本”换成“直接做选择”很聪明；架构不公开、用户不够多，先别急着封神。",
-  "node-248": "逆向工程终于有了 Agent 外挂；仓库能跑，生态还没跑起来。",
-  "node-253": "持久云电脑加审批很像 Work Agent 正解；Beta 的最大功能仍是让用户替它测稳定性。",
-  "node-194": "后台常驻很香，账单和误操作也会常驻；持续运行从来不等于持续正确。",
-  "node-213": "把 Codex Harness 装进 API 很顺手；公开测试阶段，最稳定的功能是以后会变。",
-  "node-218": "模型和 Harness 联调比换皮 CLI 有诚意；RC 就是官方提前告诉你：别拿生产当小白鼠。",
-  "node-236": "连续改自己七次很抓眼球；单一系统、隐藏评测，离递归进化还隔着一整个复现圈。",
-  "node-237": "让环境自己出更难的题是正路；现在题目会长大，能力是否真长大还没证实。",
-  "node-238": "RSI 终于有健身房了；有没有练出肌肉，等更多队伍进场再说。",
-  "node-240": "一次性改 Harness 终于能沉淀；论文里叫长期记忆，生产里还得叫变更管理。",
-  "node-244": "架构图已经像大系统，实现还写着 prototype；目前最完整的是野心。",
-  "node-283": "背靠 Gmail、Drive 和 Calendar，起步就住进用户生活；Beta 的日常仍是权限给得多、结果偶尔没看懂要求。",
-  "node-286": "邮箱、电话、钱包、电脑一套工牌发齐了；目前更像豪华入职仪式，稳定上班记录还没攒够。",
-  "node-287": "云电脑、四千插件、24/7 都配齐了；发布一个月先别叫同事，最多算还在试用期的实习生。",
-  "node-288": "别人做一人一个 Agent，Wabi 直接拉进家庭群；想法很聪明，太主动时也像那个没人问却一直安排日程的群友。",
-  "node-009": "Issue 到 PR 的愿景没死，产品先死了；后来者把尸体上的好点子全捡走。",
-  "node-074": "演示像未来，寿命像内测；最后证明浏览器 Agent 可以活，但没必要叫 Operator。",
-  "node-289": "188k Star 证明声量，死循环和 API 账单证明它还不是产品；把 GPT-4 套进 while(true) 不叫自主。",
-  "node-290": "规模拉满、价格拉满、寿命四个半月；它更像纯预训练扩张路线的讣告，不像一代产品。",
-  "node-291": "发布时全网都在画“AI 应用商店”，一年后插件商店直接关门；生态没长出来，协议和工具调用被后来者继承。",
-  "node-292": "亚马逊亲自下场追 Copilot，最后连独立名字都没保住；功能并入 Amazon Q，CodeWhisperer 留在旧教程里。",
+  "node-001": "2021 年 6 月，它让“写代码”第一次可以只写一半。四年后 GitHub 自己的数据是：约 80% 的新开发者加入第一周就在用它——补全从功能变成了默认设置。代价写在社区里：重度用户把主力工作流交给了 Claude Code 和 Codex，它从主角退成键盘。判决：没赢下 Agent 时代，但定义了所有人起跑时的姿势。",
+  "node-007": "2022 年 11 月底，写代码的入口第一次从 IDE 挪进聊天框。三年后周活超过 8 亿——这个数字和编程关系不大，却决定了此后所有工具的默认形态：先聊，再干活。反方：它把“能跑”和“看起来能跑”混在一起，第一批信了的人交了不少学费；真正的主力 Agent 至今还得回终端。判决：入口归它，工程归别人。",
+  "node-052": "2025 年 2 月上线时，没人相信最好的 AI 编程界面会是一行终端：没有侧边栏，没有 diff 预览，只有把活丢过去，然后等。半年后是 10 亿美元年化收入；Anthropic 后来拿约 40 万次真实会话做研究，发现用户卡住的不是模型，是额度、grep 死循环和版本回退。判决：它把 Coding Agent 从 IDE 插件变成了独立工作方式。反方：那 10 亿美元买的是“敢让它自己跑”的信任，不是终端。",
+  "node-124": "2025 年 1 月，R1 证明了一件事：推理能力不必用最贵的价格买。Nature 论文把纯 RL 诱导反思、验证与策略调整写成可复现的方法，权重和蒸馏模型一起开源——行业的定价表和“闭源才配推理”的假设同时被掀翻。反方：真实仓库里它没那么神，循环输出和托管审查的抱怨一直没停。判决：它最大的贡献不是分数，是让所有人重算了一遍成本。",
+  "node-159": "2023 年 10 月，它把评测从“写一个函数”推进到“修一个真仓库”，此后两年所有 Coding 模型发布会都绕不开这四个字母，也顺手养成了围着同一套题刷榜的习惯。反方：污染、坏题和 Harness 差异把分数变成了玄学，连 OpenAI 最后都停止报告它的派生榜。判决：方法是里程碑，分数是易碎品。",
+  "node-267": "它是这五年最诚实的一次“修尺子”：500 道人工复核题，让仓库级评测第一次有了公共刻度。然后尺子自己弯了——OpenAI 2026 年审计发现常见失败题里至少 59.4% 的测试本身有问题，前沿模型还能复现标准答案，于是停报。判决：它证明的不是模型会修仓库，而是任何静态榜单都逃不过被刷的命运。",
+  "node-161": "2022 年 10 月的论文，标题里的三个字母现在很少有人完整念出来，但今天每个 Agent 的“想一步、做一步、看一眼”都在复刻它。Google 的原始对照说得很朴素：推理和行动交替，比只做其中一件都强。反方：它太底层了，底层到没人替它辩护——这恰好是基础设施的待遇。判决：名字被忘了，骨架还在。",
+  "node-164": "2024 年 11 月发布的协议，本身没有任何魔法：给“模型调工具”定了个插头。一年后 10,000+ 公共服务器、四大客户端全接，说明行业真正缺的不是能力，是懒得每家重造一遍插头。代价也一起长出来：上下文被工具塞爆，认证和远程服务器成了新攻击面。判决：它统一了接线方式，也统一了风险。",
+  "node-174": "GRPO 的贡献很朴素：把训练里的 critic 省掉，让 RL 便宜到小团队也玩得起。真正让它出圈的是 R1——一个训练组件被绑上了模型神话的战车。反方：社区把 R1 的成功全记在 GRPO 头上，是典型的过度归因；没有数据、算力和工程，省下的那点 critic 什么也换不来。判决：好零件，别供成宗教。",
+  "node-008": "2023 年 3 月它还只是“VS Code 加个聊天框”，两年后年化收入过 10 亿美元、Agent 使用量一年涨 15 倍——AI IDE 从此被证明是独立市场，而不是编辑器的一个功能。代价同样具体：账单算不清、Auto 路由不透明，用户一边骂一边续费。判决：交互是行业作业答案，定价是行业反面教材。",
+  "node-062": "2025 年 4 月开源的终端 Agent，一年后周活超过 500 万，还顺手把“Harness 也能开源”变成了竞争维度。风格很 OpenAI：后端活干得像施工队，界面像批发市场；擅自补需求、频繁压缩上下文、额度焦虑，骂声和好评一样密集。判决：它证明了终端才是 Agent 的主场，也证明了审美是可以将就的。",
+  "node-092": "2024 年 9 月，模型第一次被允许“先想再答”：Codeforces 89 百分位，内部编码评测比 GPT-4o 高 10 个百分点。代价是时间——你得多等它想，也得为思考付钱，于是日常编码里反而是更便宜的 o1-mini 更常用。判决：它开启了测试时推理这条路线，也提前演示了这条路线会怎么被成本和延迟反噬。",
+  "node-110": "2024 年 6 月，它把 SWE-bench Verified 从 45% 推到 49%——四个百分点听起来不多，却是“仓库级编码能上班”和“只能演示”的分水岭。那半年社区的普遍感受是净生产力第一次转正。反方：离开主流技术栈和短上下文，它掉速肉眼可见。判决：不是最强的模型，却是最早让 Agent 真能交活的底座。",
+  "node-270": "2024 年 3 月它还叫 OpenDevin，后来成了研究圈最顺手的试验台：可换模型、可换 Harness、可跑评测，论文进了 ICLR 2025，GitHub 8 万星、900 万下载。但它更像安装说明书而不是产品——普通用户卡在环境和依赖上，热度始终高于日常使用率。判决：开源 Agent 的地基，不是开箱即用的工具。",
+  "node-271": "2024 年 4 月，它给 Computer Use 造了第一个像样的考场：369 个真实电脑任务，覆盖 Ubuntu、Windows、macOS，按最终状态评分，此后的电脑操作分数才有了共同语言。反方：考场不等于真实世界，分数涨了，鼠标该点歪还是点歪；改协议后旧分数还得重读。判决：它让 Agent 有了考试，没让它毕业。",
+  "node-273": "2025 年 10 月，它把“Prompt 文件夹”做成可移植、可版本化、按需加载的资产；一年后 70+ 平台接入、100 万 Skills、近 2.8 亿次安装，连标准都捐给了基金会。它解决的是真问题：程序性知识终于能像包一样分发。代价是 npm 二十年前就教过的课——质量、权限和供应链，现在一个都没答完。判决：分发成熟了，治理还在石器时代。",
+  "node-038": "2025 年 5 月，它用“模型可换、Harness 可改、终端优先”把开源 Agent 的竞争推进到执行层：22 万星、950 位贡献者、月活开发者 1600 万（官方口径）。自由是真好，代价也是真具体——patch 展示、升级兼容、配置折腾，样样得自己扛。判决：它证明了开源路线能跑通，也证明了自由从来不是免费的。",
+  "node-262": "2025 年 4 月，Google 把“Agent 之间怎么打招呼”写成协议，随后捐给 Linux Foundation；一年后 150+ 组织、三大云、5 种生产级 SDK。这是标准的胜利，也是标准的尴尬：大多数单 Agent 项目现在根本用不上它。反方：过早、过重、为互操作付出复杂度——独立开发者的话不好听但真实。判决：这是给大公司写的铁轨，不是给个人写的快捷键。",
+  "node-201": "它目前最硬的证据是 OpenAI 自己的一句“最强”。按本站方法论，厂商自报不能单独证明——所以它现在只能站 NPC：发布会赢了，复现、留存和默认工具链的席位都还没到。反方：它在复杂推理和 computer use 上的整合可能是真的强，只是还没被第三方证明。判决：先记一个日期，别急着写历史。",
+  "node-226": "Anthropic 自己的口径是：Agentic Coding 质量不掉，成本降 40–50%。这值得期待，但仍是自家出题自家批卷——独立复现和真实付费留存都没到位。社区一边倒夸长任务和效率，另一边是过度设计、烧额度和危险命令的真实案例。判决：三个月后它若还在默认工作流里，我把它请回顶级；现在先站 NPC。",
+  "node-130": "2024 年 11 月，它没开发布会，也没讲 AGI，只做了一件事：把 32B 的代码模型塞进能在本地跑的尺寸区间。技术报告覆盖生成、补全、推理和修复，官方多语言修复评测里压过同期开放模型。反方：本地补全口碑很稳，但 Agent 工具调用评价分化——它更像便宜好用的执行层，不是能自己规划的那一档。判决：开源代码模型的老黄牛，别拿它硬碰前沿 Agent。",
+  "node-139": "2025 年 7 月，GLM-4.5 把 355B-A32B 的 MoE 摆上台面，TAU-Bench 70.1%、SWE-bench Verified 64.2%——开放权重里少有的“参数、榜单、价格”三项都敢报。社区真正买账的却是别的东西：工具调用稳、跑得快、便宜。反方：复杂任务上的错误和过度设计被反复提到，榜单分数没有完全兑现到长流程里。判决：性价比明星，离可靠同事还差半年。",
+  "node-155": "2025 年 3 月，它把一百万上下文做成了卖点：整个仓库塞进去，模型自己找。模型卡上的 LiveCodeBench 和 SWE-bench Verified 都很体面，发布时自报 63.8%。反方：读得多不等于改得对——复杂业务逻辑、指令遵循、读完一圈却没动对地方，是社区最常见的抱怨。判决：适合当大仓库的阅读器，还不是能独立交活的工程师。",
+  "node-269": "一个 Markdown 文件，没有模型、没有 API、没有 demo，2025 年 8 月提交后却成了 AAIF 首批项目，还被 OpenAI 捐进中立治理。它解决的是最土的问题：仓库的构建、测试和规矩，怎么让 Agent 每次都读到。反方：不同工具读取层级不一致，“约定”至今没有真正的执行标准。判决：朴素到没法营销，实用到谁都得支持——这才是基础设施该有的样子。",
+  "node-279": "2025 年 3 月，OpenAI 把“自己搭 Agent Loop”的胶水收回云端：保留推理状态让 TAU-bench 提升 5%，缓存利用率比 Chat Completions 高 40–80%。省掉的代码是真的，省掉的自由度也是真的。反方：抽象变得太快、迁移成本和平台锁定，是开发者最实在的抱怨。判决：它让 Agent 开发从手工作坊变成流水线，代价是流水线归别人管。",
+  "node-216": "2026 年 9 月，Cursor 把 Agent 的活从“提 PR”延伸到“盯上线”：健康判断、告警通知、自动生成回滚 PR，接入日志、指标和调用链。产品闭环确实补齐了，这是今年少数往运维走的 Coding Agent。反方：真实回滚事故率一直没公开，独立生产复盘也少——功能发布不等于可靠性证明。判决：方向对，先把成绩单拿出来再吹自动运维。",
+  "node-222": "2026 年 10 月 28 日，GitHub 把自然语言工作流编译成标准 Actions，跑在现有权限、Runner 和审计体系里，默认只读、沙盒执行，还要过一道 Agent Workflow Firewall。它聪明的地方是不造新平台，只给旧平台加一层嘴。反方：自然语言的权限边界和误触发，社区还没想明白——YAML 地狱没消失，只是换成了猜模型会做什么。判决：工作流入口对了，治理还没跟上。",
+  "node-224": "2026 年 9 月 10 日，DeepSeek 用 V4.1 Flash 一次性替换了旧 V4 Flash 和视觉实验模型：原生视觉、代码、工具调用收进同一个平价版本，旧模型临时路由过去，不留分叉。价格和开放路线一如既往地有杀伤力。反方：长任务返工率、工具稳定性，社区还没有统一结论——便宜和少返工是两件事。判决：参数表漂亮，工程账还要等真实项目来结。",
+  "node-235": "2026 年 9 月，Z.ai 让 Agent 去优化承载自己的推理基础设施：工程师只给目标、边界和风险，两周把端到端吞吐拉到初始基线的 3 倍。这是“模型改自己的工地”第一个像样的生产案例，不是 demo。反方：成绩单目前仍是自家老师批的，外部复现几乎为零。判决：方向硬，证据软——先让第二家公司复现，再谈工业自我改进。",
+  "node-258": "2026 年 3 月，Meta 报告了一个真正跑在生产里的 ML Agent：3 名工程师带它推进 8 个模型提案，工程产出约为既往流程的 5 倍，任务能跨数天、数周，靠休眠唤醒保存状态。它证明 Agent 不只写前端，也能干长周期实验。反方：算力、数据和内网都是 Meta 的，离开这套家底，复制难度和收益一样猛。判决：生产级案例成立，通用性不成立。",
+  "node-282": "2025 年 9 月，Kimi 把网页、文档、表格、幻灯片和深度研究塞进同一个 Agent（首发叫 OK Computer Agent mode）。它不是会聊天的搜索，而是直接交文件——这是国内 Personal Agent 里最像成品的一步。反方：长任务重复、套餐消耗、服务拥堵，复杂工程还得手工补配置；官方文档自己也把上下文和用量限制写得很清楚。判决：全科实习生，转正要看长任务的售后。",
+  "node-284": "2026 年 8 月，一个没有界面野心的产品：发条短信，它替你把杂事办了。首批测试者的评价集中在完成度超出预期——魔法感来自不用打开 App。代价也摆在桌面上：它要替你操作邮箱、账号和支付，而公司还在邀请制。反方：密码托管、数据用途、撤销权限，越好用越考验信任。判决：体验赢了第一局，信任还没开赛。",
+  "node-285": "2026 年 9 月，Muse 上线两周下载超过 250 万（Reuters 援引 Sensor Tower），把 Personal Agent 第一次推成大众级产品：发邮件、填表、预订、购买，App 关了还能继续干，权限、凭证隔离、审计和撤销被做成了产品底座。反方：幻觉、主动消息、数据训练，以及实际电话任务仍曾由人类外包协助这件事，让信任问题追着热度跑。判决：分发赢了，透明度没跟上。",
+  "node-188": "2026 年 6 月的预印本，让 Agent 去改自己的 Harness——不是改权重，是改工具链、提示词和执行脚手架。这个切口比“模型自己进化”诚实：改的是外面那层工程。反方：实验范围集中在作者设定的任务和评测，跨团队复现、长期回归、生产运行全是空白；改崩了怎么回滚，论文没答。判决：研究上跑通了，生产里请先别让它碰 main。",
+  "node-190": "2025 年 5 月，Darwin Gödel Machine 把“系统改自己的代码、再验证自己变强了”跑成了实验：能改、能测、能留。名字很狂，范围很窄——实验环境和评测都是固定的。反方：固定评测最容易被优化成刷分，长期开放运行记录为零，达尔文还在试管里。判决：概念演示成立，进化论还早。",
+  "node-278": "2026 年 10 月，Self-HPO 让 Harness 和 Policy 交替优化：一边改外面的脚手架，一边改里面的策略，避免两层各自变强却彼此失配。这个思路比单层自我改进更像真问题。反方：论文只覆盖有限模型和三类 Coding benchmark，开放环境长期运行没报；漂亮的双人舞录像，还没证明能巡演。判决：方向值得跟，证据只够开题。",
+  "node-243": "2026 年 9 月，TypeSafe 的 Jev 换了个接口形态：不生成文本，直接吐类型化选择、分数和概率——把模型当成软件里的决策函数，而不是聊天对象。对低延迟工作流，这个方向很聪明。反方：架构和训练细节不公开，性能数据来自厂商评测，独立复现有限，社区讨论基本围着 Demo 转。判决：接口创新，证据欠费。",
+  "node-248": "2026 年 7 月，REA 把 Ghidra、Hopper、IDA 接进 Coding Agent：模型负责调度和解释，工具负责取证，分析过程可回看。逆向工程第一次有了“Agent 外挂”这个切口，而且证据链是开放的。反方：仓库能跑、npm 能装，但规模使用和独立效果评测都没有；深度分析仍要合法安装商业工具，稳定性没经过人群检验。判决：切口够硬，生态还没跑起来。",
+  "node-253": "2026 年 8 月，xAI 给每个 Bot 配了一台持久云电脑、记忆和跨应用执行环境，重要动作走审批回路——这套组合基本就是 Work Agent 的标准答案，产品形态抓得准。反方：Beta 期最大的功能仍是让用户替它测稳定性；价格、失控后的责任边界，官方文档回答得比社区期待少。判决：形态对了，成熟度还在 Beta。",
+  "node-194": "2026 年 8 月，Cursor 把 Agent 搬到后台：独立 VM、子代理、PR/Slack/定时任务都能把它叫起来，从一次性委派变成常驻工位。对长任务来说这是必须的一步。反方：长期成功率和成本都没公开，账单和误操作也会常驻——持续运行从来不等于持续正确。判决：工位搭好了，考核标准还没写。",
+  "node-213": "2026 年 9 月 10 日，OpenAI 把 Codex 内部的会话、编排、压缩与恢复抽成 API 公开测试：开发者可以直接把长期运行的 Codex 嵌进自己的产品，不用重写 Harness。省事是真的。反方：公开测试阶段，接口稳定性、迁移成本和平台采用都还没答案——现在最稳定的功能是以后会变。判决：Harness 商品化开了个头，先别把生产压上去。",
+  "node-218": "2026 年 10 月，DeepSeek 把官方 Harness 推到 0.2.1 RC，并建议搭配 1017 模型使用：模型和脚手架开始同一条发行节奏，而不是换皮 CLI。这是官方自己下场做 Harness 的信号。反方：RC 两个字就是官方提前告诉你——安装、升级、长任务可靠性都还在修，别拿生产当小白鼠。判决：方向对，等正式版再评。",
+  "node-236": "2026 年 9 月，AIDE² 让研究 Agent 连续改自己的代码、跨任务迁移，8 天跑了 7 次连续改进。递归自我改进从概念走到了可运行实验，这是它最硬的部分。反方：结论来自单一研究系统和隐藏评测，独立复现没跟上；读者无法判断增益是能力，还是这份考卷。判决：抓眼球的是 7 次，能不能立住要看复现圈。",
+  "node-237": "2026 年 9 月，Env-Rethink 换了个训练思路：环境不再只是堆题量，而是主动诊断能力空白、组织事件、生成下一轮更难的题。让题目跟着能力长，比继续加数据更像正路。反方：证据只有一篇预印本，跨团队复现和大规模训练收益都没出现——题目会长大，能力是否真长大还没证实。判决：方法值得抄，结论先别抄。",
+  "node-238": "2026 年 10 月，RSIGym 把训练、rollout、沙盒和评测统一成一个 RSI 实验底座：以前各家自说自话的自我改进，终于能在同一个场地比较。对研究社区，这比再发一个 SOTA 有用。反方：框架完整不等于练出肌肉——长期自主运行和真实生产负载的数据都还没公布。判决：RSI 有了健身房，先看谁肯长期办卡。",
+  "node-240": "2026 年 10 月，Harness² 解决一次性自我改写无法积累的问题：当前任务临时改 Harness，长期系统再吸收有效经验。双层记忆的设计，比单次自我修改更像工程。反方：结果来自论文设定的开放任务，跨模型、跨组织迁移待复现；工程师最关心的版本、回滚、审计，还没人补齐。判决：论文里叫长期记忆，生产里得叫变更管理。",
+  "node-244": "2026 年 10 月 31 日，DeepSeek 的 dsh-superagent 把 Coding Agent 从单会话推向团队协作层：监听 GitHub 和飞书事件，授权后创建独立任务、会话和工作目录，再把结果送回原对话。架构图已经像大系统。反方：官方仓库标着 prototype，Router/Worker、事件驱动和 Watchdog 只完成了一部分，目前最完整的是野心。判决：方向对，先等代码补完再谈里程碑。",
+  "node-283": "2026 年 5 月，Gemini Spark 直接住进 Gmail、Drive 和 Calendar：不用迁移数据，起步就赢了半个身位。表格和日程自动化，是重度 Workspace 用户实打实夸的部分。反方：Beta 的日常是权限给得多、结果偶尔没看懂要求，浏览器控制仍会卡；官方安全说明自己都警告网页提示注入可能暴露连接应用里的信息。判决：位置最好，权限最险。",
+  "node-286": "2026 年 9 月，Manus Cue 给每个用户发一个 Agent 团队：邮箱、电话、钱包、电脑一套工牌配齐，多个 Agent 分工研究、筛选、制作和联络。它抓的是个人团队这个真需求。反方：Early Access、邀请制，公开样本基本来自首批体验者；更多人还卡在邀请码和它比 Manus 主站多了什么上。判决：入职仪式很豪华，稳定上班记录还没攒够。",
+  "node-287": "2026 年 9 月，OpenAI 的 Dots 把云电脑、4,000+ 插件、Auto-review 和 Activity View 拼成一个可治理的 Personal Agent，后台研究和文档迭代已经有人好评。产品完成度是这批 Personal Agent 里最高的。反方：独立实测里还会出现确认循环、站点阻断、任务没做完；搜索打转和重复确认，离常驻同事还有距离。判决：试用期实习生，转正看半年。",
+  "node-288": "2026 年 10 月 19 日，Wabi 2.0 从邀请制走到公开：别人在做一人一个 Agent，它把 Agent 拉进家庭群，共享线程里大家看进度、补信息、做审批，临时应用随用随生。这个产品直觉比多数 Personal Agent 都准。反方：首批用户直说过度主动、应用粗糙——像那个没人问却一直安排日程的群友。判决：社交切口稀缺，成熟度还早。",
+  "node-009": "2024 年 4 月，它演示了“给一个 Issue，还你一个 PR”：规划、改多文件、跑测试、开 PR 一条龙。2025-05-30 技术预览终止——产品先死了，思路活到今天。反方：它输得不冤，模型和 Harness 都还没准备好；后来者把尸体上的好点子全捡走，今天每个 Coding Agent 的默认流程里都有它的影子。判决：Issue 到 PR 的愿景没死，产品死了。",
+  "node-074": "2025 年 1 月，Operator 演示了“AI 自己开浏览器”：点按钮、填表单、下单，视频像未来。问题在真实使用：慢、受限、脆，演示阶段的热度撑不到日常。2025 年 7 月，OpenAI 把它并入 ChatGPT Agent 并关闭独立站点——寿命像内测。反方：浏览器 Agent 这条路线被它证明能活，只是没必要叫 Operator。判决：样机合格，产品缺席。",
+  "node-289": "2023 年 3 月，Auto-GPT 拿到 188k Star，把全自主 Agent 的概念送进大众视野——然后当场演示了它的四个死法：死循环、任务漂移、跑偏崩溃和 API 账单。官方后来把原始产品单列为 AutoGPT Classic，主项目转向可控工作流与多专家平台。反方：没有它，行业不会这么快明白自主不等于能用。判决：概念启蒙者，产品反面教材。",
+  "node-290": "2025 年 2 月，GPT-4.5 Preview 把预训练规模堆到当时极限，也把价格堆到每百万输入 75 美元、输出 150 美元。四个半月后，OpenAI 于 2025-07-14 关闭 API，推荐 GPT-4.1。HN 的讨论几乎被定价淹没：写作更细腻有人认，但开发者不会为微妙提升付 30 倍输入成本。判决：它更像纯预训练扩张路线的讣告，不像一代产品。",
+  "node-291": "2023 年 3 月 23 日发布时，全网都在画 AI 应用商店的蓝图，HN 首发 1875 分、1106 条评论。一年后：2024-03-19 停止新安装和新对话，2024-04-09 既有插件对话关闭，开发者只能迁去 GPTs 与 Actions。生态没长出来，插件这个分发模式也没活下来。反方：协议和工具调用被后来者继承，能力留下了。判决：应用商店的梦，插件先醒。",
+  "node-292": "2022 年 6 月 23 日，AWS 带着云厂商体量正面追 Copilot，代码补全加安全扫描，牌面不小。2024-04-30，AWS 把它的能力并进 Amazon Q Developer——独立品牌不到两年就没了，功能活着，名字没了。反方：它证明的是云厂商也能做补全，也证明了补全这条赛道赢家通吃。判决：CodeWhisperer 留在旧教程里，Amazon Q 接着跑。",
 };
 
 const communitySignals = {
@@ -602,102 +746,16 @@ const communitySources = {
   ],
 };
 
-const tierOverrides = Object.fromEntries([
-  ...["node-291", "node-292", "node-289", "node-290"].map((id) => [id, "drag"]),
-  ...[
-    // 产品：已经公开落地，但尚不足以改变行业默认动作。
-    "node-005", "node-006", "node-011", "node-012", "node-017", "node-018", "node-019", "node-020",
-    "node-024", "node-025", "node-026", "node-027", "node-028", "node-032", "node-033", "node-034",
-    "node-039", "node-040", "node-042", "node-043", "node-044", "node-045", "node-046", "node-048",
-    "node-049", "node-051", "node-053", "node-054", "node-055", "node-056", "node-057", "node-058",
-    "node-059", "node-060", "node-061", "node-063", "node-064", "node-065", "node-066", "node-067",
-    "node-069", "node-070", "node-071", "node-072", "node-073", "node-077", "node-078", "node-080",
-    "node-081", "node-082", "node-194", "node-197", "node-215", "node-216", "node-222", "node-248",
-    "node-009", "node-074", "node-249", "node-251", "node-287", "node-288",
-    // 模型：正式能力升级，影响明确，但不是新的技术范式。
-    "node-086", "node-087", "node-088", "node-089", "node-090", "node-093", "node-095", "node-096",
-    "node-098", "node-099", "node-101", "node-102", "node-106", "node-107", "node-108", "node-113",
-    "node-114", "node-115", "node-116", "node-117", "node-118", "node-119", "node-120", "node-121",
-    "node-128", "node-129", "node-132", "node-133", "node-135", "node-138", "node-140", "node-141",
-    "node-142", "node-143", "node-144", "node-145", "node-146", "node-147", "node-148", "node-152",
-    "node-153", "node-202", "node-203", "node-204", "node-205", "node-207", "node-208", "node-209",
-    "node-210", "node-224", "node-225", "node-227", "node-228", "node-229", "node-230", "node-231",
-    "node-232", "node-233", "node-250", "node-254", "node-255",
-    // 技术：已有公开实现、复现或工程采用，但长期外溢仍需观察。
-    "node-162", "node-168", "node-170", "node-171", "node-172", "node-173", "node-176", "node-177",
-    "node-178", "node-180", "node-181", "node-182", "node-184", "node-185", "node-189", "node-191",
-    "node-211", "node-239", "node-246", "node-263", "node-264", "node-268", "node-272", "node-280",
-    "node-281",
-  ].map((id) => [id, "solid"]),
-  ...[
-    // 公开影响已经越过单次版本更新，形成新产品或技术路线。
-    "node-068", "node-075", "node-076", "node-079", "node-083", "node-094", "node-105", "node-112",
-    "node-131", "node-136", "node-137", "node-156", "node-169", "node-175", "node-188", "node-190",
-    "node-235", "node-257", "node-258", "node-259", "node-260", "node-266", "node-269", "node-274",
-    "node-275", "node-279",
-  ].map((id) => [id, "top"]),
-]);
-
 const curatedVerdicts = editorialVerdicts.map((entry) => ({
   ...entry,
-  tier: tierOverrides[entry.nodeId] || entry.tier,
   review: roastReviews[entry.nodeId] || entry.review,
-  community: communitySignals[entry.nodeId] || "社区讨论样本不足，暂不把发布热度当成真实采用。",
+  community: communitySignals[entry.nodeId] || "",
   communitySources: communitySources[entry.nodeId] || [],
 }));
 
-const landmarkPatterns = [
-  /^GPT-4$/, /^GPT-5-Codex$/, /^DeepSeek V3$/, /^Claude 3\.7 Sonnet$/,
-  /^AlphaCode$/, /^InCoder \/ FIM$/, /^RepoCoder$/, /^CodeAct$/,
-  /^Reflexion$/, /^Function Calling$/, /^SWE-agent \/ ACI$/, /^PRM$/,
-  /^STaR$/, /^AlphaEvolve$/, /^Aider$/, /^Devin$/,
-];
-
-const earlyStagePattern = /预览|preview|beta|候选|实验|早期|prototype|research|内测|邀请|预印本/i;
-const retiredPattern = /终止|停止服务|关闭|退场|不再推荐/i;
-const matureStagePattern = /正式|GA|公开发布|正式开放|开源发布|开放协议|开放标准|工业案例|生产系统|内部生产|功能发布|模型发布/i;
-
-function getCompleteTier(node) {
-  const status = node.status || "";
-  if (retiredPattern.test(status)) return "drag";
-  if (landmarkPatterns.some((pattern) => pattern.test(node.title))) return "top";
-  if (earlyStagePattern.test(`${status} ${node.title}`)) return "watch";
-  if (node.section === "tech") return "watch";
-  if (matureStagePattern.test(status)) return "solid";
-  if (Number(getPublishedDate(node).slice(0, 4)) <= 2024) return "solid";
-  return "watch";
-}
-
-function getCompleteReview(node) {
-  return editorialFacts[node.id]?.summary || node.summary;
-}
-
-function getCompleteEvidence(node) {
-  const fact = editorialFacts[node.id];
-  return fact?.detail || fact?.summary || node.detail || node.summary;
-}
-
-function getCompleteCommunity() {
-  return "尚未找到足够的 HN、Reddit、X、知乎或小红书公开样本，暂不判断社区口碑。";
-}
-
-function makeCompleteVerdict(node) {
-  const research = getNodeResearch(node);
-  const sourceLabel = research.label.length >= 5 ? research.label : `${research.label} · 来源`;
-  return {
-    nodeId: node.id,
-    tier: tierOverrides[node.id] || getCompleteTier(node),
-    review: getCompleteReview(node),
-    evidence: getCompleteEvidence(node),
-    community: communitySignals[node.id] || getCompleteCommunity(node),
-    source: source(sourceLabel, research.url),
-    communitySources: communitySources[node.id] || [],
-  };
-}
-
-const curatedById = new Map(curatedVerdicts.map((entry) => [entry.nodeId, entry]));
-
-export const verdicts = nodes.map((node) => curatedById.get(node.id) || makeCompleteVerdict(node));
+// 榜单只收录完成编辑评级的节点；未评级节点保留在节点库与全景图。
+// 不再用 status 关键词或发布年份自动贴档——那会让“评”退化成“算”。
+export const verdicts = curatedVerdicts;
 
 export function getVerdictTier(id) {
   return verdictTiers.find((tier) => tier.id === id);

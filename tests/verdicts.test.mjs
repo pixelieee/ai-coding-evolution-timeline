@@ -8,13 +8,14 @@ test("editorial verdicts reference unique existing timeline nodes", () => {
   const nodeIds = new Set(nodes.map((node) => node.id));
   const ratedIds = verdicts.map((entry) => entry.nodeId);
   assert.equal(new Set(ratedIds).size, ratedIds.length);
-  assert.equal(verdicts.length, nodes.length);
-  assert.deepEqual(new Set(ratedIds), new Set(nodes.map((node) => node.id)));
+  assert.ok(verdicts.length >= 80, "the board should keep a meaningful editorial sample");
+  assert.ok(verdicts.length < nodes.length, "unrated nodes belong in the library, not on the board");
+  assert.ok(ratedIds.every((id) => nodeIds.has(id)));
   for (const entry of verdicts) {
     assert.ok(nodeIds.has(entry.nodeId), entry.nodeId);
     assert.ok(entry.review.length >= 24, `${entry.nodeId} needs a substantive review`);
     assert.ok(entry.evidence.length >= 24, `${entry.nodeId} needs a public evidence statement`);
-    assert.ok(entry.community.length >= 24, `${entry.nodeId} needs a community signal`);
+    if (entry.community) assert.ok(entry.community.length >= 24, `${entry.nodeId} needs a community signal`);
     assert.match(entry.source.url, /^https:\/\//, `${entry.nodeId} needs a public source`);
     assert.ok(entry.source.label.length >= 5, `${entry.nodeId} needs a source label`);
     for (const source of entry.communitySources) {
@@ -53,7 +54,7 @@ test("every tier and every timeline section is represented", () => {
 test("a superseded benchmark keeps its historical rating when the evidence still matters", () => {
   const verified = verdicts.find((entry) => entry.nodeId === "node-267");
   assert.equal(verified?.tier, "top");
-  assert.match(verified?.review || "", /行业通用尺子.*高分不再等于/);
+  assert.match(verified?.review || "", /修尺子.*静态榜单/);
   assert.match(verified?.evidence || "", /59\.4%.*停止报告/);
 });
 
@@ -67,8 +68,17 @@ test("the bottom tier includes recognizable, evidence-backed failures", () => {
   assert.match(byId.get("node-291")?.review || "", /应用商店.*插件/);
   assert.equal(byId.get("node-292")?.tier, "drag");
   assert.match(byId.get("node-292")?.evidence || "", /2022-06-23.*2024-04-30.*Amazon Q/);
-  assert.equal(byId.get("node-009")?.tier, "solid");
-  assert.equal(byId.get("node-074")?.tier, "solid");
+  assert.equal(byId.get("node-009")?.tier, "drag");
+  assert.match(byId.get("node-009")?.review || "", /产品先死|产品死了/);
+  assert.equal(byId.get("node-074")?.tier, "drag");
+  assert.match(byId.get("node-074")?.review || "", /寿命像内测/);
+});
+
+test("vendor-only claims stand in the NPC tier", () => {
+  const byId = new Map(verdicts.map((entry) => [entry.nodeId, entry]));
+  for (const nodeId of ["node-201", "node-226"]) {
+    assert.equal(byId.get(nodeId)?.tier, "watch", nodeId);
+  }
 });
 
 test("personal agent milestones are all rated", () => {
@@ -85,6 +95,13 @@ test("verdict board supports full-catalog search and collapsible tiers", () => {
   assert.match(board, /tierEntries\.length/);
 });
 
+test("the board never fills unrated nodes with auto-generated verdicts", () => {
+  for (const entry of verdicts) {
+    assert.ok(entry.review.length > 60, `${entry.nodeId} should carry an editorial verdict, not a summary`);
+    assert.notEqual(entry.review, entry.evidence, entry.nodeId);
+  }
+});
+
 test("the third view keeps ratings distinct from sourced node facts", () => {
   const app = readFileSync(new URL("../src/App.jsx", import.meta.url), "utf8");
   const board = readFileSync(new URL("../src/VerdictBoard.jsx", import.meta.url), "utf8");
@@ -93,7 +110,8 @@ test("the third view keeps ratings distinct from sourced node facts", () => {
   assert.doesNotMatch(board, /官方负责举证，社区负责拆台/);
   assert.doesNotMatch(board, /硬数据 · 真实口碑 · 后续影响/);
   assert.match(board, /社区风向/);
-  assert.match(board, /全部时间线节点均已入榜/);
+  assert.match(board, /本榜只收录完成编辑评级/);
+  assert.match(board, /查看未评级节点/);
   assert.match(board, /verdict-source/);
   assert.match(board, /onSelect\(node\)/);
 });
