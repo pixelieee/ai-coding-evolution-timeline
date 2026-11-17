@@ -82,7 +82,7 @@ export function VerdictBoard({ nodes, selected, onSelect, onOpenLibrary }) {
               {!isCollapsed && <div className="verdict-tier-content">
                 <p>{tier.description}</p>
                 <div className="verdict-cards">
-                  {tierEntries.map(({ node, review, evidence, community, communitySources, source }) => (
+                  {tierEntries.map(({ node, review, opposition, evidence, community, communitySources, source }) => (
                     <article key={node.id} className={`verdict-card ${selected?.id === node.id ? "selected" : ""}`}>
                       <button className="verdict-card-main" onClick={() => onSelect(node)} aria-pressed={selected?.id === node.id} aria-label={`${tier.label}：${node.title}。${review} 点击查看节点详情`}>
                         <span className="verdict-card-head">
@@ -91,6 +91,7 @@ export function VerdictBoard({ nodes, selected, onSelect, onOpenLibrary }) {
                           {selected?.id === node.id ? <CheckCircle size={18} weight="fill" /> : <ArrowRight size={18} />}
                         </span>
                         <span className="verdict-copy">{review}</span>
+                        {opposition ? <span className="verdict-opposition"><strong>反方</strong>{opposition}</span> : null}
                         <span className="verdict-proof"><strong>硬证据</strong>{evidence}</span>
                         {community ? <span className="verdict-evidence"><strong>社区风向</strong>{community}</span> : null}
                       </button>

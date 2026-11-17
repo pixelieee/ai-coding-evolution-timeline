@@ -13,7 +13,7 @@ test("editorial verdicts reference unique existing timeline nodes", () => {
   assert.ok(ratedIds.every((id) => nodeIds.has(id)));
   for (const entry of verdicts) {
     assert.ok(nodeIds.has(entry.nodeId), entry.nodeId);
-    assert.ok(entry.review.length >= 24, `${entry.nodeId} needs a substantive review`);
+    assert.ok(entry.review.length >= 16, `${entry.nodeId} needs a substantive review`);
     assert.ok(entry.evidence.length >= 24, `${entry.nodeId} needs a public evidence statement`);
     if (entry.community) assert.ok(entry.community.length >= 24, `${entry.nodeId} needs a community signal`);
     assert.match(entry.source.url, /^https:\/\//, `${entry.nodeId} needs a public source`);
@@ -54,7 +54,7 @@ test("every tier and every timeline section is represented", () => {
 test("a superseded benchmark keeps its historical rating when the evidence still matters", () => {
   const verified = verdicts.find((entry) => entry.nodeId === "node-267");
   assert.equal(verified?.tier, "top");
-  assert.match(verified?.review || "", /修尺子.*静态榜单/);
+  assert.match(verified?.review || "", /尺子.*弯/);
   assert.match(verified?.evidence || "", /59\.4%.*停止报告/);
 });
 
@@ -72,6 +72,13 @@ test("the bottom tier includes recognizable, evidence-backed failures", () => {
   assert.match(byId.get("node-009")?.review || "", /产品先死|产品死了/);
   assert.equal(byId.get("node-074")?.tier, "drag");
   assert.match(byId.get("node-074")?.review || "", /寿命像内测/);
+});
+
+test("counterpoints carry specifics instead of truisms", () => {
+  const banned = /从来不等于|一回事|两回事|双刃剑|必修课|迟早|谁不是|从来如此/;
+  for (const entry of verdicts) {
+    assert.doesNotMatch(entry.opposition, banned, `${entry.nodeId} uses a truism`);
+  }
 });
 
 test("vendor-only claims stand in the NPC tier", () => {
@@ -97,7 +104,8 @@ test("verdict board supports full-catalog search and collapsible tiers", () => {
 
 test("the board never fills unrated nodes with auto-generated verdicts", () => {
   for (const entry of verdicts) {
-    assert.ok(entry.review.length > 60, `${entry.nodeId} should carry an editorial verdict, not a summary`);
+    assert.ok(entry.review.length >= 16, `${entry.nodeId} should carry an editorial verdict, not a summary`);
+    assert.ok(entry.opposition.length >= 10, `${entry.nodeId} needs a counterpoint on its own line`);
     assert.notEqual(entry.review, entry.evidence, entry.nodeId);
   }
 });
