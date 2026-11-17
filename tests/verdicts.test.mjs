@@ -74,6 +74,13 @@ test("the bottom tier includes recognizable, evidence-backed failures", () => {
   assert.match(byId.get("node-074")?.review || "", /寿命像内测/);
 });
 
+test("counterpoints carry specifics instead of truisms", () => {
+  const banned = /从来不等于|一回事|两回事|双刃剑|必修课|迟早|谁不是|从来如此/;
+  for (const entry of verdicts) {
+    assert.doesNotMatch(entry.opposition, banned, `${entry.nodeId} uses a truism`);
+  }
+});
+
 test("vendor-only claims stand in the NPC tier", () => {
   const byId = new Map(verdicts.map((entry) => [entry.nodeId, entry]));
   for (const nodeId of ["node-201", "node-226"]) {
