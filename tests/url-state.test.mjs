@@ -23,3 +23,8 @@ test("verdict cards show the hard evidence instead of hiding it in a tooltip", (
   assert.match(board, /verdict-proof/);
   assert.match(board, /硬证据/);
 });
+
+test("counterpoints render on their own line", () => {
+  assert.match(board, /verdict-opposition/);
+  assert.match(board, /opposition/);
+});
